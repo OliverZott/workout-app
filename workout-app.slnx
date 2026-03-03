@@ -1,3 +1,8 @@
 <Solution>
-  <Project Path="workout-app/workout-app.csproj" />
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="workout-app/workout-app.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>
