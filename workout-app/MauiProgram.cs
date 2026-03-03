@@ -56,6 +56,7 @@ public static class MauiProgram
         builder.Services.AddTransient<DateTimePickerModel>();
         builder.Services.AddSingleton<MockDataService>();
         builder.Services.AddSingleton<RadioButtonRangeToColorConverter>();
+        builder.Services.AddSingleton<DatabaseService>();
 
 
 #if DEBUG

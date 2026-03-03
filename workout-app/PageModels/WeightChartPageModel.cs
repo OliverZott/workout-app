@@ -9,6 +9,7 @@ public partial class WeightChartPageModel : ObservableObject
 {
     private bool IsLoading;
     private readonly MockDataService mockDataService;
+    private readonly DatabaseService databaseService;
     private RangeType _selectedRange;
 
     [ObservableProperty]
@@ -26,10 +27,11 @@ public partial class WeightChartPageModel : ObservableObject
     [ObservableProperty]
     public double maxWeightWithPadding;
 
-    public WeightChartPageModel(MockDataService mockDataService)
+    public WeightChartPageModel(MockDataService mockDataService, DatabaseService databaseService)
     {
         _selectedRange = RangeType.Week;
         this.mockDataService = mockDataService;
+        this.databaseService = databaseService;
         _ = LoadDataAsync();
     }
 
@@ -69,12 +71,18 @@ public partial class WeightChartPageModel : ObservableObject
             IsLoading = true;
 
             var (start, end) = GetDateRange();
+
+            // TODO: remove Mock data
             var apiData = await GetWeightDataFromApi(start, end);
+
+            // TODO: where filter? in controler? 
+            var data = await databaseService.GetWeightsAsync();
+            var filteredData = data.Where(d => d.Timestamp.Date > start.Date && d.Timestamp.Date <= end.Date).ToList();
 
             // Update on main thread
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
-                Data = new ObservableCollection<WeightData>(apiData);
+                Data = new ObservableCollection<WeightData>(filteredData);
             });
 
             MinWeightWithPadding = (int)(Data?.Min(d => d.Weight) ?? 0) - 2;
