@@ -20,7 +20,7 @@ public class DatabaseService
         _db.InsertAsync(entry);
 
     public Task<List<WeightData>> GetWeightsAsync() =>
-        _db.Table<WeightData>().OrderByDescending(x => x.Timestamp).ToListAsync();
+        _db.Table<WeightData>().OrderBy(x => x.Timestamp).ToListAsync();
 
     // Seed data
     public async Task SeedWeightDataAsync()
