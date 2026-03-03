@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Button xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="workout_app.Pages.Controls.BasicButton"
+        Margin="10" 
+
+        HeightRequest="50"
+        BackgroundColor="{StaticResource wa-color-button}" 
+        BorderColor="{StaticResource wa-color-button}"
+        CornerRadius="22">
+
+    <Button.TextColor>
+        <OnPlatform x:TypeArguments="Color">
+            <On Platform="iOS" Value="White" />
+            <On Platform="Android" Value="White"/>
+        </OnPlatform>
+    </Button.TextColor>
+
+    <Button.Shadow>
+        <Shadow Brush="Black"
+                Opacity="0.25"
+                Radius="8"
+                Offset="4,4" />
+    </Button.Shadow>
+
+</Button>

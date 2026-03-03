@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.Controls.MainTile"
+             x:DataType="MainTile">
+
+
+    <Border
+        HeightRequest="130"
+        BackgroundColor="{Binding TileBackgroundColor}"
+        Stroke="{Binding TileBackgroundColor}">
+
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="45"/>
+        </Border.StrokeShape>
+
+        <Border.Shadow>
+            <Shadow 
+              Brush="Black"
+              Opacity="0.15"
+              Radius="5"
+              Offset="2,2" />
+        </Border.Shadow>
+
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding TapCommand}"/>
+        </Border.GestureRecognizers>
+
+        <Grid
+            RowDefinitions="*,*"
+            Margin="10">
+
+            <!-- Image on top -->
+            <Image
+                Source="{Binding ImageSource}"
+                Aspect="AspectFit"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HeightRequest="50"
+                WidthRequest="50"
+                Grid.Row="0"/>
+
+            <!-- Text in the bottom -->
+            <Label
+                Text="{Binding TileText}"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="Medium"
+                TextColor="Black"
+                Grid.Row="1"/>
+        </Grid>
+    </Border>
+    
+</ContentView>

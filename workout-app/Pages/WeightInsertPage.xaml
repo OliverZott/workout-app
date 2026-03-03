@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.WeightInsertPage"
+             x:DataType="WeightInsertPageModel"
+             Title="WeightInsertPage">
+    
+    <VerticalStackLayout Spacing="24" Padding="24">
+
+        <!--  DateTime Picker Control -->
+        <DateTimePicker
+            SelectedDate="{Binding DateTimePicker.SelectedDate}"
+            SelectedTime="{Binding DateTimePicker.SelectedTime}"
+            SelectedDateDisplay="{Binding DateTimePicker.SelectedDateDisplay}"
+            SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}" />
+
+        <!-- Weigth Input Tile -->
+        <Border
+            BackgroundColor="White"
+            Stroke="#e0e0e0"
+            StrokeThickness="1"
+            HeightRequest="250"
+            WidthRequest="250">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="65"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow 
+                    Brush="Black"
+                    Opacity="0.15"
+                    Radius="5"
+                    Offset="2,2" />
+            </Border.Shadow>
+
+            <Grid RowDefinitions="*, *, *">
+
+                <!-- Scale Icon -->
+                <Image 
+                    Grid.Row="0"
+                    Source="weight"
+                    HeightRequest="40" 
+                    WidthRequest="40"
+                    Aspect="AspectFit"
+                    VerticalOptions="Center"
+                    Margin="20,0,10,0" />
+
+                <Grid 
+                    Grid.Row="1" 
+                    ColumnDefinitions="*, 3*, *, *">
+
+
+                    <!-- Weight Entry -->
+                    <Border
+                        Grid.Column="1"
+                        Stroke="White"
+                        StrokeThickness="1"
+                        HeightRequest="70"
+                        BackgroundColor="#edf3fd">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="65"/>
+                        </Border.StrokeShape>
+
+                        <Entry 
+                            x:Name="WeightEntry"
+                            Text="{Binding SelectedWeight, Mode=TwoWay}"
+                            Placeholder="{Binding LastSelectedWeight}"  
+                            PlaceholderColor="Gray"
+                            Keyboard="Numeric"
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            TextColor="Black"
+                            BackgroundColor="Green"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- Unit Label -->
+                    <Label 
+                        Grid.Column="2"
+                        Text="kg"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+        <!-- Save Button -->
+        <Grid ColumnDefinitions="*, 2*, *">
+            <BasicButton 
+                Grid.Column="1"
+                Text="Speichern"
+                Command="{Binding SaveWeightCommand}" >
+            </BasicButton>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

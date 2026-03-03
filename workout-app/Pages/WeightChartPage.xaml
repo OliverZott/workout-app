@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="workout_app.Pages.WeightChartPage"
+             x:DataType="WeightChartPageModel"
+             Title="WeightChartPage">
+
+
+    <VerticalStackLayout 
+        Margin="20"
+        Spacing="20">
+
+        <!-- Time Range Selection --><!--
+        <TimeRangeSelector 
+            SelectedRange="{Binding SelectedRange}"
+            RangeSelectedCommand="{Binding SelectRangeCommand}"
+            FirstRangeText="Woche" 
+            SecondRangeText="Monat" 
+            ThirdRangeText="Max"
+            FirstRangeValue="Week"
+            SecondRangeValue="Month" 
+            ThirdRangeValue="Max" />
+
+        --><!-- Summary Element --><!--
+        <DataSummary
+            AverageReading="{Binding AverageWeightReading}"
+            LastReading="{Binding LastWeightReading}"
+            Unit="kg" />-->
+
+        <!-- Chart Element-->
+        <Border
+            BackgroundColor="White"
+            Stroke="#e0e0e0"
+            StrokeThickness="1"
+            Padding="30">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="65"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow 
+                    Brush="Black"
+                    Opacity="0.15"
+                    Radius="5"
+                    Offset="2,2" />
+            </Border.Shadow>
+
+            <sf:SfCartesianChart>
+
+                <!-- Legend -->
+                <sf:SfCartesianChart.Legend>
+                    <sf:ChartLegend Placement="Top"/>
+                </sf:SfCartesianChart.Legend>
+
+                <!-- Axes -->
+                <sf:SfCartesianChart.XAxes>
+                    <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                </sf:SfCartesianChart.XAxes>
+
+                <sf:SfCartesianChart.YAxes>
+                    <sf:NumericalAxis 
+                        Minimum="{Binding MinWeightWithPadding}"
+                        Maximum="{Binding MaxWeightWithPadding}" />
+                </sf:SfCartesianChart.YAxes>
+
+                <sf:LineSeries 
+                    ItemsSource="{Binding Data}"
+                    XBindingPath="DisplayDate"
+                    YBindingPath="Weight"
+                    Fill="Grey"
+                    Label="Gewicht" 
+                    ShowDataLabels="False"
+                    IsVisibleOnLegend="False"
+                    ShowMarkers="True"/>
+                <sf:LineSeries 
+                    Label="Mittelwert"
+                    Fill="LightGray"               
+                    StrokeDashArray="4,4"
+                    StrokeWidth="2"
+                    IsVisibleOnLegend="True"
+                    IsVisible="True" />
+
+
+                <!-- ⭐ Fixed horizontal dotted line -->
+                <sf:SfCartesianChart.Annotations>
+                    <sf:HorizontalLineAnnotation 
+                        Y1="{Binding AverageWeightReading}"                     
+                        Stroke="LightGray"
+                        StrokeWidth="2"
+                        StrokeDashArray="4,4"
+                        ShowAxisLabel="False" />
+                </sf:SfCartesianChart.Annotations>
+
+                <!--TODO: Add button-->
+                
+
+
+            </sf:SfCartesianChart>
+
+        </Border>
+
+        <!-- Wert eingeben button -->
+        <Button Text="Wert eintragen"
+                Margin="10,0,10,0"
+                BackgroundColor="#00C2C2"
+                TextColor="Black"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                CornerRadius="40"
+                HeightRequest="70"
+                Command="{Binding GoToInsertWeightCommand}">
+            <Button.Shadow>
+                <Shadow Brush="Black"
+                        Opacity="0.35"
+                        Radius="8"
+                        Offset="4,4" />
+            </Button.Shadow>
+        </Button>
+
+
+    </VerticalStackLayout>
+
+</ContentPage>

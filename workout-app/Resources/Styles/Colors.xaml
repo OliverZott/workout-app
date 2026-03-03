@@ -5,6 +5,17 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
+
+    <Color x:Key="wa-color-background">#f5f5f5</Color>
+    <Color x:Key="wa-color-button">#6c8ebf</Color>
+
+    <Color x:Key="wa-color1">#FFE6E6</Color>
+    <Color x:Key="wa-color2">#E6F3FF</Color>
+    <Color x:Key="wa-color3">#E6FFE6</Color>
+    <Color x:Key="wa-color4">#FFE6D6</Color>
+    <Color x:Key="wa-color5">#FFFFE6</Color>
+    <Color x:Key="wa-color6">#F3E6FF</Color>
+
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>

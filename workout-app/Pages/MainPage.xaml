@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="workout_app.Pages.MainPage"
+    Title="Workout App">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            
+            <Grid
+                 ColumnDefinitions="*, *"
+                 RowDefinitions="Auto, Auto, Auto"
+                 Margin="20"
+                 RowSpacing="30"
+                 ColumnSpacing="10">
+
+                <!-- Blood Pressure Tile -->
+                <MainTile
+                     Grid.Row="0" 
+                     Grid.Column="0"
+                     TileText="Blutdruck"
+                     TileType="BloodPressure"
+                     ImageSource="bloodpressure"
+                     TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"
+                     TileBackgroundColor="{StaticResource wa-color2}" />
+
+                <!-- Weight Tile -->
+                <MainTile
+                     Grid.Row="0" 
+                     Grid.Column="1"
+                     TileText="Gewicht"
+                     TileType="Weight"
+                     ImageSource="weight"
+                     TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"
+                     TileBackgroundColor="{StaticResource wa-color2}"/>
+
+                <!-- Activity Tile -->
+                <MainTile
+                    Grid.Row="1" 
+                    Grid.Column="0"
+                    TileText="Aktivität"
+                    TileType="Activity"
+                    ImageSource="activity"
+                    TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"
+                    TileBackgroundColor="{StaticResource wa-color2}"/>
+
+            </Grid>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
