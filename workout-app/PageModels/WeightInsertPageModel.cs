@@ -6,6 +6,7 @@ namespace workout_app.PageModels;
 public partial class WeightInsertPageModel : ObservableObject
 {
     private readonly MockDataService mockDataService;
+    private readonly DatabaseService databaseService;
 
     public DateTimePickerModel DateTimePicker { get; } = new();
 
@@ -15,10 +16,10 @@ public partial class WeightInsertPageModel : ObservableObject
     [ObservableProperty]
     public double? selectedWeight;
 
-    public WeightInsertPageModel(MockDataService mockDataService)
+    public WeightInsertPageModel(MockDataService mockDataService, DatabaseService databaseService)
     {
         this.mockDataService = mockDataService;
-
+        this.databaseService = databaseService;
         var lastWeightEntry = mockDataService.GetLastWeightDataEntry();
         LastSelectedWeight = Math.Round(lastWeightEntry?.Weight ?? 70d, 1);
     }
@@ -35,10 +36,8 @@ public partial class WeightInsertPageModel : ObservableObject
             Timestamp = DateTimePicker.SelectedDate.Add(DateTimePicker.SelectedTime)
         };
 
-        mockDataService.AddWeightDataEntry(weight);
+        await databaseService.AddWeightAsync(weight);
 
-        // Navigate back to the previous page (WeightChartPage) instead of
-        // pushing a new instance of WeightChartPage onto the navigation stack.
         await Shell.Current.GoToAsync("..");
     }
 }

@@ -8,7 +8,6 @@ namespace workout_app.PageModels;
 public partial class WeightChartPageModel : ObservableObject
 {
     private bool IsLoading;
-    private readonly MockDataService mockDataService;
     private readonly DatabaseService databaseService;
     private RangeType _selectedRange;
 
@@ -27,10 +26,9 @@ public partial class WeightChartPageModel : ObservableObject
     [ObservableProperty]
     public double maxWeightWithPadding;
 
-    public WeightChartPageModel(MockDataService mockDataService, DatabaseService databaseService)
+    public WeightChartPageModel(DatabaseService databaseService)
     {
         _selectedRange = RangeType.Week;
-        this.mockDataService = mockDataService;
         this.databaseService = databaseService;
         _ = LoadDataAsync();
     }
@@ -72,10 +70,6 @@ public partial class WeightChartPageModel : ObservableObject
 
             var (start, end) = GetDateRange();
 
-            // TODO: remove Mock data
-            var apiData = await GetWeightDataFromApi(start, end);
-
-            // TODO: where filter? in controler? 
             var data = await databaseService.GetWeightsAsync();
             var filteredData = data.Where(d => d.Timestamp.Date > start.Date && d.Timestamp.Date <= end.Date).ToList();
 
@@ -114,13 +108,6 @@ public partial class WeightChartPageModel : ObservableObject
             _ => end.AddDays(-7)
         };
         return (start, end);
-    }
-
-    private async Task<IList<WeightData>> GetWeightDataFromApi(DateTime startDate, DateTime endDate)
-    {
-        await Task.Delay(500); // Simulate API delay
-        var data = mockDataService.GetWeightData(startDate, endDate);
-        return data;
     }
 
     private void UpdateCalculatedValues()
