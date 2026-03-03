@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.Controls.DateRangeSelector"
+             x:Name="RangeSelectorControl">
+
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <RadioButtonRangeToColorConverter x:Key="RangeToColorConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Border
+      BackgroundColor="White"
+      Stroke="#e0e0e0"
+      StrokeThickness="1"
+      HeightRequest="50">
+
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="65"/>
+        </Border.StrokeShape>
+
+        <Border.Shadow>
+            <Shadow 
+              Brush="Black"
+              Opacity="0.15"
+              Radius="5"
+              Offset="2,2" />
+        </Border.Shadow>
+
+        <Grid ColumnDefinitions="*,*,*" Padding="0">
+
+            <!-- Week Selector -->
+            <Border 
+                Grid.Column="0" 
+                BackgroundColor="White" 
+                Stroke="White" 
+                StrokeThickness="1" 
+                HeightRequest="50">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="65"/>
+                </Border.StrokeShape>
+                <Button 
+                    Text="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeText}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
+                    CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeValue}"
+                    BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Week}" />
+            </Border>
+
+            <!-- Month Selector -->
+            <Border 
+                Grid.Column="1" 
+                BackgroundColor="White" 
+                Stroke="White" 
+                StrokeThickness="1" 
+                HeightRequest="50">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="65"/>
+                </Border.StrokeShape>
+                <Button 
+                    Text="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeText}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    TextColor="Black"  
+                    Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
+                    CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeValue}"
+                    BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Month}" />
+            </Border>
+
+            <!-- Max Selector -->
+            <Border 
+                Grid.Column="2" 
+                BackgroundColor="White" 
+                Stroke="White" 
+                StrokeThickness="1" 
+                HeightRequest="50">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="65"/>
+                </Border.StrokeShape>
+                <Button 
+                    Text="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeText}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    TextColor="Black"  
+                    Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
+                    CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeValue}"
+                    BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Max}" />
+            </Border>
+
+        </Grid>
+    </Border>
+
+</ContentView>

@@ -60,6 +60,12 @@
 	  <MauiXaml Update="Pages\Controls\BasicButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Controls\DataSummary.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Controls\DateRangeSelector.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Controls\DateTimePicker.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

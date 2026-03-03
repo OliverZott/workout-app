@@ -6,13 +6,14 @@
              x:DataType="WeightChartPageModel"
              Title="WeightChartPage">
 
+    <ScrollView>
+        
+        <VerticalStackLayout 
+            Margin="20"
+            Spacing="20">
 
-    <VerticalStackLayout 
-        Margin="20"
-        Spacing="20">
-
-        <!-- Time Range Selection --><!--
-        <TimeRangeSelector 
+            <!--Time Range Selection-->
+            <DateRangeSelector 
             SelectedRange="{Binding SelectedRange}"
             RangeSelectedCommand="{Binding SelectRangeCommand}"
             FirstRangeText="Woche" 
@@ -22,50 +23,50 @@
             SecondRangeValue="Month" 
             ThirdRangeValue="Max" />
 
-        --><!-- Summary Element --><!--
-        <DataSummary
+            <!--Summary Element-->
+            <DataSummary
             AverageReading="{Binding AverageWeightReading}"
             LastReading="{Binding LastWeightReading}"
-            Unit="kg" />-->
+            Unit="kg" />
 
-        <!-- Chart Element-->
-        <Border
+            <!-- Chart Element-->
+            <Border
             BackgroundColor="White"
             Stroke="#e0e0e0"
             StrokeThickness="1"
             Padding="30">
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="65"/>
-            </Border.StrokeShape>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="65"/>
+                </Border.StrokeShape>
 
-            <Border.Shadow>
-                <Shadow 
+                <Border.Shadow>
+                    <Shadow 
                     Brush="Black"
                     Opacity="0.15"
                     Radius="5"
                     Offset="2,2" />
-            </Border.Shadow>
+                </Border.Shadow>
 
-            <sf:SfCartesianChart>
+                <sf:SfCartesianChart>
 
-                <!-- Legend -->
-                <sf:SfCartesianChart.Legend>
-                    <sf:ChartLegend Placement="Top"/>
-                </sf:SfCartesianChart.Legend>
+                    <!-- Legend -->
+                    <sf:SfCartesianChart.Legend>
+                        <sf:ChartLegend Placement="Top"/>
+                    </sf:SfCartesianChart.Legend>
 
-                <!-- Axes -->
-                <sf:SfCartesianChart.XAxes>
-                    <sf:CategoryAxis LabelPlacement="BetweenTicks" />
-                </sf:SfCartesianChart.XAxes>
+                    <!-- Axes -->
+                    <sf:SfCartesianChart.XAxes>
+                        <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                    </sf:SfCartesianChart.XAxes>
 
-                <sf:SfCartesianChart.YAxes>
-                    <sf:NumericalAxis 
+                    <sf:SfCartesianChart.YAxes>
+                        <sf:NumericalAxis 
                         Minimum="{Binding MinWeightWithPadding}"
                         Maximum="{Binding MaxWeightWithPadding}" />
-                </sf:SfCartesianChart.YAxes>
+                    </sf:SfCartesianChart.YAxes>
 
-                <sf:LineSeries 
+                    <sf:LineSeries 
                     ItemsSource="{Binding Data}"
                     XBindingPath="DisplayDate"
                     YBindingPath="Weight"
@@ -74,7 +75,7 @@
                     ShowDataLabels="False"
                     IsVisibleOnLegend="False"
                     ShowMarkers="True"/>
-                <sf:LineSeries 
+                    <sf:LineSeries 
                     Label="Mittelwert"
                     Fill="LightGray"               
                     StrokeDashArray="4,4"
@@ -83,26 +84,22 @@
                     IsVisible="True" />
 
 
-                <!-- ⭐ Fixed horizontal dotted line -->
-                <sf:SfCartesianChart.Annotations>
-                    <sf:HorizontalLineAnnotation 
+                    <!-- ⭐ Fixed horizontal dotted line -->
+                    <sf:SfCartesianChart.Annotations>
+                        <sf:HorizontalLineAnnotation 
                         Y1="{Binding AverageWeightReading}"                     
                         Stroke="LightGray"
                         StrokeWidth="2"
                         StrokeDashArray="4,4"
                         ShowAxisLabel="False" />
-                </sf:SfCartesianChart.Annotations>
+                    </sf:SfCartesianChart.Annotations>
 
-                <!--TODO: Add button-->
-                
+                </sf:SfCartesianChart>
 
+            </Border>
 
-            </sf:SfCartesianChart>
-
-        </Border>
-
-        <!-- Wert eingeben button -->
-        <Button Text="Wert eintragen"
+            <!-- Wert eingeben button -->
+            <Button Text="Wert eintragen"
                 Margin="10,0,10,0"
                 BackgroundColor="#00C2C2"
                 TextColor="Black"
@@ -111,15 +108,16 @@
                 CornerRadius="40"
                 HeightRequest="70"
                 Command="{Binding GoToInsertWeightCommand}">
-            <Button.Shadow>
-                <Shadow Brush="Black"
+                <Button.Shadow>
+                    <Shadow Brush="Black"
                         Opacity="0.35"
                         Radius="8"
                         Offset="4,4" />
-            </Button.Shadow>
-        </Button>
+                </Button.Shadow>
+            </Button>
 
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

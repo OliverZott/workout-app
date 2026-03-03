@@ -1,8 +1,8 @@
 using CommunityToolkit.Maui;
-using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
 using workout_app.PageModels;
 using workout_app.Pages;
+using Microsoft.Extensions.Logging;
 
 
 #if ANDROID
@@ -55,6 +55,7 @@ public static class MauiProgram
         // Components, Services, Utils etc. can be registered here as needed
         builder.Services.AddTransient<DateTimePickerModel>();
         builder.Services.AddSingleton<MockDataService>();
+        builder.Services.AddSingleton<RadioButtonRangeToColorConverter>();
 
 
 #if DEBUG
