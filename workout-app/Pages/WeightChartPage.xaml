@@ -14,27 +14,30 @@
 
             <!--Time Range Selection-->
             <DateRangeSelector 
-            SelectedRange="{Binding SelectedRange}"
-            RangeSelectedCommand="{Binding SelectRangeCommand}"
-            FirstRangeText="Woche" 
-            SecondRangeText="Monat" 
-            ThirdRangeText="Max"
-            FirstRangeValue="Week"
-            SecondRangeValue="Month" 
-            ThirdRangeValue="Max" />
+                Margin="10,0,10,0"
+                SelectedRange="{Binding SelectedRange}"
+                RangeSelectedCommand="{Binding SelectRangeCommand}"
+                FirstRangeText="Woche" 
+                SecondRangeText="Monat" 
+                ThirdRangeText="Max"
+                FirstRangeValue="Week"
+                SecondRangeValue="Month" 
+                ThirdRangeValue="Max" />
 
             <!--Summary Element-->
             <DataSummary
-            AverageReading="{Binding AverageWeightReading}"
-            LastReading="{Binding LastWeightReading}"
-            Unit="kg" />
+                Margin="10,0,10,0"
+                AverageReading="{Binding AverageWeightReading}"
+                LastReading="{Binding LastWeightReading}"
+                Unit="kg" />
 
             <!-- Chart Element-->
             <Border
-            BackgroundColor="White"
-            Stroke="#e0e0e0"
-            StrokeThickness="1"
-            Padding="30">
+                Margin="10,0,10,0"
+                BackgroundColor="White"
+                Stroke="#e0e0e0"
+                StrokeThickness="1"
+                Padding="30">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="65"/>
@@ -48,7 +51,7 @@
                     Offset="2,2" />
                 </Border.Shadow>
 
-                <sf:SfCartesianChart>
+                <sf:SfCartesianChart Margin="10,0,10,0">
 
                     <!-- Legend -->
                     <sf:SfCartesianChart.Legend>
@@ -67,31 +70,31 @@
                     </sf:SfCartesianChart.YAxes>
 
                     <sf:LineSeries 
-                    ItemsSource="{Binding Data}"
-                    XBindingPath="DisplayDate"
-                    YBindingPath="Weight"
-                    Fill="Grey"
-                    Label="Gewicht" 
-                    ShowDataLabels="False"
-                    IsVisibleOnLegend="False"
-                    ShowMarkers="True"/>
+                        ItemsSource="{Binding Data}"
+                        XBindingPath="DisplayDate"
+                        YBindingPath="Weight"
+                        Fill="Grey"
+                        Label="Gewicht" 
+                        ShowDataLabels="False"
+                        IsVisibleOnLegend="False"
+                        ShowMarkers="True"/>
                     <sf:LineSeries 
-                    Label="Mittelwert"
-                    Fill="LightGray"               
-                    StrokeDashArray="4,4"
-                    StrokeWidth="2"
-                    IsVisibleOnLegend="True"
-                    IsVisible="True" />
+                        Label="Mittelwert"
+                        Fill="LightGray"               
+                        StrokeDashArray="4,4"
+                        StrokeWidth="2"
+                        IsVisibleOnLegend="True"
+                        IsVisible="True" />
 
 
                     <!-- ⭐ Fixed horizontal dotted line -->
                     <sf:SfCartesianChart.Annotations>
                         <sf:HorizontalLineAnnotation 
-                        Y1="{Binding AverageWeightReading}"                     
-                        Stroke="LightGray"
-                        StrokeWidth="2"
-                        StrokeDashArray="4,4"
-                        ShowAxisLabel="False" />
+                            Y1="{Binding AverageWeightReading}"                     
+                            Stroke="LightGray"
+                            StrokeWidth="2"
+                            StrokeDashArray="4,4"
+                            ShowAxisLabel="False" />
                     </sf:SfCartesianChart.Annotations>
 
                 </sf:SfCartesianChart>
@@ -99,7 +102,8 @@
             </Border>
 
             <!-- Wert eingeben button -->
-            <Button Text="Wert eintragen"
+            <Button 
+                Text="Wert eintragen"
                 Margin="10,0,10,0"
                 BackgroundColor="#00C2C2"
                 TextColor="Black"
@@ -108,6 +112,7 @@
                 CornerRadius="40"
                 HeightRequest="70"
                 Command="{Binding GoToInsertWeightCommand}">
+                
                 <Button.Shadow>
                     <Shadow Brush="Black"
                         Opacity="0.35"

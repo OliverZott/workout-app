@@ -5,13 +5,14 @@
              x:Name="root">
 
     <VerticalStackLayout Spacing="24">
+        
         <!-- Date Selection Tile -->
         <Grid>
             <Border
-         HeightRequest="70"
-         BackgroundColor="White"
-         Stroke="White"
-         StrokeThickness="2">
+                 HeightRequest="70"
+                 BackgroundColor="White"
+                 Stroke="White"
+                 StrokeThickness="2">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="25"/>

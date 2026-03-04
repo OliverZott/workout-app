@@ -34,7 +34,8 @@ public static class DatabaseSeed
         new WeightData { Timestamp = new DateTime(2026,02,26), Weight = 85.6 },
         new WeightData { Timestamp = new DateTime(2026,02,27), Weight = 87.4 },
 
-        new WeightData { Timestamp = new DateTime(2026,03,02), Weight = 86.4 },
+        new WeightData { Timestamp = new DateTime(2026,03,02), Weight = 86.6 },
+        new WeightData { Timestamp = new DateTime(2026,03,03), Weight = 86.5 },
     ];
     public static readonly List<BloodPressureData> CardioItems =
     [

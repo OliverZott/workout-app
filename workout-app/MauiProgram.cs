@@ -1,7 +1,5 @@
 using CommunityToolkit.Maui;
 using Syncfusion.Maui.Toolkit.Hosting;
-using workout_app.PageModels;
-using workout_app.Pages;
 using Microsoft.Extensions.Logging;
 
 
@@ -51,6 +49,8 @@ public static class MauiProgram
 
         builder.Services.AddTransientWithShellRoute<WeightChartPage, WeightChartPageModel>(nameof(WeightChartPage));
         builder.Services.AddTransientWithShellRoute<WeightInsertPage, WeightInsertPageModel>(nameof(WeightInsertPage));
+        builder.Services.AddTransientWithShellRoute<BloodPressureChartPage, BloodPressureChartPageModel>(nameof(BloodPressureChartPage));
+        builder.Services.AddTransientWithShellRoute<BloodPressureInsertPage, BloodPressureInsertPageModel>(nameof(BloodPressureInsertPage));
 
         // Components, Services, Utils etc. can be registered here as needed
         builder.Services.AddTransient<DateTimePickerModel>();

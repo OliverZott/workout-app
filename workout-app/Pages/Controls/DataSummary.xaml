@@ -20,10 +20,10 @@
 
             <Border.Shadow>
                 <Shadow 
-                Brush="Black"
-                Opacity="0.15"
-                Radius="5"
-                Offset="2,2" />
+                    Brush="Black"
+                    Opacity="0.15"
+                    Radius="5"
+                    Offset="2,2" />
             </Border.Shadow>
 
             <VerticalStackLayout>

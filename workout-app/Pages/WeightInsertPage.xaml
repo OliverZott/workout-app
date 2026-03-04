@@ -5,7 +5,7 @@
              x:DataType="WeightInsertPageModel"
              Title="WeightInsertPage">
     
-    <VerticalStackLayout Spacing="24" Padding="24">
+    <VerticalStackLayout Spacing="20" Padding="20">
 
         <!--  DateTime Picker Control -->
         <DateTimePicker
