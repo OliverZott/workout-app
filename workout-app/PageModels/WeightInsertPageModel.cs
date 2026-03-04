@@ -27,16 +27,18 @@ public partial class WeightInsertPageModel : ObservableObject
     [RelayCommand]
     private async Task SaveWeight()
     {
-        if (SelectedWeight == null)
-            return;
+        if (SelectedWeight == null) return;
 
-        var weight = new WeightData
+        var alertMessage = $"{AppResources.weight}: {SelectedWeight}";
+        var saveBloodPressure = await Shell.Current.DisplayAlertAsync(AppResources.displayalert_want_to_save, alertMessage, AppResources.button_yes, AppResources.button_no);
+
+        if (!saveBloodPressure) return;
+
+        await databaseService.AddWeightAsync(new WeightData
         {
             Weight = SelectedWeight ?? 0,
             Timestamp = DateTimePicker.SelectedDate.Add(DateTimePicker.SelectedTime)
-        };
-
-        await databaseService.AddWeightAsync(weight);
+        });
 
         await Shell.Current.GoToAsync("..");
     }
