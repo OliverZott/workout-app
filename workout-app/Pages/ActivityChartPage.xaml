@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="workout_app.Pages.ActivityChartPage"
+             x:DataType="ActivityChartPageModel"
+             Title="{x:Static AppResources.activity}">
+
+    <ScrollView>
+        <VerticalStackLayout 
+            Margin="20"
+            Spacing="20">
+
+            <!-- Time Range Selection -->
+            <DateRangeSelector 
+                SelectedRange="{Binding SelectedRange}"
+                RangeSelectedCommand="{Binding SelectRangeCommand}"
+                FirstRangeText="Woche" 
+                SecondRangeText="Monat" 
+                ThirdRangeText="Max"
+                FirstRangeValue="Week"
+                SecondRangeValue="Month" 
+                ThirdRangeValue="Max" />
+
+            <!-- Activity selection (simple: enum names) -->
+            <Picker
+                Title="Aktivität"
+                ItemsSource="{Binding AvailableActivities}"
+                SelectedItem="{Binding SelectedActivityType}" />
+
+            <!-- Chart -->
+            <Border
+                BackgroundColor="White"
+                Stroke="#e0e0e0"
+                StrokeThickness="1"
+                Padding="30">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="65"/>
+                </Border.StrokeShape>
+
+                <Border.Shadow>
+                    <Shadow 
+                        Brush="Black"
+                        Opacity="0.15"
+                        Radius="5"
+                        Offset="2,2" />
+                </Border.Shadow>
+
+                <sf:SfCartesianChart>
+
+                    <sf:SfCartesianChart.XAxes>
+                        <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                    </sf:SfCartesianChart.XAxes>
+
+                    <sf:SfCartesianChart.YAxes>
+                        <sf:NumericalAxis />
+                    </sf:SfCartesianChart.YAxes>
+
+                    <!-- Bar chart: total distance per day -->
+                    <sf:ColumnSeries 
+                        ItemsSource="{Binding ChartData}"
+                        XBindingPath="Label"
+                        YBindingPath="Value"
+                        Label="Distanz"
+                        ShowDataLabels="False"
+                        Fill="#00C2C2" />
+
+                </sf:SfCartesianChart>
+
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
