@@ -16,4 +16,10 @@ public partial class MainPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.BloodPressureChartPage));
     }
+
+    [RelayCommand]
+    public async Task NavigateToActivity()
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.ActivityChartPage));
+    }
 }

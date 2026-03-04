@@ -2,10 +2,7 @@
 
 ## TODO
 
-- Basic navigation 
-	- bloodpressure 
-	- weight
-	- activity
+- activity chart & input
 
 - `Settings` page for csv and logging export AND notifications
 	- Flyout menu for settings?? OR 

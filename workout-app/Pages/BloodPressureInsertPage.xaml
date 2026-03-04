@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.BloodPressureInsertPage"
+             x:DataType="BloodPressureInsertPageModel"
              Title="BloodPressureInsertPage">
 
     <VerticalStackLayout Spacing="20" Padding="20">

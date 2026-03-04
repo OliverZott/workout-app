@@ -5,7 +5,6 @@ namespace workout_app.PageModels;
 
 public partial class WeightInsertPageModel : ObservableObject
 {
-    private readonly MockDataService mockDataService;
     private readonly DatabaseService databaseService;
 
     public DateTimePickerModel DateTimePicker { get; } = new();
@@ -18,7 +17,6 @@ public partial class WeightInsertPageModel : ObservableObject
 
     public WeightInsertPageModel(MockDataService mockDataService, DatabaseService databaseService)
     {
-        this.mockDataService = mockDataService;
         this.databaseService = databaseService;
         var lastWeightEntry = mockDataService.GetLastWeightDataEntry();
         LastSelectedWeight = Math.Round(lastWeightEntry?.Weight ?? 70d, 1);

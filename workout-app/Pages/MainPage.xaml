@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="workout_app.Pages.MainPage"
-    Title="Workout App">
+    Title="{x:Static AppResources.app_title}">
 
     <ScrollView>
         <VerticalStackLayout>
@@ -19,7 +19,7 @@
                 <MainTile
                      Grid.Row="0" 
                      Grid.Column="0"
-                     TileText="Blutdruck"
+                     TileText="{x:Static AppResources.bloodpressure}"
                      TileType="BloodPressure"
                      ImageSource="bloodpressure"
                      TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToCardioCommand}"
@@ -29,7 +29,7 @@
                 <MainTile
                      Grid.Row="0" 
                      Grid.Column="1"
-                     TileText="Gewicht"
+                     TileText="{x:Static AppResources.weight}"
                      TileType="Weight"
                      ImageSource="weight"
                      TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"
@@ -39,10 +39,10 @@
                 <MainTile
                     Grid.Row="1" 
                     Grid.Column="0"
-                    TileText="Aktivität"
+                    TileText="{x:Static AppResources.activity}"
                     TileType="Activity"
                     ImageSource="activity"
-                    TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"
+                    TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToActivityCommand}"
                     TileBackgroundColor="{StaticResource wa-color2}"/>
 
             </Grid>

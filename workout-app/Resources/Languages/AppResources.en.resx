@@ -120,6 +120,9 @@
   <data name="activity" xml:space="preserve">
     <value>Activity</value>
   </data>
+  <data name="app_title" xml:space="preserve">
+    <value>Velosaurus Workout App</value>
+  </data>
   <data name="bloodpressure" xml:space="preserve">
     <value>Bloodpressure</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="heartrate" xml:space="preserve">
     <value>Heartrate</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="systolic" xml:space="preserve">
     <value>Systolic</value>

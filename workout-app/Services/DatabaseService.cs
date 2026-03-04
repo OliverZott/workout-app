@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace workout_app.Services;
 
@@ -25,10 +25,17 @@ public class DatabaseService
     public Task<List<BloodPressureData>> GetCardioAsync() =>
         _db.Table<BloodPressureData>().OrderBy(x => x.Timestamp).ToListAsync();
 
+    public Task<int> AddActivityAsync(ActivityData entry) =>
+        _db.InsertAsync(entry);
+
+    public Task<List<ActivityData>> GetActivitiesAsync() =>
+        _db.Table<ActivityData>().OrderBy(x => x.Timestamp).ToListAsync();
+
     public async Task InitializeAsync()
     {
         await _db.CreateTableAsync<WeightData>();
         await _db.CreateTableAsync<BloodPressureData>();
+        await _db.CreateTableAsync<ActivityData>();
 
         await SeedWeightDataAsync();
         await SeedBloodPressureDataAsync();

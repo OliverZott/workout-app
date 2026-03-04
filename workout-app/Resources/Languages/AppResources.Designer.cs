@@ -70,6 +70,15 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Velosaurus Workout App.
+        /// </summary>
+        internal static string app_title {
+            get {
+                return ResourceManager.GetString("app_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blutdruck.
         /// </summary>
         internal static string bloodpressure {
@@ -120,6 +129,15 @@ namespace workout_app.Resources.Languages {
         internal static string heartrate {
             get {
                 return ResourceManager.GetString("heartrate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Einstellungen.
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
             }
         }
         

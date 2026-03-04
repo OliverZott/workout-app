@@ -51,6 +51,7 @@ public static class MauiProgram
         builder.Services.AddTransientWithShellRoute<WeightInsertPage, WeightInsertPageModel>(nameof(WeightInsertPage));
         builder.Services.AddTransientWithShellRoute<BloodPressureChartPage, BloodPressureChartPageModel>(nameof(BloodPressureChartPage));
         builder.Services.AddTransientWithShellRoute<BloodPressureInsertPage, BloodPressureInsertPageModel>(nameof(BloodPressureInsertPage));
+        builder.Services.AddTransientWithShellRoute<ActivityChartPage, ActivityChartPageModel>(nameof(ActivityChartPage));
 
         // Components, Services, Utils etc. can be registered here as needed
         builder.Services.AddTransient<DateTimePickerModel>();
