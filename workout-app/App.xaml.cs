@@ -1,4 +1,4 @@
-﻿namespace workout_app;
+namespace workout_app;
 
 public partial class App : Application
 {
@@ -9,9 +9,8 @@ public partial class App : Application
         // Run DB seed on startup
         Task.Run(async () =>
         {
-            await database.SeedWeightDataAsync();
+            await database.InitializeAsync();
         });
-
 
         // Force Light Mode - Prevent automatic dark mode switching
         UserAppTheme = AppTheme.Light;

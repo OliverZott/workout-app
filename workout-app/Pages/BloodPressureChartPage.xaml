@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="workout_app.Pages.BloodPressureChartPage"
+             x:DataType="BloodPressureChartPageModel"
+             Title="Blood Pressure">
+
+    <VerticalStackLayout            
+        Margin="20"
+        Spacing="20">
+
+        <!-- Time Range Selection -->
+        <DateRangeSelector 
+            Margin="10,0,10,0"
+            SelectedRange="{Binding SelectedRange}"
+            RangeSelectedCommand="{Binding SelectRangeCommand}"
+            FirstRangeText="Woche" 
+            SecondRangeText="Monat" 
+            ThirdRangeText="Max"
+            FirstRangeValue="Week"
+            SecondRangeValue="Month" 
+            ThirdRangeValue="Max" />
+
+        <!-- Summary Element -->
+        <DataSummary
+            Margin="10,0,10,0"
+            AverageReading="{Binding AverageBloodPressureReading}"
+            LastReading="{Binding LastBloodPressureReading}"
+            Unit="mmHg" />
+
+        <!-- Chart Element-->
+        <Border
+            Margin="10,0,10,0"
+            BackgroundColor="White"
+            Stroke="#e0e0e0"
+            StrokeThickness="1"
+            Padding="30">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="65"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow 
+                    Brush="Black"
+                    Opacity="0.15"
+                    Radius="5"
+                    Offset="2,2" />
+            </Border.Shadow>
+
+            <sf:SfCartesianChart>
+
+                <!-- Legend -->
+                <sf:SfCartesianChart.Legend>
+                    <sf:ChartLegend Placement="Top"/>
+                </sf:SfCartesianChart.Legend>
+
+                <!-- Axes -->
+                <sf:SfCartesianChart.XAxes>
+                    <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                </sf:SfCartesianChart.XAxes>
+
+                <sf:SfCartesianChart.YAxes>
+                    <sf:NumericalAxis />
+                </sf:SfCartesianChart.YAxes>
+
+                <sf:LineSeries 
+                    ItemsSource="{Binding Data}"
+                    XBindingPath="DisplayDate"
+                    YBindingPath="Systolic"
+                    Fill="OrangeRed"
+                    Label="Systolisch" 
+                    ShowDataLabels="False"
+                    ShowMarkers="True"/>
+
+                <sf:LineSeries 
+                    ItemsSource="{Binding Data}"
+                    XBindingPath="DisplayDate"
+                    YBindingPath="Diastolic"
+                    Fill="Blue"
+                    Label="Diastolisch"
+                    ShowMarkers="True"/>
+
+                <sf:LineSeries 
+                    ItemsSource="{Binding Data}"
+                    XBindingPath="DisplayDate"
+                    YBindingPath="HeartRate"
+                    Fill="Orange"
+                    Label="Puls" 
+                    ShowMarkers="True"/>
+            </sf:SfCartesianChart>
+        </Border>
+
+        <!-- Wert eingeben button -->
+        <Button Text="Wert eintragen"
+                Margin="10,0,10,0"
+                BackgroundColor="#00C2C2"
+                TextColor="Black"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                CornerRadius="40"
+                HeightRequest="70"
+                Command="{Binding GoToInsertCardioCommand}">
+            <Button.Shadow>
+                <Shadow Brush="Black"
+                        Opacity="0.35"
+                        Radius="8"
+                        Offset="4,4" />
+            </Button.Shadow>
+        </Button>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

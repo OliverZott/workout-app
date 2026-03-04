@@ -10,4 +10,10 @@ public partial class MainPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.WeightChartPage));
     }
+
+    [RelayCommand]
+    public async Task NavigateToCardio()
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.BloodPressureChartPage));
+    }
 }

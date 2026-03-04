@@ -22,7 +22,7 @@
                      TileText="Blutdruck"
                      TileType="BloodPressure"
                      ImageSource="bloodpressure"
-                     TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"
+                     TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToCardioCommand}"
                      TileBackgroundColor="{StaticResource wa-color2}" />
 
                 <!-- Weight Tile -->

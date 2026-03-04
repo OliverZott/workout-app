@@ -19,6 +19,12 @@ public class DatabaseService
     public Task<List<WeightData>> GetWeightsAsync() =>
         _db.Table<WeightData>().OrderBy(x => x.Timestamp).ToListAsync();
 
+    public Task<int> AddCardioAsync(BloodPressureData entry) =>
+    _db.InsertAsync(entry);
+
+    public Task<List<BloodPressureData>> GetCardioAsync() =>
+        _db.Table<BloodPressureData>().OrderBy(x => x.Timestamp).ToListAsync();
+
     public async Task InitializeAsync()
     {
         await _db.CreateTableAsync<WeightData>();

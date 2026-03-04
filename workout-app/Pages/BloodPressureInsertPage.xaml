@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.BloodPressureInsertPage"
+             Title="BloodPressureInsertPage">
+
+    <VerticalStackLayout Spacing="20" Padding="20">
+
+
+        <!--  DateTime Picker Control -->
+        <DateTimePicker
+            SelectedDate="{Binding DateTimePicker.SelectedDate}"
+            SelectedTime="{Binding DateTimePicker.SelectedTime}"
+            SelectedDateDisplay="{Binding DateTimePicker.SelectedDateDisplay}"
+            SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}" />
+
+        <!-- Blood Pressure Input Fields -->
+        <Border
+            HeightRequest="300"
+            BackgroundColor="#b3b3b3"
+            Stroke="#b3b3b3"
+            StrokeThickness="2">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="25"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                Opacity="0.25"
+                Radius="8"
+                Offset="4,4" />
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="2*, *">
+
+                <Border
+                    Grid.Column="0"
+                    Margin="36,36,16,36"
+                    BackgroundColor="#e6e6e6"
+                    Stroke="#e6e6e6"
+                    StrokeThickness="2">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="25"/>
+                    </Border.StrokeShape>
+
+                    <Grid
+                        ColumnDefinitions="*, 1.2*"
+                        RowDefinitions="*, *, *">
+
+                        <!-- Systolic Picker in Border -->
+                        <Border 
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Margin="12"
+                            BackgroundColor="White"
+                            Stroke="#ccc"
+                            StrokeThickness="1" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16"/>
+                            </Border.StrokeShape>
+
+                            <Picker 
+                                x:Name="SystolicPicker" 
+                                ItemsSource="{Binding BloodPressureValues}"
+                                SelectedItem="{Binding SelectedSystolic}"
+                                FontSize="Large"
+                                TextColor="Black"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Center" />
+                        </Border>
+
+                        <!-- Diastolic Picker in Border -->
+                        <Border 
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="12"
+                            BackgroundColor="White"
+                            Stroke="#ccc"
+                            StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16"/>
+                            </Border.StrokeShape>
+
+                            <Picker 
+                                x:Name="DiastolicPicker" 
+                                ItemsSource="{Binding DiastolicValues}"
+                                SelectedItem="{Binding SelectedDiastolic}"
+                                FontSize="Large"
+                                TextColor="Black"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Center" />
+                        </Border>
+
+                        <!-- Pulse Picker in Border -->
+                        <Border 
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Margin="12"
+                            BackgroundColor="White"
+                            Stroke="#ccc"
+                            StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16"/>
+                            </Border.StrokeShape>
+
+                            <Picker 
+                                x:Name="PulsPicker" 
+                                ItemsSource="{Binding PulsValues}"
+                                SelectedItem="{Binding SelectedPulse}"
+                                FontSize="Large"
+                                TextColor="Black"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Center" />
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+
+
+                <Grid
+                    Grid.Column="1"
+                    RowDefinitions="*, *, *"
+                    Margin="36,36,16,36" >
+
+                    <Label
+                        Grid.Row="0"
+                        Text="Sys"
+                        VerticalTextAlignment="Center"
+                        FontSize="Large"
+                        FontAttributes="Bold" />
+                    <Label
+                        Grid.Row="1"
+                        Text="Dia"
+                        VerticalTextAlignment="Center"
+                        FontSize="Large"
+                        FontAttributes="Bold" />
+                    <Label
+                        Grid.Row="2"
+                        Text="Puls"
+                        VerticalTextAlignment="Center"
+                        FontSize="Large"
+                        FontAttributes="Bold" />
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+
+        <!-- Save Button -->
+        <Grid ColumnDefinitions="*, 2*, *">
+            <BasicButton 
+                Grid.Column="1"
+                Text="Speichern"
+                Command="{Binding SaveBloodPressureCommand}" >
+            </BasicButton>
+        </Grid>
+
+
+    </VerticalStackLayout>
+    
+</ContentPage>
