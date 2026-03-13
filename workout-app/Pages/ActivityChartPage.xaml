@@ -7,29 +7,58 @@
              Title="{x:Static AppResources.activity}">
 
     <ScrollView>
-        <VerticalStackLayout 
+        <VerticalStackLayout
             Margin="20"
             Spacing="20">
 
             <!-- Time Range Selection -->
-            <DateRangeSelector 
+            <DateRangeSelector
+                Margin="10,0,10,0"
                 SelectedRange="{Binding SelectedRange}"
                 RangeSelectedCommand="{Binding SelectRangeCommand}"
-                FirstRangeText="Woche" 
-                SecondRangeText="Monat" 
+                FirstRangeText="Woche"
+                SecondRangeText="Monat"
                 ThirdRangeText="Max"
                 FirstRangeValue="Week"
-                SecondRangeValue="Month" 
-                ThirdRangeValue="Max" />
+                SecondRangeValue="Month"
+                ThirdRangeValue="Max"/>
 
-            <!-- Activity selection (simple: enum names) -->
-            <Picker
-                Title="Aktivität"
-                ItemsSource="{Binding AvailableActivities}"
-                SelectedItem="{Binding SelectedActivityType}" />
+            <!-- Summary -->
+            <DataSummary
+                Margin="10,0,10,0"
+                AverageReading="{Binding AverageDistanceReading}"
+                LastReading="{Binding LastDistanceReading}"
+                Unit="km"/>
+
+            <!-- Activity Checkboxes (top 3 most used) -->
+            <HorizontalStackLayout Margin="10,0,10,0"
+                    Spacing="8">
+                <HorizontalStackLayout Spacing="4"
+                        IsVisible="{Binding HasActivity1}">
+                    <CheckBox IsChecked="{Binding ShowActivity1}"
+                            Color="#4CAF50"/>
+                    <Label Text="{Binding Activity1Label}"
+                            VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="4"
+                        IsVisible="{Binding HasActivity2}">
+                    <CheckBox IsChecked="{Binding ShowActivity2}"
+                            Color="#2196F3"/>
+                    <Label Text="{Binding Activity2Label}"
+                            VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="4"
+                        IsVisible="{Binding HasActivity3}">
+                    <CheckBox IsChecked="{Binding ShowActivity3}"
+                            Color="#FF9800"/>
+                    <Label Text="{Binding Activity3Label}"
+                            VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
 
             <!-- Chart -->
             <Border
+                Margin="10,0,10,0"
                 BackgroundColor="White"
                 Stroke="#e0e0e0"
                 StrokeThickness="1"
@@ -40,35 +69,95 @@
                 </Border.StrokeShape>
 
                 <Border.Shadow>
-                    <Shadow 
+                    <Shadow
                         Brush="Black"
                         Opacity="0.15"
                         Radius="5"
-                        Offset="2,2" />
+                        Offset="2,2"/>
                 </Border.Shadow>
 
                 <sf:SfCartesianChart>
 
                     <sf:SfCartesianChart.XAxes>
-                        <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                        <sf:CategoryAxis LabelPlacement="BetweenTicks"/>
                     </sf:SfCartesianChart.XAxes>
 
                     <sf:SfCartesianChart.YAxes>
-                        <sf:NumericalAxis />
+                        <sf:NumericalAxis/>
                     </sf:SfCartesianChart.YAxes>
 
-                    <!-- Bar chart: total distance per day -->
-                    <sf:ColumnSeries 
-                        ItemsSource="{Binding ChartData}"
+                    <sf:SfCartesianChart.Legend>
+                        <sf:ChartLegend Placement="Top"/>
+                    </sf:SfCartesianChart.Legend>
+
+                    <!-- Activity 1 -->
+                    <sf:ColumnSeries
+                        ItemsSource="{Binding Activity1Data}"
                         XBindingPath="Label"
                         YBindingPath="Value"
-                        Label="Distanz"
-                        ShowDataLabels="False"
-                        Fill="#00C2C2" />
+                        Fill="#4CAF50"
+                        Label="{Binding Activity1Label}"
+                        IsVisible="{Binding ShowActivity1}"/>
+
+                    <!-- Activity 2 -->
+                    <sf:ColumnSeries
+                        ItemsSource="{Binding Activity2Data}"
+                        XBindingPath="Label"
+                        YBindingPath="Value"
+                        Fill="#2196F3"
+                        Label="{Binding Activity2Label}"
+                        IsVisible="{Binding ShowActivity2}"/>
+
+                    <!-- Activity 3 -->
+                    <sf:ColumnSeries
+                        ItemsSource="{Binding Activity3Data}"
+                        XBindingPath="Label"
+                        YBindingPath="Value"
+                        Fill="#FF9800"
+                        Label="{Binding Activity3Label}"
+                        IsVisible="{Binding ShowActivity3}"/>
+
+                    <!-- Average line (legend entry) -->
+                    <sf:LineSeries
+                        Label="avg"
+                        Fill="LightGray"
+                        StrokeDashArray="4,4"
+                        StrokeWidth="2"
+                        IsVisibleOnLegend="True"
+                        IsVisible="True"/>
+
+                    <sf:SfCartesianChart.Annotations>
+                        <sf:HorizontalLineAnnotation
+                            Y1="{Binding AverageDistanceReading}"
+                            Stroke="LightGray"
+                            StrokeWidth="2"
+                            StrokeDashArray="4,4"
+                            ShowAxisLabel="False"/>
+                    </sf:SfCartesianChart.Annotations>
 
                 </sf:SfCartesianChart>
 
             </Border>
+
+            <!-- Wert eingeben button -->
+            <Button
+                Text="Wert eintragen"
+                Margin="10,0,10,0"
+                BackgroundColor="#00C2C2"
+                TextColor="Black"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                CornerRadius="40"
+                HeightRequest="70"
+                Command="{Binding GoToInsertActivityCommand}">
+
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+                            Opacity="0.35"
+                            Radius="8"
+                            Offset="4,4"/>
+                </Button.Shadow>
+            </Button>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.ActivityInsertPage"
+             x:DataType="ActivityInsertPageModel"
+             Title="Aktivität eintragen">
+
+    <VerticalStackLayout Spacing="20"
+                         Padding="20">
+
+        <!--  DateTime Picker Control -->
+        <DateTimePicker
+            SelectedDate="{Binding DateTimePicker.SelectedDate}"
+            SelectedTime="{Binding DateTimePicker.SelectedTime}"
+            SelectedDateDisplay="{Binding DateTimePicker.SelectedDateDisplay}"
+            SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}"/>
+
+        <!-- Activity Input Fields -->
+        <Border
+            BackgroundColor="White"
+            Stroke="#e0e0e0"
+            StrokeThickness="1">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                        Opacity="0.15"
+                        Radius="5"
+                        Offset="2,2"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Padding="20" Spacing="16">
+
+                <!-- Activity Type Picker -->
+                <Border BackgroundColor="#edf3fd"
+                        Stroke="White"
+                        StrokeThickness="1"
+                        HeightRequest="50">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="25"/>
+                    </Border.StrokeShape>
+                    <Picker
+                        Title="Aktivität"
+                        ItemsSource="{Binding AvailableActivities}"
+                        SelectedItem="{Binding SelectedActivityType}"
+                        FontSize="Large"
+                        TextColor="Black"
+                        BackgroundColor="Transparent"
+                        HorizontalTextAlignment="Center"/>
+                </Border>
+
+                <!-- Distance Entry -->
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
+                    <Border BackgroundColor="#edf3fd"
+                            Stroke="White"
+                            StrokeThickness="1"
+                            HeightRequest="50">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="25"/>
+                        </Border.StrokeShape>
+                        <Entry
+                            Text="{Binding Distance, Mode=TwoWay}"
+                            Placeholder="0"
+                            Keyboard="Numeric"
+                            FontSize="Large"
+                            TextColor="Black"
+                            BackgroundColor="Transparent"
+                            HorizontalTextAlignment="Center"/>
+                    </Border>
+                    <Label Grid.Column="1"
+                           Text="km"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           VerticalTextAlignment="Center"
+                           WidthRequest="40"/>
+                </Grid>
+
+                <!-- Altitude Entry -->
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
+                    <Border BackgroundColor="#edf3fd"
+                            Stroke="White"
+                            StrokeThickness="1"
+                            HeightRequest="50">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="25"/>
+                        </Border.StrokeShape>
+                        <Entry
+                            Text="{Binding Altitude, Mode=TwoWay}"
+                            Placeholder="0"
+                            Keyboard="Numeric"
+                            FontSize="Large"
+                            TextColor="Black"
+                            BackgroundColor="Transparent"
+                            HorizontalTextAlignment="Center"/>
+                    </Border>
+                    <Label Grid.Column="1"
+                           Text="hm"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           VerticalTextAlignment="Center"
+                           WidthRequest="40"/>
+                </Grid>
+
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Save Button -->
+        <Grid ColumnDefinitions="*, 2*, *">
+            <BasicButton Grid.Column="1"
+                         Text="Speichern"
+                         Command="{Binding SaveActivityCommand}"/>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

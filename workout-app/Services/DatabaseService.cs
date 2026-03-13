@@ -39,6 +39,7 @@ public class DatabaseService
 
         await SeedWeightDataAsync();
         await SeedBloodPressureDataAsync();
+        await SeedActivityDataAsync();
     }
 
     public async Task SeedWeightDataAsync()
@@ -62,6 +63,18 @@ public class DatabaseService
         var count = await _db.Table<BloodPressureData>().CountAsync();
         if (count == 0)
             await _db.InsertAllAsync(DatabaseSeed.CardioItems);
+#endif
+    }
+
+    public async Task SeedActivityDataAsync()
+    {
+#if DEBUG
+        await _db.DeleteAllAsync<ActivityData>();
+        await _db.InsertAllAsync(DatabaseSeed.ActivityItems);
+#else
+        var count = await _db.Table<ActivityData>().CountAsync();
+        if (count == 0)
+            await _db.InsertAllAsync(DatabaseSeed.ActivityItems);
 #endif
     }
 }

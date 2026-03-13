@@ -64,5 +64,23 @@ public static class DatabaseSeed
         new BloodPressureData { Timestamp = new DateTime(2026,03,03), Systolic = 137, Diastolic = 82, HeartRate = 65 },
     ];
 
-
+    public static readonly List<ActivityData> ActivityItems =
+    [
+        new ActivityData { Timestamp = new DateTime(2026,01,05), Type = ActivityType.Hiking, Distance = 12.3, Altitude = 650 },
+        new ActivityData { Timestamp = new DateTime(2026,01,10), Type = ActivityType.Running, Distance = 8.0, Altitude = 120 },
+        new ActivityData { Timestamp = new DateTime(2026,01,15), Type = ActivityType.Mountainabike, Distance = 25.0, Altitude = 800 },
+        new ActivityData { Timestamp = new DateTime(2026,01,20), Type = ActivityType.Skiing, Distance = 18.0, Altitude = 1200 },
+        new ActivityData { Timestamp = new DateTime(2026,01,25), Type = ActivityType.Hiking, Distance = 15.5, Altitude = 900 },
+        new ActivityData { Timestamp = new DateTime(2026,02,01), Type = ActivityType.Swimming, Distance = 2.0, Altitude = 0 },
+        new ActivityData { Timestamp = new DateTime(2026,02,05), Type = ActivityType.Running, Distance = 10.0, Altitude = 150 },
+        new ActivityData { Timestamp = new DateTime(2026,02,10), Type = ActivityType.Hiking, Distance = 18.0, Altitude = 1100 },
+        new ActivityData { Timestamp = new DateTime(2026,02,15), Type = ActivityType.Mountainabike, Distance = 30.0, Altitude = 950 },
+        new ActivityData { Timestamp = new DateTime(2026,02,20), Type = ActivityType.BackcountrySkiing, Distance = 14.0, Altitude = 1400 },
+        new ActivityData { Timestamp = new DateTime(2026,02,25), Type = ActivityType.Hiking, Distance = 9.5, Altitude = 500 },
+        new ActivityData { Timestamp = new DateTime(2026,03,01), Type = ActivityType.Running, Distance = 7.5, Altitude = 80 },
+        new ActivityData { Timestamp = new DateTime(2026,03,05), Type = ActivityType.Hiking, Distance = 20.0, Altitude = 1300 },
+        new ActivityData { Timestamp = new DateTime(2026,03,08), Type = ActivityType.Skiing, Distance = 22.0, Altitude = 1500 },
+        new ActivityData { Timestamp = new DateTime(2026,03,10), Type = ActivityType.Mountainabike, Distance = 35.0, Altitude = 1100 },
+        new ActivityData { Timestamp = new DateTime(2026,03,12), Type = ActivityType.Hiking, Distance = 11.0, Altitude = 700 },
+    ];
 }
