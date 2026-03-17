@@ -16,23 +16,8 @@
 
         <!-- Weigth Input Tile -->
         <Border
-            BackgroundColor="White"
-            Stroke="#e0e0e0"
-            StrokeThickness="1"
             HeightRequest="250"
             WidthRequest="250">
-
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="65"/>
-            </Border.StrokeShape>
-
-            <Border.Shadow>
-                <Shadow 
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="5"
-                    Offset="2,2" />
-            </Border.Shadow>
 
             <Grid RowDefinitions="*, *, *">
 
@@ -54,13 +39,7 @@
                     <!-- Weight Entry -->
                     <Border
                         Grid.Column="1"
-                        Stroke="White"
-                        StrokeThickness="1"
-                        HeightRequest="70"
-                        BackgroundColor="#edf3fd">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="65"/>
-                        </Border.StrokeShape>
+                        HeightRequest="70">
 
                         <Entry 
                             x:Name="WeightEntry"

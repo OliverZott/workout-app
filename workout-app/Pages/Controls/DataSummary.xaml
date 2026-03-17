@@ -5,36 +5,21 @@
              x:Name="DataSummaryControl">
 
 
-    <Grid ColumnDefinitions="*, *">
+    <Grid ColumnDefinitions="*, *"
+          ColumnSpacing="20">
 
-        <Border
-            Grid.Column="0"
-            BackgroundColor="White"
-            Stroke="#e0e0e0"
-            StrokeThickness="1"
-            Padding="10">
+        <Border Grid.Column="0">
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="65"/>
-            </Border.StrokeShape>
-
-            <Border.Shadow>
-                <Shadow 
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="5"
-                    Offset="2,2" />
-            </Border.Shadow>
-
-            <VerticalStackLayout>
+            <VerticalStackLayout 
+                VerticalOptions="Center"
+                Margin="10">
+                
                 <Label 
-                    Grid.Row="0"
                     Text="Mittelwert"
                     TextColor="Gray"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
-                    FontSize="Medium"
-                    Margin="0,20,0,10"/>
+                    FontSize="Medium"/>
                 <Label 
                     Text="{Binding Source={x:Reference DataSummaryControl}, Path=AverageReading}"
                     FontSize="Large"
@@ -42,7 +27,6 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
                 <Label 
-                    Grid.Row="0"
                     Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}"
                     FontAttributes="Bold"
                     FontSize="Medium"
@@ -52,34 +36,18 @@
 
         </Border>
 
-        <Border
-            Grid.Column="1"
-            BackgroundColor="White"
-            Stroke="#e0e0e0"
-            StrokeThickness="1"
-            Padding="10">
+        <Border Grid.Column="1">
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="65"/>
-            </Border.StrokeShape>
-
-            <Border.Shadow>
-                <Shadow 
-                Brush="Black"
-                Opacity="0.15"
-                Radius="5"
-                Offset="2,2" />
-            </Border.Shadow>
-
-            <VerticalStackLayout>
+            <VerticalStackLayout 
+                VerticalOptions="Center"
+                Margin="10">
+                
                 <Label 
-                    Grid.Row="0"
                     Text="Letzte Eingabe"
                     TextColor="Gray"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
-                    FontSize="Medium"
-                    Margin="0,20,0,10"/>
+                    FontSize="Medium"/>
                 <Label 
                     Text="{Binding Source={x:Reference DataSummaryControl}, Path=LastReading}"
                     FontSize="Large"
@@ -87,7 +55,6 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />
                 <Label
-                    Grid.Row="0"
                     Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}"
                     FontAttributes="Bold"
                     FontSize="Medium"

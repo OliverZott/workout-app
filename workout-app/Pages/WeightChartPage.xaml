@@ -34,22 +34,7 @@
             <!-- Chart Element-->
             <Border
                 Margin="10,0,10,0"
-                BackgroundColor="White"
-                Stroke="#e0e0e0"
-                StrokeThickness="1"
                 Padding="30">
-
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="65"/>
-                </Border.StrokeShape>
-
-                <Border.Shadow>
-                    <Shadow 
-                    Brush="Black"
-                    Opacity="0.15"
-                    Radius="5"
-                    Offset="2,2" />
-                </Border.Shadow>
 
                 <sf:SfCartesianChart Margin="10,0,10,0">
 

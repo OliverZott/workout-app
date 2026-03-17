@@ -16,23 +16,11 @@
             SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}"/>
 
         <!-- Activity Input Fields -->
-        <Border
-            BackgroundColor="White"
-            Stroke="#e0e0e0"
-            StrokeThickness="1">
+        <Border>
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="20"/>
-            </Border.StrokeShape>
-
-            <Border.Shadow>
-                <Shadow Brush="Black"
-                        Opacity="0.15"
-                        Radius="5"
-                        Offset="2,2"/>
-            </Border.Shadow>
-
-            <VerticalStackLayout Padding="20" Spacing="16">
+            <VerticalStackLayout 
+                Padding="20" 
+                Spacing="16">
 
                 <!-- Activity Type Picker -->
                 <Border BackgroundColor="#edf3fd"
