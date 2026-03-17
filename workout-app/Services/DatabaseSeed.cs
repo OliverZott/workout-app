@@ -34,8 +34,14 @@ public static class DatabaseSeed
         new WeightData { Timestamp = new DateTime(2026,02,26), Weight = 85.6 },
         new WeightData { Timestamp = new DateTime(2026,02,27), Weight = 87.4 },
 
-        new WeightData { Timestamp = new DateTime(2026,03,02), Weight = 86.6 },
+        new WeightData { Timestamp = new DateTime(2026,03,02), Weight = 86.4 },
         new WeightData { Timestamp = new DateTime(2026,03,03), Weight = 86.5 },
+        new WeightData { Timestamp = new DateTime(2026,03,04), Weight = 87.5 },
+        new WeightData { Timestamp = new DateTime(2026,03,05), Weight = 86.6 },
+        new WeightData { Timestamp = new DateTime(2026,03,06), Weight = 86.7 },
+        new WeightData { Timestamp = new DateTime(2026,03,09), Weight = 86.5 },
+        new WeightData { Timestamp = new DateTime(2026,03,10), Weight = 87.3 },
+        new WeightData { Timestamp = new DateTime(2026,03,14), Weight = 87.1 },
     ];
     public static readonly List<BloodPressureData> CardioItems =
     [
@@ -62,6 +68,14 @@ public static class DatabaseSeed
 
         new BloodPressureData { Timestamp = new DateTime(2026,03,02), Systolic = 134, Diastolic = 76, HeartRate = 64 },
         new BloodPressureData { Timestamp = new DateTime(2026,03,03), Systolic = 137, Diastolic = 82, HeartRate = 65 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,04), Systolic = 136, Diastolic = 70, HeartRate = 66 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,05), Systolic = 129, Diastolic = 75, HeartRate = 57 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,06), Systolic = 140, Diastolic = 77, HeartRate = 64 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,07), Systolic = 164, Diastolic = 75, HeartRate = 63 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,08), Systolic = 135, Diastolic = 69, HeartRate = 72 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,09), Systolic = 134, Diastolic = 74, HeartRate = 59 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,11), Systolic = 148, Diastolic = 77, HeartRate = 76 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,12), Systolic = 154, Diastolic = 86, HeartRate = 50 },
     ];
 
     public static readonly List<ActivityData> ActivityItems =
