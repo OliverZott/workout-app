@@ -7,9 +7,7 @@
              Title="{x:Static AppResources.activity}">
 
     <ScrollView>
-        <VerticalStackLayout
-            Margin="20"
-            Spacing="20">
+        <VerticalStackLayout Padding="20" Spacing="30">
 
             <!-- Time Range Selection -->
             <DateRangeSelector
@@ -31,8 +29,7 @@
                 Unit="km"/>
 
             <!-- Activity Checkboxes (top 3 most used) -->
-            <HorizontalStackLayout Margin="10,0,10,0"
-                    Spacing="8">
+            <HorizontalStackLayout >
                 <HorizontalStackLayout Spacing="4"
                         IsVisible="{Binding HasActivity1}">
                     <CheckBox IsChecked="{Binding ShowActivity1}"
@@ -56,17 +53,19 @@
                 </HorizontalStackLayout>
             </HorizontalStackLayout>
 
-            <!-- Chart -->
-            <Border 
+            <!-- Chart Element -->
+            <Border
                 Margin="10,0,10,0"
                 Padding="30">
 
                 <sf:SfCartesianChart>
 
+                    <!-- Legend -->
                     <sf:SfCartesianChart.XAxes>
                         <sf:CategoryAxis LabelPlacement="BetweenTicks"/>
                     </sf:SfCartesianChart.XAxes>
 
+                    <!-- Axes -->
                     <sf:SfCartesianChart.YAxes>
                         <sf:NumericalAxis/>
                     </sf:SfCartesianChart.YAxes>
@@ -124,25 +123,9 @@
 
             </Border>
 
-            <!-- Wert eingeben button -->
-            <Button
+            <FunctionButton
                 Text="Wert eintragen"
-                Margin="10,0,10,0"
-                BackgroundColor="#00C2C2"
-                TextColor="Black"
-                FontSize="Medium"
-                FontAttributes="Bold"
-                CornerRadius="40"
-                HeightRequest="70"
-                Command="{Binding GoToInsertActivityCommand}">
-
-                <Button.Shadow>
-                    <Shadow Brush="Black"
-                            Opacity="0.35"
-                            Radius="8"
-                            Offset="4,4"/>
-                </Button.Shadow>
-            </Button>
+                Command="{Binding GoToInsertActivityCommand}"/>
 
         </VerticalStackLayout>
     </ScrollView>

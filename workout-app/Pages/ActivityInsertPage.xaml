@@ -23,9 +23,7 @@
                 Spacing="16">
 
                 <!-- Activity Type Picker -->
-                <Border BackgroundColor="#edf3fd"
-                        Stroke="White"
-                        StrokeThickness="1"
+                <Border BackgroundColor="{StaticResource wa-color-input}"
                         HeightRequest="50">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="25"/>
@@ -42,9 +40,7 @@
 
                 <!-- Distance Entry -->
                 <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
-                    <Border BackgroundColor="#edf3fd"
-                            Stroke="White"
-                            StrokeThickness="1"
+                    <Border BackgroundColor="{StaticResource wa-color-input}"
                             HeightRequest="50">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="25"/>
@@ -69,9 +65,7 @@
 
                 <!-- Altitude Entry -->
                 <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
-                    <Border BackgroundColor="#edf3fd"
-                            Stroke="White"
-                            StrokeThickness="1"
+                    <Border BackgroundColor="{StaticResource wa-color-input}"
                             HeightRequest="50">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="25"/>

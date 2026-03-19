@@ -7,7 +7,9 @@
         HeightRequest="50"
         BackgroundColor="{StaticResource wa-color-button}" 
         BorderColor="{StaticResource wa-color-button}"
-        CornerRadius="22">
+        CornerRadius="22"
+        FontAttributes="Bold"
+        FontSize="18">
 
     <Button.TextColor>
         <OnPlatform x:TypeArguments="Color">

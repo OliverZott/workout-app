@@ -4,8 +4,8 @@
              x:Class="workout_app.Pages.WeightInsertPage"
              x:DataType="WeightInsertPageModel"
              Title="WeightInsertPage">
-    
-    <VerticalStackLayout Spacing="20" Padding="20">
+
+    <VerticalStackLayout Spacing="50" Padding="20">
 
         <!--  DateTime Picker Control -->
         <DateTimePicker
@@ -16,10 +16,10 @@
 
         <!-- Weigth Input Tile -->
         <Border
-            HeightRequest="250"
+            HeightRequest="200"
             WidthRequest="250">
 
-            <Grid RowDefinitions="*, *, *">
+            <Grid RowDefinitions="*, *">
 
                 <!-- Scale Icon -->
                 <Image 
@@ -27,19 +27,19 @@
                     Source="weight"
                     HeightRequest="40" 
                     WidthRequest="40"
-                    Aspect="AspectFit"
-                    VerticalOptions="Center"
-                    Margin="20,0,10,0" />
+                    Aspect="AspectFit"/>
 
                 <Grid 
                     Grid.Row="1" 
-                    ColumnDefinitions="*, 3*, *, *">
-
+                    ColumnDefinitions="*, 2*, *, *">
 
                     <!-- Weight Entry -->
                     <Border
                         Grid.Column="1"
-                        HeightRequest="70">
+                        HeightRequest="60"
+                        Stroke="#edf3fd"
+                        BackgroundColor="#edf3fd"
+                        Shadow="{x:Null}">
 
                         <Entry 
                             x:Name="WeightEntry"
@@ -50,7 +50,6 @@
                             FontSize="Large"
                             FontAttributes="Bold"
                             TextColor="Black"
-                            BackgroundColor="Green"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"/>
                     </Border>
@@ -70,7 +69,7 @@
         </Border>
 
         <!-- Save Button -->
-        <Grid ColumnDefinitions="*, 2*, *">
+        <Grid ColumnDefinitions="*, 3*, *">
             <BasicButton 
                 Grid.Column="1"
                 Text="Speichern"
