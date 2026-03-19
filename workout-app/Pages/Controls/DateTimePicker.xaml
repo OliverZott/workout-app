@@ -10,37 +10,34 @@
         <Grid>
             <Border HeightRequest="70">
 
-
                 <Grid ColumnDefinitions="*, *, *">
+                    
                     <Image 
-                         Grid.Column="0"
-                         Source="calendar" 
-                         HeightRequest="50" 
-                         WidthRequest="50"
-                         Aspect="AspectFit"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Start"
-                         Margin="20,0,0,0" />
+                        Grid.Column="0"
+                        Source="calendar" 
+                        HeightRequest="50" 
+                        WidthRequest="50"
+                        Aspect="AspectFit"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        Margin="20,0,0,0" />
 
                     <Label 
-                         Grid.Column="1"
-                         Text="{Binding SelectedDateDisplay, Source={x:Reference root}}"
-                         FontSize="Large"
-                         FontAttributes="Bold"
-                         TextColor="Black"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Start"/>
+                        Grid.Column="1"
+                        Text="{Binding SelectedDateDisplay, Source={x:Reference root}}"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
                 </Grid>
             </Border>
 
             <!-- Invisible DatePicker covering entire tile -->
             <DatePicker 
-                 x:Name="bpDatePicker"
-                 Date="{Binding SelectedDate, Source={x:Reference root}}"
-                 BackgroundColor="Transparent"
-                 Opacity="0.01"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="Fill" />
+                x:Name="bpDatePicker"
+                Date="{Binding SelectedDate, Source={x:Reference root}}"
+                BackgroundColor="Transparent"
+                Opacity="0.01"/>
         </Grid>
 
 
@@ -50,34 +47,31 @@
 
                 <Grid ColumnDefinitions="*, *, *">
                     <Image 
-                         Grid.Column="0"
-                         Source="clock" 
-                         HeightRequest="50" 
-                         WidthRequest="50"
-                         Aspect="AspectFit" 
-                         VerticalOptions="Center"
-                         HorizontalOptions="Start"
-                         Margin="20,0,0,0" />
+                        Grid.Column="0"
+                        Source="clock" 
+                        HeightRequest="50" 
+                        WidthRequest="40"
+                        Aspect="AspectFit" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        Margin="30,0,0,0" />
 
                     <Label 
-                         Grid.Column="1"
-                         Text="{Binding SelectedTimeDisplay, Source={x:Reference root}}"
-                         FontSize="Large"
-                         FontAttributes="Bold"
-                         TextColor="Black"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Start"/>
+                        Grid.Column="1"
+                        Text="{Binding SelectedTimeDisplay, Source={x:Reference root}}"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
                 </Grid >
             </Border>
 
             <!-- Invisible TimePicker covering entire tile -->
             <TimePicker 
-                 x:Name="bpTimePicker"
-                 Time="{Binding SelectedTime, Source={x:Reference root}}"
-                 BackgroundColor="Transparent"
-                 Opacity="0.01"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="Fill" />
+                x:Name="bpTimePicker"
+                Time="{Binding SelectedTime, Source={x:Reference root}}"
+                BackgroundColor="Transparent"
+                Opacity="0.01"/>
         </Grid>
 
     </VerticalStackLayout>
