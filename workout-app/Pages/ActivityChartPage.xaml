@@ -24,9 +24,9 @@
             <!-- Summary -->
             <DataSummary
                 Margin="10,0,10,0"
-                AverageReading="{Binding AverageDistanceReading}"
-                LastReading="{Binding LastDistanceReading}"
-                Unit="km"/>
+                AverageReading="{Binding AverageDurationReading}"
+                LastReading="{Binding LastDurationReading}"
+                Unit="min"/>
 
             <!-- Activity Checkboxes (top 3 most used) -->
             <HorizontalStackLayout >

@@ -36,6 +36,8 @@ public partial class ActivityChartPageModel : ObservableObject
     // Summary
     [ObservableProperty] private string averageDistanceReading = "--";
     [ObservableProperty] private string lastDistanceReading = "--";
+    [ObservableProperty] private string averageDurationReading = "--";
+    [ObservableProperty] private string lastDurationReading = "--";
 
     public ActivityChartPageModel(DatabaseService databaseService)
     {
@@ -136,21 +138,21 @@ public partial class ActivityChartPageModel : ObservableObject
                 Activity1Data.Add(new ActivitySummaryPoint
                 {
                     Label = dateLabel,
-                    Value = dayActivities.Where(a => a.Type == top3[0]).Sum(a => a.Distance)
+                    Value = dayActivities.Where(a => a.Type == top3[0]).Sum(a => a.Duration)
                 });
 
             if (top3.Count > 1)
                 Activity2Data.Add(new ActivitySummaryPoint
                 {
                     Label = dateLabel,
-                    Value = dayActivities.Where(a => a.Type == top3[1]).Sum(a => a.Distance)
+                    Value = dayActivities.Where(a => a.Type == top3[1]).Sum(a => a.Duration)
                 });
 
             if (top3.Count > 2)
                 Activity3Data.Add(new ActivitySummaryPoint
                 {
                     Label = dateLabel,
-                    Value = dayActivities.Where(a => a.Type == top3[2]).Sum(a => a.Distance)
+                    Value = dayActivities.Where(a => a.Type == top3[2]).Sum(a => a.Duration)
                 });
         }
     }
@@ -175,13 +177,19 @@ public partial class ActivityChartPageModel : ObservableObject
             var avg = Math.Round(activities.Average(a => a.Distance), 1);
             AverageDistanceReading = $"{avg}";
 
+            var avgDur = Math.Round(activities.Average(a => a.Duration), 1);
+            AverageDurationReading = $"{avgDur}";
+
             var last = activities.OrderByDescending(a => a.Timestamp).First();
             LastDistanceReading = $"{Math.Round(last.Distance, 1)}";
+            LastDurationReading = last.Duration.ToString();
         }
         else
         {
             AverageDistanceReading = "--";
             LastDistanceReading = "--";
+            AverageDurationReading = "--";
+            LastDurationReading = "--";
         }
     }
 
