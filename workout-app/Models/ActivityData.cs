@@ -4,6 +4,7 @@ public class ActivityData : BaseEntity
 {
     public string Description { get; set; } = "";
     public ActivityType Type { get; set; }
+    public int Duration { get; set; }
     public double Distance { get; set; }
     public double Altitude { get; set; }
 }

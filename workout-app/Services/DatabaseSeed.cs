@@ -42,9 +42,10 @@ public static class DatabaseSeed
         new WeightData { Timestamp = new DateTime(2026,03,09), Weight = 86.5 },
         new WeightData { Timestamp = new DateTime(2026,03,10), Weight = 87.3 },
         new WeightData { Timestamp = new DateTime(2026,03,14), Weight = 87.1 },
-
+        new WeightData { Timestamp = new DateTime(2026,03,15), Weight = 88.4 },
+        new WeightData { Timestamp = new DateTime(2026,03,16), Weight = 86.9 },
         new WeightData { Timestamp = new DateTime(2026,03,18), Weight = 87.6 },
-        new WeightData { Timestamp = new DateTime(2026,03,19), Weight = 87.2 },
+        new WeightData { Timestamp = new DateTime(2026,03,19), Weight = 87.1 },
     ];
     public static readonly List<BloodPressureData> CardioItems =
     [
@@ -79,6 +80,9 @@ public static class DatabaseSeed
         new BloodPressureData { Timestamp = new DateTime(2026,03,09), Systolic = 134, Diastolic = 74, HeartRate = 59 },
         new BloodPressureData { Timestamp = new DateTime(2026,03,11), Systolic = 148, Diastolic = 77, HeartRate = 76 },
         new BloodPressureData { Timestamp = new DateTime(2026,03,12), Systolic = 154, Diastolic = 86, HeartRate = 50 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,15), Systolic = 143, Diastolic = 83, HeartRate = 80 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,18), Systolic = 137, Diastolic = 80, HeartRate = 60 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,19), Systolic = 134, Diastolic = 74, HeartRate = 64 },
     ];
 
     public static readonly List<ActivityData> ActivityItems =
@@ -99,5 +103,11 @@ public static class DatabaseSeed
         new ActivityData { Timestamp = new DateTime(2026,03,08), Type = ActivityType.Skiing, Distance = 22.0, Altitude = 1500 },
         new ActivityData { Timestamp = new DateTime(2026,03,10), Type = ActivityType.Mountainabike, Distance = 35.0, Altitude = 1100 },
         new ActivityData { Timestamp = new DateTime(2026,03,12), Type = ActivityType.Hiking, Distance = 11.0, Altitude = 700 },
+
+        // new and correct
+        new ActivityData { Timestamp = new DateTime(2026,03,16), Type = ActivityType.WeightLifting, Duration=63},
+        new ActivityData { Timestamp = new DateTime(2026,03,18), Type = ActivityType.WeightLifting, Duration=61},
+        new ActivityData { Timestamp = new DateTime(2026,03,19), Type = ActivityType.WeightLifting, Duration=65},
+
     ];
 }

@@ -5,98 +5,168 @@
              x:DataType="ActivityInsertPageModel"
              Title="Aktivität eintragen">
 
-    <VerticalStackLayout Spacing="20"
-                         Padding="20">
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="20">
 
-        <!--  DateTime Picker Control -->
-        <DateTimePicker
-            SelectedDate="{Binding DateTimePicker.SelectedDate}"
-            SelectedTime="{Binding DateTimePicker.SelectedTime}"
-            SelectedDateDisplay="{Binding DateTimePicker.SelectedDateDisplay}"
-            SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}"/>
+            <!-- DateTime Picker Control -->
+            <DateTimePicker
+                SelectedDate="{Binding DateTimePicker.SelectedDate}"
+                SelectedTime="{Binding DateTimePicker.SelectedTime}"
+                SelectedDateDisplay="{Binding DateTimePicker.SelectedDateDisplay}"
+                SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}"/>
 
-        <!-- Activity Input Fields -->
-        <Border>
-
-            <VerticalStackLayout 
-                Padding="20" 
-                Spacing="16">
-
-                <!-- Activity Type Picker -->
-                <Border BackgroundColor="{StaticResource wa-color-input}"
-                        HeightRequest="50">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="25"/>
-                    </Border.StrokeShape>
-                    <Picker
-                        Title="Aktivität"
-                        ItemsSource="{Binding AvailableActivities}"
-                        SelectedItem="{Binding SelectedActivityType}"
-                        FontSize="Large"
-                        TextColor="Black"
-                        BackgroundColor="Transparent"
-                        HorizontalTextAlignment="Center"/>
-                </Border>
-
-                <!-- Distance Entry -->
-                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
+            <!-- Activity Type -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Aktivität" FontSize="13" TextColor="{StaticResource Gray500}"/>
                     <Border BackgroundColor="{StaticResource wa-color-input}"
-                            HeightRequest="50">
+                            HeightRequest="46"
+                            Shadow="{x:Null}">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="25"/>
+                            <RoundRectangle CornerRadius="12"/>
                         </Border.StrokeShape>
-                        <Entry
-                            Text="{Binding Distance, Mode=TwoWay}"
-                            Placeholder="0"
-                            Keyboard="Numeric"
-                            FontSize="Large"
+                        <Picker
+                            Title="Aktivität wählen..."
+                            TitleColor="LightGray"
+                            ItemsSource="{Binding AvailableActivities}"
+                            SelectedItem="{Binding SelectedActivityType}"
+                            FontSize="16"
                             TextColor="Black"
                             BackgroundColor="Transparent"
                             HorizontalTextAlignment="Center"/>
                     </Border>
-                    <Label Grid.Column="1"
-                           Text="km"
-                           FontSize="Large"
-                           FontAttributes="Bold"
-                           TextColor="Black"
-                           VerticalTextAlignment="Center"
-                           WidthRequest="40"/>
-                </Grid>
+                </VerticalStackLayout>
+            </Border>
 
-                <!-- Altitude Entry -->
-                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12">
-                    <Border BackgroundColor="{StaticResource wa-color-input}"
-                            HeightRequest="50">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="25"/>
-                        </Border.StrokeShape>
-                        <Entry
-                            Text="{Binding Altitude, Mode=TwoWay}"
-                            Placeholder="0"
-                            Keyboard="Numeric"
-                            FontSize="Large"
-                            TextColor="Black"
-                            BackgroundColor="Transparent"
-                            HorizontalTextAlignment="Center"/>
-                    </Border>
-                    <Label Grid.Column="1"
-                           Text="hm"
-                           FontSize="Large"
-                           FontAttributes="Bold"
-                           TextColor="Black"
-                           VerticalTextAlignment="Center"
-                           WidthRequest="40"/>
-                </Grid>
+            <!-- Duration -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Dauer" FontSize="13" TextColor="{StaticResource Gray500}"/>
+                    
+                    <Grid ColumnDefinitions="*,*,*,*"
+                          ColumnSpacing="12"
+                          HorizontalOptions="Center">
+                        
+                        <Border Grid.Column="0"
+                                BackgroundColor="{StaticResource wa-color-input}"
+                                Stroke="{StaticResource wa-color-input}"
+                                Shadow="{x:Null}"
+                                WidthRequest="80"
+                                HeightRequest="46">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <Picker
+                                ItemsSource="{Binding HourOptions}"
+                                SelectedItem="{Binding SelectedHours}"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                HorizontalTextAlignment="Center"
+                                VerticalOptions="Center"/>
+                        </Border>
+                        <Label Grid.Column="1"
+                               Text="h"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"/>
+                        
+                        <Border Grid.Column="2"
+                                BackgroundColor="{StaticResource wa-color-input}"
+                                Stroke="{StaticResource wa-color-input}"
+                                Shadow="{x:Null}"
+                                WidthRequest="80"
+                                HeightRequest="46">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <Picker
+                                ItemsSource="{Binding MinuteOptions}"
+                                SelectedItem="{Binding SelectedMinutes}"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="Black"
+                                HorizontalTextAlignment="Center"
+                                VerticalOptions="Center"/>
+                        </Border>
+                        <Label Grid.Column="3"
+                               Text="min"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
 
-            </VerticalStackLayout>
-        </Border>
+            <!-- Distance & Altitude -->
+            <Border Padding="16" IsVisible="{Binding DistanceEnabled}">
+                <VerticalStackLayout Spacing="8">
 
-        <!-- Save Button -->
-        <Grid ColumnDefinitions="*, 2*, *">
-            <BasicButton Grid.Column="1"
-                         Text="Speichern"
-                         Command="{Binding SaveActivityCommand}"/>
-        </Grid>
+                    <!-- Distance -->
+                    <Label Text="Distanz und Höhenmeter" FontSize="13" TextColor="{StaticResource Gray500}"/>
+                    
+                    
 
-    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                        <Border BackgroundColor="{StaticResource wa-color-input}"
+                                HeightRequest="46"
+                                Shadow="{x:Null}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <Entry
+                                Text="{Binding Distance, Mode=TwoWay}"
+                                Placeholder="0"
+                                Keyboard="Numeric"
+                                FontSize="16"
+                                TextColor="Black"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Center"/>
+                        </Border>
+                        <Label Grid.Column="1"
+                               Text="km"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               VerticalTextAlignment="Center"
+                               WidthRequest="36"/>
+                    </Grid>
+
+                    <!-- Altitude -->
+                    <Label Text="Höhenmeter" FontSize="13" TextColor="{StaticResource Gray500}"/>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                        <Border BackgroundColor="{StaticResource wa-color-input}"
+                                HeightRequest="46"
+                                Shadow="{x:Null}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <Entry
+                                Text="{Binding Altitude, Mode=TwoWay}"
+                                Placeholder="0"
+                                Keyboard="Numeric"
+                                FontSize="16"
+                                TextColor="Black"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Center"/>
+                        </Border>
+                        <Label Grid.Column="1"
+                               Text="hm"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               VerticalTextAlignment="Center"
+                               WidthRequest="36"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Save Button -->
+            <BasicButton
+                Text="Speichern"
+                Margin="10,8,10,0"
+                Command="{Binding SaveActivityCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
