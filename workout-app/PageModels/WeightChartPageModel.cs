@@ -67,10 +67,9 @@ public partial class WeightChartPageModel : ObservableObject
         {
             IsLoading = true;
 
-            var (start, end) = GetDateRange();
+            var (from, to) = GetDateRange();
 
-            var data = await databaseService.GetWeightsAsync();
-            var filteredData = data.Where(d => d.Timestamp.Date > start.Date && d.Timestamp.Date <= end.Date).ToList();
+            var filteredData = await databaseService.GetWeightsAsync(from, to);
 
             // Update on main thread
             await MainThread.InvokeOnMainThreadAsync(() =>
@@ -96,17 +95,17 @@ public partial class WeightChartPageModel : ObservableObject
         }
     }
 
-    private (DateTime start, DateTime end) GetDateRange()
+    private (DateTime from, DateTime to) GetDateRange()
     {
-        var end = DateTime.Today;
-        var start = SelectedRange switch
+        var today = DateTime.Today;
+        var from = SelectedRange switch
         {
-            RangeType.Week => end.AddDays(-7),
-            RangeType.Month => end.AddMonths(-1),
-            RangeType.Max => end.AddDays(-90), // Show last year for "Max"
-            _ => end.AddDays(-7)
+            RangeType.Week  => today.AddDays(-6),
+            RangeType.Month => today.AddMonths(-1).AddDays(1),
+            RangeType.Max   => today.AddDays(-89),
+            _               => today.AddDays(-6)
         };
-        return (start, end);
+        return (from, today.AddDays(1));
     }
 
     private void UpdateCalculatedValues()

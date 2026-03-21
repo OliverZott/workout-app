@@ -65,9 +65,8 @@ public partial class BloodPressureChartPageModel : ObservableObject
         {
             IsLoading = true;
 
-            var (start, end) = GetDateRange();
-            var data = await databaseService.GetCardioAsync();
-            var filteredData = data.Where(d => d.Timestamp.Date > start.Date && d.Timestamp.Date <= end.Date).ToList();
+            var (from, to) = GetDateRange();
+            var filteredData = await databaseService.GetCardioAsync(from, to);
 
             // Update on main thread
             await MainThread.InvokeOnMainThreadAsync(() =>
@@ -90,17 +89,17 @@ public partial class BloodPressureChartPageModel : ObservableObject
         }
     }
 
-    private (DateTime start, DateTime end) GetDateRange()
+    private (DateTime from, DateTime to) GetDateRange()
     {
-        var end = DateTime.Today;
-        var start = SelectedRange switch
+        var today = DateTime.Today;
+        var from = SelectedRange switch
         {
-            RangeType.Week => end.AddDays(-7),
-            RangeType.Month => end.AddMonths(-1),
-            RangeType.Max => end.AddDays(-90),
-            _ => end.AddDays(-7)
+            RangeType.Week  => today.AddDays(-6),
+            RangeType.Month => today.AddMonths(-1).AddDays(1),
+            RangeType.Max   => today.AddDays(-89),
+            _               => today.AddDays(-6)
         };
-        return (start, end);
+        return (from, today.AddDays(1));
     }
 
     private void UpdateCalculatedValues()

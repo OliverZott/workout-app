@@ -68,12 +68,9 @@ public partial class ActivityChartPageModel : ObservableObject
         try
         {
             isLoading = true;
-            var (start, end) = GetDateRange();
+            var (from, to) = GetDateRange();
 
-            var allActivities = await databaseService.GetActivitiesAsync();
-            var filtered = allActivities
-                .Where(a => a.Timestamp.Date > start.Date && a.Timestamp.Date <= end.Date)
-                .ToList();
+            var filtered = await databaseService.GetActivitiesAsync(from, to);
 
             // Determine top 3 activity types by occurrence count
             var top3Types = filtered
@@ -96,7 +93,7 @@ public partial class ActivityChartPageModel : ObservableObject
                 HasActivity2 = top3Types.Count > 1;
                 HasActivity3 = top3Types.Count > 2;
 
-                SplitData(filtered, top3Types, start, end);
+                SplitData(filtered, top3Types, from, to);
                 UpdateSummary();
             });
         }
@@ -116,7 +113,7 @@ public partial class ActivityChartPageModel : ObservableObject
         }
     }
 
-    private void SplitData(List<ActivityData> activities, List<ActivityType> top3, DateTime start, DateTime end)
+    private void SplitData(List<ActivityData> activities, List<ActivityType> top3, DateTime from, DateTime to)
     {
         Activity1Data.Clear();
         Activity2Data.Clear();
@@ -126,7 +123,7 @@ public partial class ActivityChartPageModel : ObservableObject
             .GroupBy(a => a.Timestamp.Date)
             .ToDictionary(g => g.Key, g => g.ToList());
 
-        for (var day = start.AddDays(1); day <= end; day = day.AddDays(1))
+        for (var day = from; day < to; day = day.AddDays(1))
         {
             lookup.TryGetValue(day, out var dayActivities);
             dayActivities ??= [];
@@ -192,17 +189,17 @@ public partial class ActivityChartPageModel : ObservableObject
         }
     }
 
-    private (DateTime start, DateTime end) GetDateRange()
+    private (DateTime from, DateTime to) GetDateRange()
     {
-        var end = DateTime.Today;
-        var start = SelectedRange switch
+        var today = DateTime.Today;
+        var from = SelectedRange switch
         {
-            RangeType.Week => end.AddDays(-7),
-            RangeType.Month => end.AddMonths(-1),
-            RangeType.Max => end.AddDays(-90),
-            _ => end.AddDays(-7)
+            RangeType.Week  => today.AddDays(-6),
+            RangeType.Month => today.AddMonths(-1).AddDays(1),
+            RangeType.Max   => today.AddDays(-89),
+            _               => today.AddDays(-6)
         };
-        return (start, end);
+        return (from, today.AddDays(1));
     }
 
     [RelayCommand]
