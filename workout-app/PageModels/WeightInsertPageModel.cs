@@ -15,12 +15,17 @@ public partial class WeightInsertPageModel : ObservableObject
     [ObservableProperty]
     public double? selectedWeight;
 
-    public WeightInsertPageModel(MockDataService mockDataService, DatabaseService databaseService)
+    public WeightInsertPageModel(DatabaseService databaseService)
     {
         this.databaseService = databaseService;
-        var lastWeightEntry = mockDataService.GetLastWeightDataEntry();
+    }
+
+    public async Task OnAppearingAsync()
+    {
+        var lastWeightEntry = await databaseService.GetLastWeightDataEntry();
         LastSelectedWeight = Math.Round(lastWeightEntry?.Weight ?? 70d, 1);
     }
+
 
     [RelayCommand]
     private async Task SaveWeight()
