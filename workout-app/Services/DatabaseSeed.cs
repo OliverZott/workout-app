@@ -46,6 +46,8 @@ public static class DatabaseSeed
         new WeightData { Timestamp = new DateTime(2026,03,16), Weight = 86.9 },
         new WeightData { Timestamp = new DateTime(2026,03,18), Weight = 87.6 },
         new WeightData { Timestamp = new DateTime(2026,03,19), Weight = 87.1 },
+        new WeightData { Timestamp = new DateTime(2026,03,20), Weight = 89.1 },
+        new WeightData { Timestamp = new DateTime(2026,03,21), Weight = 89.3 },
     ];
     public static readonly List<BloodPressureData> CardioItems =
     [
@@ -83,6 +85,7 @@ public static class DatabaseSeed
         new BloodPressureData { Timestamp = new DateTime(2026,03,15), Systolic = 143, Diastolic = 83, HeartRate = 80 },
         new BloodPressureData { Timestamp = new DateTime(2026,03,18), Systolic = 137, Diastolic = 80, HeartRate = 60 },
         new BloodPressureData { Timestamp = new DateTime(2026,03,19), Systolic = 134, Diastolic = 74, HeartRate = 64 },
+        new BloodPressureData { Timestamp = new DateTime(2026,03,21), Systolic = 134, Diastolic = 74, HeartRate = 64 },
     ];
 
     public static readonly List<ActivityData> ActivityItems =
@@ -97,17 +100,27 @@ public static class DatabaseSeed
         new ActivityData { Timestamp = new DateTime(2026,02,10), Type = ActivityType.Hiking, Distance = 18.0, Altitude = 1100 },
         new ActivityData { Timestamp = new DateTime(2026,02,15), Type = ActivityType.Mountainabike, Distance = 30.0, Altitude = 950 },
         new ActivityData { Timestamp = new DateTime(2026,02,20), Type = ActivityType.BackcountrySkiing, Distance = 14.0, Altitude = 1400 },
-        new ActivityData { Timestamp = new DateTime(2026,02,25), Type = ActivityType.Hiking, Distance = 9.5, Altitude = 500 },
-        new ActivityData { Timestamp = new DateTime(2026,03,01), Type = ActivityType.Running, Distance = 7.5, Altitude = 80 },
-        new ActivityData { Timestamp = new DateTime(2026,03,05), Type = ActivityType.Hiking, Distance = 20.0, Altitude = 1300 },
-        new ActivityData { Timestamp = new DateTime(2026,03,08), Type = ActivityType.Skiing, Distance = 22.0, Altitude = 1500 },
-        new ActivityData { Timestamp = new DateTime(2026,03,10), Type = ActivityType.Mountainabike, Distance = 35.0, Altitude = 1100 },
-        new ActivityData { Timestamp = new DateTime(2026,03,12), Type = ActivityType.Hiking, Distance = 11.0, Altitude = 700 },
+
+        new ActivityData { Timestamp = new DateTime(2026,02,27), Type = ActivityType.WeightLifting, Description="Pull" },
 
         // new and correct
-        new ActivityData { Timestamp = new DateTime(2026,03,16), Type = ActivityType.WeightLifting, Duration=63},
-        new ActivityData { Timestamp = new DateTime(2026,03,18), Type = ActivityType.WeightLifting, Duration=61},
-        new ActivityData { Timestamp = new DateTime(2026,03,19), Type = ActivityType.WeightLifting, Duration=65},
+        new ActivityData { Timestamp = new DateTime(2026,03,01), Type = ActivityType.BackcountrySkiing, Duration=267,Altitude=690, Distance=6.75, Description="Skitour Mutters mit Dani, Bine und Gerry"},
+        new ActivityData { Timestamp = new DateTime(2026,03,02), Type = ActivityType.WeightLifting, Duration=63, Description="Legs"},
+        new ActivityData { Timestamp = new DateTime(2026,03,03), Type = ActivityType.WeightLifting, Duration=61, Description="Pull"},
+        new ActivityData { Timestamp = new DateTime(2026,03,04), Type = ActivityType.WeightLifting, Duration=66, Description="Push"},
+        new ActivityData { Timestamp = new DateTime(2026,03,05), Type = ActivityType.WeightLifting, Duration=55, Description="Legs"},
+        new ActivityData { Timestamp = new DateTime(2026,03,06), Type = ActivityType.WeightLifting, Duration=67, Description="Pull"},
+        new ActivityData { Timestamp = new DateTime(2026,03,07), Type = ActivityType.Mountainabike, Duration=108, Altitude=512, Distance=19.9, Description="Arzler mit Joe"},
+        new ActivityData { Timestamp = new DateTime(2026,03,08), Type = ActivityType.Mountainabike, Duration=121, Altitude=685, Distance=20.6, Description="2x Hofwald mit Joe"},
+        new ActivityData { Timestamp = new DateTime(2026,03,09), Type = ActivityType.WeightLifting, Duration=63},
+        new ActivityData { Timestamp = new DateTime(2026,03,10), Type = ActivityType.WeightLifting, Duration=63},
+        new ActivityData { Timestamp = new DateTime(2026,03,14), Type = ActivityType.WeightLifting, Duration=66},
+        new ActivityData { Timestamp = new DateTime(2026,03,15), Type = ActivityType.WeightLifting, Duration=71},
+        new ActivityData { Timestamp = new DateTime(2026,03,16), Type = ActivityType.WeightLifting, Duration=65},
+        new ActivityData { Timestamp = new DateTime(2026,03,18), Type = ActivityType.WeightLifting, Duration=66},
+        new ActivityData { Timestamp = new DateTime(2026,03,19), Type = ActivityType.WeightLifting, Duration=64},
+        new ActivityData { Timestamp = new DateTime(2026,03,20), Type = ActivityType.WeightLifting, Duration=74},
+        new ActivityData { Timestamp = new DateTime(2026,03,21), Type = ActivityType.WeightLifting, Duration=77},
 
     ];
 }
