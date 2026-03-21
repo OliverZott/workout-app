@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
 
 namespace workout_app.PageModels;
 
@@ -17,9 +16,9 @@ public partial class BloodPressureInsertPageModel : ObservableObject
     [ObservableProperty]
     private int selectedPulse = 70;
 
-    public ObservableCollection<int> BloodPressureValues => new(Enumerable.Range(50, 250));
-    public ObservableCollection<int> DiastolicValues => new(Enumerable.Range(30, 180));
-    public ObservableCollection<int> PulsValues => new(Enumerable.Range(30, 180));
+    public IReadOnlyList<int> BloodPressureValues { get; } = Enumerable.Range(50, 250).ToList();
+    public IReadOnlyList<int> DiastolicValues { get; } = Enumerable.Range(30, 180).ToList();
+    public IReadOnlyList<int> PulsValues { get; } = Enumerable.Range(30, 180).ToList();
 
     public BloodPressureInsertPageModel(DatabaseService databaseService)
     {
