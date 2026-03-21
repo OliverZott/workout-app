@@ -19,6 +19,9 @@ public class DatabaseService
     public Task<List<WeightData>> GetWeightsAsync() =>
         _db.Table<WeightData>().OrderBy(x => x.Timestamp).ToListAsync();
 
+    public Task<WeightData> GetLastWeightDataEntry() =>
+        _db.Table<WeightData>().OrderByDescending(x => x.Timestamp).FirstOrDefaultAsync();
+
     public Task<int> AddCardioAsync(BloodPressureData entry) =>
     _db.InsertAsync(entry);
 
@@ -42,7 +45,7 @@ public class DatabaseService
         await SeedActivityDataAsync();
     }
 
-    public async Task SeedWeightDataAsync()
+    private async Task SeedWeightDataAsync()
     {
 #if DEBUG
         await _db.DeleteAllAsync<WeightData>();
@@ -54,7 +57,7 @@ public class DatabaseService
 #endif
     }
 
-    public async Task SeedBloodPressureDataAsync()
+    private async Task SeedBloodPressureDataAsync()
     {
 #if DEBUG
         await _db.DeleteAllAsync<BloodPressureData>();
@@ -66,7 +69,7 @@ public class DatabaseService
 #endif
     }
 
-    public async Task SeedActivityDataAsync()
+    private async Task SeedActivityDataAsync()
     {
 #if DEBUG
         await _db.DeleteAllAsync<ActivityData>();
