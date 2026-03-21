@@ -17,7 +17,7 @@ public partial class WeightChartPage : ContentPage
 
         if (BindingContext is WeightChartPageModel vm)
         {
-            await vm.RefreshAsync();
+            await vm.LoadAsync();
         }
     }
 }

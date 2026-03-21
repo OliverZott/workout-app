@@ -15,7 +15,7 @@ public partial class BloodPressureChartPage : ContentPage
 
         if (BindingContext is BloodPressureChartPageModel vm)
         {
-            await vm.RefreshAsync();
+            await vm.LoadAsync();
         }
     }
 }

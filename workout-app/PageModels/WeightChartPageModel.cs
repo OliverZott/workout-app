@@ -30,10 +30,9 @@ public partial class WeightChartPageModel : ObservableObject
     {
         _selectedRange = RangeType.Week;
         this.databaseService = databaseService;
-        _ = LoadDataAsync();
     }
 
-    public Task RefreshAsync() => LoadDataAsync();
+    public Task LoadAsync() => LoadDataAsync();
 
     partial void OnDataChanged(ObservableCollection<WeightData> value)
     {

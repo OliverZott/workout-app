@@ -43,10 +43,9 @@ public partial class ActivityChartPageModel : ObservableObject
     {
         this.databaseService = databaseService;
         selectedRange = RangeType.Week;
-        _ = LoadDataAsync();
     }
 
-    public Task RefreshAsync() => LoadDataAsync();
+    public Task LoadAsync() => LoadDataAsync();
 
     public RangeType SelectedRange
     {

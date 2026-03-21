@@ -12,7 +12,7 @@ public partial class ActivityChartPage : ContentPage
     {
         base.OnAppearing();
         if (BindingContext is ActivityChartPageModel vm)
-            await vm.RefreshAsync();
+            await vm.LoadAsync();
     }
 }
 
