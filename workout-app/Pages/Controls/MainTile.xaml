@@ -6,7 +6,7 @@
 
 
     <Border
-        HeightRequest="130">
+        HeightRequest="140">
 
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="20"/>
@@ -43,7 +43,7 @@
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                FontSize="14"
+                FontSize="16"
                 TextColor="{StaticResource Gray600}"
                 Margin="0,6,0,0"/>
         </Grid>

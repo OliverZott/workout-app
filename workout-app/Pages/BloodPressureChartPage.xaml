@@ -7,7 +7,7 @@
              Title="Blood Pressure">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="30">
+        <VerticalStackLayout Padding="20" Spacing="20">
 
             <!-- Time Range Selection -->
             <DateRangeSelector 

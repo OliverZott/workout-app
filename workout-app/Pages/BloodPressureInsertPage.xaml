@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.BloodPressureInsertPage"
              x:DataType="BloodPressureInsertPageModel"
+             HideSoftInputOnTapped="True"
              Title="BloodPressureInsertPage">
 
     <VerticalStackLayout Spacing="50" Padding="20">

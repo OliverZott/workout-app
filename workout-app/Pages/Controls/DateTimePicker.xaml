@@ -4,7 +4,7 @@
              x:Class="workout_app.Pages.Controls.DateTimePicker"
              x:Name="root">
 
-    <VerticalStackLayout Spacing="24">
+    <VerticalStackLayout Spacing="8">
         
         <!-- Date Selection Tile -->
         <Grid>

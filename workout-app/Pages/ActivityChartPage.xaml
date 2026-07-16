@@ -7,7 +7,7 @@
              Title="{x:Static AppResources.activity}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="30">
+        <VerticalStackLayout Padding="20" Spacing="10">
 
             <!-- Time Range Selection -->
             <DateRangeSelector
@@ -56,7 +56,8 @@
             <!-- Chart Element -->
             <Border
                 Margin="10,0,10,0"
-                Padding="30">
+                Padding="30"
+                HeightRequest="360">
 
                 <sf:SfCartesianChart>
 

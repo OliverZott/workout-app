@@ -14,10 +14,10 @@ public partial class ActivityInsertPageModel : ObservableObject
     private ActivityType? selectedActivityType = null;
 
     [ObservableProperty]
-    public int selectedHours;
+    private int? selectedHours;
 
     [ObservableProperty]
-    private int selectedMinutes;
+    private int? selectedMinutes;
 
     [ObservableProperty]
     private double? distance;
@@ -34,12 +34,6 @@ public partial class ActivityInsertPageModel : ObservableObject
     public IReadOnlyList<ActivityType> AvailableActivities { get; } =
         [.. Enum.GetValues<ActivityType>()];
 
-    public IReadOnlyList<int> HourOptions { get; } =
-        [.. Enumerable.Range(0, 24)];
-
-    public IReadOnlyList<int> MinuteOptions { get; } =
-        [.. Enumerable.Range(0, 60)];
-
     public ActivityInsertPageModel(DatabaseService databaseService)
     {
         this.databaseService = databaseService;
@@ -50,11 +44,13 @@ public partial class ActivityInsertPageModel : ObservableObject
     {
         if (SelectedActivityType == null) return;
 
-        var duration = SelectedHours * 60 + SelectedMinutes;
+        var hours = Math.Clamp(Convert.ToInt32(SelectedHours), 0, 23);
+        var minutes = Math.Clamp(Convert.ToInt32(SelectedMinutes), 0, 59);
+        var duration = hours * 60 + minutes;
         if (duration == 0) return;
 
         var alertMessage = $"{SelectedActivityType}\n" +
-                           $"Dauer: {SelectedHours}h {SelectedMinutes}min\n" +
+                           $"Dauer: {hours}h {minutes}min\n" +
                            $"Distanz: {Distance} km\n" +
                            $"Höhenmeter: {Altitude ?? 0} m";
 
