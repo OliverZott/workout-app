@@ -3,13 +3,103 @@
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="workout_app.Pages.SettingsPage"
+    x:DataType="SettingsPageModel"
     Title="Settings">
 
-    <VerticalStackLayout Padding="20"
-            Spacing="16">
-        <Label Text="Settings"
-                FontSize="24"
-                FontAttributes="Bold"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="0">
+
+            <!-- Notifications -->
+            <Label
+                Text="Notifications"
+                FontSize="16"
+                FontAttributes="Bold"
+                Margin="10,20,10,4"/>
+            <Grid ColumnDefinitions="*,*"
+                  Margin="10">
+                <TimePicker
+                    Grid.Column="0"
+                    Time="{Binding NotificationTime}"
+                    HorizontalOptions="Start"
+                    FontSize="20"
+                    TextColor="Black"/>
+                <Switch
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    IsToggled="{Binding IsNotificationEnabled, Mode=TwoWay}"
+                    Toggled="OnNotificationSwitchToggled"/>
+            </Grid>
+
+            <!-- Export Data -->
+            <Label
+                Text="Export Data"
+                FontSize="16"
+                FontAttributes="Bold"
+                Margin="10,20,10,4"/>
+            <Label
+                Text="Export all recorded data as CSV files."
+                FontSize="13"
+                TextColor="Gray"
+                Margin="10,0,10,10"/>
+            <Grid ColumnDefinitions="*, *"
+                  Margin="10">
+                <BasicButton Grid.Column="0"
+                             Text="Export CSV"
+                             Command="{Binding ExportDataToCsvCommand}"/>
+            </Grid>
+
+            <!-- Logging -->
+            <Grid ColumnDefinitions="*, Auto"
+                  Margin="10"
+                  Padding="0,30,0,0">
+                <Label
+                    Grid.Column="0"
+                    Text="Enable Logging"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"/>
+                <Switch
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    IsToggled="{Binding IsLoggingEnabled, Mode=TwoWay}"
+                    VerticalOptions="Center"/>
+            </Grid>
+            <Label
+                Text="When enabled, detailed logs are written to a file on the device."
+                FontSize="13"
+                TextColor="Gray"
+                Margin="10,0,10,10"/>
+            <Grid ColumnDefinitions="*, *"
+                  Margin="10">
+                <BasicButton Grid.Column="0"
+                             Text="Send Logs"
+                             Command="{Binding SendLogsCommand}"/>
+            </Grid>
+            <Label
+                Text="{Binding StatusMessage}"
+                FontSize="13"
+                TextColor="Gray"
+                Margin="10,4,10,0"/>
+
+            <!-- App Version -->
+            <Grid ColumnDefinitions="Auto, Auto"
+                  Margin="10"
+                  Padding="0,30,0,0">
+                <Label
+                    Grid.Column="0"
+                    Text="App Version: "
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"/>
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding AppVersion}"
+                    FontSize="14"
+                    VerticalOptions="Center"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

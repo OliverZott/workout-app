@@ -9,4 +9,10 @@ public partial class SettingsPage : ContentPage
         InitializeComponent();
         BindingContext = settingsPageModel;
     }
+
+    private void OnNotificationSwitchToggled(object sender, ToggledEventArgs e)
+    {
+        if (BindingContext is SettingsPageModel model)
+            model.ToggleNotificationCommand.Execute(e.Value);
+    }
 }
