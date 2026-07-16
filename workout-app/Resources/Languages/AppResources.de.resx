@@ -285,6 +285,12 @@
   <data name="settings_import_db" xml:space="preserve">
     <value>DB importieren</value>
   </data>
+  <data name="settings_import_data" xml:space="preserve">
+    <value>Daten importieren</value>
+  </data>
+  <data name="settings_import_description" xml:space="preserve">
+    <value>Ein vollständiges Datenbank-Backup (.db3) importieren. Dies ersetzt lokale Daten.</value>
+  </data>
   <data name="settings_db_import_confirm_title" xml:space="preserve">
     <value>Datenbank importieren</value>
   </data>

@@ -87,6 +87,8 @@ namespace workout_app.Resources.Languages {
         internal static string settings_send_logs => ResourceManager.GetString("settings_send_logs", resourceCulture);
         internal static string settings_export_db => ResourceManager.GetString("settings_export_db", resourceCulture);
         internal static string settings_import_db => ResourceManager.GetString("settings_import_db", resourceCulture);
+        internal static string settings_import_data => ResourceManager.GetString("settings_import_data", resourceCulture);
+        internal static string settings_import_description => ResourceManager.GetString("settings_import_description", resourceCulture);
         internal static string settings_db_import_confirm_title => ResourceManager.GetString("settings_db_import_confirm_title", resourceCulture);
         internal static string settings_db_import_confirm_message => ResourceManager.GetString("settings_db_import_confirm_message", resourceCulture);
         internal static string settings_db_import_picker_title => ResourceManager.GetString("settings_db_import_picker_title", resourceCulture);

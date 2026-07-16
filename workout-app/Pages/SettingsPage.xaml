@@ -42,18 +42,39 @@
                 FontSize="13"
                 TextColor="Gray"
                 Margin="10,0,10,10"/>
-            <Grid ColumnDefinitions="*, *"
-                  Margin="10">
-                <BasicButton Grid.Column="0"
-                             Text="{x:Static AppResources.settings_export_csv}"
-                             Command="{Binding ExportDataToCsvCommand}"/>
-            </Grid>
-            <Grid ColumnDefinitions="*, *"
+            <Grid ColumnDefinitions="*"
                   Margin="10,0,10,0">
                 <BasicButton Grid.Column="0"
+                             HeightRequest="44"
+                             FontSize="16"
+                             Margin="0,0,0,8"
+                             Text="{x:Static AppResources.settings_export_csv}"
+                             Command="{Binding ExportDataToCsvCommand}"/>
+                <BasicButton Grid.Column="0"
+                             HeightRequest="44"
+                             FontSize="16"
+                             Margin="0,0,0,0"
                              Text="{x:Static AppResources.settings_export_db}"
                              Command="{Binding ExportDatabaseBackupCommand}"/>
-                <BasicButton Grid.Column="1"
+            </Grid>
+
+            <!-- Import Data -->
+            <Label
+                Text="{x:Static AppResources.settings_import_data}"
+                FontSize="16"
+                FontAttributes="Bold"
+                Margin="10,16,10,4"/>
+            <Label
+                Text="{x:Static AppResources.settings_import_description}"
+                FontSize="13"
+                TextColor="Gray"
+                Margin="10,0,10,10"/>
+            <Grid ColumnDefinitions="*"
+                  Margin="10,0,10,0">
+                <BasicButton Grid.Column="0"
+                             HeightRequest="44"
+                             FontSize="16"
+                             Margin="0"
                              Text="{x:Static AppResources.settings_import_db}"
                              Command="{Binding ImportDatabaseBackupCommand}"/>
             </Grid>

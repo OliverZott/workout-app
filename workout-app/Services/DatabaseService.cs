@@ -4,7 +4,7 @@ namespace workout_app.Services;
 
 public class DatabaseService
 {
-    private const string DatabaseFileName = "workout.db3";
+    private const string DatabaseFileName = "veolsaurus.db3";
 
     private SQLiteAsyncConnection? _db;
     private readonly SemaphoreSlim _dbFileGate = new(1, 1);
@@ -95,7 +95,7 @@ public class DatabaseService
 
             var backupPath = Path.Combine(
                 FileSystem.CacheDirectory,
-                $"workout-backup-{DateTime.Now:yyyyMMdd-HHmmss}.db3");
+                $"veolsaurus-backup-{DateTime.Now:yyyyMMdd-HHmmss}.db3");
 
             File.Copy(_dbPath, backupPath, true);
             _db = new SQLiteAsyncConnection(_dbPath);
