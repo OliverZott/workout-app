@@ -15,12 +15,12 @@
 
     <TabBar>
         <ShellContent
-            Title="Home"
+            Title="{x:Static AppResources.shell_home}"
             Icon="dino.svg"
             ContentTemplate="{DataTemplate MainPage}"
             Route="MainPage"/>
         <ShellContent
-            Title="Settings"
+            Title="{x:Static AppResources.shell_settings}"
             Icon="settings.svg"
             ContentTemplate="{DataTemplate SettingsPage}"
             Route="SettingsPage"/>

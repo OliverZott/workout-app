@@ -75,8 +75,8 @@ public partial class SettingsPageModel : ObservableObject
         var request = new NotificationRequest
         {
             NotificationId = 1337,
-            Title = "Workout Reminder",
-            Description = "Time to log your workout!",
+            Title = AppResources.notification_workout_reminder_title,
+            Description = AppResources.notification_workout_reminder_description,
             Schedule = new NotificationRequestSchedule
             {
                 NotifyTime = notifyTime,
@@ -92,7 +92,7 @@ public partial class SettingsPageModel : ObservableObject
     {
         try
         {
-            StatusMessage = "Exporting...";
+            StatusMessage = AppResources.status_exporting;
             var folder = FileSystem.AppDataDirectory;
             var filesToShare = new List<ShareFile>();
 
@@ -128,14 +128,14 @@ public partial class SettingsPageModel : ObservableObject
 
             await Share.Default.RequestAsync(new ShareMultipleFilesRequest
             {
-                Title = "Export Workout Data",
+                Title = AppResources.share_export_workout_data_title,
                 Files = filesToShare
             });
-            StatusMessage = "Export complete.";
+            StatusMessage = AppResources.status_export_complete;
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Export failed: {ex.Message}";
+            StatusMessage = $"{AppResources.status_export_failed_prefix}: {ex.Message}";
         }
     }
 
@@ -150,20 +150,20 @@ public partial class SettingsPageModel : ObservableObject
 
             if (logFiles.Count == 0)
             {
-                StatusMessage = "No log files found.";
+                StatusMessage = AppResources.status_no_log_files;
                 return;
             }
 
             await Share.Default.RequestAsync(new ShareMultipleFilesRequest
             {
-                Title = "Send Logs",
+                Title = AppResources.share_send_logs_title,
                 Files = logFiles
             });
             //StatusMessage = "";
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Failed to send logs: {ex.Message}";
+            StatusMessage = $"{AppResources.status_send_logs_failed_prefix}: {ex.Message}";
         }
     }
 }

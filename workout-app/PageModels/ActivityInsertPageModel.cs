@@ -50,9 +50,9 @@ public partial class ActivityInsertPageModel : ObservableObject
         if (duration == 0) return;
 
         var alertMessage = $"{SelectedActivityType}\n" +
-                           $"Dauer: {hours}h {minutes}min\n" +
-                           $"Distanz: {Distance} km\n" +
-                           $"Höhenmeter: {Altitude ?? 0} m";
+                           $"{AppResources.activity_alert_duration_label}: {hours}{AppResources.unit_h} {minutes}{AppResources.unit_min}\n" +
+                           $"{AppResources.activity_alert_distance_label}: {Distance} {AppResources.unit_km}\n" +
+                           $"{AppResources.activity_alert_altitude_label}: {Altitude ?? 0} m";
 
         var confirm = await Shell.Current.DisplayAlertAsync(
             AppResources.displayalert_want_to_save, alertMessage,

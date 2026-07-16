@@ -118,36 +118,165 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="activity" xml:space="preserve">
-    <value>Aktivität</value>
+    <value>Activity</value>
+  </data>
+  <data name="activity_alert_altitude_label" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="activity_alert_distance_label" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="activity_alert_duration_label" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="activity_insert_title" xml:space="preserve">
+    <value>Add activity</value>
+  </data>
+  <data name="activity_select_title" xml:space="preserve">
+    <value>Select activity...</value>
+  </data>
+  <data name="altitude" xml:space="preserve">
+    <value>Altitude</value>
   </data>
   <data name="app_title" xml:space="preserve">
     <value>Velosaurus Workout App</value>
   </data>
+  <data name="average" xml:space="preserve">
+    <value>Average</value>
+  </data>
   <data name="bloodpressure" xml:space="preserve">
-    <value>Blutdruck</value>
+    <value>Blood pressure</value>
+  </data>
+  <data name="bloodpressure_dia_short" xml:space="preserve">
+    <value>Dia</value>
+  </data>
+  <data name="bloodpressure_pulse_short" xml:space="preserve">
+    <value>Pulse</value>
+  </data>
+  <data name="bloodpressure_sys_short" xml:space="preserve">
+    <value>Sys</value>
   </data>
   <data name="button_no" xml:space="preserve">
-    <value>Nein</value>
+    <value>No</value>
+  </data>
+  <data name="button_save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="button_value_insert" xml:space="preserve">
+    <value>Enter value</value>
   </data>
   <data name="button_yes" xml:space="preserve">
-    <value>Ja</value>
+    <value>Yes</value>
   </data>
   <data name="diastolic" xml:space="preserve">
-    <value>Diastolisch</value>
+    <value>Diastolic</value>
   </data>
   <data name="displayalert_want_to_save" xml:space="preserve">
-    <value>Eintrag speichern?</value>
+    <value>Save entry?</value>
+  </data>
+  <data name="distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="duration" xml:space="preserve">
+    <value>Duration</value>
   </data>
   <data name="heartrate" xml:space="preserve">
-    <value>Puls</value>
+    <value>Heart rate</value>
+  </data>
+  <data name="last_entry" xml:space="preserve">
+    <value>Last entry</value>
+  </data>
+  <data name="notification_workout_reminder_description" xml:space="preserve">
+    <value>Time to log your workout!</value>
+  </data>
+  <data name="notification_workout_reminder_title" xml:space="preserve">
+    <value>Workout reminder</value>
+  </data>
+  <data name="range_max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="range_month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="range_week" xml:space="preserve">
+    <value>Week</value>
   </data>
   <data name="settings" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Settings</value>
+  </data>
+  <data name="settings_app_version" xml:space="preserve">
+    <value>App Version:</value>
+  </data>
+  <data name="settings_enable_logging" xml:space="preserve">
+    <value>Enable Logging</value>
+  </data>
+  <data name="settings_export_csv" xml:space="preserve">
+    <value>Export CSV</value>
+  </data>
+  <data name="settings_export_data" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
+  <data name="settings_export_description" xml:space="preserve">
+    <value>Export all recorded data as CSV files.</value>
+  </data>
+  <data name="settings_logging_description" xml:space="preserve">
+    <value>When enabled, detailed logs are written to a file on the device.</value>
+  </data>
+  <data name="settings_notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="settings_send_logs" xml:space="preserve">
+    <value>Send Logs</value>
+  </data>
+  <data name="share_export_workout_data_title" xml:space="preserve">
+    <value>Export Workout Data</value>
+  </data>
+  <data name="share_send_logs_title" xml:space="preserve">
+    <value>Send Logs</value>
+  </data>
+  <data name="shell_home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="shell_settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="status_export_complete" xml:space="preserve">
+    <value>Export complete.</value>
+  </data>
+  <data name="status_export_failed_prefix" xml:space="preserve">
+    <value>Export failed</value>
+  </data>
+  <data name="status_exporting" xml:space="preserve">
+    <value>Exporting...</value>
+  </data>
+  <data name="status_no_log_files" xml:space="preserve">
+    <value>No log files found.</value>
+  </data>
+  <data name="status_send_logs_failed_prefix" xml:space="preserve">
+    <value>Failed to send logs</value>
   </data>
   <data name="systolic" xml:space="preserve">
-    <value>Systolisch</value>
+    <value>Systolic</value>
+  </data>
+  <data name="unit_h" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="unit_hm" xml:space="preserve">
+    <value>hm</value>
+  </data>
+  <data name="unit_kg" xml:space="preserve">
+    <value>kg</value>
+  </data>
+  <data name="unit_km" xml:space="preserve">
+    <value>km</value>
+  </data>
+  <data name="unit_min" xml:space="preserve">
+    <value>min</value>
   </data>
   <data name="weight" xml:space="preserve">
-    <value>Gewicht</value>
+    <value>Weight</value>
+  </data>
+  <data name="weight_insert_title" xml:space="preserve">
+    <value>Add weight</value>
   </data>
 </root>

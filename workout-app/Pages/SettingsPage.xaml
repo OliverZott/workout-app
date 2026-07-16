@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="workout_app.Pages.SettingsPage"
     x:DataType="SettingsPageModel"
-    Title="Settings">
+    Title="{x:Static AppResources.settings}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20"
@@ -12,7 +12,7 @@
 
             <!-- Notifications -->
             <Label
-                Text="Notifications"
+                Text="{x:Static AppResources.settings_notifications}"
                 FontSize="16"
                 FontAttributes="Bold"
                 Margin="10,20,10,4"/>
@@ -33,19 +33,19 @@
 
             <!-- Export Data -->
             <Label
-                Text="Export Data"
+                Text="{x:Static AppResources.settings_export_data}"
                 FontSize="16"
                 FontAttributes="Bold"
                 Margin="10,20,10,4"/>
             <Label
-                Text="Export all recorded data as CSV files."
+                Text="{x:Static AppResources.settings_export_description}"
                 FontSize="13"
                 TextColor="Gray"
                 Margin="10,0,10,10"/>
             <Grid ColumnDefinitions="*, *"
                   Margin="10">
                 <BasicButton Grid.Column="0"
-                             Text="Export CSV"
+                             Text="{x:Static AppResources.settings_export_csv}"
                              Command="{Binding ExportDataToCsvCommand}"/>
             </Grid>
 
@@ -55,7 +55,7 @@
                   Padding="0,30,0,0">
                 <Label
                     Grid.Column="0"
-                    Text="Enable Logging"
+                    Text="{x:Static AppResources.settings_enable_logging}"
                     FontSize="16"
                     FontAttributes="Bold"
                     VerticalOptions="Center"/>
@@ -66,14 +66,14 @@
                     VerticalOptions="Center"/>
             </Grid>
             <Label
-                Text="When enabled, detailed logs are written to a file on the device."
+                Text="{x:Static AppResources.settings_logging_description}"
                 FontSize="13"
                 TextColor="Gray"
                 Margin="10,0,10,10"/>
             <Grid ColumnDefinitions="*, *"
                   Margin="10">
                 <BasicButton Grid.Column="0"
-                             Text="Send Logs"
+                             Text="{x:Static AppResources.settings_send_logs}"
                              Command="{Binding SendLogsCommand}"/>
             </Grid>
             <Label
@@ -88,7 +88,7 @@
                   Padding="0,30,0,0">
                 <Label
                     Grid.Column="0"
-                    Text="App Version: "
+                    Text="{x:Static AppResources.settings_app_version}"
                     FontSize="14"
                     FontAttributes="Bold"
                     VerticalOptions="Center"/>

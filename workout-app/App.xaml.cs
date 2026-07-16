@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace workout_app;
 
 public partial class App : Application
@@ -6,6 +8,10 @@ public partial class App : Application
 
     public App(DatabaseService database)
     {
+        var englishCulture = CultureInfo.GetCultureInfo("en");
+        CultureInfo.DefaultThreadCurrentUICulture = englishCulture;
+        AppResources.Culture = englishCulture;
+
         InitializeComponent();
         _database = database;
 

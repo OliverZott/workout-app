@@ -4,7 +4,7 @@
              x:Class="workout_app.Pages.ActivityInsertPage"
              x:DataType="ActivityInsertPageModel"
              HideSoftInputOnTapped="True"
-             Title="Aktivität eintragen">
+             Title="{x:Static AppResources.activity_insert_title}">
 
     <ScrollView>
         <VerticalStackLayout Spacing="16" Padding="20">
@@ -19,12 +19,12 @@
             <!-- Activity Type -->
             <Border Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Aktivität" Style="{StaticResource WaSectionLabelStyle}"/>
+                    <Label Text="{x:Static AppResources.activity}" Style="{StaticResource WaSectionLabelStyle}"/>
                     
                     <Border Style="{StaticResource WaCompactInputBorderStyle}"
                             WidthRequest="240">
                         <Picker
-                            Title="Aktivität wählen..."
+                            Title="{x:Static AppResources.activity_select_title}"
                             TitleColor="LightGray"
                             ItemsSource="{Binding AvailableActivities}"
                             SelectedItem="{Binding SelectedActivityType}"
@@ -39,7 +39,7 @@
             <!-- Duration -->
             <Border Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Dauer" Style="{StaticResource WaSectionLabelStyle}"/>
+                    <Label Text="{x:Static AppResources.duration}" Style="{StaticResource WaSectionLabelStyle}"/>
 
                     <Grid ColumnDefinitions="Auto,Auto,Auto,Auto"
                           ColumnSpacing="8"
@@ -55,7 +55,7 @@
                                 MaxLength="2"/>
                         </Border>
                         <Label Grid.Column="1"
-                               Text="h"
+                               Text="{x:Static AppResources.unit_h}"
                                FontAttributes="Bold"
                                FontSize="15"
                                VerticalTextAlignment="Center"
@@ -71,7 +71,7 @@
                                 MaxLength="2"/>
                         </Border>
                         <Label Grid.Column="3"
-                               Text="min"
+                               Text="{x:Static AppResources.unit_min}"
                                FontAttributes="Bold"
                                FontSize="15"
                                VerticalTextAlignment="Center"
@@ -85,7 +85,7 @@
                 <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="16" HorizontalOptions="Start">
 
                     <VerticalStackLayout Grid.Column="0" Spacing="6">
-                        <Label Text="Distanz" Style="{StaticResource WaSectionLabelStyle}"/>
+                        <Label Text="{x:Static AppResources.distance}" Style="{StaticResource WaSectionLabelStyle}"/>
                         <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="6" HorizontalOptions="Start">
                             <Border Grid.Column="0"
                                     Style="{StaticResource WaCompactInputBorderStyle}"
@@ -98,7 +98,7 @@
                                     MaxLength="6"/>
                             </Border>
                             <Label Grid.Column="1"
-                                   Text="km"
+                                   Text="{x:Static AppResources.unit_km}"
                                    FontSize="15"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource Gray500}"
@@ -107,7 +107,7 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Column="1" Spacing="6">
-                        <Label Text="Höhenmeter" Style="{StaticResource WaSectionLabelStyle}"/>
+                        <Label Text="{x:Static AppResources.altitude}" Style="{StaticResource WaSectionLabelStyle}"/>
                         <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="6" HorizontalOptions="Start">
                             <Border Grid.Column="0"
                                     Style="{StaticResource WaCompactInputBorderStyle}"
@@ -120,7 +120,7 @@
                                     MaxLength="5"/>
                             </Border>
                             <Label Grid.Column="1"
-                                   Text="hm"
+                                   Text="{x:Static AppResources.unit_hm}"
                                    FontSize="15"
                                    FontAttributes="Bold"
                                    TextColor="{StaticResource Gray500}"
@@ -133,7 +133,7 @@
 
             <!-- Save Button -->
             <BasicButton
-                Text="Speichern"
+                Text="{x:Static AppResources.button_save}"
                 Margin="10,8,10,0"
                 Command="{Binding SaveActivityCommand}"/>
 

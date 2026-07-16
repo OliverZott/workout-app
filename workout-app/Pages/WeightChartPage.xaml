@@ -4,7 +4,7 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="workout_app.Pages.WeightChartPage"
              x:DataType="WeightChartPageModel"
-             Title="Gewicht">
+             Title="{x:Static AppResources.weight}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -14,9 +14,9 @@
                 Margin="10,0,10,0"
                 SelectedRange="{Binding SelectedRange}"
                 RangeSelectedCommand="{Binding SelectRangeCommand}"
-                FirstRangeText="Woche" 
-                SecondRangeText="Monat" 
-                ThirdRangeText="Max"
+                FirstRangeText="{x:Static AppResources.range_week}" 
+                SecondRangeText="{x:Static AppResources.range_month}" 
+                ThirdRangeText="{x:Static AppResources.range_max}"
                 FirstRangeValue="Week"
                 SecondRangeValue="Month" 
                 ThirdRangeValue="Max" />
@@ -56,12 +56,12 @@
                         XBindingPath="DisplayDate"
                         YBindingPath="Weight"
                         Fill="Grey"
-                        Label="Gewicht" 
+                        Label="{x:Static AppResources.weight}" 
                         ShowDataLabels="False"
                         IsVisibleOnLegend="False"
                         ShowMarkers="True"/>
                     <sf:LineSeries 
-                        Label="Mittelwert"
+                        Label="{x:Static AppResources.average}"
                         Fill="LightGray"               
                         StrokeDashArray="4,4"
                         StrokeWidth="2"
@@ -84,7 +84,7 @@
             </Border>
 
             <FunctionButton
-                Text="Wert eintragen"
+                Text="{x:Static AppResources.button_value_insert}"
                 Margin="10,0,10,0"
                 Command="{Binding GoToInsertWeightCommand}"/>
 

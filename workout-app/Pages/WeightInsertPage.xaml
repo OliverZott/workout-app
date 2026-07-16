@@ -4,7 +4,7 @@
              x:Class="workout_app.Pages.WeightInsertPage"
              x:DataType="WeightInsertPageModel"
              HideSoftInputOnTapped="True"
-             Title="Gewicht eintragen">
+             Title="{x:Static AppResources.weight_insert_title}">
 
     <VerticalStackLayout Spacing="50" Padding="20">
 
@@ -54,7 +54,7 @@
                     <!-- Unit Label -->
                     <Label 
                         Grid.Column="2"
-                        Text="kg"
+                        Text="{x:Static AppResources.unit_kg}"
                         FontSize="Large"
                         FontAttributes="Bold"
                         TextColor="{StaticResource Gray500}"
@@ -69,7 +69,7 @@
         <Grid ColumnDefinitions="*, 3*, *">
             <BasicButton 
                 Grid.Column="1"
-                Text="Speichern"
+                Text="{x:Static AppResources.button_save}"
                 Command="{Binding SaveWeightCommand}" >
             </BasicButton>
         </Grid>

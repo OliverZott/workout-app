@@ -23,140 +23,84 @@ namespace workout_app.Resources.Languages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal AppResources() {
         }
-        
-        /// <summary>
-        ///   Returns the cached ResourceManager instance used by this class.
-        /// </summary>
+
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("workout_app.Resources.Languages.AppResources", typeof(AppResources).Assembly);
-                    resourceMan = temp;
+                    resourceMan = new global::System.Resources.ResourceManager("workout_app.Resources.Languages.AppResources", typeof(AppResources).Assembly);
                 }
                 return resourceMan;
             }
         }
-        
-        /// <summary>
-        ///   Overrides the current thread's CurrentUICulture property for all
-        ///   resource lookups using this strongly typed resource class.
-        /// </summary>
+
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture {
-            get {
-                return resourceCulture;
-            }
-            set {
-                resourceCulture = value;
-            }
+            get => resourceCulture;
+            set => resourceCulture = value;
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aktivität.
-        /// </summary>
-        internal static string activity {
-            get {
-                return ResourceManager.GetString("activity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Velosaurus Workout App.
-        /// </summary>
-        internal static string app_title {
-            get {
-                return ResourceManager.GetString("app_title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blutdruck.
-        /// </summary>
-        internal static string bloodpressure {
-            get {
-                return ResourceManager.GetString("bloodpressure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nein.
-        /// </summary>
-        internal static string button_no {
-            get {
-                return ResourceManager.GetString("button_no", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ja.
-        /// </summary>
-        internal static string button_yes {
-            get {
-                return ResourceManager.GetString("button_yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Diastolisch.
-        /// </summary>
-        internal static string diastolic {
-            get {
-                return ResourceManager.GetString("diastolic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Eintrag speichern?.
-        /// </summary>
-        internal static string displayalert_want_to_save {
-            get {
-                return ResourceManager.GetString("displayalert_want_to_save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Puls.
-        /// </summary>
-        internal static string heartrate {
-            get {
-                return ResourceManager.GetString("heartrate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Einstellungen.
-        /// </summary>
-        internal static string settings {
-            get {
-                return ResourceManager.GetString("settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Systolisch.
-        /// </summary>
-        internal static string systolic {
-            get {
-                return ResourceManager.GetString("systolic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gewicht.
-        /// </summary>
-        internal static string weight {
-            get {
-                return ResourceManager.GetString("weight", resourceCulture);
-            }
-        }
+
+        internal static string activity => ResourceManager.GetString("activity", resourceCulture);
+        internal static string activity_alert_altitude_label => ResourceManager.GetString("activity_alert_altitude_label", resourceCulture);
+        internal static string activity_alert_distance_label => ResourceManager.GetString("activity_alert_distance_label", resourceCulture);
+        internal static string activity_alert_duration_label => ResourceManager.GetString("activity_alert_duration_label", resourceCulture);
+        internal static string activity_insert_title => ResourceManager.GetString("activity_insert_title", resourceCulture);
+        internal static string activity_select_title => ResourceManager.GetString("activity_select_title", resourceCulture);
+        internal static string altitude => ResourceManager.GetString("altitude", resourceCulture);
+        internal static string app_title => ResourceManager.GetString("app_title", resourceCulture);
+        internal static string average => ResourceManager.GetString("average", resourceCulture);
+        internal static string bloodpressure => ResourceManager.GetString("bloodpressure", resourceCulture);
+        internal static string bloodpressure_dia_short => ResourceManager.GetString("bloodpressure_dia_short", resourceCulture);
+        internal static string bloodpressure_pulse_short => ResourceManager.GetString("bloodpressure_pulse_short", resourceCulture);
+        internal static string bloodpressure_sys_short => ResourceManager.GetString("bloodpressure_sys_short", resourceCulture);
+        internal static string button_no => ResourceManager.GetString("button_no", resourceCulture);
+        internal static string button_save => ResourceManager.GetString("button_save", resourceCulture);
+        internal static string button_value_insert => ResourceManager.GetString("button_value_insert", resourceCulture);
+        internal static string button_yes => ResourceManager.GetString("button_yes", resourceCulture);
+        internal static string diastolic => ResourceManager.GetString("diastolic", resourceCulture);
+        internal static string displayalert_want_to_save => ResourceManager.GetString("displayalert_want_to_save", resourceCulture);
+        internal static string distance => ResourceManager.GetString("distance", resourceCulture);
+        internal static string duration => ResourceManager.GetString("duration", resourceCulture);
+        internal static string heartrate => ResourceManager.GetString("heartrate", resourceCulture);
+        internal static string last_entry => ResourceManager.GetString("last_entry", resourceCulture);
+        internal static string notification_workout_reminder_description => ResourceManager.GetString("notification_workout_reminder_description", resourceCulture);
+        internal static string notification_workout_reminder_title => ResourceManager.GetString("notification_workout_reminder_title", resourceCulture);
+        internal static string range_max => ResourceManager.GetString("range_max", resourceCulture);
+        internal static string range_month => ResourceManager.GetString("range_month", resourceCulture);
+        internal static string range_week => ResourceManager.GetString("range_week", resourceCulture);
+        internal static string settings => ResourceManager.GetString("settings", resourceCulture);
+        internal static string settings_app_version => ResourceManager.GetString("settings_app_version", resourceCulture);
+        internal static string settings_enable_logging => ResourceManager.GetString("settings_enable_logging", resourceCulture);
+        internal static string settings_export_csv => ResourceManager.GetString("settings_export_csv", resourceCulture);
+        internal static string settings_export_data => ResourceManager.GetString("settings_export_data", resourceCulture);
+        internal static string settings_export_description => ResourceManager.GetString("settings_export_description", resourceCulture);
+        internal static string settings_logging_description => ResourceManager.GetString("settings_logging_description", resourceCulture);
+        internal static string settings_notifications => ResourceManager.GetString("settings_notifications", resourceCulture);
+        internal static string settings_send_logs => ResourceManager.GetString("settings_send_logs", resourceCulture);
+        internal static string share_export_workout_data_title => ResourceManager.GetString("share_export_workout_data_title", resourceCulture);
+        internal static string share_send_logs_title => ResourceManager.GetString("share_send_logs_title", resourceCulture);
+        internal static string shell_home => ResourceManager.GetString("shell_home", resourceCulture);
+        internal static string shell_settings => ResourceManager.GetString("shell_settings", resourceCulture);
+        internal static string status_export_complete => ResourceManager.GetString("status_export_complete", resourceCulture);
+        internal static string status_export_failed_prefix => ResourceManager.GetString("status_export_failed_prefix", resourceCulture);
+        internal static string status_exporting => ResourceManager.GetString("status_exporting", resourceCulture);
+        internal static string status_no_log_files => ResourceManager.GetString("status_no_log_files", resourceCulture);
+        internal static string status_send_logs_failed_prefix => ResourceManager.GetString("status_send_logs_failed_prefix", resourceCulture);
+        internal static string systolic => ResourceManager.GetString("systolic", resourceCulture);
+        internal static string unit_h => ResourceManager.GetString("unit_h", resourceCulture);
+        internal static string unit_hm => ResourceManager.GetString("unit_hm", resourceCulture);
+        internal static string unit_kg => ResourceManager.GetString("unit_kg", resourceCulture);
+        internal static string unit_km => ResourceManager.GetString("unit_km", resourceCulture);
+        internal static string unit_min => ResourceManager.GetString("unit_min", resourceCulture);
+        internal static string weight => ResourceManager.GetString("weight", resourceCulture);
+        internal static string weight_insert_title => ResourceManager.GetString("weight_insert_title", resourceCulture);
     }
 }
