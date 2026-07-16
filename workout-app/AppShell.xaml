@@ -4,19 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-
     Title="workout_app">
 
     <!-- Status Bar Styling - Background not working, overwritten by primarycolor in android colors.xml -->
     <Shell.Behaviors>
-        <toolkit:StatusBarBehavior 
-            StatusBarColor="Black" 
-            StatusBarStyle="LightContent" />
+        <toolkit:StatusBarBehavior
+            StatusBarColor="Black"
+            StatusBarStyle="LightContent"/>
     </Shell.Behaviors>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            Icon="dino.svg"
+            ContentTemplate="{DataTemplate MainPage}"
+            Route="MainPage"/>
+        <ShellContent
+            Title="Settings"
+            Icon="settings.svg"
+            ContentTemplate="{DataTemplate SettingsPage}"
+            Route="SettingsPage"/>
+    </TabBar>
 
 </Shell>

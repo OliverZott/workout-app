@@ -44,6 +44,8 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<MainPageModel>();
+        builder.Services.AddTransient<SettingsPage>();
+        builder.Services.AddTransient<SettingsPageModel>();
 
         builder.Services.AddTransientWithShellRoute<WeightChartPage, WeightChartPageModel>(nameof(WeightChartPage));
         builder.Services.AddTransientWithShellRoute<WeightInsertPage, WeightInsertPageModel>(nameof(WeightInsertPage));

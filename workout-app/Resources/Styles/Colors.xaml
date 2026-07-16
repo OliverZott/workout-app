@@ -12,7 +12,7 @@
     <Color x:Key="wa-color-input">#edf3fd</Color>
 
     <Color x:Key="wa-color1">#FFE6E6</Color>
-    <Color x:Key="wa-color2">#E6F3FF</Color>
+    <Color x:Key="wa-color2">#8eb3e8</Color>
     <Color x:Key="wa-color3">#E6FFE6</Color>
     <Color x:Key="wa-color4">#FFE6D6</Color>
     <Color x:Key="wa-color5">#FFFFE6</Color>

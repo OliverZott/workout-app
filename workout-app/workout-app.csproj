@@ -30,6 +30,12 @@
 		<MauiXamlInflator>SourceGen</MauiXamlInflator>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
+		<DebugSymbols>False</DebugSymbols>
+		<AndroidLinkTool>r8</AndroidLinkTool>
+		<!--<AndroidEnableProguard>true</AndroidEnableProguard>-->
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" />
