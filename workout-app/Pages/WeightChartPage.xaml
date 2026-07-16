@@ -7,12 +7,9 @@
              Title="WeightChartPage">
 
     <ScrollView>
-        
-        <VerticalStackLayout 
-            Margin="20"
-            Spacing="20">
+        <VerticalStackLayout Padding="20" Spacing="30">
 
-            <!--Time Range Selection-->
+            <!-- Time Range Selection -->
             <DateRangeSelector 
                 Margin="10,0,10,0"
                 SelectedRange="{Binding SelectedRange}"
@@ -24,19 +21,19 @@
                 SecondRangeValue="Month" 
                 ThirdRangeValue="Max" />
 
-            <!--Summary Element-->
+            <!-- Summary Element -->
             <DataSummary
                 Margin="10,0,10,0"
                 AverageReading="{Binding AverageWeightReading}"
                 LastReading="{Binding LastWeightReading}"
                 Unit="kg" />
 
-            <!-- Chart Element-->
+            <!-- Chart Element -->
             <Border
                 Margin="10,0,10,0"
                 Padding="30">
 
-                <sf:SfCartesianChart Margin="10,0,10,0">
+                <sf:SfCartesianChart>
 
                     <!-- Legend -->
                     <sf:SfCartesianChart.Legend>

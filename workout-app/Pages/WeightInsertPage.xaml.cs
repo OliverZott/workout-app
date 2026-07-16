@@ -7,4 +7,12 @@ public partial class WeightInsertPage : ContentPage
         InitializeComponent();
         BindingContext = weightInsertPageModel;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is WeightInsertPageModel vm)
+            await vm.OnAppearingAsync();
+    }
 }

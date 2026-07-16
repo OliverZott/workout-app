@@ -11,9 +11,9 @@
         </ResourceDictionary>
     </ContentView.Resources>
 
-    <Border HeightRequest="50">
+    <Border HeightRequest="55">
 
-        <Grid ColumnDefinitions="*,*,*" Padding="0">
+        <Grid ColumnDefinitions="*,*,*">
 
             <!-- Week Selector -->
             <Border Grid.Column="0" 

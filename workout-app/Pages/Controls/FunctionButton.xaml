@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Button
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="workout_app.Pages.Controls.FunctionButton"
+    
+    BackgroundColor="#00C2C2"
+    TextColor="Black"
+    FontSize="Medium"
+    FontAttributes="Bold"
+    CornerRadius="40"
+    HeightRequest="70">
+
+    <Button.Shadow>
+        <Shadow Brush="Black"
+                Opacity="0.35"
+                Radius="8"
+                Offset="4,4" />
+    </Button.Shadow>
+
+</Button>

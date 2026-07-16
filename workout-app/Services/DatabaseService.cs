@@ -16,20 +16,32 @@ public class DatabaseService
     public Task<int> AddWeightAsync(WeightData entry) =>
         _db.InsertAsync(entry);
 
-    public Task<List<WeightData>> GetWeightsAsync() =>
-        _db.Table<WeightData>().OrderBy(x => x.Timestamp).ToListAsync();
+    public Task<List<WeightData>> GetWeightsAsync(DateTime from, DateTime to) =>
+        _db.Table<WeightData>()
+            .Where(x => x.Timestamp >= from && x.Timestamp < to)
+            .OrderBy(x => x.Timestamp)
+            .ToListAsync();
+
+    public Task<WeightData> GetLastWeightDataEntry() =>
+        _db.Table<WeightData>().OrderByDescending(x => x.Timestamp).FirstOrDefaultAsync();
 
     public Task<int> AddCardioAsync(BloodPressureData entry) =>
     _db.InsertAsync(entry);
 
-    public Task<List<BloodPressureData>> GetCardioAsync() =>
-        _db.Table<BloodPressureData>().OrderBy(x => x.Timestamp).ToListAsync();
+    public Task<List<BloodPressureData>> GetCardioAsync(DateTime from, DateTime to) =>
+        _db.Table<BloodPressureData>()
+            .Where(x => x.Timestamp >= from && x.Timestamp < to)
+            .OrderBy(x => x.Timestamp)
+            .ToListAsync();
 
     public Task<int> AddActivityAsync(ActivityData entry) =>
         _db.InsertAsync(entry);
 
-    public Task<List<ActivityData>> GetActivitiesAsync() =>
-        _db.Table<ActivityData>().OrderBy(x => x.Timestamp).ToListAsync();
+    public Task<List<ActivityData>> GetActivitiesAsync(DateTime from, DateTime to) =>
+        _db.Table<ActivityData>()
+            .Where(x => x.Timestamp >= from && x.Timestamp < to)
+            .OrderBy(x => x.Timestamp)
+            .ToListAsync();
 
     public async Task InitializeAsync()
     {
@@ -42,7 +54,7 @@ public class DatabaseService
         await SeedActivityDataAsync();
     }
 
-    public async Task SeedWeightDataAsync()
+    private async Task SeedWeightDataAsync()
     {
 #if DEBUG
         await _db.DeleteAllAsync<WeightData>();
@@ -54,7 +66,7 @@ public class DatabaseService
 #endif
     }
 
-    public async Task SeedBloodPressureDataAsync()
+    private async Task SeedBloodPressureDataAsync()
     {
 #if DEBUG
         await _db.DeleteAllAsync<BloodPressureData>();
@@ -66,7 +78,7 @@ public class DatabaseService
 #endif
     }
 
-    public async Task SeedActivityDataAsync()
+    private async Task SeedActivityDataAsync()
     {
 #if DEBUG
         await _db.DeleteAllAsync<ActivityData>();

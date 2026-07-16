@@ -8,6 +8,8 @@
 
     <Color x:Key="wa-color-background">#f5f5f5</Color>
     <Color x:Key="wa-color-button">#6c8ebf</Color>
+    <Color x:Key="wa-color-action">#00C2C2</Color>
+    <Color x:Key="wa-color-input">#edf3fd</Color>
 
     <Color x:Key="wa-color1">#FFE6E6</Color>
     <Color x:Key="wa-color2">#E6F3FF</Color>

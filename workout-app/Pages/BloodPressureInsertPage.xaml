@@ -5,7 +5,7 @@
              x:DataType="BloodPressureInsertPageModel"
              Title="BloodPressureInsertPage">
 
-    <VerticalStackLayout Spacing="20" Padding="20">
+    <VerticalStackLayout Spacing="50" Padding="20">
 
 
         <!--  DateTime Picker Control -->
