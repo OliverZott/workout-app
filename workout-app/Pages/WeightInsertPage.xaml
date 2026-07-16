@@ -4,7 +4,7 @@
              x:Class="workout_app.Pages.WeightInsertPage"
              x:DataType="WeightInsertPageModel"
              HideSoftInputOnTapped="True"
-             Title="WeightInsertPage">
+             Title="Gewicht eintragen">
 
     <VerticalStackLayout Spacing="50" Padding="20">
 
@@ -37,20 +37,16 @@
                     <!-- Weight Entry -->
                     <Border
                         Grid.Column="1"
-                        HeightRequest="60"
-                        Stroke="#edf3fd"
-                        BackgroundColor="#edf3fd"
-                        Shadow="{x:Null}">
+                        Style="{StaticResource WaCompactInputBorderStyle}"
+                        HeightRequest="60">
 
                         <Entry 
                             x:Name="WeightEntry"
+                            Style="{StaticResource WaCompactNumericEntryStyle}"
                             Text="{Binding SelectedWeight, Mode=TwoWay}"
-                            Placeholder="{Binding LastSelectedWeight}"  
-                            PlaceholderColor="Gray"
-                            Keyboard="Numeric"
+                            Placeholder="{Binding LastSelectedWeight}"
                             FontSize="Large"
                             FontAttributes="Bold"
-                            TextColor="Black"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"/>
                     </Border>
@@ -61,7 +57,7 @@
                         Text="kg"
                         FontSize="Large"
                         FontAttributes="Bold"
-                        TextColor="Black"
+                        TextColor="{StaticResource Gray500}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"/>
                 </Grid>

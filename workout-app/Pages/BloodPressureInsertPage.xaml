@@ -4,7 +4,7 @@
              x:Class="workout_app.Pages.BloodPressureInsertPage"
              x:DataType="BloodPressureInsertPageModel"
              HideSoftInputOnTapped="True"
-             Title="BloodPressureInsertPage">
+             Title="Blutdruck eintragen">
 
     <VerticalStackLayout Spacing="50" Padding="20">
 
@@ -50,7 +50,7 @@
                                 ItemsSource="{Binding BloodPressureValues}"
                                 SelectedItem="{Binding SelectedSystolic}"
                                 FontSize="Large"
-                                TextColor="Black"
+                                TextColor="{StaticResource Gray500}"
                                 BackgroundColor="Transparent"
                                 HorizontalTextAlignment="Center" />
                         </Border>
@@ -69,7 +69,7 @@
                                 ItemsSource="{Binding DiastolicValues}"
                                 SelectedItem="{Binding SelectedDiastolic}"
                                 FontSize="Large"
-                                TextColor="Black"
+                                TextColor="{StaticResource Gray500}"
                                 BackgroundColor="Transparent"
                                 HorizontalTextAlignment="Center" />
                         </Border>
@@ -88,7 +88,7 @@
                                 ItemsSource="{Binding PulsValues}"
                                 SelectedItem="{Binding SelectedPulse}"
                                 FontSize="Large"
-                                TextColor="Black"
+                                TextColor="{StaticResource Gray500}"
                                 BackgroundColor="Transparent"
                                 HorizontalTextAlignment="Center" />
                         </Border>
@@ -108,19 +108,22 @@
                         Text="Sys"
                         VerticalTextAlignment="Center"
                         FontSize="Large"
-                        FontAttributes="Bold" />
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray500}" />
                     <Label
                         Grid.Row="1"
                         Text="Dia"
                         VerticalTextAlignment="Center"
                         FontSize="Large"
-                        FontAttributes="Bold" />
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray500}" />
                     <Label
                         Grid.Row="2"
                         Text="Puls"
                         VerticalTextAlignment="Center"
                         FontSize="Large"
-                        FontAttributes="Bold" />
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray500}" />
 
                 </Grid>
 

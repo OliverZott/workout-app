@@ -4,7 +4,7 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="workout_app.Pages.WeightChartPage"
              x:DataType="WeightChartPageModel"
-             Title="WeightChartPage">
+             Title="Gewicht">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -83,25 +83,10 @@
 
             </Border>
 
-            <!-- Wert eingeben button -->
-            <Button 
+            <FunctionButton
                 Text="Wert eintragen"
                 Margin="10,0,10,0"
-                BackgroundColor="#00C2C2"
-                TextColor="Black"
-                FontSize="Medium"
-                FontAttributes="Bold"
-                CornerRadius="40"
-                HeightRequest="70"
-                Command="{Binding GoToInsertWeightCommand}">
-                
-                <Button.Shadow>
-                    <Shadow Brush="Black"
-                        Opacity="0.35"
-                        Radius="8"
-                        Offset="4,4" />
-                </Button.Shadow>
-            </Button>
+                Command="{Binding GoToInsertWeightCommand}"/>
 
 
         </VerticalStackLayout>

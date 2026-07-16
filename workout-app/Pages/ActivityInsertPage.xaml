@@ -19,15 +19,10 @@
             <!-- Activity Type -->
             <Border Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Aktivität" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Gray500}"/>
+                    <Label Text="Aktivität" Style="{StaticResource WaSectionLabelStyle}"/>
                     
-                    <Border BackgroundColor="{StaticResource wa-color-input}"
-                            WidthRequest="240"
-                            HeightRequest="44"
-                            Shadow="{x:Null}">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="12"/>
-                        </Border.StrokeShape>
+                    <Border Style="{StaticResource WaCompactInputBorderStyle}"
+                            WidthRequest="240">
                         <Picker
                             Title="Aktivität wählen..."
                             TitleColor="LightGray"
@@ -44,33 +39,20 @@
             <!-- Duration -->
             <Border Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Dauer" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Gray500}"/>
+                    <Label Text="Dauer" Style="{StaticResource WaSectionLabelStyle}"/>
 
                     <Grid ColumnDefinitions="Auto,Auto,Auto,Auto"
                           ColumnSpacing="8"
                           HorizontalOptions="Center">
 
                         <Border Grid.Column="0"
-                                BackgroundColor="{StaticResource wa-color-input}"
-                                Stroke="{StaticResource wa-color-input}"
-                                Shadow="{x:Null}"
-                                WidthRequest="92"
-                                HeightRequest="44">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
+                                Style="{StaticResource WaCompactInputBorderStyle}"
+                                WidthRequest="92">
                             <Entry
+                                Style="{StaticResource WaCompactNumericEntryStyle}"
                                 Text="{Binding SelectedHours, Mode=TwoWay}"
-                                Placeholder="0"
-                                PlaceholderColor="LightGray"
-                                Keyboard="Numeric"
-                                MaxLength="2"
-                                FontSize="15"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource Gray500}"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center"/>
+                                MaxLength="2"/>
                         </Border>
                         <Label Grid.Column="1"
                                Text="h"
@@ -80,26 +62,13 @@
                                TextColor="{StaticResource Gray500}"/>
 
                         <Border Grid.Column="2"
-                                BackgroundColor="{StaticResource wa-color-input}"
-                                Stroke="{StaticResource wa-color-input}"
-                                Shadow="{x:Null}"
-                                WidthRequest="92"
-                                HeightRequest="44">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
+                                Style="{StaticResource WaCompactInputBorderStyle}"
+                                WidthRequest="92">
                             <Entry
+                                Style="{StaticResource WaCompactNumericEntryStyle}"
                                 Text="{Binding SelectedMinutes, Mode=TwoWay}"
-                                Placeholder="0"
-                                PlaceholderColor="LightGray"
-                                Keyboard="Numeric"
-                                MaxLength="2"
-                                FontSize="15"
                                 FontAttributes="Bold"
-                                TextColor="{StaticResource Gray500}"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center"/>
+                                MaxLength="2"/>
                         </Border>
                         <Label Grid.Column="3"
                                Text="min"
@@ -116,24 +85,14 @@
                 <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="16" HorizontalOptions="Start">
 
                     <VerticalStackLayout Grid.Column="0" Spacing="6">
-                        <Label Text="Distanz" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Gray500}"/>
+                        <Label Text="Distanz" Style="{StaticResource WaSectionLabelStyle}"/>
                         <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="6" HorizontalOptions="Start">
                             <Border Grid.Column="0"
-                                    BackgroundColor="{StaticResource wa-color-input}"
-                                    HeightRequest="44"
-                                    WidthRequest="110"
-                                    Shadow="{x:Null}">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="12"/>
-                                </Border.StrokeShape>
+                                    Style="{StaticResource WaCompactInputBorderStyle}"
+                                    WidthRequest="110">
                                 <Entry
+                                    Style="{StaticResource WaCompactNumericEntryStyle}"
                                     Text="{Binding Distance, Mode=TwoWay}"
-                                    Placeholder="0"
-                                    PlaceholderColor="LightGray"
-                                    Keyboard="Numeric"
-                                    FontSize="15"
-                                    TextColor="{StaticResource Gray500}"
-                                    BackgroundColor="Transparent"
                                     HorizontalTextAlignment="End"
                                     Margin="0,0,10,0"
                                     MaxLength="6"/>
@@ -148,24 +107,14 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Column="1" Spacing="6">
-                        <Label Text="Höhenmeter" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource Gray500}"/>
+                        <Label Text="Höhenmeter" Style="{StaticResource WaSectionLabelStyle}"/>
                         <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="6" HorizontalOptions="Start">
                             <Border Grid.Column="0"
-                                    BackgroundColor="{StaticResource wa-color-input}"
-                                    HeightRequest="44"
-                                    WidthRequest="110"
-                                    Shadow="{x:Null}">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="12"/>
-                                </Border.StrokeShape>
+                                    Style="{StaticResource WaCompactInputBorderStyle}"
+                                    WidthRequest="110">
                                 <Entry
+                                    Style="{StaticResource WaCompactNumericEntryStyle}"
                                     Text="{Binding Altitude, Mode=TwoWay}"
-                                    Placeholder="0"
-                                    PlaceholderColor="LightGray"
-                                    Keyboard="Numeric"
-                                    FontSize="15"
-                                    TextColor="{StaticResource Gray500}"
-                                    BackgroundColor="Transparent"
                                     HorizontalTextAlignment="End"
                                     Margin="0,0,10,0"
                                     MaxLength="5"/>

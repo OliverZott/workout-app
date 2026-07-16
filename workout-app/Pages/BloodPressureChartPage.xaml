@@ -4,7 +4,7 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="workout_app.Pages.BloodPressureChartPage"
              x:DataType="BloodPressureChartPageModel"
-             Title="Blood Pressure">
+             Title="Blutdruck">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">

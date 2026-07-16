@@ -196,6 +196,53 @@
         </Setter>
     </Style>
 
+    <Style x:Key="WaSectionLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontSize"
+                Value="13"/>
+        <Setter Property="FontAttributes"
+                Value="Bold"/>
+        <Setter Property="TextColor"
+                Value="{StaticResource Gray500}"/>
+    </Style>
+
+    <Style x:Key="WaCompactInputBorderStyle"
+           TargetType="Border">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource wa-color-input}"/>
+        <Setter Property="Stroke"
+                Value="{StaticResource wa-color-input}"/>
+        <Setter Property="Shadow"
+                Value="{x:Null}"/>
+        <Setter Property="HeightRequest"
+                Value="44"/>
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="12"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WaCompactNumericEntryStyle"
+           TargetType="Entry">
+        <Setter Property="Placeholder"
+                Value="0"/>
+        <Setter Property="PlaceholderColor"
+                Value="LightGray"/>
+        <Setter Property="Keyboard"
+                Value="Numeric"/>
+        <Setter Property="FontSize"
+                Value="15"/>
+        <Setter Property="TextColor"
+                Value="{StaticResource Gray500}"/>
+        <Setter Property="BackgroundColor"
+                Value="Transparent"/>
+        <Setter Property="HorizontalTextAlignment"
+                Value="Center"/>
+        <Setter Property="VerticalTextAlignment"
+                Value="Center"/>
+    </Style>
+
     <Style TargetType="ImageButton">
         <Setter Property="Opacity"
                 Value="1"/>
