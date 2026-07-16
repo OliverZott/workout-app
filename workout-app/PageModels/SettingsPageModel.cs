@@ -140,6 +140,73 @@ public partial class SettingsPageModel : ObservableObject
     }
 
     [RelayCommand]
+    public async Task ExportDatabaseBackup()
+    {
+        try
+        {
+            StatusMessage = AppResources.status_exporting;
+
+            var backupPath = await _db.CreateDatabaseBackupAsync();
+            await Share.Default.RequestAsync(new ShareFileRequest
+            {
+                Title = AppResources.share_export_db_title,
+                File = new ShareFile(backupPath, "application/octet-stream")
+            });
+
+            StatusMessage = AppResources.status_db_export_complete;
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"{AppResources.status_db_export_failed_prefix}: {ex.Message}";
+        }
+    }
+
+    [RelayCommand]
+    public async Task ImportDatabaseBackup()
+    {
+        try
+        {
+            var confirmReplace = await Shell.Current.DisplayAlertAsync(
+                AppResources.settings_db_import_confirm_title,
+                AppResources.settings_db_import_confirm_message,
+                AppResources.button_yes,
+                AppResources.button_no);
+
+            if (!confirmReplace)
+                return;
+
+            var pickedFile = await FilePicker.Default.PickAsync(new PickOptions
+            {
+                PickerTitle = AppResources.settings_db_import_picker_title
+            });
+
+            if (pickedFile is null)
+                return;
+
+            if (!string.IsNullOrWhiteSpace(pickedFile.FullPath))
+            {
+                await _db.ReplaceDatabaseFromFileAsync(pickedFile.FullPath);
+            }
+            else
+            {
+                var tempImportPath = Path.Combine(FileSystem.CacheDirectory, $"import-{Guid.NewGuid():N}.db3");
+                await using var pickedStream = await pickedFile.OpenReadAsync();
+                await using var targetStream = File.Create(tempImportPath);
+                await pickedStream.CopyToAsync(targetStream);
+                await targetStream.FlushAsync();
+
+                await _db.ReplaceDatabaseFromFileAsync(tempImportPath);
+            }
+
+            StatusMessage = AppResources.status_db_import_complete;
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"{AppResources.status_db_import_failed_prefix}: {ex.Message}";
+        }
+    }
+
+    [RelayCommand]
     public async Task SendLogs()
     {
         try

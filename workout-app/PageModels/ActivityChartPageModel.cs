@@ -72,6 +72,12 @@ public partial class ActivityChartPageModel : ObservableObject
 
             var filtered = await databaseService.GetActivitiesAsync(from, to);
 
+            var chartFrom = from;
+            if (SelectedRange == RangeType.Max && filtered.Count > 0)
+            {
+                chartFrom = filtered.Min(a => a.Timestamp).Date;
+            }
+
             // Determine top 3 activity types by occurrence count
             var top3Types = filtered
                 .GroupBy(a => a.Type)
@@ -93,7 +99,7 @@ public partial class ActivityChartPageModel : ObservableObject
                 HasActivity2 = top3Types.Count > 1;
                 HasActivity3 = top3Types.Count > 2;
 
-                SplitData(filtered, top3Types, from, to);
+                SplitData(filtered, top3Types, chartFrom, to);
                 UpdateSummary();
             });
         }
@@ -122,6 +128,38 @@ public partial class ActivityChartPageModel : ObservableObject
         var lookup = activities
             .GroupBy(a => a.Timestamp.Date)
             .ToDictionary(g => g.Key, g => g.ToList());
+
+        if (SelectedRange == RangeType.Max)
+        {
+            foreach (var day in lookup.Keys.OrderBy(d => d))
+            {
+                var dayActivities = lookup[day];
+                var dateLabel = day.ToString("dd.MM");
+
+                if (top3.Count > 0)
+                    Activity1Data.Add(new ActivitySummaryPoint
+                    {
+                        Label = dateLabel,
+                        Value = dayActivities.Where(a => a.Type == top3[0]).Sum(a => a.Duration)
+                    });
+
+                if (top3.Count > 1)
+                    Activity2Data.Add(new ActivitySummaryPoint
+                    {
+                        Label = dateLabel,
+                        Value = dayActivities.Where(a => a.Type == top3[1]).Sum(a => a.Duration)
+                    });
+
+                if (top3.Count > 2)
+                    Activity3Data.Add(new ActivitySummaryPoint
+                    {
+                        Label = dateLabel,
+                        Value = dayActivities.Where(a => a.Type == top3[2]).Sum(a => a.Duration)
+                    });
+            }
+
+            return;
+        }
 
         for (var day = from; day < to; day = day.AddDays(1))
         {
@@ -194,10 +232,10 @@ public partial class ActivityChartPageModel : ObservableObject
         var today = DateTime.Today;
         var from = SelectedRange switch
         {
-            RangeType.Week  => today.AddDays(-6),
+            RangeType.Week => today.AddDays(-6),
             RangeType.Month => today.AddMonths(-1).AddDays(1),
-            RangeType.Max   => today.AddDays(-89),
-            _               => today.AddDays(-6)
+            RangeType.Max => DateTime.MinValue,
+            _ => today.AddDays(-6)
         };
         return (from, today.AddDays(1));
     }

@@ -96,7 +96,7 @@ public partial class BloodPressureChartPageModel : ObservableObject
         {
             RangeType.Week  => today.AddDays(-6),
             RangeType.Month => today.AddMonths(-1).AddDays(1),
-            RangeType.Max   => today.AddDays(-89),
+            RangeType.Max   => DateTime.MinValue,
             _               => today.AddDays(-6)
         };
         return (from, today.AddDays(1));

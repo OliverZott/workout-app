@@ -87,27 +87,25 @@ public static class DatabaseSeed
 
     public static readonly List<ActivityData> ActivityItems =
     [
-        new ActivityData { Timestamp = new DateTime(2026,01,05), Type = ActivityType.Hiking, Distance = 12.3, Altitude = 650 },
-        new ActivityData { Timestamp = new DateTime(2026,01,10), Type = ActivityType.Running, Distance = 8.0, Altitude = 120 },
-        new ActivityData { Timestamp = new DateTime(2026,01,15), Type = ActivityType.Mountainabike, Distance = 25.0, Altitude = 800 },
-        new ActivityData { Timestamp = new DateTime(2026,01,20), Type = ActivityType.Skiing, Distance = 18.0, Altitude = 1200 },
-        new ActivityData { Timestamp = new DateTime(2026,01,25), Type = ActivityType.Hiking, Distance = 15.5, Altitude = 900 },
-        new ActivityData { Timestamp = new DateTime(2026,02,01), Type = ActivityType.Swimming, Distance = 2.0, Altitude = 0 },
-        new ActivityData { Timestamp = new DateTime(2026,02,05), Type = ActivityType.Running, Distance = 10.0, Altitude = 150 },
-        new ActivityData { Timestamp = new DateTime(2026,02,10), Type = ActivityType.Hiking, Distance = 18.0, Altitude = 1100 },
-        new ActivityData { Timestamp = new DateTime(2026,02,15), Type = ActivityType.Mountainabike, Distance = 30.0, Altitude = 950 },
-        new ActivityData { Timestamp = new DateTime(2026,02,20), Type = ActivityType.BackcountrySkiing, Distance = 14.0, Altitude = 1400 },
-        new ActivityData { Timestamp = new DateTime(2026,02,25), Type = ActivityType.Hiking, Distance = 9.5, Altitude = 500 },
-        new ActivityData { Timestamp = new DateTime(2026,03,01), Type = ActivityType.Running, Distance = 7.5, Altitude = 80 },
-        new ActivityData { Timestamp = new DateTime(2026,03,05), Type = ActivityType.Hiking, Distance = 20.0, Altitude = 1300 },
-        new ActivityData { Timestamp = new DateTime(2026,03,08), Type = ActivityType.Skiing, Distance = 22.0, Altitude = 1500 },
-        new ActivityData { Timestamp = new DateTime(2026,03,10), Type = ActivityType.Mountainabike, Distance = 35.0, Altitude = 1100 },
-        new ActivityData { Timestamp = new DateTime(2026,03,12), Type = ActivityType.Hiking, Distance = 11.0, Altitude = 700 },
+        new ActivityData { Timestamp = new DateTime(2026,01,05), Type = ActivityType.Hiking, Distance = 12.3, Altitude = 650, Duration = 190 },
+        new ActivityData { Timestamp = new DateTime(2026,01,10), Type = ActivityType.Running, Distance = 8.0, Altitude = 120, Duration = 52 },
+        new ActivityData { Timestamp = new DateTime(2026,01,15), Type = ActivityType.Mountainabike, Distance = 25.0, Altitude = 800, Duration = 110 },
+        new ActivityData { Timestamp = new DateTime(2026,01,20), Type = ActivityType.Skiing, Distance = 18.0, Altitude = 1200, Duration = 145 },
+        new ActivityData { Timestamp = new DateTime(2026,01,25), Type = ActivityType.Hiking, Distance = 15.5, Altitude = 900, Duration = 225 },
+        new ActivityData { Timestamp = new DateTime(2026,02,01), Type = ActivityType.Swimming, Distance = 2.0, Altitude = 0, Duration = 44 },
+        new ActivityData { Timestamp = new DateTime(2026,02,05), Type = ActivityType.Running, Distance = 10.0, Altitude = 150, Duration = 60 },
+        new ActivityData { Timestamp = new DateTime(2026,02,10), Type = ActivityType.Hiking, Distance = 18.0, Altitude = 1100, Duration = 280 },
+        new ActivityData { Timestamp = new DateTime(2026,02,15), Type = ActivityType.Mountainabike, Distance = 30.0, Altitude = 950, Duration = 130 },
+        new ActivityData { Timestamp = new DateTime(2026,02,20), Type = ActivityType.BackcountrySkiing, Distance = 14.0, Altitude = 1400, Duration = 205 },
+        new ActivityData { Timestamp = new DateTime(2026,02,25), Type = ActivityType.Hiking, Distance = 9.5, Altitude = 500, Duration = 115 },
+        new ActivityData { Timestamp = new DateTime(2026,03,01), Type = ActivityType.Running, Distance = 7.5, Altitude = 80, Duration = 48 },
+        new ActivityData { Timestamp = new DateTime(2026,03,05), Type = ActivityType.Hiking, Distance = 20.0, Altitude = 1300, Duration = 305 },
+        new ActivityData { Timestamp = new DateTime(2026,03,08), Type = ActivityType.Skiing, Distance = 22.0, Altitude = 1500, Duration = 165 },
+        new ActivityData { Timestamp = new DateTime(2026,03,10), Type = ActivityType.Mountainabike, Distance = 35.0, Altitude = 1100, Duration = 150 },
+        new ActivityData { Timestamp = new DateTime(2026,03,12), Type = ActivityType.Hiking, Distance = 11.0, Altitude = 700, Duration = 135 },
 
-        // new and correct
-        new ActivityData { Timestamp = new DateTime(2026,03,16), Type = ActivityType.WeightLifting, Duration=63},
-        new ActivityData { Timestamp = new DateTime(2026,03,18), Type = ActivityType.WeightLifting, Duration=61},
-        new ActivityData { Timestamp = new DateTime(2026,03,19), Type = ActivityType.WeightLifting, Duration=65},
-
+        new ActivityData { Timestamp = new DateTime(2026,03,16), Type = ActivityType.WeightLifting, Duration = 63 },
+        new ActivityData { Timestamp = new DateTime(2026,03,18), Type = ActivityType.WeightLifting, Duration = 61 },
+        new ActivityData { Timestamp = new DateTime(2026,03,19), Type = ActivityType.WeightLifting, Duration = 65 },
     ];
 }

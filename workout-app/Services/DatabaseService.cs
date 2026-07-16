@@ -4,89 +4,150 @@ namespace workout_app.Services;
 
 public class DatabaseService
 {
-    private readonly SQLiteAsyncConnection _db;
+    private const string DatabaseFileName = "workout.db3";
+
+    private SQLiteAsyncConnection? _db;
+    private readonly SemaphoreSlim _dbFileGate = new(1, 1);
     private readonly string _dbPath;
 
     public DatabaseService()
     {
-        _dbPath = Path.Combine(FileSystem.AppDataDirectory, "workout.db3");
-        _db = new SQLiteAsyncConnection(_dbPath);
+        _dbPath = Path.Combine(FileSystem.AppDataDirectory, DatabaseFileName);
     }
 
+    private SQLiteAsyncConnection Db => _db ??= new SQLiteAsyncConnection(_dbPath);
+
     public Task<int> AddWeightAsync(WeightData entry) =>
-        _db.InsertAsync(entry);
+        Db.InsertAsync(entry);
 
     public Task<List<WeightData>> GetWeightsAsync(DateTime from, DateTime to) =>
-        _db.Table<WeightData>()
+        Db.Table<WeightData>()
             .Where(x => x.Timestamp >= from && x.Timestamp < to)
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
     public Task<WeightData> GetLastWeightDataEntry() =>
-        _db.Table<WeightData>().OrderByDescending(x => x.Timestamp).FirstOrDefaultAsync();
+        Db.Table<WeightData>().OrderByDescending(x => x.Timestamp).FirstOrDefaultAsync();
 
     public Task<int> AddCardioAsync(BloodPressureData entry) =>
-    _db.InsertAsync(entry);
+        Db.InsertAsync(entry);
 
     public Task<List<BloodPressureData>> GetCardioAsync(DateTime from, DateTime to) =>
-        _db.Table<BloodPressureData>()
+        Db.Table<BloodPressureData>()
             .Where(x => x.Timestamp >= from && x.Timestamp < to)
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
     public Task<int> AddActivityAsync(ActivityData entry) =>
-        _db.InsertAsync(entry);
+        Db.InsertAsync(entry);
 
     public Task<List<ActivityData>> GetActivitiesAsync(DateTime from, DateTime to) =>
-        _db.Table<ActivityData>()
+        Db.Table<ActivityData>()
             .Where(x => x.Timestamp >= from && x.Timestamp < to)
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
     public async Task InitializeAsync()
     {
-        await _db.CreateTableAsync<WeightData>();
-        await _db.CreateTableAsync<BloodPressureData>();
-        await _db.CreateTableAsync<ActivityData>();
-
-        await SeedWeightDataAsync();
-        await SeedBloodPressureDataAsync();
-        await SeedActivityDataAsync();
+        await _dbFileGate.WaitAsync();
+        try
+        {
+            await EnsureSchemaAsync();
+            await SeedMissingDataAsync();
+        }
+        finally
+        {
+            _dbFileGate.Release();
+        }
     }
 
-    private async Task SeedWeightDataAsync()
+    private async Task EnsureSchemaAsync()
     {
-#if DEBUG
-        await _db.DeleteAllAsync<WeightData>();
-        await _db.InsertAllAsync(DatabaseSeed.WeightItems);
-#else
-        var count = await _db.Table<WeightData>().CountAsync();
-        if (count == 0)
-            await _db.InsertAllAsync(DatabaseSeed.WeightItems);
-#endif
+        await Db.CreateTableAsync<WeightData>();
+        await Db.CreateTableAsync<BloodPressureData>();
+        await Db.CreateTableAsync<ActivityData>();
     }
 
-    private async Task SeedBloodPressureDataAsync()
+    private async Task SeedMissingDataAsync()
     {
-#if DEBUG
-        await _db.DeleteAllAsync<BloodPressureData>();
-        await _db.InsertAllAsync(DatabaseSeed.CardioItems);
-#else
-        var count = await _db.Table<BloodPressureData>().CountAsync();
-        if (count == 0)
-            await _db.InsertAllAsync(DatabaseSeed.CardioItems);
-#endif
+        var weightCount = await Db.Table<WeightData>().CountAsync();
+        if (weightCount == 0)
+            await Db.InsertAllAsync(DatabaseSeed.WeightItems);
+
+        var bloodPressureCount = await Db.Table<BloodPressureData>().CountAsync();
+        if (bloodPressureCount == 0)
+            await Db.InsertAllAsync(DatabaseSeed.CardioItems);
+
+        var activityCount = await Db.Table<ActivityData>().CountAsync();
+        if (activityCount == 0)
+            await Db.InsertAllAsync(DatabaseSeed.ActivityItems);
     }
 
-    private async Task SeedActivityDataAsync()
+    public async Task<string> CreateDatabaseBackupAsync()
     {
-#if DEBUG
-        await _db.DeleteAllAsync<ActivityData>();
-        await _db.InsertAllAsync(DatabaseSeed.ActivityItems);
-#else
-        var count = await _db.Table<ActivityData>().CountAsync();
-        if (count == 0)
-            await _db.InsertAllAsync(DatabaseSeed.ActivityItems);
-#endif
+        await _dbFileGate.WaitAsync();
+        try
+        {
+            if (!File.Exists(_dbPath))
+                throw new FileNotFoundException("Database file not found.", _dbPath);
+
+            await CloseConnectionInternalAsync();
+
+            var backupPath = Path.Combine(
+                FileSystem.CacheDirectory,
+                $"workout-backup-{DateTime.Now:yyyyMMdd-HHmmss}.db3");
+
+            File.Copy(_dbPath, backupPath, true);
+            _db = new SQLiteAsyncConnection(_dbPath);
+
+            return backupPath;
+        }
+        finally
+        {
+            _dbFileGate.Release();
+        }
+    }
+
+    public async Task ReplaceDatabaseFromFileAsync(string sourceFilePath)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceFilePath);
+
+        if (!File.Exists(sourceFilePath))
+            throw new FileNotFoundException("Selected backup file was not found.", sourceFilePath);
+
+        await _dbFileGate.WaitAsync();
+        try
+        {
+            await using var sourceStream = File.OpenRead(sourceFilePath);
+            await ReplaceDatabaseFromStreamAsync(sourceStream);
+            await EnsureSchemaAsync();
+        }
+        finally
+        {
+            _dbFileGate.Release();
+        }
+    }
+
+    private async Task ReplaceDatabaseFromStreamAsync(Stream sourceStream)
+    {
+        await CloseConnectionInternalAsync();
+
+        Directory.CreateDirectory(Path.GetDirectoryName(_dbPath)!);
+        await using var targetStream = File.Create(_dbPath);
+        if (sourceStream.CanSeek)
+            sourceStream.Position = 0;
+
+        await sourceStream.CopyToAsync(targetStream);
+
+        _db = new SQLiteAsyncConnection(_dbPath);
+    }
+
+    private async Task CloseConnectionInternalAsync()
+    {
+        if (_db is null)
+            return;
+
+        await _db.CloseAsync();
+        _db = null;
     }
 }

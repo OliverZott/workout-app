@@ -279,4 +279,34 @@
   <data name="weight_insert_title" xml:space="preserve">
     <value>Gewicht eintragen</value>
   </data>
+  <data name="settings_export_db" xml:space="preserve">
+    <value>DB exportieren</value>
+  </data>
+  <data name="settings_import_db" xml:space="preserve">
+    <value>DB importieren</value>
+  </data>
+  <data name="settings_db_import_confirm_title" xml:space="preserve">
+    <value>Datenbank importieren</value>
+  </data>
+  <data name="settings_db_import_confirm_message" xml:space="preserve">
+    <value>Dies ersetzt deine aktuelle lokale Datenbank. Fortfahren?</value>
+  </data>
+  <data name="settings_db_import_picker_title" xml:space="preserve">
+    <value>Datenbank-Backup auswählen</value>
+  </data>
+  <data name="share_export_db_title" xml:space="preserve">
+    <value>Datenbank-Backup exportieren</value>
+  </data>
+  <data name="status_db_export_complete" xml:space="preserve">
+    <value>Datenbankexport vorbereitet.</value>
+  </data>
+  <data name="status_db_export_failed_prefix" xml:space="preserve">
+    <value>Datenbankexport fehlgeschlagen</value>
+  </data>
+  <data name="status_db_import_complete" xml:space="preserve">
+    <value>Datenbankimport abgeschlossen.</value>
+  </data>
+  <data name="status_db_import_failed_prefix" xml:space="preserve">
+    <value>Datenbankimport fehlgeschlagen</value>
+  </data>
 </root>

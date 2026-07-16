@@ -48,6 +48,15 @@
                              Text="{x:Static AppResources.settings_export_csv}"
                              Command="{Binding ExportDataToCsvCommand}"/>
             </Grid>
+            <Grid ColumnDefinitions="*, *"
+                  Margin="10,0,10,0">
+                <BasicButton Grid.Column="0"
+                             Text="{x:Static AppResources.settings_export_db}"
+                             Command="{Binding ExportDatabaseBackupCommand}"/>
+                <BasicButton Grid.Column="1"
+                             Text="{x:Static AppResources.settings_import_db}"
+                             Command="{Binding ImportDatabaseBackupCommand}"/>
+            </Grid>
 
             <!-- Logging -->
             <Grid ColumnDefinitions="*, Auto"
