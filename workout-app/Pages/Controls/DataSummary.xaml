@@ -15,7 +15,7 @@
                 Margin="10">
                 
                 <Label 
-                    Text="Mittelwert"
+                    Text="{x:Static AppResources.average}"
                     TextColor="Gray"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
@@ -43,7 +43,7 @@
                 Margin="10">
                 
                 <Label 
-                    Text="Letzte Eingabe"
+                    Text="{x:Static AppResources.last_entry}"
                     TextColor="Gray"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"

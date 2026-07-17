@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.ActivityInsertPage"
              x:DataType="ActivityInsertPageModel"
-             Title="Aktivität eintragen">
+             HideSoftInputOnTapped="True"
+             Title="{x:Static AppResources.activity_insert_title}">
 
     <ScrollView>
         <VerticalStackLayout Spacing="16" Padding="20">
@@ -18,15 +19,12 @@
             <!-- Activity Type -->
             <Border Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Aktivität" FontSize="13" TextColor="{StaticResource Gray500}"/>
-                    <Border BackgroundColor="{StaticResource wa-color-input}"
-                            HeightRequest="46"
-                            Shadow="{x:Null}">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="12"/>
-                        </Border.StrokeShape>
+                    <Label Text="{x:Static AppResources.activity}" Style="{StaticResource WaSectionLabelStyle}"/>
+                    
+                    <Border Style="{StaticResource WaCompactInputBorderStyle}"
+                            WidthRequest="240">
                         <Picker
-                            Title="Aktivität wählen..."
+                            Title="{x:Static AppResources.activity_select_title}"
                             TitleColor="LightGray"
                             ItemsSource="{Binding AvailableActivities}"
                             SelectedItem="{Binding SelectedActivityType}"
@@ -41,128 +39,101 @@
             <!-- Duration -->
             <Border Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Dauer" FontSize="13" TextColor="{StaticResource Gray500}"/>
-                    
-                    <Grid ColumnDefinitions="*,*,*,*"
-                          ColumnSpacing="12"
+                    <Label Text="{x:Static AppResources.duration}" Style="{StaticResource WaSectionLabelStyle}"/>
+
+                    <Grid ColumnDefinitions="Auto,Auto,Auto,Auto"
+                          ColumnSpacing="8"
                           HorizontalOptions="Center">
-                        
+
                         <Border Grid.Column="0"
-                                BackgroundColor="{StaticResource wa-color-input}"
-                                Stroke="{StaticResource wa-color-input}"
-                                Shadow="{x:Null}"
-                                WidthRequest="80"
-                                HeightRequest="46">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
-                            <Picker
-                                ItemsSource="{Binding HourOptions}"
-                                SelectedItem="{Binding SelectedHours}"
-                                FontSize="16"
+                                Style="{StaticResource WaCompactInputBorderStyle}"
+                                WidthRequest="92">
+                            <Entry
+                                Style="{StaticResource WaCompactNumericEntryStyle}"
+                                Text="{Binding SelectedHours, Mode=TwoWay}"
                                 FontAttributes="Bold"
-                                TextColor="Black"
-                                HorizontalTextAlignment="Center"
-                                VerticalOptions="Center"/>
+                                MaxLength="2"/>
                         </Border>
                         <Label Grid.Column="1"
-                               Text="h"
+                               Text="{x:Static AppResources.unit_h}"
                                FontAttributes="Bold"
-                               FontSize="16"
-                               VerticalTextAlignment="Center"/>
-                        
+                               FontSize="15"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Gray500}"/>
+
                         <Border Grid.Column="2"
-                                BackgroundColor="{StaticResource wa-color-input}"
-                                Stroke="{StaticResource wa-color-input}"
-                                Shadow="{x:Null}"
-                                WidthRequest="80"
-                                HeightRequest="46">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
-                            <Picker
-                                ItemsSource="{Binding MinuteOptions}"
-                                SelectedItem="{Binding SelectedMinutes}"
-                                FontSize="16"
+                                Style="{StaticResource WaCompactInputBorderStyle}"
+                                WidthRequest="92">
+                            <Entry
+                                Style="{StaticResource WaCompactNumericEntryStyle}"
+                                Text="{Binding SelectedMinutes, Mode=TwoWay}"
                                 FontAttributes="Bold"
-                                TextColor="Black"
-                                HorizontalTextAlignment="Center"
-                                VerticalOptions="Center"/>
+                                MaxLength="2"/>
                         </Border>
                         <Label Grid.Column="3"
-                               Text="min"
+                               Text="{x:Static AppResources.unit_min}"
                                FontAttributes="Bold"
-                               FontSize="16"
-                               VerticalTextAlignment="Center"/>
+                               FontSize="15"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource Gray500}"/>
                     </Grid>
                 </VerticalStackLayout>
             </Border>
 
             <!-- Distance & Altitude -->
             <Border Padding="16" IsVisible="{Binding DistanceEnabled}">
-                <VerticalStackLayout Spacing="8">
+                <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="16" HorizontalOptions="Start">
 
-                    <!-- Distance -->
-                    <Label Text="Distanz und Höhenmeter" FontSize="13" TextColor="{StaticResource Gray500}"/>
-                    
-                    
+                    <VerticalStackLayout Grid.Column="0" Spacing="6">
+                        <Label Text="{x:Static AppResources.distance}" Style="{StaticResource WaSectionLabelStyle}"/>
+                        <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="6" HorizontalOptions="Start">
+                            <Border Grid.Column="0"
+                                    Style="{StaticResource WaCompactInputBorderStyle}"
+                                    WidthRequest="110">
+                                <Entry
+                                    Style="{StaticResource WaCompactNumericEntryStyle}"
+                                    Text="{Binding Distance, Mode=TwoWay}"
+                                    HorizontalTextAlignment="End"
+                                    Margin="0,0,10,0"
+                                    MaxLength="6"/>
+                            </Border>
+                            <Label Grid.Column="1"
+                                   Text="{x:Static AppResources.unit_km}"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Gray500}"
+                                   VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
 
-                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
-                        <Border BackgroundColor="{StaticResource wa-color-input}"
-                                HeightRequest="46"
-                                Shadow="{x:Null}">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
-                            <Entry
-                                Text="{Binding Distance, Mode=TwoWay}"
-                                Placeholder="0"
-                                Keyboard="Numeric"
-                                FontSize="16"
-                                TextColor="Black"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center"/>
-                        </Border>
-                        <Label Grid.Column="1"
-                               Text="km"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               VerticalTextAlignment="Center"
-                               WidthRequest="36"/>
-                    </Grid>
+                    <VerticalStackLayout Grid.Column="1" Spacing="6">
+                        <Label Text="{x:Static AppResources.altitude}" Style="{StaticResource WaSectionLabelStyle}"/>
+                        <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="6" HorizontalOptions="Start">
+                            <Border Grid.Column="0"
+                                    Style="{StaticResource WaCompactInputBorderStyle}"
+                                    WidthRequest="110">
+                                <Entry
+                                    Style="{StaticResource WaCompactNumericEntryStyle}"
+                                    Text="{Binding Altitude, Mode=TwoWay}"
+                                    HorizontalTextAlignment="End"
+                                    Margin="0,0,10,0"
+                                    MaxLength="5"/>
+                            </Border>
+                            <Label Grid.Column="1"
+                                   Text="{x:Static AppResources.unit_hm}"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Gray500}"
+                                   VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
 
-                    <!-- Altitude -->
-                    <Label Text="Höhenmeter" FontSize="13" TextColor="{StaticResource Gray500}"/>
-                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
-                        <Border BackgroundColor="{StaticResource wa-color-input}"
-                                HeightRequest="46"
-                                Shadow="{x:Null}">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
-                            <Entry
-                                Text="{Binding Altitude, Mode=TwoWay}"
-                                Placeholder="0"
-                                Keyboard="Numeric"
-                                FontSize="16"
-                                TextColor="Black"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center"/>
-                        </Border>
-                        <Label Grid.Column="1"
-                               Text="hm"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               VerticalTextAlignment="Center"
-                               WidthRequest="36"/>
-                    </Grid>
-
-                </VerticalStackLayout>
+                </Grid>
             </Border>
 
             <!-- Save Button -->
             <BasicButton
-                Text="Speichern"
+                Text="{x:Static AppResources.button_save}"
                 Margin="10,8,10,0"
                 Command="{Binding SaveActivityCommand}"/>
 

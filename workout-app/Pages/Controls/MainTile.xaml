@@ -6,50 +6,47 @@
 
 
     <Border
-        HeightRequest="130"
-        BackgroundColor="{Binding TileBackgroundColor}"
-        Stroke="{Binding TileBackgroundColor}">
+        HeightRequest="140">
 
         <Border.StrokeShape>
-            <RoundRectangle CornerRadius="45"/>
+            <RoundRectangle CornerRadius="20"/>
         </Border.StrokeShape>
-
-        <Border.Shadow>
-            <Shadow 
-              Brush="Black"
-              Opacity="0.15"
-              Radius="5"
-              Offset="2,2" />
-        </Border.Shadow>
 
         <Border.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding TapCommand}"/>
         </Border.GestureRecognizers>
 
-        <Grid
-            RowDefinitions="*,*"
-            Margin="10">
+        <Grid RowDefinitions="*, Auto"
+                Margin="12">
 
-            <!-- Image on top -->
-            <Image
-                Source="{Binding ImageSource}"
-                Aspect="AspectFit"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                HeightRequest="50"
-                WidthRequest="50"
-                Grid.Row="0"/>
+            <!-- Colored circle with icon -->
+            <Grid Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                <Ellipse
+                    Fill="{Binding TileBackgroundColor}"
+                    WidthRequest="80"
+                    HeightRequest="80"/>
+                <Image
+                    Source="{Binding ImageSource}"
+                    Aspect="AspectFit"
+                    HeightRequest="44"
+                    WidthRequest="44"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+            </Grid>
 
-            <!-- Text in the bottom -->
+            <!-- Label -->
             <Label
+                Grid.Row="1"
                 Text="{Binding TileText}"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                FontSize="Medium"
-                TextColor="Black"
-                Grid.Row="1"/>
+                FontSize="16"
+                TextColor="{StaticResource Gray600}"
+                Margin="0,6,0,0"/>
         </Grid>
     </Border>
-    
+
 </ContentView>

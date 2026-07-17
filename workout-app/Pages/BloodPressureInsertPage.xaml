@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.BloodPressureInsertPage"
              x:DataType="BloodPressureInsertPageModel"
-             Title="BloodPressureInsertPage">
+             HideSoftInputOnTapped="True"
+             Title="{x:Static AppResources.bloodpressure}">
 
     <VerticalStackLayout Spacing="50" Padding="20">
 
@@ -49,7 +50,7 @@
                                 ItemsSource="{Binding BloodPressureValues}"
                                 SelectedItem="{Binding SelectedSystolic}"
                                 FontSize="Large"
-                                TextColor="Black"
+                                TextColor="{StaticResource Gray500}"
                                 BackgroundColor="Transparent"
                                 HorizontalTextAlignment="Center" />
                         </Border>
@@ -68,7 +69,7 @@
                                 ItemsSource="{Binding DiastolicValues}"
                                 SelectedItem="{Binding SelectedDiastolic}"
                                 FontSize="Large"
-                                TextColor="Black"
+                                TextColor="{StaticResource Gray500}"
                                 BackgroundColor="Transparent"
                                 HorizontalTextAlignment="Center" />
                         </Border>
@@ -87,7 +88,7 @@
                                 ItemsSource="{Binding PulsValues}"
                                 SelectedItem="{Binding SelectedPulse}"
                                 FontSize="Large"
-                                TextColor="Black"
+                                TextColor="{StaticResource Gray500}"
                                 BackgroundColor="Transparent"
                                 HorizontalTextAlignment="Center" />
                         </Border>
@@ -104,22 +105,25 @@
 
                     <Label
                         Grid.Row="0"
-                        Text="Sys"
+                        Text="{x:Static AppResources.bloodpressure_sys_short}"
                         VerticalTextAlignment="Center"
                         FontSize="Large"
-                        FontAttributes="Bold" />
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray500}" />
                     <Label
                         Grid.Row="1"
-                        Text="Dia"
+                        Text="{x:Static AppResources.bloodpressure_dia_short}"
                         VerticalTextAlignment="Center"
                         FontSize="Large"
-                        FontAttributes="Bold" />
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray500}" />
                     <Label
                         Grid.Row="2"
-                        Text="Puls"
+                        Text="{x:Static AppResources.bloodpressure_pulse_short}"
                         VerticalTextAlignment="Center"
                         FontSize="Large"
-                        FontAttributes="Bold" />
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource Gray500}" />
 
                 </Grid>
 
@@ -132,7 +136,7 @@
         <Grid ColumnDefinitions="*, 2*, *">
             <BasicButton 
                 Grid.Column="1"
-                Text="Speichern"
+                Text="{x:Static AppResources.button_save}"
                 Command="{Binding SaveBloodPressureCommand}" >
             </BasicButton>
         </Grid>

@@ -1,4 +1,6 @@
 using CommunityToolkit.Maui;
+using Plugin.LocalNotification;
+using Serilog;
 using Syncfusion.Maui.Toolkit.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -20,6 +22,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
             .ConfigureSyncfusionToolkit()
+            .UseLocalNotification()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -44,6 +47,8 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<MainPageModel>();
+        builder.Services.AddTransient<SettingsPage>();
+        builder.Services.AddTransient<SettingsPageModel>();
 
         builder.Services.AddTransientWithShellRoute<WeightChartPage, WeightChartPageModel>(nameof(WeightChartPage));
         builder.Services.AddTransientWithShellRoute<WeightInsertPage, WeightInsertPageModel>(nameof(WeightInsertPage));
@@ -58,6 +63,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<RadioButtonRangeToColorConverter>();
         builder.Services.AddSingleton<DatabaseService>();
 
+        builder.Logging.ClearProviders();
+        builder.Services.AddSerilog(SerilogConfig.ConfigureLogging());
 
 #if DEBUG
         builder.Logging.AddDebug();

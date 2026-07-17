@@ -7,16 +7,16 @@
              Title="{x:Static AppResources.activity}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="30">
+        <VerticalStackLayout Padding="20" Spacing="10">
 
             <!-- Time Range Selection -->
             <DateRangeSelector
                 Margin="10,0,10,0"
                 SelectedRange="{Binding SelectedRange}"
                 RangeSelectedCommand="{Binding SelectRangeCommand}"
-                FirstRangeText="Woche"
-                SecondRangeText="Monat"
-                ThirdRangeText="Max"
+                FirstRangeText="{x:Static AppResources.range_week}"
+                SecondRangeText="{x:Static AppResources.range_month}"
+                ThirdRangeText="{x:Static AppResources.range_max}"
                 FirstRangeValue="Week"
                 SecondRangeValue="Month"
                 ThirdRangeValue="Max"/>
@@ -56,7 +56,8 @@
             <!-- Chart Element -->
             <Border
                 Margin="10,0,10,0"
-                Padding="30">
+                Padding="30"
+                HeightRequest="360">
 
                 <sf:SfCartesianChart>
 
@@ -103,7 +104,7 @@
 
                     <!-- Average line (legend entry) -->
                     <sf:LineSeries
-                        Label="avg"
+                        Label="{x:Static AppResources.average}"
                         Fill="LightGray"
                         StrokeDashArray="4,4"
                         StrokeWidth="2"
@@ -124,7 +125,7 @@
             </Border>
 
             <FunctionButton
-                Text="Wert eintragen"
+                Text="{x:Static AppResources.button_value_insert}"
                 Command="{Binding GoToInsertActivityCommand}"/>
 
         </VerticalStackLayout>

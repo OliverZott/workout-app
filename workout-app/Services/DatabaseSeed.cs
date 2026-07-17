@@ -122,5 +122,8 @@ public static class DatabaseSeed
         new ActivityData { Timestamp = new DateTime(2026,03,20), Type = ActivityType.WeightLifting, Duration=74},
         new ActivityData { Timestamp = new DateTime(2026,03,21), Type = ActivityType.WeightLifting, Duration=77},
 
+        new ActivityData { Timestamp = new DateTime(2026,03,16), Type = ActivityType.WeightLifting, Duration = 63 },
+        new ActivityData { Timestamp = new DateTime(2026,03,18), Type = ActivityType.WeightLifting, Duration = 61 },
+        new ActivityData { Timestamp = new DateTime(2026,03,19), Type = ActivityType.WeightLifting, Duration = 65 },
     ];
 }

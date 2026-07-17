@@ -5,7 +5,7 @@
     x:Class="workout_app.Pages.Controls.FunctionButton"
     
     BackgroundColor="#00C2C2"
-    TextColor="Black"
+    TextColor="White"
     FontSize="Medium"
     FontAttributes="Bold"
     CornerRadius="40"

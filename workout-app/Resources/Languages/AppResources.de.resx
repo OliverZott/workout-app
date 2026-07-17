@@ -118,36 +118,201 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="activity" xml:space="preserve">
-    <value>Activity</value>
+    <value>Aktivität</value>
+  </data>
+  <data name="activity_alert_altitude_label" xml:space="preserve">
+    <value>Höhenmeter</value>
+  </data>
+  <data name="activity_alert_distance_label" xml:space="preserve">
+    <value>Distanz</value>
+  </data>
+  <data name="activity_alert_duration_label" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="activity_insert_title" xml:space="preserve">
+    <value>Aktivität eintragen</value>
+  </data>
+  <data name="activity_select_title" xml:space="preserve">
+    <value>Aktivität wählen...</value>
+  </data>
+  <data name="altitude" xml:space="preserve">
+    <value>Höhenmeter</value>
   </data>
   <data name="app_title" xml:space="preserve">
     <value>Velosaurus Workout App</value>
   </data>
+  <data name="average" xml:space="preserve">
+    <value>Mittelwert</value>
+  </data>
   <data name="bloodpressure" xml:space="preserve">
-    <value>Bloodpressure</value>
+    <value>Blutdruck</value>
+  </data>
+  <data name="bloodpressure_dia_short" xml:space="preserve">
+    <value>Dia</value>
+  </data>
+  <data name="bloodpressure_pulse_short" xml:space="preserve">
+    <value>Puls</value>
+  </data>
+  <data name="bloodpressure_sys_short" xml:space="preserve">
+    <value>Sys</value>
   </data>
   <data name="button_no" xml:space="preserve">
-    <value>No</value>
+    <value>Nein</value>
+  </data>
+  <data name="button_save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="button_value_insert" xml:space="preserve">
+    <value>Wert eintragen</value>
   </data>
   <data name="button_yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="diastolic" xml:space="preserve">
-    <value>Diastolic</value>
+    <value>Diastolisch</value>
   </data>
   <data name="displayalert_want_to_save" xml:space="preserve">
-    <value>Save entry?</value>
+    <value>Eintrag speichern?</value>
+  </data>
+  <data name="distance" xml:space="preserve">
+    <value>Distanz</value>
+  </data>
+  <data name="duration" xml:space="preserve">
+    <value>Dauer</value>
   </data>
   <data name="heartrate" xml:space="preserve">
-    <value>Heartrate</value>
+    <value>Puls</value>
+  </data>
+  <data name="last_entry" xml:space="preserve">
+    <value>Letzte Eingabe</value>
+  </data>
+  <data name="notification_workout_reminder_description" xml:space="preserve">
+    <value>Zeit, dein Training zu protokollieren!</value>
+  </data>
+  <data name="notification_workout_reminder_title" xml:space="preserve">
+    <value>Workout-Erinnerung</value>
+  </data>
+  <data name="range_max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="range_month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="range_week" xml:space="preserve">
+    <value>Woche</value>
   </data>
   <data name="settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
+  </data>
+  <data name="settings_app_version" xml:space="preserve">
+    <value>App-Version:</value>
+  </data>
+  <data name="settings_enable_logging" xml:space="preserve">
+    <value>Logging aktivieren</value>
+  </data>
+  <data name="settings_export_csv" xml:space="preserve">
+    <value>CSV exportieren</value>
+  </data>
+  <data name="settings_export_data" xml:space="preserve">
+    <value>Daten exportieren</value>
+  </data>
+  <data name="settings_export_description" xml:space="preserve">
+    <value>Alle erfassten Daten als CSV-Dateien exportieren.</value>
+  </data>
+  <data name="settings_logging_description" xml:space="preserve">
+    <value>Wenn aktiviert, werden detaillierte Logs in eine Datei auf dem Gerät geschrieben.</value>
+  </data>
+  <data name="settings_notifications" xml:space="preserve">
+    <value>Benachrichtigungen</value>
+  </data>
+  <data name="settings_send_logs" xml:space="preserve">
+    <value>Logs senden</value>
+  </data>
+  <data name="share_export_workout_data_title" xml:space="preserve">
+    <value>Workout-Daten exportieren</value>
+  </data>
+  <data name="share_send_logs_title" xml:space="preserve">
+    <value>Logs senden</value>
+  </data>
+  <data name="shell_home" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="shell_settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="status_export_complete" xml:space="preserve">
+    <value>Export abgeschlossen.</value>
+  </data>
+  <data name="status_export_failed_prefix" xml:space="preserve">
+    <value>Export fehlgeschlagen</value>
+  </data>
+  <data name="status_exporting" xml:space="preserve">
+    <value>Exportiere...</value>
+  </data>
+  <data name="status_no_log_files" xml:space="preserve">
+    <value>Keine Log-Dateien gefunden.</value>
+  </data>
+  <data name="status_send_logs_failed_prefix" xml:space="preserve">
+    <value>Senden der Logs fehlgeschlagen</value>
   </data>
   <data name="systolic" xml:space="preserve">
-    <value>Systolic</value>
+    <value>Systolisch</value>
+  </data>
+  <data name="unit_h" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="unit_hm" xml:space="preserve">
+    <value>hm</value>
+  </data>
+  <data name="unit_kg" xml:space="preserve">
+    <value>kg</value>
+  </data>
+  <data name="unit_km" xml:space="preserve">
+    <value>km</value>
+  </data>
+  <data name="unit_min" xml:space="preserve">
+    <value>min</value>
   </data>
   <data name="weight" xml:space="preserve">
-    <value>Weight</value>
+    <value>Gewicht</value>
+  </data>
+  <data name="weight_insert_title" xml:space="preserve">
+    <value>Gewicht eintragen</value>
+  </data>
+  <data name="settings_export_db" xml:space="preserve">
+    <value>DB exportieren</value>
+  </data>
+  <data name="settings_import_db" xml:space="preserve">
+    <value>DB importieren</value>
+  </data>
+  <data name="settings_import_data" xml:space="preserve">
+    <value>Daten importieren</value>
+  </data>
+  <data name="settings_import_description" xml:space="preserve">
+    <value>Ein vollständiges Datenbank-Backup (.db3) importieren. Dies ersetzt lokale Daten.</value>
+  </data>
+  <data name="settings_db_import_confirm_title" xml:space="preserve">
+    <value>Datenbank importieren</value>
+  </data>
+  <data name="settings_db_import_confirm_message" xml:space="preserve">
+    <value>Dies ersetzt deine aktuelle lokale Datenbank. Fortfahren?</value>
+  </data>
+  <data name="settings_db_import_picker_title" xml:space="preserve">
+    <value>Datenbank-Backup auswählen</value>
+  </data>
+  <data name="share_export_db_title" xml:space="preserve">
+    <value>Datenbank-Backup exportieren</value>
+  </data>
+  <data name="status_db_export_complete" xml:space="preserve">
+    <value>Datenbankexport vorbereitet.</value>
+  </data>
+  <data name="status_db_export_failed_prefix" xml:space="preserve">
+    <value>Datenbankexport fehlgeschlagen</value>
+  </data>
+  <data name="status_db_import_complete" xml:space="preserve">
+    <value>Datenbankimport abgeschlossen.</value>
+  </data>
+  <data name="status_db_import_failed_prefix" xml:space="preserve">
+    <value>Datenbankimport fehlgeschlagen</value>
   </data>
 </root>
