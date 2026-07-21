@@ -18,8 +18,8 @@
         <ApplicationId>org.velosaurus.workoutapp</ApplicationId>
 
         <!-- Versions -->
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-        <ApplicationVersion>1</ApplicationVersion>
+        <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+        <ApplicationVersion>2</ApplicationVersion>
 
 
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
@@ -30,8 +30,7 @@
         <MauiXamlInflator>SourceGen</MauiXamlInflator>
     </PropertyGroup>
 
-    <PropertyGroup
-        Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
         <DebugSymbols>False</DebugSymbols>
         <AndroidLinkTool>r8</AndroidLinkTool>
         <!--<AndroidEnableProguard>true</AndroidEnableProguard>-->
@@ -55,7 +54,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="14.2.0" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="14.2.2" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.80" />
         <PackageReference Include="Microsoft.Maui.Essentials" Version="10.0.80" />
