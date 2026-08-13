@@ -18,7 +18,7 @@
 - Database backup/restore is available in Settings:
   - Export raw `.db3` via share
   - Import `.db3` via picker with explicit confirmation
-- Use DatabaseSeed-based seeding for both debug and release (no bundled debug db flow).
+- Use DatabaseSeed-based seeding for debug builds only (no bundled debug db flow). Database seeding must never run in Release builds.
 
 ## Localization rules
 - All user-facing text should come from `AppResources` keys.
