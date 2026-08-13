@@ -37,7 +37,12 @@ public static class MauiProgram
             handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
         });
 
-        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+        EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+        {
+            handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+        });
+
+        EditorHandler.Mapper.AppendToMapping(nameof(Editor), (handler, view) =>
         {
             handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
         });
