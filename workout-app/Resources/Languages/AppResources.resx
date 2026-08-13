@@ -315,4 +315,7 @@
   <data name="status_db_import_failed_prefix" xml:space="preserve">
     <value>Database import failed</value>
   </data>
+  <data name="description" xml:space="preserve">
+    <value>Description</value>
+  </data>
 </root>

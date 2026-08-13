@@ -23,96 +23,644 @@ namespace workout_app.Resources.Languages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
-
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal AppResources() {
         }
-
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    resourceMan = new global::System.Resources.ResourceManager("workout_app.Resources.Languages.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("workout_app.Resources.Languages.AppResources", typeof(AppResources).Assembly);
+                    resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture {
-            get => resourceCulture;
-            set => resourceCulture = value;
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
         }
-
-        internal static string activity => ResourceManager.GetString("activity", resourceCulture);
-        internal static string activity_alert_altitude_label => ResourceManager.GetString("activity_alert_altitude_label", resourceCulture);
-        internal static string activity_alert_distance_label => ResourceManager.GetString("activity_alert_distance_label", resourceCulture);
-        internal static string activity_alert_duration_label => ResourceManager.GetString("activity_alert_duration_label", resourceCulture);
-        internal static string activity_insert_title => ResourceManager.GetString("activity_insert_title", resourceCulture);
-        internal static string activity_select_title => ResourceManager.GetString("activity_select_title", resourceCulture);
-        internal static string altitude => ResourceManager.GetString("altitude", resourceCulture);
-        internal static string app_title => ResourceManager.GetString("app_title", resourceCulture);
-        internal static string average => ResourceManager.GetString("average", resourceCulture);
-        internal static string bloodpressure => ResourceManager.GetString("bloodpressure", resourceCulture);
-        internal static string bloodpressure_dia_short => ResourceManager.GetString("bloodpressure_dia_short", resourceCulture);
-        internal static string bloodpressure_pulse_short => ResourceManager.GetString("bloodpressure_pulse_short", resourceCulture);
-        internal static string bloodpressure_sys_short => ResourceManager.GetString("bloodpressure_sys_short", resourceCulture);
-        internal static string button_no => ResourceManager.GetString("button_no", resourceCulture);
-        internal static string button_save => ResourceManager.GetString("button_save", resourceCulture);
-        internal static string button_value_insert => ResourceManager.GetString("button_value_insert", resourceCulture);
-        internal static string button_yes => ResourceManager.GetString("button_yes", resourceCulture);
-        internal static string diastolic => ResourceManager.GetString("diastolic", resourceCulture);
-        internal static string displayalert_want_to_save => ResourceManager.GetString("displayalert_want_to_save", resourceCulture);
-        internal static string distance => ResourceManager.GetString("distance", resourceCulture);
-        internal static string duration => ResourceManager.GetString("duration", resourceCulture);
-        internal static string heartrate => ResourceManager.GetString("heartrate", resourceCulture);
-        internal static string last_entry => ResourceManager.GetString("last_entry", resourceCulture);
-        internal static string notification_workout_reminder_description => ResourceManager.GetString("notification_workout_reminder_description", resourceCulture);
-        internal static string notification_workout_reminder_title => ResourceManager.GetString("notification_workout_reminder_title", resourceCulture);
-        internal static string range_max => ResourceManager.GetString("range_max", resourceCulture);
-        internal static string range_month => ResourceManager.GetString("range_month", resourceCulture);
-        internal static string range_week => ResourceManager.GetString("range_week", resourceCulture);
-        internal static string settings => ResourceManager.GetString("settings", resourceCulture);
-        internal static string settings_app_version => ResourceManager.GetString("settings_app_version", resourceCulture);
-        internal static string settings_enable_logging => ResourceManager.GetString("settings_enable_logging", resourceCulture);
-        internal static string settings_export_csv => ResourceManager.GetString("settings_export_csv", resourceCulture);
-        internal static string settings_export_data => ResourceManager.GetString("settings_export_data", resourceCulture);
-        internal static string settings_export_description => ResourceManager.GetString("settings_export_description", resourceCulture);
-        internal static string settings_logging_description => ResourceManager.GetString("settings_logging_description", resourceCulture);
-        internal static string settings_notifications => ResourceManager.GetString("settings_notifications", resourceCulture);
-        internal static string settings_send_logs => ResourceManager.GetString("settings_send_logs", resourceCulture);
-        internal static string settings_export_db => ResourceManager.GetString("settings_export_db", resourceCulture);
-        internal static string settings_import_db => ResourceManager.GetString("settings_import_db", resourceCulture);
-        internal static string settings_import_data => ResourceManager.GetString("settings_import_data", resourceCulture);
-        internal static string settings_import_description => ResourceManager.GetString("settings_import_description", resourceCulture);
-        internal static string settings_db_import_confirm_title => ResourceManager.GetString("settings_db_import_confirm_title", resourceCulture);
-        internal static string settings_db_import_confirm_message => ResourceManager.GetString("settings_db_import_confirm_message", resourceCulture);
-        internal static string settings_db_import_picker_title => ResourceManager.GetString("settings_db_import_picker_title", resourceCulture);
-        internal static string share_export_db_title => ResourceManager.GetString("share_export_db_title", resourceCulture);
-        internal static string share_export_workout_data_title => ResourceManager.GetString("share_export_workout_data_title", resourceCulture);
-        internal static string share_send_logs_title => ResourceManager.GetString("share_send_logs_title", resourceCulture);
-        internal static string shell_home => ResourceManager.GetString("shell_home", resourceCulture);
-        internal static string shell_settings => ResourceManager.GetString("shell_settings", resourceCulture);
-        internal static string status_db_export_complete => ResourceManager.GetString("status_db_export_complete", resourceCulture);
-        internal static string status_db_export_failed_prefix => ResourceManager.GetString("status_db_export_failed_prefix", resourceCulture);
-        internal static string status_db_import_complete => ResourceManager.GetString("status_db_import_complete", resourceCulture);
-        internal static string status_db_import_failed_prefix => ResourceManager.GetString("status_db_import_failed_prefix", resourceCulture);
-        internal static string status_export_complete => ResourceManager.GetString("status_export_complete", resourceCulture);
-        internal static string status_export_failed_prefix => ResourceManager.GetString("status_export_failed_prefix", resourceCulture);
-        internal static string status_exporting => ResourceManager.GetString("status_exporting", resourceCulture);
-        internal static string status_no_log_files => ResourceManager.GetString("status_no_log_files", resourceCulture);
-        internal static string status_send_logs_failed_prefix => ResourceManager.GetString("status_send_logs_failed_prefix", resourceCulture);
-        internal static string systolic => ResourceManager.GetString("systolic", resourceCulture);
-        internal static string unit_h => ResourceManager.GetString("unit_h", resourceCulture);
-        internal static string unit_hm => ResourceManager.GetString("unit_hm", resourceCulture);
-        internal static string unit_kg => ResourceManager.GetString("unit_kg", resourceCulture);
-        internal static string unit_km => ResourceManager.GetString("unit_km", resourceCulture);
-        internal static string unit_min => ResourceManager.GetString("unit_min", resourceCulture);
-        internal static string weight => ResourceManager.GetString("weight", resourceCulture);
-        internal static string weight_insert_title => ResourceManager.GetString("weight_insert_title", resourceCulture);
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity.
+        /// </summary>
+        internal static string activity {
+            get {
+                return ResourceManager.GetString("activity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Altitude.
+        /// </summary>
+        internal static string activity_alert_altitude_label {
+            get {
+                return ResourceManager.GetString("activity_alert_altitude_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance.
+        /// </summary>
+        internal static string activity_alert_distance_label {
+            get {
+                return ResourceManager.GetString("activity_alert_distance_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string activity_alert_duration_label {
+            get {
+                return ResourceManager.GetString("activity_alert_duration_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add activity.
+        /// </summary>
+        internal static string activity_insert_title {
+            get {
+                return ResourceManager.GetString("activity_insert_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select activity....
+        /// </summary>
+        internal static string activity_select_title {
+            get {
+                return ResourceManager.GetString("activity_select_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Altitude.
+        /// </summary>
+        internal static string altitude {
+            get {
+                return ResourceManager.GetString("altitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Velosaurus Workout App.
+        /// </summary>
+        internal static string app_title {
+            get {
+                return ResourceManager.GetString("app_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average.
+        /// </summary>
+        internal static string average {
+            get {
+                return ResourceManager.GetString("average", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blood pressure.
+        /// </summary>
+        internal static string bloodpressure {
+            get {
+                return ResourceManager.GetString("bloodpressure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dia.
+        /// </summary>
+        internal static string bloodpressure_dia_short {
+            get {
+                return ResourceManager.GetString("bloodpressure_dia_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pulse.
+        /// </summary>
+        internal static string bloodpressure_pulse_short {
+            get {
+                return ResourceManager.GetString("bloodpressure_pulse_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sys.
+        /// </summary>
+        internal static string bloodpressure_sys_short {
+            get {
+                return ResourceManager.GetString("bloodpressure_sys_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string button_no {
+            get {
+                return ResourceManager.GetString("button_no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string button_save {
+            get {
+                return ResourceManager.GetString("button_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter value.
+        /// </summary>
+        internal static string button_value_insert {
+            get {
+                return ResourceManager.GetString("button_value_insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string button_yes {
+            get {
+                return ResourceManager.GetString("button_yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string description {
+            get {
+                return ResourceManager.GetString("description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diastolic.
+        /// </summary>
+        internal static string diastolic {
+            get {
+                return ResourceManager.GetString("diastolic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save entry?.
+        /// </summary>
+        internal static string displayalert_want_to_save {
+            get {
+                return ResourceManager.GetString("displayalert_want_to_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance.
+        /// </summary>
+        internal static string distance {
+            get {
+                return ResourceManager.GetString("distance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string duration {
+            get {
+                return ResourceManager.GetString("duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heart rate.
+        /// </summary>
+        internal static string heartrate {
+            get {
+                return ResourceManager.GetString("heartrate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last entry.
+        /// </summary>
+        internal static string last_entry {
+            get {
+                return ResourceManager.GetString("last_entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time to log your workout!.
+        /// </summary>
+        internal static string notification_workout_reminder_description {
+            get {
+                return ResourceManager.GetString("notification_workout_reminder_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workout reminder.
+        /// </summary>
+        internal static string notification_workout_reminder_title {
+            get {
+                return ResourceManager.GetString("notification_workout_reminder_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max.
+        /// </summary>
+        internal static string range_max {
+            get {
+                return ResourceManager.GetString("range_max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        internal static string range_month {
+            get {
+                return ResourceManager.GetString("range_month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week.
+        /// </summary>
+        internal static string range_week {
+            get {
+                return ResourceManager.GetString("range_week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App Version:.
+        /// </summary>
+        internal static string settings_app_version {
+            get {
+                return ResourceManager.GetString("settings_app_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This replaces your current local database. Continue?.
+        /// </summary>
+        internal static string settings_db_import_confirm_message {
+            get {
+                return ResourceManager.GetString("settings_db_import_confirm_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import database.
+        /// </summary>
+        internal static string settings_db_import_confirm_title {
+            get {
+                return ResourceManager.GetString("settings_db_import_confirm_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select database backup.
+        /// </summary>
+        internal static string settings_db_import_picker_title {
+            get {
+                return ResourceManager.GetString("settings_db_import_picker_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Logging.
+        /// </summary>
+        internal static string settings_enable_logging {
+            get {
+                return ResourceManager.GetString("settings_enable_logging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export CSV.
+        /// </summary>
+        internal static string settings_export_csv {
+            get {
+                return ResourceManager.GetString("settings_export_csv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Data.
+        /// </summary>
+        internal static string settings_export_data {
+            get {
+                return ResourceManager.GetString("settings_export_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export DB.
+        /// </summary>
+        internal static string settings_export_db {
+            get {
+                return ResourceManager.GetString("settings_export_db", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export all recorded data as CSV files..
+        /// </summary>
+        internal static string settings_export_description {
+            get {
+                return ResourceManager.GetString("settings_export_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Data.
+        /// </summary>
+        internal static string settings_import_data {
+            get {
+                return ResourceManager.GetString("settings_import_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import DB.
+        /// </summary>
+        internal static string settings_import_db {
+            get {
+                return ResourceManager.GetString("settings_import_db", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import a full database backup (.db3). This replaces current local data..
+        /// </summary>
+        internal static string settings_import_description {
+            get {
+                return ResourceManager.GetString("settings_import_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, detailed logs are written to a file on the device..
+        /// </summary>
+        internal static string settings_logging_description {
+            get {
+                return ResourceManager.GetString("settings_logging_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        internal static string settings_notifications {
+            get {
+                return ResourceManager.GetString("settings_notifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Logs.
+        /// </summary>
+        internal static string settings_send_logs {
+            get {
+                return ResourceManager.GetString("settings_send_logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Database Backup.
+        /// </summary>
+        internal static string share_export_db_title {
+            get {
+                return ResourceManager.GetString("share_export_db_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Workout Data.
+        /// </summary>
+        internal static string share_export_workout_data_title {
+            get {
+                return ResourceManager.GetString("share_export_workout_data_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Logs.
+        /// </summary>
+        internal static string share_send_logs_title {
+            get {
+                return ResourceManager.GetString("share_send_logs_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string shell_home {
+            get {
+                return ResourceManager.GetString("shell_home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string shell_settings {
+            get {
+                return ResourceManager.GetString("shell_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database export prepared..
+        /// </summary>
+        internal static string status_db_export_complete {
+            get {
+                return ResourceManager.GetString("status_db_export_complete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database export failed.
+        /// </summary>
+        internal static string status_db_export_failed_prefix {
+            get {
+                return ResourceManager.GetString("status_db_export_failed_prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database import complete..
+        /// </summary>
+        internal static string status_db_import_complete {
+            get {
+                return ResourceManager.GetString("status_db_import_complete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database import failed.
+        /// </summary>
+        internal static string status_db_import_failed_prefix {
+            get {
+                return ResourceManager.GetString("status_db_import_failed_prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export complete..
+        /// </summary>
+        internal static string status_export_complete {
+            get {
+                return ResourceManager.GetString("status_export_complete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export failed.
+        /// </summary>
+        internal static string status_export_failed_prefix {
+            get {
+                return ResourceManager.GetString("status_export_failed_prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporting....
+        /// </summary>
+        internal static string status_exporting {
+            get {
+                return ResourceManager.GetString("status_exporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No log files found..
+        /// </summary>
+        internal static string status_no_log_files {
+            get {
+                return ResourceManager.GetString("status_no_log_files", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to send logs.
+        /// </summary>
+        internal static string status_send_logs_failed_prefix {
+            get {
+                return ResourceManager.GetString("status_send_logs_failed_prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Systolic.
+        /// </summary>
+        internal static string systolic {
+            get {
+                return ResourceManager.GetString("systolic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to h.
+        /// </summary>
+        internal static string unit_h {
+            get {
+                return ResourceManager.GetString("unit_h", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hm.
+        /// </summary>
+        internal static string unit_hm {
+            get {
+                return ResourceManager.GetString("unit_hm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kg.
+        /// </summary>
+        internal static string unit_kg {
+            get {
+                return ResourceManager.GetString("unit_kg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to km.
+        /// </summary>
+        internal static string unit_km {
+            get {
+                return ResourceManager.GetString("unit_km", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to min.
+        /// </summary>
+        internal static string unit_min {
+            get {
+                return ResourceManager.GetString("unit_min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        internal static string weight {
+            get {
+                return ResourceManager.GetString("weight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add weight.
+        /// </summary>
+        internal static string weight_insert_title {
+            get {
+                return ResourceManager.GetString("weight_insert_title", resourceCulture);
+            }
+        }
     }
 }

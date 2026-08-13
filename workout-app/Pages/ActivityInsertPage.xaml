@@ -131,6 +131,25 @@
                 </Grid>
             </Border>
 
+            <!-- Description -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{x:Static AppResources.description}" 
+               Style="{StaticResource WaSectionLabelStyle}"/>
+
+                    <Border Style="{StaticResource WaCompactInputBorderStyle}"
+                WidthRequest="240">
+                        <Editor
+                Text="{Binding Description, Mode=TwoWay}"
+                AutoSize="TextChanges"
+                FontSize="16"
+                TextColor="Black"
+                BackgroundColor="Transparent"/>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+
             <!-- Save Button -->
             <BasicButton
                 Text="{x:Static AppResources.button_save}"

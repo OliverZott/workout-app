@@ -13,26 +13,19 @@ public partial class ActivityInsertPageModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(DistanceEnabled))]
     private ActivityType? selectedActivityType = null;
 
-    [ObservableProperty]
-    private int? selectedHours;
+    [ObservableProperty] private int? selectedHours;
 
-    [ObservableProperty]
-    private int? selectedMinutes;
+    [ObservableProperty] private int? selectedMinutes;
 
-    [ObservableProperty]
-    private double? distance;
+    [ObservableProperty] private double? distance;
 
-    [ObservableProperty]
-    private double? altitude;
+    [ObservableProperty] private double? altitude;
 
-    [ObservableProperty]
-    private string description = "";
-
+    [ObservableProperty] private string description = "";
 
     public bool DistanceEnabled => SelectedActivityType != ActivityType.WeightLifting;
 
-    public IReadOnlyList<ActivityType> AvailableActivities { get; } =
-        [.. Enum.GetValues<ActivityType>()];
+    public IReadOnlyList<ActivityType> AvailableActivities { get; } = [.. Enum.GetValues<ActivityType>()];
 
     public ActivityInsertPageModel(DatabaseService databaseService)
     {
