@@ -12,7 +12,13 @@ public class DatabaseService
 
     public DatabaseService()
     {
+#if ANDROID
+        _dbPath = Path.Combine(
+            Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDocuments)!.AbsolutePath,
+            DatabaseFileName);
+#else
         _dbPath = Path.Combine(FileSystem.AppDataDirectory, DatabaseFileName);
+#endif
     }
 
     private SQLiteAsyncConnection Db => _db ??= new SQLiteAsyncConnection(_dbPath);
@@ -47,6 +53,7 @@ public class DatabaseService
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
+    // Creates tables if missing and seeds initial data into empty tables.
     public async Task InitializeAsync()
     {
         await _dbFileGate.WaitAsync();
@@ -61,6 +68,7 @@ public class DatabaseService
         }
     }
 
+    // Creates tables if they don't exist yet (safe to call repeatedly).
     private async Task EnsureSchemaAsync()
     {
         await Db.CreateTableAsync<WeightData>();
@@ -68,6 +76,7 @@ public class DatabaseService
         await Db.CreateTableAsync<ActivityData>();
     }
 
+    // Inserts seed data only into tables that are still empty.
     private async Task SeedMissingDataAsync()
     {
         var weightCount = await Db.Table<WeightData>().CountAsync();
@@ -83,6 +92,7 @@ public class DatabaseService
             await Db.InsertAllAsync(DatabaseSeed.ActivityItems);
     }
 
+    // Copies the DB file to the cache directory and returns the backup path for sharing.
     public async Task<string> CreateDatabaseBackupAsync()
     {
         await _dbFileGate.WaitAsync();
@@ -108,6 +118,7 @@ public class DatabaseService
         }
     }
 
+    // Replaces the current DB with the file at sourceFilePath (used by Settings import).
     public async Task ReplaceDatabaseFromFileAsync(string sourceFilePath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceFilePath);
@@ -128,6 +139,7 @@ public class DatabaseService
         }
     }
 
+    // Closes the active connection, overwrites the DB file with the stream content, then reopens.
     private async Task ReplaceDatabaseFromStreamAsync(Stream sourceStream)
     {
         await CloseConnectionInternalAsync();
@@ -142,6 +154,7 @@ public class DatabaseService
         _db = new SQLiteAsyncConnection(_dbPath);
     }
 
+    // Closes and nulls the connection so the DB file can be safely copied or replaced.
     private async Task CloseConnectionInternalAsync()
     {
         if (_db is null)
