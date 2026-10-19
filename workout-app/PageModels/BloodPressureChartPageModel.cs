@@ -7,11 +7,22 @@ namespace workout_app.PageModels;
 
 public partial class BloodPressureChartPageModel : ObservableObject
 {
+    private const int PageSize = 20;
     private readonly DatabaseService databaseService;
     private RangeType _selectedRange;
+    private List<BloodPressureData> allMeasurements = [];
+    private int nextPageStartIndex;
 
     [ObservableProperty]
     private ObservableCollection<BloodPressureData> data = [];
+
+    [ObservableProperty]
+    private ObservableCollection<BloodPressureData> visibleMeasurements = [];
+
+    [ObservableProperty]
+    private bool isLoadingMore;
+
+    public bool HasMoreMeasurements => nextPageStartIndex < allMeasurements.Count;
 
     [ObservableProperty]
     private bool isLoading = false;
@@ -77,6 +88,8 @@ public partial class BloodPressureChartPageModel : ObservableObject
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
                 Data = new ObservableCollection<BloodPressureData>(filteredData);
+                allMeasurements = filteredData.OrderByDescending(x => x.Timestamp).ToList();
+                ResetVisibleMeasurements();
             });
         }
         catch (Exception ex)
@@ -86,12 +99,40 @@ public partial class BloodPressureChartPageModel : ObservableObject
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
                 Data = [];
+                allMeasurements = [];
+                ResetVisibleMeasurements();
             });
         }
         finally
         {
             IsLoading = false;
         }
+    }
+
+    [RelayCommand]
+    private void LoadMoreMeasurements()
+    {
+        if (IsLoadingMore || !HasMoreMeasurements)
+            return;
+
+        IsLoadingMore = true;
+
+        foreach (var item in allMeasurements.Skip(nextPageStartIndex).Take(PageSize))
+            VisibleMeasurements.Add(item);
+
+        nextPageStartIndex += PageSize;
+        OnPropertyChanged(nameof(HasMoreMeasurements));
+
+        IsLoadingMore = false;
+    }
+
+    private void ResetVisibleMeasurements()
+    {
+        // Assign the first page in one go: replacing the collection and then adding items one by one
+        // makes the iOS CollectionView lay out the items over the header (chart) while it reloads.
+        VisibleMeasurements = new ObservableCollection<BloodPressureData>(allMeasurements.Take(PageSize));
+        nextPageStartIndex = VisibleMeasurements.Count;
+        OnPropertyChanged(nameof(HasMoreMeasurements));
     }
 
     private (DateTime from, DateTime to) GetDateRange()

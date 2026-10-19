@@ -7,12 +7,23 @@ namespace workout_app.PageModels;
 
 public partial class WeightChartPageModel : ObservableObject
 {
+    private const int PageSize = 20;
     private bool IsLoading;
     private readonly DatabaseService databaseService;
     private RangeType _selectedRange;
+    private List<WeightData> allMeasurements = [];
+    private int nextPageStartIndex;
 
     [ObservableProperty]
     private ObservableCollection<WeightData> data = [];
+
+    [ObservableProperty]
+    private ObservableCollection<WeightData> visibleMeasurements = [];
+
+    [ObservableProperty]
+    private bool isLoadingMore;
+
+    public bool HasMoreMeasurements => nextPageStartIndex < allMeasurements.Count;
 
     [ObservableProperty]
     private string lastWeightReading = "--";
@@ -75,6 +86,8 @@ public partial class WeightChartPageModel : ObservableObject
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
                 Data = new ObservableCollection<WeightData>(filteredData);
+                allMeasurements = filteredData.OrderByDescending(x => x.Timestamp).ToList();
+                ResetVisibleMeasurements();
             });
         }
         catch (Exception ex)
@@ -84,12 +97,40 @@ public partial class WeightChartPageModel : ObservableObject
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
                 Data = [];
+                allMeasurements = [];
+                ResetVisibleMeasurements();
             });
         }
         finally
         {
             IsLoading = false;
         }
+    }
+
+    [RelayCommand]
+    private void LoadMoreMeasurements()
+    {
+        if (IsLoadingMore || !HasMoreMeasurements)
+            return;
+
+        IsLoadingMore = true;
+
+        foreach (var item in allMeasurements.Skip(nextPageStartIndex).Take(PageSize))
+            VisibleMeasurements.Add(item);
+
+        nextPageStartIndex += PageSize;
+        OnPropertyChanged(nameof(HasMoreMeasurements));
+
+        IsLoadingMore = false;
+    }
+
+    private void ResetVisibleMeasurements()
+    {
+        // Assign the first page in one go: replacing the collection and then adding items one by one
+        // makes the iOS CollectionView lay out the items over the header (chart) while it reloads.
+        VisibleMeasurements = new ObservableCollection<WeightData>(allMeasurements.Take(PageSize));
+        nextPageStartIndex = VisibleMeasurements.Count;
+        OnPropertyChanged(nameof(HasMoreMeasurements));
     }
 
     private (DateTime from, DateTime to) GetDateRange()

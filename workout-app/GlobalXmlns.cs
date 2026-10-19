@@ -15,4 +15,7 @@
     "workout_app.Converter")]
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",
+    "workout_app.Models")]
+[assembly: XmlnsDefinition(
+    "http://schemas.microsoft.com/dotnet/maui/global",
     "workout_app.Resources.Languages")]

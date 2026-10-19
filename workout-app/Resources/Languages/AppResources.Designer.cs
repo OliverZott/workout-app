@@ -61,6 +61,15 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string activities {
+            get {
+                return ResourceManager.GetString("activities", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Activity.
         /// </summary>
         internal static string activity {
@@ -273,6 +282,15 @@ namespace workout_app.Resources.Languages {
         internal static string last_entry {
             get {
                 return ResourceManager.GetString("last_entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measurements.
+        /// </summary>
+        internal static string measurements {
+            get {
+                return ResourceManager.GetString("measurements", resourceCulture);
             }
         }
         

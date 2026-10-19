@@ -318,4 +318,10 @@
   <data name="description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="measurements" xml:space="preserve">
+    <value>Measurements</value>
+  </data>
+  <data name="activities" xml:space="preserve">
+    <value>Activities</value>
+  </data>
 </root>

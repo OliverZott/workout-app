@@ -7,11 +7,14 @@ namespace workout_app.PageModels;
 
 public partial class ActivityChartPageModel : ObservableObject
 {
+    private const int PageSize = 20;
     private readonly DatabaseService databaseService;
     private bool isLoading;
     private RangeType selectedRange;
     private List<ActivityData> cachedFiltered = [];
     private List<ActivityType> cachedTop3 = [];
+    private List<ActivityData> allActivities = [];
+    private int nextPageStartIndex;
 
     // Per-activity-type chart data (top 3)
     public ObservableCollection<ActivitySummaryPoint> Activity1Data { get; } = [];
@@ -32,6 +35,12 @@ public partial class ActivityChartPageModel : ObservableObject
     [ObservableProperty] private bool hasActivity1;
     [ObservableProperty] private bool hasActivity2;
     [ObservableProperty] private bool hasActivity3;
+
+    // Activity list below the chart
+    [ObservableProperty] private ObservableCollection<ActivityData> visibleActivities = [];
+    [ObservableProperty] private bool isLoadingMore;
+
+    public bool HasMoreActivities => nextPageStartIndex < allActivities.Count;
 
     // Summary
     [ObservableProperty] private string averageDistanceReading = "--";
@@ -101,6 +110,9 @@ public partial class ActivityChartPageModel : ObservableObject
 
                 SplitData(filtered, top3Types, chartFrom, to);
                 UpdateSummary();
+
+                allActivities = filtered.OrderByDescending(a => a.Timestamp).ToList();
+                ResetVisibleActivities();
             });
         }
         catch (Exception ex)
@@ -111,12 +123,40 @@ public partial class ActivityChartPageModel : ObservableObject
                 Activity1Data.Clear();
                 Activity2Data.Clear();
                 Activity3Data.Clear();
+                allActivities = [];
+                ResetVisibleActivities();
             });
         }
         finally
         {
             isLoading = false;
         }
+    }
+
+    [RelayCommand]
+    private void LoadMoreActivities()
+    {
+        if (IsLoadingMore || !HasMoreActivities)
+            return;
+
+        IsLoadingMore = true;
+
+        foreach (var item in allActivities.Skip(nextPageStartIndex).Take(PageSize))
+            VisibleActivities.Add(item);
+
+        nextPageStartIndex += PageSize;
+        OnPropertyChanged(nameof(HasMoreActivities));
+
+        IsLoadingMore = false;
+    }
+
+    private void ResetVisibleActivities()
+    {
+        // Assign the first page in one go: replacing the collection and then adding items one by one
+        // makes the iOS CollectionView lay out the items over the header (chart) while it reloads.
+        VisibleActivities = new ObservableCollection<ActivityData>(allActivities.Take(PageSize));
+        nextPageStartIndex = VisibleActivities.Count;
+        OnPropertyChanged(nameof(HasMoreActivities));
     }
 
     private void SplitData(List<ActivityData> activities, List<ActivityType> top3, DateTime from, DateTime to)
