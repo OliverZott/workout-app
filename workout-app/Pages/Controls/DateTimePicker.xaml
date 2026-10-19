@@ -37,7 +37,7 @@
                 x:Name="bpDatePicker"
                 Date="{Binding SelectedDate, Source={x:Reference root}}"
                 BackgroundColor="Transparent"
-                Opacity="0.01"/>
+                Opacity="0.02"/>
         </Grid>
 
 
@@ -71,7 +71,7 @@
                 x:Name="bpTimePicker"
                 Time="{Binding SelectedTime, Source={x:Reference root}}"
                 BackgroundColor="Transparent"
-                Opacity="0.01"/>
+                Opacity="0.02"/>
         </Grid>
 
     </VerticalStackLayout>
