@@ -118,10 +118,11 @@
                                         WidthRequest="90"
                                         BackgroundColor="{StaticResource wa-color-delete}"
                                         Stroke="{StaticResource wa-color-delete}">
-                                        <Label
-                                            Text="{x:Static AppResources.button_delete}"
-                                            TextColor="White"
-                                            FontAttributes="Bold"
+                                        <Image
+                                            Source="trash_w"
+                                            HeightRequest="28"
+                                            WidthRequest="28"
+                                            SemanticProperties.Description="{x:Static AppResources.button_delete}"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center" />
                                     </Border>
