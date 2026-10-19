@@ -31,6 +31,8 @@ public static class MauiProgram
 
 
 #if ANDROID
+        builder.ConfigureMauiHandlers(handlers => handlers.AddHandler<Shell, TabReselectShellRenderer>());
+
         // Remove underline from all Pickers on Android (adapted from Entry solution in [SO answer](https://stackoverflow.com/a/79552152/1323381))
         PickerHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
         {
