@@ -9,6 +9,15 @@ public class DatabaseService
     private SQLiteAsyncConnection? _db;
     private readonly SemaphoreSlim _dbFileGate = new(1, 1);
     private readonly string _dbPath;
+    private bool _initialized;
+
+    // On Android the DB lives in public Documents, which needs "All files access" (requested in MainActivity).
+    private static bool HasStorageAccess =>
+#if ANDROID
+        !OperatingSystem.IsAndroidVersionAtLeast(30) || Android.OS.Environment.IsExternalStorageManager;
+#else
+        true;
+#endif
 
     public DatabaseService()
     {
@@ -54,13 +63,21 @@ public class DatabaseService
             .ToListAsync();
 
     // Creates tables if missing and seeds initial data into empty tables.
+    // Skipped until storage access is granted; runs only once per app session.
     public async Task InitializeAsync()
     {
+        if (_initialized || !HasStorageAccess)
+            return;
+
         await _dbFileGate.WaitAsync();
         try
         {
+            if (_initialized)
+                return;
+
             await EnsureSchemaAsync();
             await SeedMissingDataAsync();
+            _initialized = true;
         }
         finally
         {

@@ -30,4 +30,11 @@ public partial class App : Application
         base.OnStart();
         await _database.InitializeAsync();
     }
+
+    // Also runs when returning from the "All files access" screen after a fresh install.
+    protected override async void OnResume()
+    {
+        base.OnResume();
+        await _database.InitializeAsync();
+    }
 }
