@@ -84,41 +84,10 @@ public partial class ActivityChartPageModel : ObservableObject
 
             var filtered = await databaseService.GetActivitiesAsync(from, to);
 
-            var chartFrom = from;
-            if (SelectedRange == RangeType.Max && filtered.Count > 0)
-            {
-                chartFrom = filtered.Min(a => a.Timestamp).Date;
-            }
-
-            // Determine top 3 activity types by occurrence count
-            var top3Types = filtered
-                .GroupBy(a => a.Type)
-                .OrderByDescending(g => g.Count())
-                .Take(3)
-                .Select(g => g.Key)
-                .ToList();
-
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
                 cachedFiltered = filtered;
-                cachedTop3 = top3Types;
-
-                Activity1Label = top3Types.Count > 0 ? top3Types[0].ToString() : "";
-                Activity2Label = top3Types.Count > 1 ? top3Types[1].ToString() : "";
-                Activity3Label = top3Types.Count > 2 ? top3Types[2].ToString() : "";
-
-                HasActivity1 = top3Types.Count > 0;
-                HasActivity2 = top3Types.Count > 1;
-                HasActivity3 = top3Types.Count > 2;
-
-                SplitData(filtered, top3Types, chartFrom, to);
-                UpdateSummary();
-
-                var maxDayValue = Activity1Data.Concat(Activity2Data).Concat(Activity3Data)
-                    .Select(p => p.Value)
-                    .DefaultIfEmpty(0)
-                    .Max();
-                MaxActivityWithPadding = maxDayValue + ChartPadding;
+                UpdateChart();
 
                 allActivities = filtered.OrderByDescending(a => a.Timestamp).ToList();
                 ResetVisibleActivities();
@@ -140,6 +109,64 @@ public partial class ActivityChartPageModel : ObservableObject
         {
             isLoading = false;
         }
+    }
+
+    // Rebuilds top 3 types, chart series, summary and y-axis range from cachedFiltered
+    private void UpdateChart()
+    {
+        var (from, to) = GetDateRange();
+
+        var chartFrom = from;
+        if (SelectedRange == RangeType.Max && cachedFiltered.Count > 0)
+        {
+            chartFrom = cachedFiltered.Min(a => a.Timestamp).Date;
+        }
+
+        // Determine top 3 activity types by occurrence count
+        cachedTop3 = cachedFiltered
+            .GroupBy(a => a.Type)
+            .OrderByDescending(g => g.Count())
+            .Take(3)
+            .Select(g => g.Key)
+            .ToList();
+
+        Activity1Label = cachedTop3.Count > 0 ? cachedTop3[0].ToString() : "";
+        Activity2Label = cachedTop3.Count > 1 ? cachedTop3[1].ToString() : "";
+        Activity3Label = cachedTop3.Count > 2 ? cachedTop3[2].ToString() : "";
+
+        HasActivity1 = cachedTop3.Count > 0;
+        HasActivity2 = cachedTop3.Count > 1;
+        HasActivity3 = cachedTop3.Count > 2;
+
+        SplitData(cachedFiltered, cachedTop3, chartFrom, to);
+        UpdateSummary();
+
+        var maxDayValue = Activity1Data.Concat(Activity2Data).Concat(Activity3Data)
+            .Select(p => p.Value)
+            .DefaultIfEmpty(0)
+            .Max();
+        MaxActivityWithPadding = maxDayValue + ChartPadding;
+    }
+
+    [RelayCommand]
+    private async Task DeleteActivity(ActivityData entry)
+    {
+        var confirm = await Shell.Current.DisplayAlertAsync(
+            AppResources.displayalert_want_to_delete, $"{entry.Type}\n{entry.Timestamp:dd.MM.yyyy HH:mm}",
+            AppResources.button_yes, AppResources.button_no);
+
+        if (!confirm) return;
+
+        await databaseService.DeleteAsync(entry);
+
+        // Remove locally so the list keeps its scroll position, then rebuild chart and summary
+        allActivities.Remove(entry);
+        VisibleActivities.Remove(entry);
+        nextPageStartIndex--;
+        OnPropertyChanged(nameof(HasMoreActivities));
+
+        cachedFiltered.Remove(entry);
+        UpdateChart();
     }
 
     [RelayCommand]

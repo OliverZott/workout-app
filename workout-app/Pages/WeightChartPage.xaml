@@ -107,26 +107,49 @@
             <DataTemplate x:DataType="WeightData">
                 <!-- Wrapper keeps the border shadow from being clipped -->
                 <VerticalStackLayout Padding="30,0,30,12">
-                    <Border Padding="12">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy}'}"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
-                                TextColor="Gray" />
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
+                                <SwipeItemView
+                                    Command="{Binding DeleteMeasurementCommand, Source={RelativeSource AncestorType={x:Type WeightChartPageModel}}, x:DataType=WeightChartPageModel}"
+                                    CommandParameter="{Binding .}">
+                                    <Border
+                                        Margin="8,0,0,0"
+                                        WidthRequest="90"
+                                        BackgroundColor="{StaticResource wa-color-delete}"
+                                        Stroke="{StaticResource wa-color-delete}">
+                                        <Label
+                                            Text="{x:Static AppResources.button_delete}"
+                                            TextColor="White"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
 
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="{Binding Weight, StringFormat='{}{0:0.0} kg'}"
-                                FontAttributes="Bold" />
-                        </Grid>
-                    </Border>
+                        <Border Padding="12">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy}'}"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
+                                    TextColor="Gray" />
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Weight, StringFormat='{}{0:0.0} kg'}"
+                                    FontAttributes="Bold" />
+                            </Grid>
+                        </Border>
+                    </SwipeView>
                 </VerticalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

@@ -151,39 +151,62 @@
             <DataTemplate x:DataType="ActivityData">
                 <!-- Wrapper keeps the border shadow from being clipped -->
                 <VerticalStackLayout Padding="30,0,30,12">
-                    <Border Padding="12">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy}'}"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
-                                TextColor="Gray" />
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
+                                <SwipeItemView
+                                    Command="{Binding DeleteActivityCommand, Source={RelativeSource AncestorType={x:Type ActivityChartPageModel}}, x:DataType=ActivityChartPageModel}"
+                                    CommandParameter="{Binding .}">
+                                    <Border
+                                        Margin="8,0,0,0"
+                                        WidthRequest="90"
+                                        BackgroundColor="{StaticResource wa-color-delete}"
+                                        Stroke="{StaticResource wa-color-delete}">
+                                        <Label
+                                            Text="{x:Static AppResources.button_delete}"
+                                            TextColor="White"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
 
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="{Binding Type}"
-                                FontAttributes="Bold" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{Binding DisplayDetails}"
-                                TextColor="Gray" />
+                        <Border Padding="12">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy}'}"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
+                                    TextColor="Gray" />
 
-                            <Label
-                                Grid.Row="2"
-                                Grid.ColumnSpan="2"
-                                Margin="0,8,0,0"
-                                Text="{Binding Description}"
-                                FontAttributes="Italic"
-                                IsVisible="{Binding HasDescription}" />
-                        </Grid>
-                    </Border>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Type}"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding DisplayDetails}"
+                                    TextColor="Gray" />
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Margin="0,8,0,0"
+                                    Text="{Binding Description}"
+                                    FontAttributes="Italic"
+                                    IsVisible="{Binding HasDescription}" />
+                            </Grid>
+                        </Border>
+                    </SwipeView>
                 </VerticalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

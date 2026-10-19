@@ -62,6 +62,9 @@ public class DatabaseService
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
+    public Task<int> DeleteAsync<T>(T entry) where T : BaseEntity, new() =>
+        Db.DeleteAsync(entry);
+
     // Creates tables if missing and seeds initial data into empty tables.
     // Skipped until storage access is granted; runs only once per app session.
     public async Task InitializeAsync()

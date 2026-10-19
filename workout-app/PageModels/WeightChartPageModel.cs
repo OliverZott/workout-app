@@ -124,6 +124,26 @@ public partial class WeightChartPageModel : ObservableObject
         IsLoadingMore = false;
     }
 
+    [RelayCommand]
+    private async Task DeleteMeasurement(WeightData entry)
+    {
+        var confirm = await Shell.Current.DisplayAlertAsync(
+            AppResources.displayalert_want_to_delete, $"{entry.Timestamp:dd.MM.yyyy HH:mm}",
+            AppResources.button_yes, AppResources.button_no);
+
+        if (!confirm) return;
+
+        await databaseService.DeleteAsync(entry);
+
+        // Remove locally so the list keeps its scroll position; reassigning Data refreshes chart and summary
+        allMeasurements.Remove(entry);
+        VisibleMeasurements.Remove(entry);
+        nextPageStartIndex--;
+        OnPropertyChanged(nameof(HasMoreMeasurements));
+
+        Data = new ObservableCollection<WeightData>(Data.Where(d => d.Id != entry.Id));
+    }
+
     private void ResetVisibleMeasurements()
     {
         // Assign the first page in one go: replacing the collection and then adding items one by one

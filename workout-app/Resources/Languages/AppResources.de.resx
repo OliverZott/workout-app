@@ -324,4 +324,10 @@
   <data name="activities" xml:space="preserve">
     <value>Aktivitäten</value>
   </data>
+  <data name="button_delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="displayalert_want_to_delete" xml:space="preserve">
+    <value>Eintrag löschen?</value>
+  </data>
 </root>

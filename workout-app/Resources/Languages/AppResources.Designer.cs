@@ -187,6 +187,15 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string button_delete {
+            get {
+                return ResourceManager.GetString("button_delete", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string button_no {
@@ -240,6 +249,15 @@ namespace workout_app.Resources.Languages {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Delete entry?.
+        /// </summary>
+        internal static string displayalert_want_to_delete {
+            get {
+                return ResourceManager.GetString("displayalert_want_to_delete", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Save entry?.
         /// </summary>
