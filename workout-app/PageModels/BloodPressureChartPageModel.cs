@@ -22,6 +22,11 @@ public partial class BloodPressureChartPageModel : ObservableObject
     [ObservableProperty]
     private string averageBloodPressureReading = "--/--";
 
+    [ObservableProperty]
+    private double minBloodPressureWithPadding;
+
+    [ObservableProperty]
+    private double maxBloodPressureWithPadding;
 
 
     public BloodPressureChartPageModel(DatabaseService databaseService)
@@ -112,6 +117,11 @@ public partial class BloodPressureChartPageModel : ObservableObject
 
             var latestEntry = Data.OrderByDescending(d => d.Timestamp).First();
             LastBloodPressureReading = $"{latestEntry.Systolic}/{latestEntry.Diastolic}";
+
+            var min = Data.Min(d => Math.Min(d.Diastolic, d.HeartRate));
+            var max = Data.Max(d => Math.Max(d.Systolic, d.HeartRate));
+            MinBloodPressureWithPadding = min - 10;
+            MaxBloodPressureWithPadding = max + 10;
         }
         else
         {

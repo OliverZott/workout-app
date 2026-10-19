@@ -76,9 +76,6 @@ public partial class WeightChartPageModel : ObservableObject
             {
                 Data = new ObservableCollection<WeightData>(filteredData);
             });
-
-            MinWeightWithPadding = (int)(Data?.Min(d => d.Weight) ?? 0) - 2;
-            MaxWeightWithPadding = (int)(Data?.Max(d => d.Weight) ?? 0) + 2;
         }
         catch (Exception ex)
         {
@@ -117,6 +114,14 @@ public partial class WeightChartPageModel : ObservableObject
 
             var latestWeight = Math.Round(Data.OrderByDescending(d => d.Timestamp).First().Weight, 1);
             LastWeightReading = $"{latestWeight}";
+
+            MinWeightWithPadding = (int)Data.Min(d => d.Weight) - 2;
+            MaxWeightWithPadding = (int)Data.Max(d => d.Weight) + 2;
+        }
+        else
+        {
+            AverageWeightReading = "--";
+            LastWeightReading = "--";
         }
     }
 

@@ -31,7 +31,8 @@
             <!-- Chart Element -->
             <Border
                 Margin="10,0,10,0"
-                Padding="30">
+                Padding="30"
+                HeightRequest="400">
 
                 <sf:SfCartesianChart>
 
@@ -46,7 +47,9 @@
                     </sf:SfCartesianChart.XAxes>
 
                     <sf:SfCartesianChart.YAxes>
-                        <sf:NumericalAxis />
+                        <sf:NumericalAxis
+                            Minimum="{Binding MinBloodPressureWithPadding}"
+                            Maximum="{Binding MaxBloodPressureWithPadding}" />
                     </sf:SfCartesianChart.YAxes>
 
                     <sf:LineSeries 
