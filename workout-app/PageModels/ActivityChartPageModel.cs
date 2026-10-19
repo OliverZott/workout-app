@@ -8,6 +8,7 @@ namespace workout_app.PageModels;
 public partial class ActivityChartPageModel : ObservableObject
 {
     private const int PageSize = 20;
+    private const double ChartPadding = 10;
     private readonly DatabaseService databaseService;
     private bool isLoading;
     private RangeType selectedRange;
@@ -43,10 +44,12 @@ public partial class ActivityChartPageModel : ObservableObject
     public bool HasMoreActivities => nextPageStartIndex < allActivities.Count;
 
     // Summary
-    [ObservableProperty] private string averageDistanceReading = "--";
-    [ObservableProperty] private string lastDistanceReading = "--";
     [ObservableProperty] private string averageDurationReading = "--";
     [ObservableProperty] private string lastDurationReading = "--";
+
+    // Chart average line and y-axis range
+    [ObservableProperty] private double averageDuration;
+    [ObservableProperty] private double maxActivityWithPadding = ChartPadding;
 
     public ActivityChartPageModel(DatabaseService databaseService)
     {
@@ -110,6 +113,12 @@ public partial class ActivityChartPageModel : ObservableObject
 
                 SplitData(filtered, top3Types, chartFrom, to);
                 UpdateSummary();
+
+                var maxDayValue = Activity1Data.Concat(Activity2Data).Concat(Activity3Data)
+                    .Select(p => p.Value)
+                    .DefaultIfEmpty(0)
+                    .Max();
+                MaxActivityWithPadding = maxDayValue + ChartPadding;
 
                 allActivities = filtered.OrderByDescending(a => a.Timestamp).ToList();
                 ResetVisibleActivities();
@@ -242,28 +251,38 @@ public partial class ActivityChartPageModel : ObservableObject
         if (ShowActivity2 && cachedTop3.Count > 1) selectedTypes.Add(cachedTop3[1]);
         if (ShowActivity3 && cachedTop3.Count > 2) selectedTypes.Add(cachedTop3[2]);
 
+        // Entries without a duration have no bar, so they are left out of the summary
         var activities = cachedFiltered
-            .Where(a => selectedTypes.Contains(a.Type))
+            .Where(a => selectedTypes.Contains(a.Type) && a.Duration > 0)
             .ToList();
 
-        if (activities.Count > 0)
-        {
-            var avg = Math.Round(activities.Average(a => a.Distance), 1);
-            AverageDistanceReading = $"{avg}";
+        // Average over the visible bars (minutes per day and type), so the average line matches the chart
+        var visibleBarValues = new[]
+            {
+                (ShowActivity1, Activity1Data),
+                (ShowActivity2, Activity2Data),
+                (ShowActivity3, Activity3Data)
+            }
+            .Where(series => series.Item1)
+            .SelectMany(series => series.Item2)
+            .Select(p => p.Value)
+            .Where(v => v > 0)
+            .ToList();
 
-            var avgDur = Math.Round(activities.Average(a => a.Duration), 1);
+        if (activities.Count > 0 && visibleBarValues.Count > 0)
+        {
+            var avgDur = Math.Round(visibleBarValues.Average(), 1);
             AverageDurationReading = $"{avgDur}";
+            AverageDuration = avgDur;
 
             var last = activities.OrderByDescending(a => a.Timestamp).First();
-            LastDistanceReading = $"{Math.Round(last.Distance, 1)}";
             LastDurationReading = last.Duration.ToString();
         }
         else
         {
-            AverageDistanceReading = "--";
-            LastDistanceReading = "--";
             AverageDurationReading = "--";
             LastDurationReading = "--";
+            AverageDuration = 0;
         }
     }
 

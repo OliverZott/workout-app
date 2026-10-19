@@ -73,7 +73,9 @@
 
                         <!-- Axes -->
                         <sf:SfCartesianChart.YAxes>
-                            <sf:NumericalAxis/>
+                            <sf:NumericalAxis
+                                Minimum="0"
+                                Maximum="{Binding MaxActivityWithPadding}" />
                         </sf:SfCartesianChart.YAxes>
 
                         <sf:SfCartesianChart.Legend>
@@ -118,7 +120,7 @@
 
                         <sf:SfCartesianChart.Annotations>
                             <sf:HorizontalLineAnnotation
-                                Y1="{Binding AverageDistanceReading}"
+                                Y1="{Binding AverageDuration}"
                                 Stroke="LightGray"
                                 StrokeWidth="2"
                                 StrokeDashArray="4,4"
