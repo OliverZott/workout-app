@@ -89,7 +89,8 @@
                             YBindingPath="Value"
                             Fill="#4CAF50"
                             Label="{Binding Activity1Label}"
-                            IsVisible="{Binding ShowActivity1}"/>
+                            IsVisible="{Binding ShowActivity1}"
+                            IsVisibleOnLegend="{Binding ShowActivity1}"/>
 
                         <!-- Activity 2 -->
                         <sf:ColumnSeries
@@ -98,7 +99,8 @@
                             YBindingPath="Value"
                             Fill="#2196F3"
                             Label="{Binding Activity2Label}"
-                            IsVisible="{Binding ShowActivity2}"/>
+                            IsVisible="{Binding ShowActivity2}"
+                            IsVisibleOnLegend="{Binding ShowActivity2}"/>
 
                         <!-- Activity 3 -->
                         <sf:ColumnSeries
@@ -107,7 +109,8 @@
                             YBindingPath="Value"
                             Fill="#FF9800"
                             Label="{Binding Activity3Label}"
-                            IsVisible="{Binding ShowActivity3}"/>
+                            IsVisible="{Binding ShowActivity3}"
+                            IsVisibleOnLegend="{Binding ShowActivity3}"/>
 
                         <!-- Average line (legend entry) -->
                         <sf:LineSeries
