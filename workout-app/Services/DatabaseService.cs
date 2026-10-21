@@ -62,6 +62,9 @@ public class DatabaseService
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
+    public Task<int> UpdateAsync<T>(T entry) where T : BaseEntity, new() =>
+        Db.UpdateAsync(entry);
+
     public Task<int> DeleteAsync<T>(T entry) where T : BaseEntity, new() =>
         Db.DeleteAsync(entry);
 

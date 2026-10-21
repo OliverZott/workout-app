@@ -3,11 +3,14 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace workout_app.PageModels;
 
-public partial class BloodPressureInsertPageModel : ObservableObject
+public partial class BloodPressureInsertPageModel : ObservableObject, IQueryAttributable
 {
     public DateTimePickerModel DateTimePicker { get; } = new();
 
     private readonly DatabaseService databaseService;
+
+    // Set when the page was opened from a list entry; saving then updates this entry instead of adding a new one
+    private BloodPressureData? editEntry;
 
     [ObservableProperty]
     private int selectedSystolic = 130;
@@ -25,6 +28,18 @@ public partial class BloodPressureInsertPageModel : ObservableObject
         this.databaseService = databaseService;
     }
 
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (!query.TryGetValue("Entry", out var value) || value is not BloodPressureData entry) return;
+
+        editEntry = entry;
+        SelectedSystolic = entry.Systolic;
+        SelectedDiastolic = entry.Diastolic;
+        SelectedPulse = entry.HeartRate;
+        DateTimePicker.SelectedDate = entry.Timestamp.Date;
+        DateTimePicker.SelectedTime = entry.Timestamp.TimeOfDay;
+    }
+
     [RelayCommand]
     private async Task SaveBloodPressure()
     {
@@ -33,13 +48,19 @@ public partial class BloodPressureInsertPageModel : ObservableObject
 
         if (!saveBloodPressure) return;
 
-        await databaseService.AddCardioAsync(new BloodPressureData
+        var entry = new BloodPressureData
         {
+            Id = editEntry?.Id ?? 0,
             Systolic = SelectedSystolic,
             Diastolic = SelectedDiastolic,
             HeartRate = SelectedPulse,
             Timestamp = DateTimePicker.SelectedDate.Date + DateTimePicker.SelectedTime
-        });
+        };
+
+        if (editEntry != null)
+            await databaseService.UpdateAsync(entry);
+        else
+            await databaseService.AddCardioAsync(entry);
 
         await Shell.Current.GoToAsync("..");
     }

@@ -331,5 +331,11 @@ public partial class ActivityChartPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.ActivityInsertPage));
     }
+
+    [RelayCommand]
+    private async Task EditActivity(ActivityData entry)
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.ActivityInsertPage), new Dictionary<string, object> { ["Entry"] = entry });
+    }
 }
 

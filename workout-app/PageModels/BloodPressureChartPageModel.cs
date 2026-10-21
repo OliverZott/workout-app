@@ -197,4 +197,10 @@ public partial class BloodPressureChartPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.BloodPressureInsertPage));
     }
+
+    [RelayCommand]
+    private async Task EditMeasurement(BloodPressureData entry)
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.BloodPressureInsertPage), new Dictionary<string, object> { ["Entry"] = entry });
+    }
 }

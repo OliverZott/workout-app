@@ -3,9 +3,12 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace workout_app.PageModels;
 
-public partial class ActivityInsertPageModel : ObservableObject
+public partial class ActivityInsertPageModel : ObservableObject, IQueryAttributable
 {
     private readonly DatabaseService databaseService;
+
+    // Set when the page was opened from a list entry; saving then updates this entry instead of adding a new one
+    private ActivityData? editEntry;
 
     public DateTimePickerModel DateTimePicker { get; } = new();
 
@@ -32,6 +35,21 @@ public partial class ActivityInsertPageModel : ObservableObject
         this.databaseService = databaseService;
     }
 
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (!query.TryGetValue("Entry", out var value) || value is not ActivityData entry) return;
+
+        editEntry = entry;
+        SelectedActivityType = entry.Type;
+        SelectedHours = entry.Duration / 60;
+        SelectedMinutes = entry.Duration % 60;
+        Distance = entry.Distance > 0 ? entry.Distance : null;
+        Altitude = entry.Altitude > 0 ? entry.Altitude : null;
+        Description = entry.Description;
+        DateTimePicker.SelectedDate = entry.Timestamp.Date;
+        DateTimePicker.SelectedTime = entry.Timestamp.TimeOfDay;
+    }
+
     [RelayCommand]
     private async Task SaveActivity()
     {
@@ -54,15 +72,21 @@ public partial class ActivityInsertPageModel : ObservableObject
         if (!confirm) return;
 
 
-        await databaseService.AddActivityAsync(new ActivityData
+        var entry = new ActivityData
         {
+            Id = editEntry?.Id ?? 0,
             Type = SelectedActivityType.Value,
             Duration = duration,
             Distance = Distance ?? 0,
             Altitude = Altitude ?? 0,
             Description = Description ?? "",
             Timestamp = DateTimePicker.SelectedDate.Date + DateTimePicker.SelectedTime
-        });
+        };
+
+        if (editEntry != null)
+            await databaseService.UpdateAsync(entry);
+        else
+            await databaseService.AddActivityAsync(entry);
 
         await Shell.Current.GoToAsync("..");
     }

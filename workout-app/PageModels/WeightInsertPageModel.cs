@@ -3,9 +3,12 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace workout_app.PageModels;
 
-public partial class WeightInsertPageModel : ObservableObject
+public partial class WeightInsertPageModel : ObservableObject, IQueryAttributable
 {
     private readonly DatabaseService databaseService;
+
+    // Set when the page was opened from a list entry; saving then updates this entry instead of adding a new one
+    private WeightData? editEntry;
 
     public DateTimePickerModel DateTimePicker { get; } = new();
 
@@ -18,6 +21,16 @@ public partial class WeightInsertPageModel : ObservableObject
     public WeightInsertPageModel(DatabaseService databaseService)
     {
         this.databaseService = databaseService;
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (!query.TryGetValue("Entry", out var value) || value is not WeightData entry) return;
+
+        editEntry = entry;
+        SelectedWeight = entry.Weight;
+        DateTimePicker.SelectedDate = entry.Timestamp.Date;
+        DateTimePicker.SelectedTime = entry.Timestamp.TimeOfDay;
     }
 
     public async Task OnAppearingAsync()
@@ -37,11 +50,17 @@ public partial class WeightInsertPageModel : ObservableObject
 
         if (!saveBloodPressure) return;
 
-        await databaseService.AddWeightAsync(new WeightData
+        var entry = new WeightData
         {
+            Id = editEntry?.Id ?? 0,
             Weight = SelectedWeight ?? 0,
             Timestamp = DateTimePicker.SelectedDate.Add(DateTimePicker.SelectedTime)
-        });
+        };
+
+        if (editEntry != null)
+            await databaseService.UpdateAsync(entry);
+        else
+            await databaseService.AddWeightAsync(entry);
 
         await Shell.Current.GoToAsync("..");
     }

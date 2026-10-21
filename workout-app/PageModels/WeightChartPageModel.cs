@@ -192,4 +192,10 @@ public partial class WeightChartPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.WeightInsertPage));
     }
+
+    [RelayCommand]
+    private async Task EditMeasurement(WeightData entry)
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.WeightInsertPage), new Dictionary<string, object> { ["Entry"] = entry });
+    }
 }

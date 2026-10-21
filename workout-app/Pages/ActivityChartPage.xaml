@@ -175,6 +175,11 @@
                         </SwipeView.RightItems>
 
                         <Border Padding="12">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding EditActivityCommand, Source={RelativeSource AncestorType={x:Type ActivityChartPageModel}}, x:DataType=ActivityChartPageModel}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
                             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
                                 <Label
                                     Grid.Row="0"
