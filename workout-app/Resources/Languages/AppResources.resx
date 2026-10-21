@@ -330,4 +330,43 @@
   <data name="displayalert_want_to_delete" xml:space="preserve">
     <value>Delete entry?</value>
   </data>
+  <data name="diet" xml:space="preserve">
+    <value>Diet</value>
+  </data>
+  <data name="diet_insert_title" xml:space="preserve">
+    <value>Add meal</value>
+  </data>
+  <data name="diet_meal" xml:space="preserve">
+    <value>Meal</value>
+  </data>
+  <data name="diet_meal_select_title" xml:space="preserve">
+    <value>Select meal</value>
+  </data>
+  <data name="diet_meals" xml:space="preserve">
+    <value>Meals</value>
+  </data>
+  <data name="diet_description_placeholder" xml:space="preserve">
+    <value>e.g. scrambled eggs, veggies, oatmeal</value>
+  </data>
+  <data name="diet_rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="diet_rating_healthy" xml:space="preserve">
+    <value>1 = healthy</value>
+  </data>
+  <data name="diet_rating_unhealthy" xml:space="preserve">
+    <value>5 = unhealthy</value>
+  </data>
+  <data name="meal_breakfast" xml:space="preserve">
+    <value>Breakfast</value>
+  </data>
+  <data name="meal_snack" xml:space="preserve">
+    <value>Snack</value>
+  </data>
+  <data name="meal_lunch" xml:space="preserve">
+    <value>Lunch</value>
+  </data>
+  <data name="meal_dinner" xml:space="preserve">
+    <value>Dinner</value>
+  </data>
 </root>

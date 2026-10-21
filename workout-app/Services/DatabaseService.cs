@@ -62,6 +62,15 @@ public class DatabaseService
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
+    public Task<int> AddDietAsync(DietData entry) =>
+        Db.InsertAsync(entry);
+
+    public Task<List<DietData>> GetDietAsync(DateTime from, DateTime to) =>
+        Db.Table<DietData>()
+            .Where(x => x.Timestamp >= from && x.Timestamp < to)
+            .OrderBy(x => x.Timestamp)
+            .ToListAsync();
+
     public Task<int> DeleteAsync<T>(T entry) where T : BaseEntity, new() =>
         Db.DeleteAsync(entry);
 
@@ -94,6 +103,7 @@ public class DatabaseService
         await Db.CreateTableAsync<WeightData>();
         await Db.CreateTableAsync<BloodPressureData>();
         await Db.CreateTableAsync<ActivityData>();
+        await Db.CreateTableAsync<DietData>();
     }
 
     // Inserts seed data only into tables that are still empty.

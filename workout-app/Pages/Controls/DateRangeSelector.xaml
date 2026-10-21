@@ -13,7 +13,7 @@
 
     <Border HeightRequest="55">
 
-        <Grid ColumnDefinitions="*,*,*">
+        <Grid x:Name="RangeGrid" ColumnDefinitions="*,*,*">
 
             <!-- Week Selector -->
             <Border Grid.Column="0" 
@@ -46,7 +46,8 @@
             </Border>
 
             <!-- Max Selector -->
-            <Border Grid.Column="2" 
+            <Border Grid.Column="2"
+                    IsVisible="{Binding Source={x:Reference RangeSelectorControl}, Path=ShowThirdRange}"
                     Shadow="{x:Null}"
                     HeightRequest="50">
 

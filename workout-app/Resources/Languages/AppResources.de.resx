@@ -330,4 +330,43 @@
   <data name="displayalert_want_to_delete" xml:space="preserve">
     <value>Eintrag löschen?</value>
   </data>
+  <data name="diet" xml:space="preserve">
+    <value>Ernährung</value>
+  </data>
+  <data name="diet_insert_title" xml:space="preserve">
+    <value>Mahlzeit hinzufügen</value>
+  </data>
+  <data name="diet_meal" xml:space="preserve">
+    <value>Mahlzeit</value>
+  </data>
+  <data name="diet_meal_select_title" xml:space="preserve">
+    <value>Mahlzeit auswählen</value>
+  </data>
+  <data name="diet_meals" xml:space="preserve">
+    <value>Mahlzeiten</value>
+  </data>
+  <data name="diet_description_placeholder" xml:space="preserve">
+    <value>z.B. Rührei, Gemüse, Haferflocken</value>
+  </data>
+  <data name="diet_rating" xml:space="preserve">
+    <value>Bewertung</value>
+  </data>
+  <data name="diet_rating_healthy" xml:space="preserve">
+    <value>1 = gesund</value>
+  </data>
+  <data name="diet_rating_unhealthy" xml:space="preserve">
+    <value>5 = ungesund</value>
+  </data>
+  <data name="meal_breakfast" xml:space="preserve">
+    <value>Frühstück</value>
+  </data>
+  <data name="meal_snack" xml:space="preserve">
+    <value>Snack</value>
+  </data>
+  <data name="meal_lunch" xml:space="preserve">
+    <value>Mittagessen</value>
+  </data>
+  <data name="meal_dinner" xml:space="preserve">
+    <value>Abendessen</value>
+  </data>
 </root>

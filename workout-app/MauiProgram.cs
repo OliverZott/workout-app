@@ -63,6 +63,8 @@ public static class MauiProgram
         builder.Services.AddTransientWithShellRoute<BloodPressureInsertPage, BloodPressureInsertPageModel>(nameof(BloodPressureInsertPage));
         builder.Services.AddTransientWithShellRoute<ActivityChartPage, ActivityChartPageModel>(nameof(ActivityChartPage));
         builder.Services.AddTransientWithShellRoute<ActivityInsertPage, ActivityInsertPageModel>(nameof(ActivityInsertPage));
+        builder.Services.AddTransientWithShellRoute<DietChartPage, DietChartPageModel>(nameof(DietChartPage));
+        builder.Services.AddTransientWithShellRoute<DietInsertPage, DietInsertPageModel>(nameof(DietInsertPage));
 
         // Components, Services, Utils etc. can be registered here as needed
         builder.Services.AddTransient<DateTimePickerModel>();

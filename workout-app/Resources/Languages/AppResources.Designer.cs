@@ -698,5 +698,122 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("weight_insert_title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diet.
+        /// </summary>
+        internal static string diet {
+            get {
+                return ResourceManager.GetString("diet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add meal.
+        /// </summary>
+        internal static string diet_insert_title {
+            get {
+                return ResourceManager.GetString("diet_insert_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meal.
+        /// </summary>
+        internal static string diet_meal {
+            get {
+                return ResourceManager.GetString("diet_meal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select meal.
+        /// </summary>
+        internal static string diet_meal_select_title {
+            get {
+                return ResourceManager.GetString("diet_meal_select_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meals.
+        /// </summary>
+        internal static string diet_meals {
+            get {
+                return ResourceManager.GetString("diet_meals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to e.g. scrambled eggs, veggies, oatmeal.
+        /// </summary>
+        internal static string diet_description_placeholder {
+            get {
+                return ResourceManager.GetString("diet_description_placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        internal static string diet_rating {
+            get {
+                return ResourceManager.GetString("diet_rating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 = healthy.
+        /// </summary>
+        internal static string diet_rating_healthy {
+            get {
+                return ResourceManager.GetString("diet_rating_healthy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5 = unhealthy.
+        /// </summary>
+        internal static string diet_rating_unhealthy {
+            get {
+                return ResourceManager.GetString("diet_rating_unhealthy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breakfast.
+        /// </summary>
+        internal static string meal_breakfast {
+            get {
+                return ResourceManager.GetString("meal_breakfast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snack.
+        /// </summary>
+        internal static string meal_snack {
+            get {
+                return ResourceManager.GetString("meal_snack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lunch.
+        /// </summary>
+        internal static string meal_lunch {
+            get {
+                return ResourceManager.GetString("meal_lunch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dinner.
+        /// </summary>
+        internal static string meal_dinner {
+            get {
+                return ResourceManager.GetString("meal_dinner", resourceCulture);
+            }
+        }
     }
 }

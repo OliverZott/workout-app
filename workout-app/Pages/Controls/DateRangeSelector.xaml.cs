@@ -28,6 +28,13 @@ public partial class DateRangeSelector : ContentView
     public static readonly BindableProperty ThirdRangeValueProperty =
         BindableProperty.Create(nameof(ThirdRangeValue), typeof(string), typeof(DateRangeSelector), "Max");
 
+    // Hides the third option and lets the first two share the full width
+    public static readonly BindableProperty ShowThirdRangeProperty =
+        BindableProperty.Create(nameof(ShowThirdRange), typeof(bool), typeof(DateRangeSelector), true,
+            propertyChanged: (bindable, _, newValue) =>
+                ((DateRangeSelector)bindable).RangeGrid.ColumnDefinitions[2].Width =
+                    (bool)newValue ? GridLength.Star : new GridLength(0));
+
     public RangeType SelectedRange
     {
         get => (RangeType)GetValue(SelectedRangeProperty);
@@ -74,6 +81,12 @@ public partial class DateRangeSelector : ContentView
     {
         get => (string)GetValue(ThirdRangeValueProperty);
         set => SetValue(ThirdRangeValueProperty, value);
+    }
+
+    public bool ShowThirdRange
+    {
+        get => (bool)GetValue(ShowThirdRangeProperty);
+        set => SetValue(ShowThirdRangeProperty, value);
     }
 
     public DateRangeSelector()

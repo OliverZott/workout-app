@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.DietInsertPage"
+             x:DataType="DietInsertPageModel"
+             HideSoftInputOnTapped="True"
+             Title="{x:Static AppResources.diet_insert_title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DietRatingToColorConverter x:Key="RatingToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="20">
+
+            <!-- DateTime Picker Control -->
+            <DateTimePicker
+                SelectedDate="{Binding DateTimePicker.SelectedDate}"
+                SelectedTime="{Binding DateTimePicker.SelectedTime}"
+                SelectedDateDisplay="{Binding DateTimePicker.SelectedDateDisplay}"
+                SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}"/>
+
+            <!-- Meal Type -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{x:Static AppResources.diet_meal}" Style="{StaticResource WaSectionLabelStyle}"/>
+
+                    <Border Style="{StaticResource WaCompactInputBorderStyle}"
+                            WidthRequest="240">
+                        <Picker
+                            Title="{x:Static AppResources.diet_meal_select_title}"
+                            TitleColor="LightGray"
+                            ItemsSource="{Binding AvailableMeals}"
+                            SelectedIndex="{Binding SelectedMealIndex}"
+                            FontSize="16"
+                            TextColor="Black"
+                            BackgroundColor="Transparent"
+                            HorizontalTextAlignment="Center"/>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Description -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{x:Static AppResources.description}"
+                           Style="{StaticResource WaSectionLabelStyle}"/>
+
+                    <Border Style="{StaticResource WaCompactInputBorderStyle}"
+                            HeightRequest="100">
+                        <Editor Style="{StaticResource WaCompactEditorStyle}"
+                                Text="{Binding Description, Mode=TwoWay}"
+                                Placeholder="{x:Static AppResources.diet_description_placeholder}"
+                                PlaceholderColor="LightGray"
+                                AutoSize="TextChanges"
+                                HeightRequest="100"/>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Rating 1 (healthy) - 5 (unhealthy) -->
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{x:Static AppResources.diet_rating}" Style="{StaticResource WaSectionLabelStyle}"/>
+
+                    <HorizontalStackLayout Spacing="10"
+                                           HorizontalOptions="Center"
+                                           BindableLayout.ItemsSource="{Binding RatingOptions}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="DietRatingOption">
+                                <Border WidthRequest="48"
+                                        HeightRequest="48"
+                                        Shadow="{x:Null}"
+                                        StrokeThickness="3"
+                                        Stroke="Transparent"
+                                        Opacity="0.35"
+                                        BackgroundColor="{Binding Value, Converter={StaticResource RatingToColorConverter}}">
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                            <Setter Property="Opacity" Value="1"/>
+                                            <Setter Property="Stroke" Value="{StaticResource Gray600}"/>
+                                        </DataTrigger>
+                                    </Border.Triggers>
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="24"/>
+                                    </Border.StrokeShape>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding SelectRatingCommand, Source={RelativeSource AncestorType={x:Type DietInsertPageModel}}, x:DataType=DietInsertPageModel}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="{Binding Value}"
+                                           FontAttributes="Bold"
+                                           FontSize="18"
+                                           TextColor="{StaticResource Gray600}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+
+                    <Grid ColumnDefinitions="*,*" WidthRequest="280">
+                        <Label Grid.Column="0"
+                               Text="{x:Static AppResources.diet_rating_healthy}"
+                               FontSize="12"
+                               TextColor="{StaticResource Gray500}"/>
+                        <Label Grid.Column="1"
+                               Text="{x:Static AppResources.diet_rating_unhealthy}"
+                               FontSize="12"
+                               TextColor="{StaticResource Gray500}"
+                               HorizontalTextAlignment="End"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Save Button -->
+            <BasicButton
+                Text="{x:Static AppResources.button_save}"
+                Margin="10,8,10,0"
+                Command="{Binding SaveDietCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -22,4 +22,10 @@ public partial class MainPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.ActivityChartPage));
     }
+
+    [RelayCommand]
+    public async Task NavigateToDiet()
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.DietChartPage));
+    }
 }

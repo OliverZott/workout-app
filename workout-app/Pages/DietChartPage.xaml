@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.DietChartPage"
+             x:DataType="DietChartPageModel"
+             Title="{x:Static AppResources.diet}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DietRatingToColorConverter x:Key="RatingToColorConverter" />
+
+            <Style x:Key="DietNavButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="{StaticResource Gray600}"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Style.Triggers>
+                    <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                        <Setter Property="TextColor" Value="{StaticResource Gray200}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="DietCalendarDayStyle" TargetType="Border">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Shadow" Value="{x:Null}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource wa-color-input}"/>
+                <Setter Property="Stroke" Value="Transparent"/>
+                <Setter Property="StrokeThickness" Value="2"/>
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <DataTrigger TargetType="Border" Binding="{Binding IsToday, x:DataType=DietCalendarDay}" Value="True">
+                        <Setter Property="Stroke" Value="{StaticResource Gray600}"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <CollectionView
+        ItemsSource="{Binding VisibleEntries}"
+        RemainingItemsThreshold="5"
+        RemainingItemsThresholdReachedCommand="{Binding LoadMoreEntriesCommand}">
+
+        <CollectionView.Header>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Time Range Selection -->
+                <DateRangeSelector
+                    Margin="10,0,10,0"
+                    SelectedRange="{Binding SelectedRange}"
+                    RangeSelectedCommand="{Binding SelectRangeCommand}"
+                    FirstRangeText="{x:Static AppResources.range_week}"
+                    SecondRangeText="{x:Static AppResources.range_month}"
+                    FirstRangeValue="Week"
+                    SecondRangeValue="Month"
+                    ShowThirdRange="False"/>
+
+                <!-- Summary -->
+                <DataSummary
+                    Margin="10,0,10,0"
+                    AverageReading="{Binding AverageRatingReading}"
+                    LastReading="{Binding LastRatingReading}"
+                    Unit="/ 5"/>
+
+                <!-- Period navigation -->
+                <Grid Margin="10,0,10,0" ColumnDefinitions="Auto,*,Auto">
+                    <Button Grid.Column="0"
+                            Text="&#x25C0;"
+                            Style="{StaticResource DietNavButtonStyle}"
+                            Command="{Binding PreviousPeriodCommand}"/>
+                    <Label Grid.Column="1"
+                           Text="{Binding PeriodLabel}"
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>
+                    <Button Grid.Column="2"
+                            Text="&#x25B6;"
+                            Style="{StaticResource DietNavButtonStyle}"
+                            Command="{Binding NextPeriodCommand}"/>
+                </Grid>
+
+                <!-- Calendar: days colored green (healthy) to red (unhealthy) by average rating -->
+                <Border Margin="10,0,10,0" Padding="12">
+                    <VerticalStackLayout Spacing="6">
+
+                        <Grid ColumnDefinitions="*,*,*,*,*,*,*"
+                              ColumnSpacing="6"
+                              BindableLayout.ItemsSource="{Binding WeekdayHeaders}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="WeekdayHeader">
+                                    <Label Grid.Column="{Binding Column}"
+                                           Text="{Binding Name}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource Gray500}"
+                                           HorizontalTextAlignment="Center"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </Grid>
+
+                        <VerticalStackLayout Spacing="6" BindableLayout.ItemsSource="{Binding CalendarWeeks}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="DietCalendarWeek">
+                                    <Grid ColumnDefinitions="*,*,*,*,*,*,*"
+                                          ColumnSpacing="6"
+                                          BindableLayout.ItemsSource="{Binding Days}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate x:DataType="DietCalendarDay">
+                                                <Border Grid.Column="{Binding Column}"
+                                                        IsVisible="{Binding IsInPeriod}"
+                                                        Style="{StaticResource DietCalendarDayStyle}">
+                                                    <!-- Inner grid carries the rating color; the border's own color shows for days without entries -->
+                                                    <Grid BackgroundColor="{Binding AverageRating, Converter={StaticResource RatingToColorConverter}}">
+                                                        <Label Text="{Binding DayText}"
+                                                               FontSize="14"
+                                                               TextColor="{StaticResource Gray600}"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"/>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <FunctionButton
+                    Text="{x:Static AppResources.button_value_insert}"
+                    Margin="10,0,10,0"
+                    Command="{Binding GoToInsertDietCommand}"/>
+
+                <Label
+                    Margin="10,0,10,0"
+                    Text="{x:Static AppResources.diet_meals}"
+                    FontAttributes="Bold"
+                    FontSize="18" />
+
+            </VerticalStackLayout>
+        </CollectionView.Header>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="DietData">
+                <!-- Wrapper keeps the border shadow from being clipped -->
+                <VerticalStackLayout Padding="30,0,30,12">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
+                                <SwipeItemView
+                                    Command="{Binding DeleteEntryCommand, Source={RelativeSource AncestorType={x:Type DietChartPageModel}}, x:DataType=DietChartPageModel}"
+                                    CommandParameter="{Binding .}">
+                                    <Border
+                                        Margin="8,0,0,0"
+                                        WidthRequest="90"
+                                        BackgroundColor="{StaticResource wa-color-delete}"
+                                        Stroke="{StaticResource wa-color-delete}">
+                                        <Image
+                                            Source="trash_w"
+                                            HeightRequest="28"
+                                            WidthRequest="28"
+                                            SemanticProperties.Description="{x:Static AppResources.button_delete}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Border Padding="12">
+                            <Grid ColumnDefinitions="*,*,Auto" RowDefinitions="Auto,Auto,Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="{Binding Timestamp, StringFormat='{}{0:dd.MM.yyyy}'}"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
+                                    TextColor="Gray" />
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding MealDisplay}"
+                                    FontAttributes="Bold" />
+
+                                <!-- Rating badge -->
+                                <Border
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    WidthRequest="36"
+                                    HeightRequest="36"
+                                    Shadow="{x:Null}"
+                                    Stroke="Transparent"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="{Binding Rating, Converter={StaticResource RatingToColorConverter}}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="18"/>
+                                    </Border.StrokeShape>
+                                    <Label
+                                        Text="{Binding Rating}"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource Gray600}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,8,0,0"
+                                    Text="{Binding Description}"
+                                    FontAttributes="Italic"
+                                    IsVisible="{Binding HasDescription}" />
+                            </Grid>
+                        </Border>
+                    </SwipeView>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+        <CollectionView.Footer>
+            <VerticalStackLayout Padding="0,8,0,32">
+                <ActivityIndicator
+                    IsRunning="{Binding IsLoadingMore}"
+                    IsVisible="{Binding IsLoadingMore}" />
+            </VerticalStackLayout>
+        </CollectionView.Footer>
+    </CollectionView>
+
+</ContentPage>
