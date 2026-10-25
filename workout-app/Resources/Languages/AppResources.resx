@@ -330,4 +330,56 @@
   <data name="displayalert_want_to_delete" xml:space="preserve">
     <value>Delete entry?</value>
   </data>
+  <data name="motion_sensors" xml:space="preserve">
+    <value>Motion sensors</value>
+  </data>
+  <data name="motion_accelerometer" xml:space="preserve">
+    <value>Acceleration (m/s²)</value>
+  </data>
+  <data name="motion_gyroscope" xml:space="preserve">
+    <value>Gyroscope (rad/s)</value>
+  </data>
+  <data name="motion_time_axis" xml:space="preserve">
+    <value>Time [s]</value>
+  </data>
+  <data name="motion_no_data" xml:space="preserve">
+    <value>No data yet.</value>
+  </data>
+  <data name="motion_too_few_samples" xml:space="preserve">
+    <value>Too few samples.</value>
+  </data>
+  <data name="motion_status_ready" xml:space="preserve">
+    <value>Ready ({0} Hz)</value>
+  </data>
+  <data name="motion_status_countdown" xml:space="preserve">
+    <value>Starting in {0} s ...</value>
+  </data>
+  <data name="motion_status_running" xml:space="preserve">
+    <value>Recording ({0} Hz, {1} s) ...</value>
+  </data>
+  <data name="motion_status_finished" xml:space="preserve">
+    <value>Recording finished.</value>
+  </data>
+  <data name="motion_status_android_only" xml:space="preserve">
+    <value>Only available on Android.</value>
+  </data>
+  <data name="motion_stats" xml:space="preserve">
+    <value>Samples: {0}
+Duration: {1:F3} s
+Rate: {2:F2} Hz
+Interval Ø: {3:F3} ms
+SD: {4:F3} ms
+Min: {5:F3} ms
+Max: {6:F3} ms
+Gaps (>1.5×): {7}</value>
+  </data>
+  <data name="share_motion_title" xml:space="preserve">
+    <value>Sensor data</value>
+  </data>
+  <data name="button_start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="button_stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
 </root>

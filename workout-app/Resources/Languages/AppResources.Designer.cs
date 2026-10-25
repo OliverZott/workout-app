@@ -698,5 +698,140 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("weight_insert_title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Motion sensors.
+        /// </summary>
+        internal static string motion_sensors {
+            get {
+                return ResourceManager.GetString("motion_sensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acceleration (m/s²).
+        /// </summary>
+        internal static string motion_accelerometer {
+            get {
+                return ResourceManager.GetString("motion_accelerometer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gyroscope (rad/s).
+        /// </summary>
+        internal static string motion_gyroscope {
+            get {
+                return ResourceManager.GetString("motion_gyroscope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time [s].
+        /// </summary>
+        internal static string motion_time_axis {
+            get {
+                return ResourceManager.GetString("motion_time_axis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No data yet..
+        /// </summary>
+        internal static string motion_no_data {
+            get {
+                return ResourceManager.GetString("motion_no_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Too few samples..
+        /// </summary>
+        internal static string motion_too_few_samples {
+            get {
+                return ResourceManager.GetString("motion_too_few_samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready ({0} Hz).
+        /// </summary>
+        internal static string motion_status_ready {
+            get {
+                return ResourceManager.GetString("motion_status_ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting in {0} s ....
+        /// </summary>
+        internal static string motion_status_countdown {
+            get {
+                return ResourceManager.GetString("motion_status_countdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording ({0} Hz, {1} s) ....
+        /// </summary>
+        internal static string motion_status_running {
+            get {
+                return ResourceManager.GetString("motion_status_running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording finished..
+        /// </summary>
+        internal static string motion_status_finished {
+            get {
+                return ResourceManager.GetString("motion_status_finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only available on Android..
+        /// </summary>
+        internal static string motion_status_android_only {
+            get {
+                return ResourceManager.GetString("motion_status_android_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Samples: {0}....
+        /// </summary>
+        internal static string motion_stats {
+            get {
+                return ResourceManager.GetString("motion_stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sensor data.
+        /// </summary>
+        internal static string share_motion_title {
+            get {
+                return ResourceManager.GetString("share_motion_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string button_start {
+            get {
+                return ResourceManager.GetString("button_start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        internal static string button_stop {
+            get {
+                return ResourceManager.GetString("button_stop", resourceCulture);
+            }
+        }
     }
 }

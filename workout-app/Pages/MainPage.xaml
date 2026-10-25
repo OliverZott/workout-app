@@ -45,6 +45,16 @@
                     TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToActivityCommand}"
                     TileBackgroundColor="{StaticResource wa-color2}"/>
 
+                <!-- Motion Sensor Tile -->
+                <MainTile
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    TileText="{x:Static AppResources.motion_sensors}"
+                    TileType="MotionSensors"
+                    ImageSource="motion"
+                    TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToMotionSensorsCommand}"
+                    TileBackgroundColor="{StaticResource wa-color2}"/>
+
             </Grid>
             
         </VerticalStackLayout>

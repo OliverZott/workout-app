@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             x:Class="workout_app.Pages.MotionSensorPage"
+             x:DataType="MotionSensorPageModel"
+             Title="{x:Static AppResources.motion_sensors}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,20" Spacing="20">
+
+            <Label Text="{Binding SessionStatus}" FontAttributes="Bold" FontSize="18" />
+
+            <Border Padding="12">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{x:Static AppResources.motion_accelerometer}" FontAttributes="Bold" />
+                        <Label Text="{Binding AccelerometerText}" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="4">
+                        <Label Text="{x:Static AppResources.motion_gyroscope}" FontAttributes="Bold" />
+                        <Label Text="{Binding GyroscopeText}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                <Button Text="{x:Static AppResources.button_start}" Command="{Binding StartTrackingCommand}" IsEnabled="{Binding CanStart}" />
+                <Button Grid.Column="1" Text="{x:Static AppResources.button_stop}" Command="{Binding StopTrackingCommand}" IsEnabled="{Binding IsTracking}" />
+                <Button Grid.Column="2" Text="CSV" Command="{Binding ExportCommand}" IsEnabled="{Binding CanStart}" />
+            </Grid>
+
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Plots}" Spacing="12">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="AxisPlot">
+                        <Border Padding="8" HeightRequest="200">
+                            <sf:SfCartesianChart Title="{Binding Title}">
+                                <sf:SfCartesianChart.XAxes>
+                                    <sf:NumericalAxis>
+                                        <sf:NumericalAxis.Title>
+                                            <sf:ChartAxisTitle Text="{x:Static AppResources.motion_time_axis}" />
+                                        </sf:NumericalAxis.Title>
+                                    </sf:NumericalAxis>
+                                </sf:SfCartesianChart.XAxes>
+
+                                <sf:SfCartesianChart.YAxes>
+                                    <sf:NumericalAxis />
+                                </sf:SfCartesianChart.YAxes>
+
+                                <sf:SfCartesianChart.ZoomPanBehavior>
+                                    <sf:ChartZoomPanBehavior ZoomMode="X" />
+                                </sf:SfCartesianChart.ZoomPanBehavior>
+
+                                <sf:FastLineSeries
+                                    ItemsSource="{Binding Points}"
+                                    XBindingPath="TimeS"
+                                    YBindingPath="Value"
+                                    Fill="{Binding Color}"
+                                    StrokeWidth="1" />
+                            </sf:SfCartesianChart>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
