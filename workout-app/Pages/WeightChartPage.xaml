@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="workout_app.Pages.WeightChartPage"
+             x:Name="Page"
              x:DataType="WeightChartPageModel"
              Title="{x:Static AppResources.weight}">
 
@@ -111,7 +112,7 @@
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
                                 <SwipeItemView
-                                    Command="{Binding DeleteMeasurementCommand, Source={RelativeSource AncestorType={x:Type WeightChartPageModel}}, x:DataType=WeightChartPageModel}"
+                                    Command="{Binding ViewModel.DeleteMeasurementCommand, Source={x:Reference Page}, x:DataType=WeightChartPage}"
                                     CommandParameter="{Binding .}">
                                     <Border
                                         Margin="8,0,0,0"
@@ -133,7 +134,7 @@
                         <Border Padding="12">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
-                                    Command="{Binding EditMeasurementCommand, Source={RelativeSource AncestorType={x:Type WeightChartPageModel}}, x:DataType=WeightChartPageModel}"
+                                    Command="{Binding ViewModel.EditMeasurementCommand, Source={x:Reference Page}, x:DataType=WeightChartPage}"
                                     CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
                             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">

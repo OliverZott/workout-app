@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="workout_app.Pages.ActivityChartPage"
+             x:Name="Page"
              x:DataType="ActivityChartPageModel"
              Title="{x:Static AppResources.activity}">
 
@@ -155,7 +156,7 @@
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
                                 <SwipeItemView
-                                    Command="{Binding DeleteActivityCommand, Source={RelativeSource AncestorType={x:Type ActivityChartPageModel}}, x:DataType=ActivityChartPageModel}"
+                                    Command="{Binding ViewModel.DeleteActivityCommand, Source={x:Reference Page}, x:DataType=ActivityChartPage}"
                                     CommandParameter="{Binding .}">
                                     <Border
                                         Margin="8,0,0,0"
@@ -177,7 +178,7 @@
                         <Border Padding="12">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
-                                    Command="{Binding EditActivityCommand, Source={RelativeSource AncestorType={x:Type ActivityChartPageModel}}, x:DataType=ActivityChartPageModel}"
+                                    Command="{Binding ViewModel.EditActivityCommand, Source={x:Reference Page}, x:DataType=ActivityChartPage}"
                                     CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
                             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
