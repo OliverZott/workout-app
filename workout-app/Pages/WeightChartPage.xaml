@@ -12,7 +12,7 @@
         RemainingItemsThresholdReachedCommand="{Binding LoadMoreMeasurementsCommand}">
 
         <CollectionView.Header>
-            <VerticalStackLayout Padding="20" Spacing="20">
+            <VerticalStackLayout Padding="10" Spacing="10">
 
                 <!-- Time Range Selection -->
                 <DateRangeSelector 
