@@ -16,6 +16,10 @@
     <Color x:Key="wa-color-activity2">#2196F3</Color>
     <Color x:Key="wa-color-activity3">#FF9800</Color>
 
+    <Color x:Key="wa-color-systolic">#EF5350</Color>
+    <Color x:Key="wa-color-diastolic">#2196F3</Color>
+    <Color x:Key="wa-color-heartrate">#FF9800</Color>
+
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>

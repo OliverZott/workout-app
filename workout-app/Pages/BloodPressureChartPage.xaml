@@ -59,7 +59,7 @@
                             ItemsSource="{Binding Data}"
                             XBindingPath="DisplayDate"
                             YBindingPath="Systolic"
-                            Fill="OrangeRed"
+                            Fill="{StaticResource wa-color-systolic}"
                             Label="{x:Static AppResources.systolic}" 
                             ShowDataLabels="False"
                             ShowMarkers="True"/>
@@ -68,7 +68,7 @@
                             ItemsSource="{Binding Data}"
                             XBindingPath="DisplayDate"
                             YBindingPath="Diastolic"
-                            Fill="Blue"
+                            Fill="{StaticResource wa-color-diastolic}"
                             Label="{x:Static AppResources.diastolic}"
                             ShowMarkers="True"/>
 
@@ -76,7 +76,7 @@
                             ItemsSource="{Binding Data}"
                             XBindingPath="DisplayDate"
                             YBindingPath="HeartRate"
-                            Fill="Orange"
+                            Fill="{StaticResource wa-color-heartrate}"
                             Label="{x:Static AppResources.heartrate}" 
                             ShowMarkers="True"/>
                     </sf:SfCartesianChart>
