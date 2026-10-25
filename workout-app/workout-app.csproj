@@ -106,9 +106,6 @@
         <MauiXaml Update="Pages\Controls\DateTimePicker.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Pages\Controls\FunctionButton.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </MauiXaml>
         <MauiXaml Update="Pages\Controls\MainTile.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>

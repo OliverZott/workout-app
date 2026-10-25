@@ -87,7 +87,7 @@
 
                 </Border>
 
-                <FunctionButton
+                <BasicButton
                     Text="{x:Static AppResources.button_value_insert}"
                     Command="{Binding GoToInsertWeightCommand}"/>
 
@@ -99,7 +99,7 @@
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="WeightData">
                 <!-- Wrapper keeps the border shadow from being clipped -->
-                <VerticalStackLayout Padding="30,0,30,12">
+                <VerticalStackLayout Padding="20,0,20,12">
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">

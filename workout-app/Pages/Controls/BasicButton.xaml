@@ -6,7 +6,7 @@
         BackgroundColor="{StaticResource wa-color-button}"
         BorderColor="{StaticResource wa-color-button}"
         TextColor="White"
-        CornerRadius="22"
+        CornerRadius="25"
         FontAttributes="Bold"
         FontSize="18"
         Shadow="{StaticResource DefaultShadow}"/>

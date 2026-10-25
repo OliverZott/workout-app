@@ -7,8 +7,7 @@
 
 
     <Color x:Key="wa-color-background">#f5f5f5</Color>
-    <Color x:Key="wa-color-button">#6c8ebf</Color>
-    <Color x:Key="wa-color-action">#00C2C2</Color>
+    <Color x:Key="wa-color-button">#4a72b0</Color>
     <Color x:Key="wa-color-input">#edf3fd</Color>
     <Color x:Key="wa-color-delete">#e57373</Color>
     <Color x:Key="wa-color-tile">#8eb3e8</Color>
