@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Button xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Button xmlns="http://schemas.microsoft.com/dotnet/maui/global"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         x:Class="workout_app.Pages.Controls.BasicButton"
-        Margin="10" 
-
         HeightRequest="50"
-        BackgroundColor="{StaticResource wa-color-button}" 
+        BackgroundColor="{StaticResource wa-color-button}"
         BorderColor="{StaticResource wa-color-button}"
+        TextColor="White"
         CornerRadius="22"
         FontAttributes="Bold"
         FontSize="18"
-        Shadow="{StaticResource DefaultShadow}">
-
-    <Button.TextColor>
-        <OnPlatform x:TypeArguments="Color">
-            <On Platform="iOS" Value="White" />
-            <On Platform="Android" Value="White"/>
-        </OnPlatform>
-    </Button.TextColor>
-
-</Button>
+        Shadow="{StaticResource DefaultShadow}"/>

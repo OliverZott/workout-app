@@ -40,8 +40,7 @@
                         Style="{StaticResource WaCompactInputBorderStyle}"
                         HeightRequest="60">
 
-                        <Entry 
-                            x:Name="WeightEntry"
+                        <Entry
                             Style="{StaticResource WaCompactNumericEntryStyle}"
                             Text="{Binding SelectedWeight, Mode=TwoWay}"
                             Placeholder="{Binding LastSelectedWeight}"
@@ -51,15 +50,12 @@
                             VerticalOptions="Center"/>
                     </Border>
 
-                    <!-- Unit Label -->
-                    <Label 
+                    <Label
                         Grid.Column="2"
                         Text="{x:Static AppResources.unit_kg}"
+                        Style="{StaticResource WaUnitLabelStyle}"
                         FontSize="Large"
-                        FontAttributes="Bold"
-                        TextColor="{StaticResource Gray500}"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"/>
+                        HorizontalOptions="Center"/>
                 </Grid>
 
             </Grid>
@@ -67,11 +63,10 @@
 
         <!-- Save Button -->
         <Grid ColumnDefinitions="*, 3*, *">
-            <BasicButton 
+            <BasicButton
                 Grid.Column="1"
                 Text="{x:Static AppResources.button_save}"
-                Command="{Binding SaveWeightCommand}" >
-            </BasicButton>
+                Command="{Binding SaveWeightCommand}"/>
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

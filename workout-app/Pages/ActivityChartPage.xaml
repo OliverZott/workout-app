@@ -13,11 +13,10 @@
         RemainingItemsThresholdReachedCommand="{Binding LoadMoreActivitiesCommand}">
 
         <CollectionView.Header>
-            <VerticalStackLayout Padding="10" Spacing="10">
+            <VerticalStackLayout Padding="20,10" Spacing="10">
 
                 <!-- Time Range Selection -->
                 <DateRangeSelector
-                    Margin="10,0,10,0"
                     SelectedRange="{Binding SelectedRange}"
                     RangeSelectedCommand="{Binding SelectRangeCommand}"
                     FirstRangeText="{x:Static AppResources.range_week}"
@@ -29,66 +28,55 @@
 
                 <!-- Summary -->
                 <DataSummary
-                    Margin="10,0,10,0"
                     AverageReading="{Binding AverageDurationReading}"
                     LastReading="{Binding LastDurationReading}"
                     Unit="min"/>
 
                 <!-- Activity Checkboxes (top 3 most used) -->
-                <HorizontalStackLayout >
-                    <HorizontalStackLayout Spacing="4"
-                            IsVisible="{Binding HasActivity1}">
-                        <CheckBox IsChecked="{Binding ShowActivity1}"
-                                Color="#4CAF50"/>
-                        <Label Text="{Binding Activity1Label}"
-                                VerticalTextAlignment="Center"/>
+                <HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="4" IsVisible="{Binding HasActivity1}">
+                        <CheckBox IsChecked="{Binding ShowActivity1}" Color="{StaticResource wa-color-activity1}"/>
+                        <Label Text="{Binding Activity1Label}" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout Spacing="4"
-                            IsVisible="{Binding HasActivity2}">
-                        <CheckBox IsChecked="{Binding ShowActivity2}"
-                                Color="#2196F3"/>
-                        <Label Text="{Binding Activity2Label}"
-                                VerticalTextAlignment="Center"/>
+                    <HorizontalStackLayout Spacing="4" IsVisible="{Binding HasActivity2}">
+                        <CheckBox IsChecked="{Binding ShowActivity2}" Color="{StaticResource wa-color-activity2}"/>
+                        <Label Text="{Binding Activity2Label}" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout Spacing="4"
-                            IsVisible="{Binding HasActivity3}">
-                        <CheckBox IsChecked="{Binding ShowActivity3}"
-                                Color="#FF9800"/>
-                        <Label Text="{Binding Activity3Label}"
-                                VerticalTextAlignment="Center"/>
+                    <HorizontalStackLayout Spacing="4" IsVisible="{Binding HasActivity3}">
+                        <CheckBox IsChecked="{Binding ShowActivity3}" Color="{StaticResource wa-color-activity3}"/>
+                        <Label Text="{Binding Activity3Label}" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
                 </HorizontalStackLayout>
 
                 <!-- Chart Element -->
                 <Border
-                    Margin="10,0,10,0"
                     Padding="30"
                     HeightRequest="360">
 
                     <sf:SfCartesianChart>
 
                         <!-- Legend -->
+                        <sf:SfCartesianChart.Legend>
+                            <sf:ChartLegend Placement="Top"/>
+                        </sf:SfCartesianChart.Legend>
+
+                        <!-- Axes -->
                         <sf:SfCartesianChart.XAxes>
                             <sf:CategoryAxis LabelPlacement="BetweenTicks"/>
                         </sf:SfCartesianChart.XAxes>
 
-                        <!-- Axes -->
                         <sf:SfCartesianChart.YAxes>
                             <sf:NumericalAxis
                                 Minimum="0"
                                 Maximum="{Binding MaxActivityWithPadding}" />
                         </sf:SfCartesianChart.YAxes>
 
-                        <sf:SfCartesianChart.Legend>
-                            <sf:ChartLegend Placement="Top"/>
-                        </sf:SfCartesianChart.Legend>
-
                         <!-- Activity 1 -->
                         <sf:ColumnSeries
                             ItemsSource="{Binding Activity1Data}"
                             XBindingPath="Label"
                             YBindingPath="Value"
-                            Fill="#4CAF50"
+                            Fill="{StaticResource wa-color-activity1}"
                             Label="{Binding Activity1Label}"
                             IsVisible="{Binding ShowActivity1}"
                             IsVisibleOnLegend="{Binding ShowActivity1}"/>
@@ -98,7 +86,7 @@
                             ItemsSource="{Binding Activity2Data}"
                             XBindingPath="Label"
                             YBindingPath="Value"
-                            Fill="#2196F3"
+                            Fill="{StaticResource wa-color-activity2}"
                             Label="{Binding Activity2Label}"
                             IsVisible="{Binding ShowActivity2}"
                             IsVisibleOnLegend="{Binding ShowActivity2}"/>
@@ -108,7 +96,7 @@
                             ItemsSource="{Binding Activity3Data}"
                             XBindingPath="Label"
                             YBindingPath="Value"
-                            Fill="#FF9800"
+                            Fill="{StaticResource wa-color-activity3}"
                             Label="{Binding Activity3Label}"
                             IsVisible="{Binding ShowActivity3}"
                             IsVisibleOnLegend="{Binding ShowActivity3}"/>
@@ -139,11 +127,7 @@
                     Text="{x:Static AppResources.button_value_insert}"
                     Command="{Binding GoToInsertActivityCommand}"/>
 
-                <Label
-                    Margin="10,0,10,0"
-                    Text="{x:Static AppResources.activities}"
-                    FontAttributes="Bold"
-                    FontSize="18" />
+                <Label Text="{x:Static AppResources.activities}" Style="{StaticResource WaTitleLabelStyle}"/>
 
             </VerticalStackLayout>
         </CollectionView.Header>
@@ -155,23 +139,9 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
-                                <SwipeItemView
+                                <DeleteSwipeItem
                                     Command="{Binding ViewModel.DeleteActivityCommand, Source={x:Reference Page}, x:DataType=ActivityChartPage}"
-                                    CommandParameter="{Binding .}">
-                                    <Border
-                                        Margin="8,0,0,0"
-                                        WidthRequest="90"
-                                        BackgroundColor="{StaticResource wa-color-delete}"
-                                        Stroke="{StaticResource wa-color-delete}">
-                                        <Image
-                                            Source="trash_w"
-                                            HeightRequest="28"
-                                            WidthRequest="28"
-                                            SemanticProperties.Description="{x:Static AppResources.button_delete}"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center" />
-                                    </Border>
-                                </SwipeItemView>
+                                    CommandParameter="{Binding .}"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
 
@@ -191,7 +161,7 @@
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
-                                    TextColor="Gray" />
+                                    TextColor="{StaticResource Gray500}" />
 
                                 <Label
                                     Grid.Row="0"
@@ -202,7 +172,7 @@
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Text="{Binding DisplayDetails}"
-                                    TextColor="Gray" />
+                                    TextColor="{StaticResource Gray500}" />
 
                                 <Label
                                     Grid.Row="2"

@@ -8,7 +8,6 @@
 
     <VerticalStackLayout Spacing="50" Padding="20">
 
-
         <!--  DateTime Picker Control -->
         <DateTimePicker
             SelectedDate="{Binding DateTimePicker.SelectedDate}"
@@ -17,131 +16,52 @@
             SelectedTimeDisplay="{Binding DateTimePicker.SelectedTimeDisplay}" />
 
         <!-- Blood Pressure Input Fields -->
-        <Border
-            HeightRequest="300"
-            BackgroundColor="#b3b3b3"
-            Stroke="#b3b3b3"
-            StrokeThickness="0">
+        <Border Padding="24">
+            <Grid ColumnDefinitions="2*, *"
+                  RowDefinitions="*, *, *"
+                  ColumnSpacing="16"
+                  RowSpacing="16">
 
-            <Grid ColumnDefinitions="2*, *">
-
-                <Border
-                    Grid.Column="0"
-                    Margin="36,36,16,36"
-                    BackgroundColor="#e6e6e6"
-                    Stroke="#e6e6e6"
-                    StrokeThickness="0">
-
-                    <Grid
-                        ColumnDefinitions="*, 1.2*"
-                        RowDefinitions="*, *, *">
-
-                        <!-- Systolic Picker in Border -->
-                        <Border 
-                            Grid.Column="1"
-                            Grid.Row="0"
-                            Margin="12">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16"/>
-                            </Border.StrokeShape>
-
-                            <Picker 
-                                x:Name="SystolicPicker" 
-                                ItemsSource="{Binding BloodPressureValues}"
-                                SelectedItem="{Binding SelectedSystolic}"
-                                FontSize="Large"
-                                TextColor="{StaticResource Gray500}"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center" />
-                        </Border>
-
-                        <!-- Diastolic Picker in Border -->
-                        <Border 
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            Margin="12">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16"/>
-                            </Border.StrokeShape>
-
-                            <Picker 
-                                x:Name="DiastolicPicker" 
-                                ItemsSource="{Binding DiastolicValues}"
-                                SelectedItem="{Binding SelectedDiastolic}"
-                                FontSize="Large"
-                                TextColor="{StaticResource Gray500}"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center" />
-                        </Border>
-
-                        <!-- Pulse Picker in Border -->
-                        <Border 
-                            Grid.Column="1"
-                            Grid.Row="2"
-                            Margin="12">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16"/>
-                            </Border.StrokeShape>
-
-                            <Picker 
-                                x:Name="PulsPicker" 
-                                ItemsSource="{Binding PulsValues}"
-                                SelectedItem="{Binding SelectedPulse}"
-                                FontSize="Large"
-                                TextColor="{StaticResource Gray500}"
-                                BackgroundColor="Transparent"
-                                HorizontalTextAlignment="Center" />
-                        </Border>
-
-                    </Grid>
-
+                <Border Style="{StaticResource WaCompactInputBorderStyle}">
+                    <Picker Style="{StaticResource WaCompactPickerStyle}"
+                            ItemsSource="{Binding BloodPressureValues}"
+                            SelectedItem="{Binding SelectedSystolic}"/>
                 </Border>
+                <Label Grid.Column="1"
+                       Text="{x:Static AppResources.bloodpressure_sys_short}"
+                       Style="{StaticResource WaUnitLabelStyle}"/>
 
+                <Border Grid.Row="1" Style="{StaticResource WaCompactInputBorderStyle}">
+                    <Picker Style="{StaticResource WaCompactPickerStyle}"
+                            ItemsSource="{Binding DiastolicValues}"
+                            SelectedItem="{Binding SelectedDiastolic}"/>
+                </Border>
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{x:Static AppResources.bloodpressure_dia_short}"
+                       Style="{StaticResource WaUnitLabelStyle}"/>
 
-                <Grid
-                    Grid.Column="1"
-                    RowDefinitions="*, *, *"
-                    Margin="36,36,16,36" >
-
-                    <Label
-                        Grid.Row="0"
-                        Text="{x:Static AppResources.bloodpressure_sys_short}"
-                        VerticalTextAlignment="Center"
-                        FontSize="Large"
-                        FontAttributes="Bold"
-                        TextColor="{StaticResource Gray500}" />
-                    <Label
-                        Grid.Row="1"
-                        Text="{x:Static AppResources.bloodpressure_dia_short}"
-                        VerticalTextAlignment="Center"
-                        FontSize="Large"
-                        FontAttributes="Bold"
-                        TextColor="{StaticResource Gray500}" />
-                    <Label
-                        Grid.Row="2"
-                        Text="{x:Static AppResources.bloodpressure_pulse_short}"
-                        VerticalTextAlignment="Center"
-                        FontSize="Large"
-                        FontAttributes="Bold"
-                        TextColor="{StaticResource Gray500}" />
-
-                </Grid>
+                <Border Grid.Row="2" Style="{StaticResource WaCompactInputBorderStyle}">
+                    <Picker Style="{StaticResource WaCompactPickerStyle}"
+                            ItemsSource="{Binding PulsValues}"
+                            SelectedItem="{Binding SelectedPulse}"/>
+                </Border>
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       Text="{x:Static AppResources.bloodpressure_pulse_short}"
+                       Style="{StaticResource WaUnitLabelStyle}"/>
 
             </Grid>
-
         </Border>
-
 
         <!-- Save Button -->
         <Grid ColumnDefinitions="*, 2*, *">
-            <BasicButton 
+            <BasicButton
                 Grid.Column="1"
                 Text="{x:Static AppResources.button_save}"
-                Command="{Binding SaveBloodPressureCommand}" >
-            </BasicButton>
+                Command="{Binding SaveBloodPressureCommand}"/>
         </Grid>
 
-
     </VerticalStackLayout>
-    
+
 </ContentPage>

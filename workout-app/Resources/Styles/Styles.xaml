@@ -28,7 +28,6 @@
 
     <!-- Border Element -->
     <Style TargetType="Border">
-        <!--<Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />-->
         <Setter Property="BackgroundColor"
                 Value="White"/>
         <Setter Property="Stroke"
@@ -196,14 +195,36 @@
         </Setter>
     </Style>
 
-    <Style x:Key="WaSectionLabelStyle" TargetType="Label">
+    <!-- Keyed styles use CanCascade so the implicit style (font, colors, shape) still applies underneath -->
+    <Style x:Key="WaSectionLabelStyle" TargetType="Label" CanCascade="True">
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
     </Style>
 
-    <Style x:Key="WaFlatBorderStyle" TargetType="Border" CanCascade="True">
-        <Setter Property="Shadow" Value="{x:Null}"/>
+    <Style x:Key="WaDescriptionLabelStyle" TargetType="Label" CanCascade="True">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+    </Style>
+
+    <Style x:Key="WaUnitLabelStyle" TargetType="Label" CanCascade="True">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="WaTitleLabelStyle" TargetType="Label" CanCascade="True">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="WaRangeButtonStyle" TargetType="Button" CanCascade="True">
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="CornerRadius" Value="24"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="TextColor" Value="Black"/>
     </Style>
 
     <Style x:Key="WaCompactInputBorderStyle" TargetType="Border">
@@ -220,13 +241,20 @@
 
     <Style x:Key="WaCompactNumericEntryStyle" TargetType="Entry">
         <Setter Property="Placeholder" Value="0"/>
-        <Setter Property="PlaceholderColor" Value="LightGray"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray200}"/>
         <Setter Property="Keyboard" Value="Numeric"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="WaCompactPickerStyle" TargetType="Picker" CanCascade="True">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+        <Setter Property="TitleColor" Value="{StaticResource Gray200}"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="WaCompactEditorStyle" TargetType="Editor">
@@ -287,30 +315,6 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
-    </Style>
-
-    <Style TargetType="Label"
-            x:Key="Headline">
-        <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}"/>
-        <Setter Property="FontSize"
-                Value="32"/>
-        <Setter Property="HorizontalOptions"
-                Value="Center"/>
-        <Setter Property="HorizontalTextAlignment"
-                Value="Center"/>
-    </Style>
-
-    <Style TargetType="Label"
-            x:Key="SubHeadline">
-        <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}"/>
-        <Setter Property="FontSize"
-                Value="24"/>
-        <Setter Property="HorizontalOptions"
-                Value="Center"/>
-        <Setter Property="HorizontalTextAlignment"
-                Value="Center"/>
     </Style>
 
     <Style TargetType="Picker">
@@ -553,30 +557,6 @@
         </Setter>
     </Style>
 
-    <!--
-    <Style TargetType="TitleBar">
-        <Setter Property="MinimumHeightRequest" Value="32"/>
-        <Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="TitleActiveStates">
-                    <VisualState x:Name="TitleBarTitleActive">
-                        <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="Transparent" />
-                            <Setter Property="ForegroundColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="TitleBarTitleInactive">
-                        <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-                            <Setter Property="ForegroundColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>
-    </Style>
-    -->
-
     <Style TargetType="Page"
             ApplyToDerivedTypes="True">
         <Setter Property="Padding"
@@ -612,26 +592,6 @@
                 Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="Shell.TabBarUnselectedColor"
                 Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
-    </Style>
-
-    <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}"/>
-        <Setter Property="BarTextColor"
-                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}"/>
-        <Setter Property="IconColor"
-                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}"/>
-    </Style>
-
-    <Style TargetType="TabbedPage">
-        <Setter Property="BarBackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"/>
-        <Setter Property="BarTextColor"
-                Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}"/>
-        <Setter Property="UnselectedTabColor"
-                Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}"/>
-        <Setter Property="SelectedTabColor"
-                Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}"/>
     </Style>
 
 </ResourceDictionary>

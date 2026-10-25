@@ -7,127 +7,60 @@
     Title="{x:Static AppResources.settings}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="0">
+        <VerticalStackLayout Padding="30,20" Spacing="30">
 
             <!-- Notifications -->
-            <Label
-                Text="{x:Static AppResources.settings_notifications}"
-                FontSize="16"
-                FontAttributes="Bold"
-                Margin="10,20,10,4"/>
-            <Grid ColumnDefinitions="*,*"
-                  Margin="10">
-                <TimePicker
-                    Grid.Column="0"
-                    Time="{Binding NotificationTime}"
-                    HorizontalOptions="Start"
-                    FontSize="20"
-                    TextColor="Black"/>
-                <Switch
-                    Grid.Column="1"
-                    HorizontalOptions="End"
-                    IsToggled="{Binding IsNotificationEnabled, Mode=TwoWay}"
-                    Toggled="OnNotificationSwitchToggled"/>
-            </Grid>
+            <VerticalStackLayout Spacing="8">
+                <Label Text="{x:Static AppResources.settings_notifications}" Style="{StaticResource WaTitleLabelStyle}"/>
+                <Grid ColumnDefinitions="*, Auto">
+                    <TimePicker
+                        Time="{Binding NotificationTime}"
+                        HorizontalOptions="Start"
+                        FontSize="20"
+                        TextColor="Black"/>
+                    <Switch
+                        Grid.Column="1"
+                        IsToggled="{Binding IsNotificationEnabled, Mode=TwoWay}"
+                        Toggled="OnNotificationSwitchToggled"/>
+                </Grid>
+            </VerticalStackLayout>
 
             <!-- Export Data -->
-            <Label
-                Text="{x:Static AppResources.settings_export_data}"
-                FontSize="16"
-                FontAttributes="Bold"
-                Margin="10,20,10,4"/>
-            <Label
-                Text="{x:Static AppResources.settings_export_description}"
-                FontSize="13"
-                TextColor="Gray"
-                Margin="10,0,10,10"/>
-            <Grid ColumnDefinitions="*"
-                  RowDefinitions="Auto,Auto"
-                  Margin="10,0,10,0">
-                <BasicButton Grid.Column="0"
-                             HeightRequest="44"
-                             FontSize="16"
-                             Margin="0,0,0,8"
-                             Text="{x:Static AppResources.settings_export_csv}"
-                             Command="{Binding ExportDataToCsvCommand}"/>
-                <BasicButton Grid.Column="0"
-                             HeightRequest="44"
-                             FontSize="16"
-                             Margin="0"
-                             Text="{x:Static AppResources.settings_export_db}"
-                             Command="{Binding ExportDatabaseBackupCommand}"/>
-            </Grid>
+            <VerticalStackLayout Spacing="8">
+                <Label Text="{x:Static AppResources.settings_export_data}" Style="{StaticResource WaTitleLabelStyle}"/>
+                <Label Text="{x:Static AppResources.settings_export_description}" Style="{StaticResource WaDescriptionLabelStyle}"/>
+                <BasicButton Text="{x:Static AppResources.settings_export_csv}" Command="{Binding ExportDataToCsvCommand}"/>
+                <BasicButton Text="{x:Static AppResources.settings_export_db}" Command="{Binding ExportDatabaseBackupCommand}"/>
+            </VerticalStackLayout>
 
             <!-- Import Data -->
-            <Label
-                Text="{x:Static AppResources.settings_import_data}"
-                FontSize="16"
-                FontAttributes="Bold"
-                Margin="10,16,10,4"/>
-            <Label
-                Text="{x:Static AppResources.settings_import_description}"
-                FontSize="13"
-                TextColor="Gray"
-                Margin="10,0,10,10"/>
-            <Grid ColumnDefinitions="*"
-                  Margin="10,0,10,0">
-                <BasicButton Grid.Column="0"
-                             HeightRequest="44"
-                             FontSize="16"
-                             Margin="0"
-                             Text="{x:Static AppResources.settings_import_db}"
-                             Command="{Binding ImportDatabaseBackupCommand}"/>
-            </Grid>
+            <VerticalStackLayout Spacing="8">
+                <Label Text="{x:Static AppResources.settings_import_data}" Style="{StaticResource WaTitleLabelStyle}"/>
+                <Label Text="{x:Static AppResources.settings_import_description}" Style="{StaticResource WaDescriptionLabelStyle}"/>
+                <BasicButton Text="{x:Static AppResources.settings_import_db}" Command="{Binding ImportDatabaseBackupCommand}"/>
+            </VerticalStackLayout>
 
             <!-- Logging -->
-            <Grid ColumnDefinitions="*, Auto"
-                  Margin="10"
-                  Padding="0,30,0,0">
-                <Label
-                    Grid.Column="0"
-                    Text="{x:Static AppResources.settings_enable_logging}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    VerticalOptions="Center"/>
-                <Switch
-                    Grid.Column="1"
-                    HorizontalOptions="End"
-                    IsToggled="{Binding IsLoggingEnabled, Mode=TwoWay}"
-                    VerticalOptions="Center"/>
-            </Grid>
-            <Label
-                Text="{x:Static AppResources.settings_logging_description}"
-                FontSize="13"
-                TextColor="Gray"
-                Margin="10,0,10,10"/>
-            <Grid ColumnDefinitions="*, *"
-                  Margin="10">
-                <BasicButton Grid.Column="0"
-                             Text="{x:Static AppResources.settings_send_logs}"
-                             Command="{Binding SendLogsCommand}"/>
-            </Grid>
-            <Label
-                Text="{Binding StatusMessage}"
-                FontSize="13"
-                TextColor="Gray"
-                Margin="10,4,10,0"/>
+            <VerticalStackLayout Spacing="8">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Label
+                        Text="{x:Static AppResources.settings_enable_logging}"
+                        Style="{StaticResource WaTitleLabelStyle}"
+                        VerticalOptions="Center"/>
+                    <Switch
+                        Grid.Column="1"
+                        IsToggled="{Binding IsLoggingEnabled, Mode=TwoWay}"/>
+                </Grid>
+                <Label Text="{x:Static AppResources.settings_logging_description}" Style="{StaticResource WaDescriptionLabelStyle}"/>
+                <BasicButton Text="{x:Static AppResources.settings_send_logs}" Command="{Binding SendLogsCommand}"/>
+                <Label Text="{Binding StatusMessage}" Style="{StaticResource WaDescriptionLabelStyle}"/>
+            </VerticalStackLayout>
 
             <!-- App Version -->
-            <Grid ColumnDefinitions="Auto, Auto"
-                  Margin="10"
-                  Padding="0,30,0,0">
-                <Label
-                    Grid.Column="0"
-                    Text="{x:Static AppResources.settings_app_version}"
-                    FontSize="14"
-                    FontAttributes="Bold"
-                    VerticalOptions="Center"/>
-                <Label
-                    Grid.Column="1"
-                    Text="{Binding AppVersion}"
-                    FontSize="14"
-                    VerticalOptions="Center"/>
-            </Grid>
+            <HorizontalStackLayout>
+                <Label Text="{x:Static AppResources.settings_app_version}" FontAttributes="Bold"/>
+                <Label Text="{Binding AppVersion}"/>
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

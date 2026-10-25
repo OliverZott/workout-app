@@ -4,47 +4,36 @@
              x:Class="workout_app.Pages.Controls.MainTile"
              x:DataType="MainTile">
 
-
-    <Border
-        HeightRequest="140">
-
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="20"/>
-        </Border.StrokeShape>
+    <Border HeightRequest="140">
 
         <Border.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding TapCommand}"/>
         </Border.GestureRecognizers>
 
         <Grid RowDefinitions="*, Auto"
-                Margin="12">
+              Margin="12">
 
             <!-- Colored circle with icon -->
-            <Grid Grid.Row="0"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
+            <Grid HorizontalOptions="Center"
+                  VerticalOptions="Center">
                 <Ellipse
-                    Fill="{Binding TileBackgroundColor}"
+                    Fill="{StaticResource wa-color-tile}"
                     WidthRequest="80"
                     HeightRequest="80"/>
                 <Image
                     Source="{Binding ImageSource}"
                     Aspect="AspectFit"
                     HeightRequest="44"
-                    WidthRequest="44"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
+                    WidthRequest="44"/>
             </Grid>
 
-            <!-- Label -->
             <Label
                 Grid.Row="1"
                 Text="{Binding TileText}"
                 FontAttributes="Bold"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
                 FontSize="16"
                 TextColor="{StaticResource Gray600}"
+                HorizontalOptions="Center"
                 Margin="0,6,0,0"/>
         </Grid>
     </Border>

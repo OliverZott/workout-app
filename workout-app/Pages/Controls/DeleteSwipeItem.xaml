@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SwipeItemView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="workout_app.Pages.Controls.DeleteSwipeItem">
+
+    <Border
+        Margin="8,0,0,0"
+        WidthRequest="90"
+        BackgroundColor="{StaticResource wa-color-delete}"
+        Stroke="{StaticResource wa-color-delete}">
+        <Image
+            Source="trash_w"
+            HeightRequest="28"
+            WidthRequest="28"
+            SemanticProperties.Description="{x:Static AppResources.button_delete}"/>
+    </Border>
+
+</SwipeItemView>

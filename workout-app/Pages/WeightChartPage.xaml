@@ -13,11 +13,10 @@
         RemainingItemsThresholdReachedCommand="{Binding LoadMoreMeasurementsCommand}">
 
         <CollectionView.Header>
-            <VerticalStackLayout Padding="10" Spacing="10">
+            <VerticalStackLayout Padding="20,10" Spacing="10">
 
                 <!-- Time Range Selection -->
                 <DateRangeSelector 
-                    Margin="10,0,10,0"
                     SelectedRange="{Binding SelectedRange}"
                     RangeSelectedCommand="{Binding SelectRangeCommand}"
                     FirstRangeText="{x:Static AppResources.range_week}" 
@@ -29,14 +28,12 @@
 
                 <!-- Summary Element -->
                 <DataSummary
-                    Margin="10,0,10,0"
                     AverageReading="{Binding AverageWeightReading}"
                     LastReading="{Binding LastWeightReading}"
                     Unit="kg" />
 
                 <!-- Chart Element -->
                 <Border
-                    Margin="10,0,10,0"
                     Padding="30"
                     HeightRequest="400">
 
@@ -92,14 +89,9 @@
 
                 <FunctionButton
                     Text="{x:Static AppResources.button_value_insert}"
-                    Margin="10,0,10,0"
                     Command="{Binding GoToInsertWeightCommand}"/>
 
-                <Label
-                    Margin="10,0,10,0"
-                    Text="{x:Static AppResources.measurements}"
-                    FontAttributes="Bold"
-                    FontSize="18" />
+                <Label Text="{x:Static AppResources.measurements}" Style="{StaticResource WaTitleLabelStyle}"/>
 
             </VerticalStackLayout>
         </CollectionView.Header>
@@ -111,23 +103,9 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="Close">
-                                <SwipeItemView
+                                <DeleteSwipeItem
                                     Command="{Binding ViewModel.DeleteMeasurementCommand, Source={x:Reference Page}, x:DataType=WeightChartPage}"
-                                    CommandParameter="{Binding .}">
-                                    <Border
-                                        Margin="8,0,0,0"
-                                        WidthRequest="90"
-                                        BackgroundColor="{StaticResource wa-color-delete}"
-                                        Stroke="{StaticResource wa-color-delete}">
-                                        <Image
-                                            Source="trash_w"
-                                            HeightRequest="28"
-                                            WidthRequest="28"
-                                            SemanticProperties.Description="{x:Static AppResources.button_delete}"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center" />
-                                    </Border>
-                                </SwipeItemView>
+                                    CommandParameter="{Binding .}"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
 
@@ -147,7 +125,7 @@
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
-                                    TextColor="Gray" />
+                                    TextColor="{StaticResource Gray500}" />
 
                                 <Label
                                     Grid.Row="0"

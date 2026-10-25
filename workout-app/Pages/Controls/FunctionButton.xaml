@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Button
-    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="workout_app.Pages.Controls.FunctionButton"
-    
-    BackgroundColor="{StaticResource wa-color-action}"
-    TextColor="Black"
-    FontSize="Medium"
-    FontAttributes="Bold"
-    CornerRadius="40"
-    HeightRequest="70"
-    Shadow="{StaticResource DefaultShadow}">
-
-</Button>
+<Button xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="workout_app.Pages.Controls.FunctionButton"
+        HeightRequest="70"
+        BackgroundColor="{StaticResource wa-color-action}"
+        TextColor="Black"
+        CornerRadius="40"
+        FontAttributes="Bold"
+        FontSize="Medium"
+        Shadow="{StaticResource DefaultShadow}"/>

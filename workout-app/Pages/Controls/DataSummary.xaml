@@ -4,66 +4,25 @@
              x:Class="workout_app.Pages.Controls.DataSummary"
              x:Name="DataSummaryControl">
 
-
     <Grid ColumnDefinitions="*, *"
           ColumnSpacing="20">
 
-        <Border Grid.Column="0">
-
-            <VerticalStackLayout 
-                VerticalOptions="Center"
-                Margin="10">
-                
-                <Label 
-                    Text="{x:Static AppResources.average}"
-                    TextColor="Gray"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    FontSize="Medium"/>
-                <Label 
-                    Text="{Binding Source={x:Reference DataSummaryControl}, Path=AverageReading}"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
-                <Label 
-                    Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    TextColor="Gray"/>
+        <Border>
+            <VerticalStackLayout VerticalOptions="Center" Margin="10">
+                <Label Text="{x:Static AppResources.average}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=AverageReading}" Style="{StaticResource WaTitleLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
             </VerticalStackLayout>
-
         </Border>
 
         <Border Grid.Column="1">
-
-            <VerticalStackLayout 
-                VerticalOptions="Center"
-                Margin="10">
-                
-                <Label 
-                    Text="{x:Static AppResources.last_entry}"
-                    TextColor="Gray"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    FontSize="Medium"/>
-                <Label 
-                    Text="{Binding Source={x:Reference DataSummaryControl}, Path=LastReading}"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
-                <Label
-                    Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    TextColor="Gray"/>
+            <VerticalStackLayout VerticalOptions="Center" Margin="10">
+                <Label Text="{x:Static AppResources.last_entry}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=LastReading}" Style="{StaticResource WaTitleLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
             </VerticalStackLayout>
-
         </Border>
 
     </Grid>
-    
+
 </ContentView>

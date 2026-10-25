@@ -9,7 +9,7 @@
     <ScrollView>
         <VerticalStackLayout Padding="30,20" Spacing="20">
 
-            <Label Text="{Binding SessionStatus}" FontAttributes="Bold" FontSize="18" />
+            <Label Text="{Binding SessionStatus}" Style="{StaticResource WaTitleLabelStyle}" />
 
             <Border Padding="12">
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
@@ -26,9 +26,9 @@
             </Border>
 
             <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
-                <Button Text="{x:Static AppResources.button_start}" Command="{Binding StartTrackingCommand}" IsEnabled="{Binding CanStart}" />
-                <Button Grid.Column="1" Text="{x:Static AppResources.button_stop}" Command="{Binding StopTrackingCommand}" IsEnabled="{Binding IsTracking}" />
-                <Button Grid.Column="2" Text="CSV" Command="{Binding ExportCommand}" IsEnabled="{Binding CanStart}" />
+                <BasicButton Text="{x:Static AppResources.button_start}" Command="{Binding StartTrackingCommand}" IsEnabled="{Binding CanStart}" />
+                <BasicButton Grid.Column="1" Text="{x:Static AppResources.button_stop}" Command="{Binding StopTrackingCommand}" IsEnabled="{Binding IsTracking}" />
+                <BasicButton Grid.Column="2" Text="CSV" Command="{Binding ExportCommand}" IsEnabled="{Binding CanStart}" />
             </Grid>
 
             <VerticalStackLayout BindableLayout.ItemsSource="{Binding Plots}" Spacing="12">

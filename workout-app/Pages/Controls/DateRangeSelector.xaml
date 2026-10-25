@@ -15,50 +15,29 @@
 
         <Grid ColumnDefinitions="*,*,*">
 
-            <!-- Week Selector -->
-            <Border Grid.Column="0" 
-                    Style="{StaticResource WaFlatBorderStyle}"
-                    HeightRequest="50">
+            <Button
+                Grid.Column="0"
+                Style="{StaticResource WaRangeButtonStyle}"
+                Text="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeText}"
+                Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
+                CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeValue}"
+                BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Week}" />
 
-                <Button 
-                    Text="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeText}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    TextColor="Black"
-                    Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
-                    CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeValue}"
-                    BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Week}" />
-            </Border>
+            <Button
+                Grid.Column="1"
+                Style="{StaticResource WaRangeButtonStyle}"
+                Text="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeText}"
+                Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
+                CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeValue}"
+                BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Month}" />
 
-            <!-- Month Selector -->
-            <Border Grid.Column="1"
-                    Style="{StaticResource WaFlatBorderStyle}"
-                    HeightRequest="50">
-
-                <Button 
-                    Text="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeText}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    TextColor="Black"  
-                    Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
-                    CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeValue}"
-                    BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Month}" />
-            </Border>
-
-            <!-- Max Selector -->
-            <Border Grid.Column="2" 
-                    Style="{StaticResource WaFlatBorderStyle}"
-                    HeightRequest="50">
-
-                <Button 
-                    Text="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeText}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    TextColor="Black"  
-                    Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
-                    CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeValue}"
-                    BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Max}" />
-            </Border>
+            <Button
+                Grid.Column="2"
+                Style="{StaticResource WaRangeButtonStyle}"
+                Text="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeText}"
+                Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
+                CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeValue}"
+                BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Max}" />
 
         </Grid>
     </Border>

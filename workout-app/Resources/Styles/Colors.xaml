@@ -11,25 +11,20 @@
     <Color x:Key="wa-color-action">#00C2C2</Color>
     <Color x:Key="wa-color-input">#edf3fd</Color>
     <Color x:Key="wa-color-delete">#e57373</Color>
+    <Color x:Key="wa-color-tile">#8eb3e8</Color>
 
-    <Color x:Key="wa-color1">#FFE6E6</Color>
-    <Color x:Key="wa-color2">#8eb3e8</Color>
-    <Color x:Key="wa-color3">#E6FFE6</Color>
-    <Color x:Key="wa-color4">#FFE6D6</Color>
-    <Color x:Key="wa-color5">#FFFFE6</Color>
-    <Color x:Key="wa-color6">#F3E6FF</Color>
+    <Color x:Key="wa-color-activity1">#4CAF50</Color>
+    <Color x:Key="wa-color-activity2">#2196F3</Color>
+    <Color x:Key="wa-color-activity3">#FF9800</Color>
 
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
-    <Color x:Key="Magenta">#D600AA</Color>
-    <Color x:Key="MidnightBlue">#190649</Color>
     <Color x:Key="OffBlack">#1f1f1f</Color>
 
     <Color x:Key="Gray100">#E1E1E1</Color>
@@ -40,19 +35,4 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
-
-    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
-    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
-    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
-    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
-    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
-
-    <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}"/>
-    <SolidColorBrush x:Key="Gray200Brush" Color="{StaticResource Gray200}"/>
-    <SolidColorBrush x:Key="Gray300Brush" Color="{StaticResource Gray300}"/>
-    <SolidColorBrush x:Key="Gray400Brush" Color="{StaticResource Gray400}"/>
-    <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}"/>
-    <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
-    <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
-    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
 </ResourceDictionary>

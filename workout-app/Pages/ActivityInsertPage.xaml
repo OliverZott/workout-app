@@ -24,14 +24,10 @@
                     <Border Style="{StaticResource WaCompactInputBorderStyle}"
                             WidthRequest="240">
                         <Picker
+                            Style="{StaticResource WaCompactPickerStyle}"
                             Title="{x:Static AppResources.activity_select_title}"
-                            TitleColor="LightGray"
                             ItemsSource="{Binding AvailableActivities}"
-                            SelectedItem="{Binding SelectedActivityType}"
-                            FontSize="16"
-                            TextColor="Black"
-                            BackgroundColor="Transparent"
-                            HorizontalTextAlignment="Center"/>
+                            SelectedItem="{Binding SelectedActivityType}"/>
                     </Border>
                 </VerticalStackLayout>
             </Border>
@@ -54,12 +50,7 @@
                                 FontAttributes="Bold"
                                 MaxLength="2"/>
                         </Border>
-                        <Label Grid.Column="1"
-                               Text="{x:Static AppResources.unit_h}"
-                               FontAttributes="Bold"
-                               FontSize="15"
-                               VerticalTextAlignment="Center"
-                               TextColor="{StaticResource Gray500}"/>
+                        <Label Grid.Column="1" Text="{x:Static AppResources.unit_h}" Style="{StaticResource WaUnitLabelStyle}"/>
 
                         <Border Grid.Column="2"
                                 Style="{StaticResource WaCompactInputBorderStyle}"
@@ -70,12 +61,7 @@
                                 FontAttributes="Bold"
                                 MaxLength="2"/>
                         </Border>
-                        <Label Grid.Column="3"
-                               Text="{x:Static AppResources.unit_min}"
-                               FontAttributes="Bold"
-                               FontSize="15"
-                               VerticalTextAlignment="Center"
-                               TextColor="{StaticResource Gray500}"/>
+                        <Label Grid.Column="3" Text="{x:Static AppResources.unit_min}" Style="{StaticResource WaUnitLabelStyle}"/>
                     </Grid>
                 </VerticalStackLayout>
             </Border>
@@ -97,12 +83,7 @@
                                     Margin="0,0,10,0"
                                     MaxLength="6"/>
                             </Border>
-                            <Label Grid.Column="1"
-                                   Text="{x:Static AppResources.unit_km}"
-                                   FontSize="15"
-                                   FontAttributes="Bold"
-                                   TextColor="{StaticResource Gray500}"
-                                   VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="{x:Static AppResources.unit_km}" Style="{StaticResource WaUnitLabelStyle}"/>
                         </Grid>
                     </VerticalStackLayout>
 
@@ -119,12 +100,7 @@
                                     Margin="0,0,10,0"
                                     MaxLength="5"/>
                             </Border>
-                            <Label Grid.Column="1"
-                                   Text="{x:Static AppResources.unit_hm}"
-                                   FontSize="15"
-                                   FontAttributes="Bold"
-                                   TextColor="{StaticResource Gray500}"
-                                   VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="{x:Static AppResources.unit_hm}" Style="{StaticResource WaUnitLabelStyle}"/>
                         </Grid>
                     </VerticalStackLayout>
 
@@ -148,11 +124,9 @@
                 </VerticalStackLayout>
             </Border>
 
-
             <!-- Save Button -->
             <BasicButton
                 Text="{x:Static AppResources.button_save}"
-                Margin="10,8,10,0"
                 Command="{Binding SaveActivityCommand}"/>
 
         </VerticalStackLayout>
