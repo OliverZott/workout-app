@@ -1,6 +1,7 @@
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
+using Serilog.Filters;
 
 namespace workout_app;
 
@@ -23,19 +24,25 @@ public static class SerilogConfig
             .MinimumLevel.Debug()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
             .WriteTo.Debug(outputTemplate: OutputTemplate)
-            // Rotates daily and at 1 MB, keeps at most 5 files (~5 MB in total)
-            .WriteTo.File(
-                Path.Combine(LogDirectory, "log-.log"),
-                outputTemplate: OutputTemplate,
-                levelSwitch: FileLevel,
-                rollingInterval: RollingInterval.Day,
-                rollOnFileSizeLimit: true,
-                fileSizeLimitBytes: 1_000_000,
-                retainedFileCountLimit: 5,
-                flushToDiskInterval: TimeSpan.FromSeconds(1))
+            .WriteTo.Logger(file => file
+                // MAUI logs a harmless "Font asset not found" warning with a ~100 line stack trace on every page;
+                // keep it in the debug output but out of the file
+                .Filter.ByExcluding(e => e.Level < LogEventLevel.Error && IsFromFontManager(e))
+                // Rotates daily and at 1 MB, keeps at most 5 files (~5 MB in total)
+                .WriteTo.File(
+                    Path.Combine(LogDirectory, "log-.log"),
+                    outputTemplate: OutputTemplate,
+                    levelSwitch: FileLevel,
+                    rollingInterval: RollingInterval.Day,
+                    rollOnFileSizeLimit: true,
+                    fileSizeLimitBytes: 1_000_000,
+                    retainedFileCountLimit: 5,
+                    flushToDiskInterval: TimeSpan.FromSeconds(1)))
             .CreateLogger();
     }
 
     public static void SetDetailedFileLogging(bool enabled) =>
         FileLevel.MinimumLevel = enabled ? LogEventLevel.Information : LogEventLevel.Warning;
+
+    private static readonly Func<LogEvent, bool> IsFromFontManager = Matching.FromSource("Microsoft.Maui.FontManager");
 }
