@@ -17,7 +17,7 @@
 
             <!-- Week Selector -->
             <Border Grid.Column="0" 
-                    Shadow="{x:Null}"
+                    Style="{StaticResource WaFlatBorderStyle}"
                     HeightRequest="50">
 
                 <Button 
@@ -32,7 +32,7 @@
 
             <!-- Month Selector -->
             <Border Grid.Column="1"
-                    Shadow="{x:Null}"
+                    Style="{StaticResource WaFlatBorderStyle}"
                     HeightRequest="50">
 
                 <Button 
@@ -47,7 +47,7 @@
 
             <!-- Max Selector -->
             <Border Grid.Column="2" 
-                    Shadow="{x:Null}"
+                    Style="{StaticResource WaFlatBorderStyle}"
                     HeightRequest="50">
 
                 <Button 

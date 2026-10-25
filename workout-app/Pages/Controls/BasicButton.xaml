@@ -9,7 +9,8 @@
         BorderColor="{StaticResource wa-color-button}"
         CornerRadius="22"
         FontAttributes="Bold"
-        FontSize="18">
+        FontSize="18"
+        Shadow="{StaticResource DefaultShadow}">
 
     <Button.TextColor>
         <OnPlatform x:TypeArguments="Color">
@@ -17,12 +18,5 @@
             <On Platform="Android" Value="White"/>
         </OnPlatform>
     </Button.TextColor>
-
-    <Button.Shadow>
-        <Shadow Brush="Black"
-                Opacity="0.16"
-                Radius="5"
-                Offset="2,2" />
-    </Button.Shadow>
 
 </Button>

@@ -4,18 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="workout_app.Pages.Controls.FunctionButton"
     
-    BackgroundColor="#00C2C2"
+    BackgroundColor="{StaticResource wa-color-action}"
     TextColor="Black"
     FontSize="Medium"
     FontAttributes="Bold"
     CornerRadius="40"
-    HeightRequest="70">
-
-    <Button.Shadow>
-        <Shadow Brush="Black"
-                Opacity="0.35"
-                Radius="8"
-                Offset="4,4" />
-    </Button.Shadow>
+    HeightRequest="70"
+    Shadow="{StaticResource DefaultShadow}">
 
 </Button>
