@@ -382,4 +382,16 @@ Gaps (>1.5×): {7}</value>
   <data name="button_stop" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="button_ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="displayalert_save_failed" xml:space="preserve">
+    <value>Saving failed</value>
+  </data>
+  <data name="displayalert_delete_failed" xml:space="preserve">
+    <value>Deleting failed</value>
+  </data>
+  <data name="displayalert_error_message" xml:space="preserve">
+    <value>Please try again. If the problem persists, send the logs from the settings.</value>
+  </data>
 </root>

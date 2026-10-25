@@ -8,6 +8,7 @@ public partial class BloodPressureInsertPageModel : ObservableObject, IQueryAttr
     public DateTimePickerModel DateTimePicker { get; } = new();
 
     private readonly DatabaseService databaseService;
+    private readonly ILogger<BloodPressureInsertPageModel> logger;
 
     // Set when the page was opened from a list entry; saving then updates this entry instead of adding a new one
     private BloodPressureData? editEntry;
@@ -23,9 +24,10 @@ public partial class BloodPressureInsertPageModel : ObservableObject, IQueryAttr
     public IReadOnlyList<int> DiastolicValues { get; } = Enumerable.Range(30, 180).ToList();
     public IReadOnlyList<int> PulsValues { get; } = Enumerable.Range(30, 180).ToList();
 
-    public BloodPressureInsertPageModel(DatabaseService databaseService)
+    public BloodPressureInsertPageModel(DatabaseService databaseService, ILogger<BloodPressureInsertPageModel> logger)
     {
         this.databaseService = databaseService;
+        this.logger = logger;
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -57,10 +59,20 @@ public partial class BloodPressureInsertPageModel : ObservableObject, IQueryAttr
             Timestamp = DateTimePicker.SelectedDate.Date + DateTimePicker.SelectedTime
         };
 
-        if (editEntry != null)
-            await databaseService.UpdateAsync(entry);
-        else
-            await databaseService.AddCardioAsync(entry);
+        try
+        {
+            if (editEntry != null)
+                await databaseService.UpdateAsync(entry);
+            else
+                await databaseService.AddCardioAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            // Stay on the page so the input is not lost
+            logger.LogError(ex, "Saving blood pressure entry failed");
+            await Shell.Current.DisplayAlertAsync(AppResources.displayalert_save_failed, AppResources.displayalert_error_message, AppResources.button_ok);
+            return;
+        }
 
         await Shell.Current.GoToAsync("..");
     }

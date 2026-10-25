@@ -6,6 +6,7 @@ namespace workout_app.PageModels;
 public partial class ActivityInsertPageModel : ObservableObject, IQueryAttributable
 {
     private readonly DatabaseService databaseService;
+    private readonly ILogger<ActivityInsertPageModel> logger;
 
     // Set when the page was opened from a list entry; saving then updates this entry instead of adding a new one
     private ActivityData? editEntry;
@@ -30,9 +31,10 @@ public partial class ActivityInsertPageModel : ObservableObject, IQueryAttributa
 
     public IReadOnlyList<ActivityType> AvailableActivities { get; } = [.. Enum.GetValues<ActivityType>()];
 
-    public ActivityInsertPageModel(DatabaseService databaseService)
+    public ActivityInsertPageModel(DatabaseService databaseService, ILogger<ActivityInsertPageModel> logger)
     {
         this.databaseService = databaseService;
+        this.logger = logger;
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -83,10 +85,20 @@ public partial class ActivityInsertPageModel : ObservableObject, IQueryAttributa
             Timestamp = DateTimePicker.SelectedDate.Date + DateTimePicker.SelectedTime
         };
 
-        if (editEntry != null)
-            await databaseService.UpdateAsync(entry);
-        else
-            await databaseService.AddActivityAsync(entry);
+        try
+        {
+            if (editEntry != null)
+                await databaseService.UpdateAsync(entry);
+            else
+                await databaseService.AddActivityAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            // Stay on the page so the input is not lost
+            logger.LogError(ex, "Saving activity entry failed");
+            await Shell.Current.DisplayAlertAsync(AppResources.displayalert_save_failed, AppResources.displayalert_error_message, AppResources.button_ok);
+            return;
+        }
 
         await Shell.Current.GoToAsync("..");
     }

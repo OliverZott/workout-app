@@ -135,7 +135,16 @@ public partial class WeightChartPageModel : ObservableObject
 
         if (!confirm) return;
 
-        await databaseService.DeleteAsync(entry);
+        try
+        {
+            await databaseService.DeleteAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Deleting weight entry failed");
+            await Shell.Current.DisplayAlertAsync(AppResources.displayalert_delete_failed, AppResources.displayalert_error_message, AppResources.button_ok);
+            return;
+        }
 
         // Remove locally so the list keeps its scroll position; reassigning Data refreshes chart and summary
         allMeasurements.Remove(entry);

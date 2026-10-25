@@ -382,4 +382,16 @@ Lücken (>1.5×): {7}</value>
   <data name="button_stop" xml:space="preserve">
     <value>Stopp</value>
   </data>
+  <data name="button_ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="displayalert_save_failed" xml:space="preserve">
+    <value>Speichern fehlgeschlagen</value>
+  </data>
+  <data name="displayalert_delete_failed" xml:space="preserve">
+    <value>Löschen fehlgeschlagen</value>
+  </data>
+  <data name="displayalert_error_message" xml:space="preserve">
+    <value>Bitte erneut versuchen. Falls das Problem bleibt, die Logs in den Einstellungen senden.</value>
+  </data>
 </root>

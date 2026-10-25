@@ -203,6 +203,15 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("button_no", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string button_ok {
+            get {
+                return ResourceManager.GetString("button_ok", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Save.
@@ -255,6 +264,33 @@ namespace workout_app.Resources.Languages {
         internal static string displayalert_want_to_delete {
             get {
                 return ResourceManager.GetString("displayalert_want_to_delete", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting failed.
+        /// </summary>
+        internal static string displayalert_delete_failed {
+            get {
+                return ResourceManager.GetString("displayalert_delete_failed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please try again. If the problem persists, send the logs from the settings..
+        /// </summary>
+        internal static string displayalert_error_message {
+            get {
+                return ResourceManager.GetString("displayalert_error_message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Saving failed.
+        /// </summary>
+        internal static string displayalert_save_failed {
+            get {
+                return ResourceManager.GetString("displayalert_save_failed", resourceCulture);
             }
         }
 

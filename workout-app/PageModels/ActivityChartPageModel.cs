@@ -159,7 +159,16 @@ public partial class ActivityChartPageModel : ObservableObject
 
         if (!confirm) return;
 
-        await databaseService.DeleteAsync(entry);
+        try
+        {
+            await databaseService.DeleteAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Deleting activity entry failed");
+            await Shell.Current.DisplayAlertAsync(AppResources.displayalert_delete_failed, AppResources.displayalert_error_message, AppResources.button_ok);
+            return;
+        }
 
         // Remove locally so the list keeps its scroll position, then rebuild chart and summary
         allActivities.Remove(entry);

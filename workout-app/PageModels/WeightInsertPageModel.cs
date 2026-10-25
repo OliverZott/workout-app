@@ -6,6 +6,7 @@ namespace workout_app.PageModels;
 public partial class WeightInsertPageModel : ObservableObject, IQueryAttributable
 {
     private readonly DatabaseService databaseService;
+    private readonly ILogger<WeightInsertPageModel> logger;
 
     // Set when the page was opened from a list entry; saving then updates this entry instead of adding a new one
     private WeightData? editEntry;
@@ -18,9 +19,10 @@ public partial class WeightInsertPageModel : ObservableObject, IQueryAttributabl
     [ObservableProperty]
     public double? selectedWeight;
 
-    public WeightInsertPageModel(DatabaseService databaseService)
+    public WeightInsertPageModel(DatabaseService databaseService, ILogger<WeightInsertPageModel> logger)
     {
         this.databaseService = databaseService;
+        this.logger = logger;
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -57,10 +59,20 @@ public partial class WeightInsertPageModel : ObservableObject, IQueryAttributabl
             Timestamp = DateTimePicker.SelectedDate.Add(DateTimePicker.SelectedTime)
         };
 
-        if (editEntry != null)
-            await databaseService.UpdateAsync(entry);
-        else
-            await databaseService.AddWeightAsync(entry);
+        try
+        {
+            if (editEntry != null)
+                await databaseService.UpdateAsync(entry);
+            else
+                await databaseService.AddWeightAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            // Stay on the page so the input is not lost
+            logger.LogError(ex, "Saving weight entry failed");
+            await Shell.Current.DisplayAlertAsync(AppResources.displayalert_save_failed, AppResources.displayalert_error_message, AppResources.button_ok);
+            return;
+        }
 
         await Shell.Current.GoToAsync("..");
     }
