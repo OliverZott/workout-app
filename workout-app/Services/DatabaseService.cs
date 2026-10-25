@@ -9,6 +9,7 @@ public class DatabaseService
     private SQLiteAsyncConnection? _db;
     private readonly SemaphoreSlim _dbFileGate = new(1, 1);
     private readonly string _dbPath;
+    private readonly ILogger<DatabaseService> _logger;
     private bool _initialized;
 
     // On Android the DB lives in public Documents, which needs "All files access" (requested in MainActivity).
@@ -19,8 +20,9 @@ public class DatabaseService
         true;
 #endif
 
-    public DatabaseService()
+    public DatabaseService(ILogger<DatabaseService> logger)
     {
+        _logger = logger;
 #if ANDROID
         _dbPath = Path.Combine(
             Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDocuments)!.AbsolutePath,
@@ -84,6 +86,7 @@ public class DatabaseService
             await EnsureSchemaAsync();
             await SeedMissingDataAsync();
             _initialized = true;
+            _logger.LogInformation("Database initialized at {Path}", _dbPath);
         }
         finally
         {
@@ -133,6 +136,7 @@ public class DatabaseService
             File.Copy(_dbPath, backupPath, true);
             _db = new SQLiteAsyncConnection(_dbPath);
 
+            _logger.LogInformation("Database backup created at {Path}", backupPath);
             return backupPath;
         }
         finally
@@ -155,6 +159,7 @@ public class DatabaseService
             await using var sourceStream = File.OpenRead(sourceFilePath);
             await ReplaceDatabaseFromStreamAsync(sourceStream);
             await EnsureSchemaAsync();
+            _logger.LogInformation("Database replaced from backup {Path}", sourceFilePath);
         }
         finally
         {

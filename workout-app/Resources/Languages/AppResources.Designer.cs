@@ -475,7 +475,7 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When enabled, detailed logs are written to a file on the device..
+        ///   Looks up a localized string similar to Errors are always logged. When enabled, detailed logs are written to a file on the device as well..
         /// </summary>
         internal static string settings_logging_description {
             get {

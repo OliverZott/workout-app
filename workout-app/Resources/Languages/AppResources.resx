@@ -220,7 +220,7 @@
     <value>Export all recorded data as CSV files.</value>
   </data>
   <data name="settings_logging_description" xml:space="preserve">
-    <value>When enabled, detailed logs are written to a file on the device.</value>
+    <value>Errors are always logged. When enabled, detailed logs are written to a file on the device as well.</value>
   </data>
   <data name="settings_notifications" xml:space="preserve">
     <value>Notifications</value>

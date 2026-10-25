@@ -10,6 +10,7 @@ public partial class ActivityChartPageModel : ObservableObject
     private const int PageSize = 20;
     private const double ChartPadding = 10;
     private readonly DatabaseService databaseService;
+    private readonly ILogger<ActivityChartPageModel> logger;
     private bool isLoading;
     private RangeType selectedRange;
     private List<ActivityData> cachedFiltered = [];
@@ -51,9 +52,10 @@ public partial class ActivityChartPageModel : ObservableObject
     [ObservableProperty] private double averageDuration;
     [ObservableProperty] private double maxActivityWithPadding = ChartPadding;
 
-    public ActivityChartPageModel(DatabaseService databaseService)
+    public ActivityChartPageModel(DatabaseService databaseService, ILogger<ActivityChartPageModel> logger)
     {
         this.databaseService = databaseService;
+        this.logger = logger;
         selectedRange = RangeType.Week;
     }
 
@@ -95,7 +97,7 @@ public partial class ActivityChartPageModel : ObservableObject
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error loading activity data: {ex.Message}");
+            logger.LogError(ex, "Loading activity data failed");
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
                 Activity1Data.Clear();

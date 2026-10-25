@@ -9,6 +9,7 @@ namespace workout_app.PageModels;
 public partial class SettingsPageModel : ObservableObject
 {
     private readonly DatabaseService _db;
+    private readonly ILogger<SettingsPageModel> _logger;
 
     [ObservableProperty] private string appVersion = AppInfo.Current.VersionString;
     [ObservableProperty] private bool isLoggingEnabled;
@@ -16,9 +17,10 @@ public partial class SettingsPageModel : ObservableObject
     [ObservableProperty] private TimeSpan notificationTime;
     [ObservableProperty] private bool isNotificationEnabled;
 
-    public SettingsPageModel(DatabaseService db)
+    public SettingsPageModel(DatabaseService db, ILogger<SettingsPageModel> logger)
     {
         _db = db;
+        _logger = logger;
         LoadSettings();
     }
 
@@ -36,7 +38,7 @@ public partial class SettingsPageModel : ObservableObject
     partial void OnIsLoggingEnabledChanged(bool value)
     {
         Preferences.Set("IsLoggingEnabled", value);
-        SerilogConfig.ConfigureLogging();
+        SerilogConfig.SetDetailedFileLogging(value);
     }
 
     partial void OnNotificationTimeChanged(TimeSpan value)
@@ -60,31 +62,40 @@ public partial class SettingsPageModel : ObservableObject
             LocalNotificationCenter.Current.Cancel(1337);
     }
 
+    // Catches itself because it is also called fire-and-forget, where exceptions would go unnoticed
     private async Task ScheduleNotificationAsync()
     {
-        if (!await LocalNotificationCenter.Current.AreNotificationsEnabled())
-            await LocalNotificationCenter.Current.RequestNotificationPermission();
-
-        LocalNotificationCenter.Current.Cancel(1337);
-
-        var now = DateTime.Now;
-        var todayAt = new DateTime(now.Year, now.Month, now.Day,
-            NotificationTime.Hours, NotificationTime.Minutes, NotificationTime.Seconds);
-        var notifyTime = todayAt <= now ? todayAt.AddDays(1) : todayAt;
-
-        var request = new NotificationRequest
+        try
         {
-            NotificationId = 1337,
-            Title = AppResources.notification_workout_reminder_title,
-            Description = AppResources.notification_workout_reminder_description,
-            Schedule = new NotificationRequestSchedule
-            {
-                NotifyTime = notifyTime,
-                RepeatType = NotificationRepeat.Daily
-            }
-        };
+            if (!await LocalNotificationCenter.Current.AreNotificationsEnabled())
+                await LocalNotificationCenter.Current.RequestNotificationPermission();
 
-        await LocalNotificationCenter.Current.Show(request);
+            LocalNotificationCenter.Current.Cancel(1337);
+
+            var now = DateTime.Now;
+            var todayAt = new DateTime(now.Year, now.Month, now.Day,
+                NotificationTime.Hours, NotificationTime.Minutes, NotificationTime.Seconds);
+            var notifyTime = todayAt <= now ? todayAt.AddDays(1) : todayAt;
+
+            var request = new NotificationRequest
+            {
+                NotificationId = 1337,
+                Title = AppResources.notification_workout_reminder_title,
+                Description = AppResources.notification_workout_reminder_description,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = notifyTime,
+                    RepeatType = NotificationRepeat.Daily
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(request);
+            _logger.LogInformation("Reminder notification scheduled daily from {NotifyTime}", notifyTime);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Scheduling the reminder notification failed");
+        }
     }
 
     [RelayCommand]
@@ -135,6 +146,7 @@ public partial class SettingsPageModel : ObservableObject
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "CSV export failed");
             StatusMessage = $"{AppResources.status_export_failed_prefix}: {ex.Message}";
         }
     }
@@ -157,6 +169,7 @@ public partial class SettingsPageModel : ObservableObject
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Database export failed");
             StatusMessage = $"{AppResources.status_db_export_failed_prefix}: {ex.Message}";
         }
     }
@@ -202,6 +215,7 @@ public partial class SettingsPageModel : ObservableObject
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Database import failed");
             StatusMessage = $"{AppResources.status_db_import_failed_prefix}: {ex.Message}";
         }
     }
@@ -211,7 +225,8 @@ public partial class SettingsPageModel : ObservableObject
     {
         try
         {
-            var logFiles = Directory.GetFiles(FileSystem.AppDataDirectory, "log-*.log")
+            var logFiles = Directory.GetFiles(SerilogConfig.LogDirectory, SerilogConfig.LogFilePattern)
+                .Order()
                 .Select(f => new ShareFile(f, "text/plain"))
                 .ToList();
 
@@ -230,6 +245,7 @@ public partial class SettingsPageModel : ObservableObject
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Sending log files failed");
             StatusMessage = $"{AppResources.status_send_logs_failed_prefix}: {ex.Message}";
         }
     }

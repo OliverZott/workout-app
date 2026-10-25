@@ -220,7 +220,7 @@
     <value>Alle erfassten Daten als CSV-Dateien exportieren.</value>
   </data>
   <data name="settings_logging_description" xml:space="preserve">
-    <value>Wenn aktiviert, werden detaillierte Logs in eine Datei auf dem Gerät geschrieben.</value>
+    <value>Fehler werden immer protokolliert. Wenn aktiviert, werden zusätzlich detaillierte Logs in eine Datei auf dem Gerät geschrieben.</value>
   </data>
   <data name="settings_notifications" xml:space="preserve">
     <value>Benachrichtigungen</value>

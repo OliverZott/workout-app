@@ -10,6 +10,7 @@ public partial class WeightChartPageModel : ObservableObject
     private const int PageSize = 20;
     private bool IsLoading;
     private readonly DatabaseService databaseService;
+    private readonly ILogger<WeightChartPageModel> logger;
     private RangeType _selectedRange;
     private List<WeightData> allMeasurements = [];
     private int nextPageStartIndex;
@@ -37,10 +38,11 @@ public partial class WeightChartPageModel : ObservableObject
     [ObservableProperty]
     public double maxWeightWithPadding;
 
-    public WeightChartPageModel(DatabaseService databaseService)
+    public WeightChartPageModel(DatabaseService databaseService, ILogger<WeightChartPageModel> logger)
     {
         _selectedRange = RangeType.Week;
         this.databaseService = databaseService;
+        this.logger = logger;
     }
 
     public Task LoadAsync() => LoadDataAsync();
@@ -92,7 +94,7 @@ public partial class WeightChartPageModel : ObservableObject
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error loading data: {ex.Message}");
+            logger.LogError(ex, "Loading weight data failed");
 
             await MainThread.InvokeOnMainThreadAsync(() =>
             {

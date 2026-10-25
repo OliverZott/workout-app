@@ -9,6 +9,7 @@ public partial class BloodPressureChartPageModel : ObservableObject
 {
     private const int PageSize = 20;
     private readonly DatabaseService databaseService;
+    private readonly ILogger<BloodPressureChartPageModel> logger;
     private RangeType _selectedRange;
     private List<BloodPressureData> allMeasurements = [];
     private int nextPageStartIndex;
@@ -40,10 +41,11 @@ public partial class BloodPressureChartPageModel : ObservableObject
     private double maxBloodPressureWithPadding;
 
 
-    public BloodPressureChartPageModel(DatabaseService databaseService)
+    public BloodPressureChartPageModel(DatabaseService databaseService, ILogger<BloodPressureChartPageModel> logger)
     {
         _selectedRange = RangeType.Week;
         this.databaseService = databaseService;
+        this.logger = logger;
     }
 
 
@@ -94,7 +96,7 @@ public partial class BloodPressureChartPageModel : ObservableObject
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error loading data: {ex.Message}");
+            logger.LogError(ex, "Loading blood pressure data failed");
 
             await MainThread.InvokeOnMainThreadAsync(() =>
             {

@@ -2,7 +2,6 @@ using CommunityToolkit.Maui;
 using Plugin.LocalNotification;
 using Serilog;
 using Syncfusion.Maui.Toolkit.Hosting;
-using Microsoft.Extensions.Logging;
 
 
 #if ANDROID
@@ -18,6 +17,12 @@ public static class MauiProgram
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
+
+        // Set up first so errors during startup are logged too
+        builder.Logging.ClearProviders();
+        builder.Services.AddSerilog(SerilogConfig.CreateLogger());
+        GlobalExceptionLogger.Register();
+
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
@@ -70,13 +75,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<MockDataService>();
         builder.Services.AddSingleton<RadioButtonRangeToColorConverter>();
         builder.Services.AddSingleton<DatabaseService>();
-
-        builder.Logging.ClearProviders();
-        builder.Services.AddSerilog(SerilogConfig.ConfigureLogging());
-
-#if DEBUG
-        builder.Logging.AddDebug();
-#endif
 
         return builder.Build();
     }

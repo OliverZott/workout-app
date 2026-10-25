@@ -1,4 +1,5 @@
-﻿global using workout_app.Converter;
+﻿global using Microsoft.Extensions.Logging;
+global using workout_app.Converter;
 global using workout_app.Models;
 global using workout_app.PageModels;
 global using workout_app.PageModels.Controls;
