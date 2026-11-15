@@ -205,7 +205,7 @@
     <value>Einstellungen</value>
   </data>
   <data name="settings_app_version" xml:space="preserve">
-    <value>App-Version:</value>
+    <value>App-Version</value>
   </data>
   <data name="settings_enable_logging" xml:space="preserve">
     <value>Logging aktivieren</value>
@@ -442,10 +442,19 @@ Lücken (>1.5×): {7}</value>
   <data name="notification_medication_title" xml:space="preserve">
     <value>Medikamente – {0}</value>
   </data>
-  <data name="settings_medication_reminders" xml:space="preserve">
-    <value>Medikamenten-Erinnerungen</value>
-  </data>
   <data name="settings_medication_reminders_description" xml:space="preserve">
-    <value>Täglich um 08:00 (morgens), 12:00 (mittags), 18:00 (abends) und 20:00 (nachts) mit den jeweils fälligen Medikamenten.</value>
+    <value>Jede Erinnerung listet die zu diesem Zeitpunkt fälligen Medikamente auf.</value>
+  </data>
+  <data name="settings_workout_reminder" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="settings_daily_at" xml:space="preserve">
+    <value>Täglich um</value>
+  </data>
+  <data name="settings_section_logging" xml:space="preserve">
+    <value>Logging</value>
+  </data>
+  <data name="settings_section_info" xml:space="preserve">
+    <value>Info</value>
   </data>
 </root>

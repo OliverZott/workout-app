@@ -403,7 +403,7 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Version:.
+        ///   Looks up a localized string similar to App Version.
         /// </summary>
         internal static string settings_app_version {
             get {
@@ -1015,20 +1015,47 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Medication reminders.
-        /// </summary>
-        internal static string settings_medication_reminders {
-            get {
-                return ResourceManager.GetString("settings_medication_reminders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Daily at 08:00 (morning), 12:00 (noon), 18:00 (evening) and 20:00 (night), listing the medications due at that time..
+        ///   Looks up a localized string similar to Each reminder lists the medications due at that time..
         /// </summary>
         internal static string settings_medication_reminders_description {
             get {
                 return ResourceManager.GetString("settings_medication_reminders_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workout.
+        /// </summary>
+        internal static string settings_workout_reminder {
+            get {
+                return ResourceManager.GetString("settings_workout_reminder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily at.
+        /// </summary>
+        internal static string settings_daily_at {
+            get {
+                return ResourceManager.GetString("settings_daily_at", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logging.
+        /// </summary>
+        internal static string settings_section_logging {
+            get {
+                return ResourceManager.GetString("settings_section_logging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string settings_section_info {
+            get {
+                return ResourceManager.GetString("settings_section_info", resourceCulture);
             }
         }
     }

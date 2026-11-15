@@ -205,7 +205,7 @@
     <value>Settings</value>
   </data>
   <data name="settings_app_version" xml:space="preserve">
-    <value>App Version:</value>
+    <value>App Version</value>
   </data>
   <data name="settings_enable_logging" xml:space="preserve">
     <value>Enable Logging</value>
@@ -442,10 +442,19 @@ Gaps (>1.5×): {7}</value>
   <data name="notification_medication_title" xml:space="preserve">
     <value>Medication – {0}</value>
   </data>
-  <data name="settings_medication_reminders" xml:space="preserve">
-    <value>Medication reminders</value>
-  </data>
   <data name="settings_medication_reminders_description" xml:space="preserve">
-    <value>Daily at 08:00 (morning), 12:00 (noon), 18:00 (evening) and 20:00 (night), listing the medications due at that time.</value>
+    <value>Each reminder lists the medications due at that time.</value>
+  </data>
+  <data name="settings_workout_reminder" xml:space="preserve">
+    <value>Workout</value>
+  </data>
+  <data name="settings_daily_at" xml:space="preserve">
+    <value>Daily at</value>
+  </data>
+  <data name="settings_section_logging" xml:space="preserve">
+    <value>Logging</value>
+  </data>
+  <data name="settings_section_info" xml:space="preserve">
+    <value>Info</value>
   </data>
 </root>
