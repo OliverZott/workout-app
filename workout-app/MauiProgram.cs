@@ -77,6 +77,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<RadioButtonRangeToColorConverter>();
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddSingleton<MedicationReminderService>();
+        builder.Services.AddSingleton<WorkoutReminderService>();
 
         return builder.Build();
     }

@@ -1,7 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Plugin.LocalNotification;
-using Plugin.LocalNotification.Core.Models;
 using System.Text;
 
 namespace workout_app.PageModels;
@@ -11,6 +9,7 @@ public partial class SettingsPageModel : ObservableObject
     private readonly DatabaseService _db;
     private readonly ILogger<SettingsPageModel> _logger;
     private readonly MedicationReminderService _medicationReminders;
+    private readonly WorkoutReminderService _workoutReminder;
 
     [ObservableProperty] private string appVersion = AppInfo.Current.VersionString;
     [ObservableProperty] private bool isMedicationReminderEnabled;
@@ -19,11 +18,13 @@ public partial class SettingsPageModel : ObservableObject
     [ObservableProperty] private TimeSpan notificationTime;
     [ObservableProperty] private bool isNotificationEnabled;
 
-    public SettingsPageModel(DatabaseService db, ILogger<SettingsPageModel> logger, MedicationReminderService medicationReminders)
+    public SettingsPageModel(DatabaseService db, ILogger<SettingsPageModel> logger,
+        MedicationReminderService medicationReminders, WorkoutReminderService workoutReminder)
     {
         _db = db;
         _logger = logger;
         _medicationReminders = medicationReminders;
+        _workoutReminder = workoutReminder;
         LoadSettings();
     }
 
@@ -31,12 +32,8 @@ public partial class SettingsPageModel : ObservableObject
     {
         IsLoggingEnabled = Preferences.Get("IsLoggingEnabled", false);
 
-        if (Preferences.ContainsKey("NotificationTimeTicks"))
-            NotificationTime = new TimeSpan(Preferences.Get("NotificationTimeTicks", TimeSpan.Zero.Ticks));
-
-        if (Preferences.ContainsKey("IsNotificationEnabled"))
-            IsNotificationEnabled = Preferences.Get("IsNotificationEnabled", false);
-
+        NotificationTime = _workoutReminder.Time;
+        IsNotificationEnabled = _workoutReminder.IsEnabled;
         IsMedicationReminderEnabled = _medicationReminders.IsEnabled;
     }
 
@@ -45,7 +42,7 @@ public partial class SettingsPageModel : ObservableObject
         // Ignores the initial load and the revert below
         if (value == _medicationReminders.IsEnabled) return;
 
-        if (value && !await _medicationReminders.RequestPermissionAsync())
+        if (value && !await NotificationPermission.RequestAsync())
         {
             IsMedicationReminderEnabled = false;
             return;
@@ -61,63 +58,28 @@ public partial class SettingsPageModel : ObservableObject
         SerilogConfig.SetDetailedFileLogging(value);
     }
 
-    partial void OnNotificationTimeChanged(TimeSpan value)
+    async partial void OnNotificationTimeChanged(TimeSpan value)
     {
-        var saved = new TimeSpan(Preferences.Get("NotificationTimeTicks", TimeSpan.Zero.Ticks));
-        if (saved == value) return;
+        if (value == _workoutReminder.Time) return;
 
-        Preferences.Set("NotificationTimeTicks", value.Ticks);
+        _workoutReminder.Time = value;
         if (IsNotificationEnabled)
-            _ = ScheduleNotificationAsync();
+            await _workoutReminder.RescheduleAsync();
     }
 
     async partial void OnIsNotificationEnabledChanged(bool value)
     {
-        // Ignores the initial load
-        if (value == Preferences.Get("IsNotificationEnabled", false)) return;
+        // Ignores the initial load and the revert below
+        if (value == _workoutReminder.IsEnabled) return;
 
-        Preferences.Set("IsNotificationEnabled", value);
-
-        if (value)
-            await ScheduleNotificationAsync();
-        else
-            LocalNotificationCenter.Current.Cancel(1337);
-    }
-
-    // Catches itself because it is also called fire-and-forget, where exceptions would go unnoticed
-    private async Task ScheduleNotificationAsync()
-    {
-        try
+        if (value && !await NotificationPermission.RequestAsync())
         {
-            if (!await LocalNotificationCenter.Current.AreNotificationsEnabled())
-                await LocalNotificationCenter.Current.RequestNotificationPermission();
-
-            LocalNotificationCenter.Current.Cancel(1337);
-
-            var now = DateTime.Now;
-            var todayAt = new DateTime(now.Year, now.Month, now.Day,
-                NotificationTime.Hours, NotificationTime.Minutes, NotificationTime.Seconds);
-            var notifyTime = todayAt <= now ? todayAt.AddDays(1) : todayAt;
-
-            var request = new NotificationRequest
-            {
-                NotificationId = 1337,
-                Title = AppResources.notification_workout_reminder_title,
-                Description = AppResources.notification_workout_reminder_description,
-                Schedule = new NotificationRequestSchedule
-                {
-                    NotifyTime = notifyTime,
-                    RepeatType = NotificationRepeat.Daily
-                }
-            };
-
-            await LocalNotificationCenter.Current.Show(request);
-            _logger.LogInformation("Reminder notification scheduled daily from {NotifyTime}", notifyTime);
+            IsNotificationEnabled = false;
+            return;
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Scheduling the reminder notification failed");
-        }
+
+        _workoutReminder.IsEnabled = value;
+        await _workoutReminder.RescheduleAsync();
     }
 
     [RelayCommand]

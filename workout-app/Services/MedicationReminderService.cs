@@ -25,22 +25,19 @@ public class MedicationReminderService(DatabaseService database, ILogger<Medicat
         set => Preferences.Set(EnabledKey, value);
     }
 
-    public async Task<bool> RequestPermissionAsync() =>
-        await LocalNotificationCenter.Current.AreNotificationsEnabled()
-        || await LocalNotificationCenter.Current.RequestNotificationPermission();
-
     // Catches itself because it is also called fire-and-forget, where exceptions would go unnoticed
     public async Task RescheduleAsync()
     {
         try
         {
+            // Read the plan before cancelling, so a failing DB read (e.g. no storage access yet) keeps the existing reminders
+            var plan = IsEnabled ? await database.GetMedicationsAsync() : [];
+
             foreach (var slot in Slots)
                 LocalNotificationCenter.Current.Cancel(slot.Id);
 
             if (!IsEnabled)
                 return;
-
-            var plan = await database.GetMedicationsAsync();
 
             foreach (var slot in Slots)
             {

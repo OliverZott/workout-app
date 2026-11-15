@@ -5,9 +5,12 @@ namespace workout_app;
 public partial class App : Application
 {
     private readonly DatabaseService _database;
+    private readonly WorkoutReminderService _workoutReminder;
+    private readonly MedicationReminderService _medicationReminders;
     private readonly ILogger<App> _logger;
 
-    public App(DatabaseService database, ILogger<App> logger)
+    public App(DatabaseService database, WorkoutReminderService workoutReminder,
+        MedicationReminderService medicationReminders, ILogger<App> logger)
     {
         var englishCulture = CultureInfo.GetCultureInfo("en");
         CultureInfo.DefaultThreadCurrentUICulture = englishCulture;
@@ -15,6 +18,8 @@ public partial class App : Application
 
         InitializeComponent();
         _database = database;
+        _workoutReminder = workoutReminder;
+        _medicationReminders = medicationReminders;
         _logger = logger;
 
         // Force Light Mode - Prevent automatic dark mode switching
@@ -35,6 +40,12 @@ public partial class App : Application
         base.OnStart();
         _logger.LogInformation("App started, version {Version}", AppInfo.Current.VersionString);
         await InitializeDatabaseAsync();
+
+        // Alarms are wiped by force-stop/redeploy, so re-create them on every start.
+        // After the DB init, because the medication reminders are built from the plan in the DB.
+        // Both catch and log their own errors.
+        await _workoutReminder.RescheduleAsync();
+        await _medicationReminders.RescheduleAsync();
     }
 
     // Also runs when returning from the "All files access" screen after a fresh install.
