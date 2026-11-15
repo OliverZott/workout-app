@@ -45,6 +45,13 @@
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
+        <!-- Render at display size: these SVGs declare huge sizes (up to 1000), which produced PNGs of up to 4000x4000 px -->
+        <MauiImage Update="Resources\Images\dino.svg" BaseSize="24,24" />
+        <MauiImage Update="Resources\Images\weight.svg" BaseSize="48,48" />
+        <MauiImage Update="Resources\Images\bloodpressure.svg" BaseSize="48,48" />
+        <MauiImage Update="Resources\Images\activity.svg" BaseSize="48,48" />
+        <MauiImage Update="Resources\Images\medication.svg" BaseSize="48,45" />
+        <MauiImage Update="Resources\Images\calendar.svg" BaseSize="50,50" />
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
