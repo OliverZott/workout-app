@@ -11,7 +11,6 @@ public partial class ActivityChartPageModel : ObservableObject
     private const double ChartPadding = 10;
     private readonly DatabaseService databaseService;
     private readonly ILogger<ActivityChartPageModel> logger;
-    private bool isLoading;
     private RangeType selectedRange;
     private List<ActivityData> cachedFiltered = [];
     private List<ActivityType> cachedTop3 = [];
@@ -81,7 +80,6 @@ public partial class ActivityChartPageModel : ObservableObject
     {
         try
         {
-            isLoading = true;
             var (from, to) = GetDateRange();
 
             var filtered = await databaseService.GetActivitiesAsync(from, to);
@@ -106,10 +104,6 @@ public partial class ActivityChartPageModel : ObservableObject
                 allActivities = [];
                 ResetVisibleActivities();
             });
-        }
-        finally
-        {
-            isLoading = false;
         }
     }
 

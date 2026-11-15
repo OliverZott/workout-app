@@ -8,7 +8,6 @@ namespace workout_app.PageModels;
 public partial class WeightChartPageModel : ObservableObject
 {
     private const int PageSize = 20;
-    private bool IsLoading;
     private readonly DatabaseService databaseService;
     private readonly ILogger<WeightChartPageModel> logger;
     private RangeType _selectedRange;
@@ -78,8 +77,6 @@ public partial class WeightChartPageModel : ObservableObject
     {
         try
         {
-            IsLoading = true;
-
             var (from, to) = GetDateRange();
 
             var filteredData = await databaseService.GetWeightsAsync(from, to);
@@ -102,10 +99,6 @@ public partial class WeightChartPageModel : ObservableObject
                 allMeasurements = [];
                 ResetVisibleMeasurements();
             });
-        }
-        finally
-        {
-            IsLoading = false;
         }
     }
 
