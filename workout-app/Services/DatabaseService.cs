@@ -95,7 +95,10 @@ public class DatabaseService
                 return;
 
             await EnsureSchemaAsync();
+#if DEBUG
+            // Test data for development only; never inserted in Release builds
             await SeedMissingDataAsync();
+#endif
             _initialized = true;
             _logger.LogInformation("Database initialized at {Path}", _dbPath);
         }
