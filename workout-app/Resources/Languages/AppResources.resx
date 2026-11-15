@@ -139,7 +139,7 @@
     <value>Altitude</value>
   </data>
   <data name="app_title" xml:space="preserve">
-    <value>Velosaurus Workout App</value>
+    <value>Velosaurus App</value>
   </data>
   <data name="average" xml:space="preserve">
     <value>Average</value>
@@ -431,7 +431,7 @@ Gaps (>1.5×): {7}</value>
     <value>Night</value>
   </data>
   <data name="medication_hint" xml:space="preserve">
-    <value>Columns: fasting, morning, noon, evening, night – number of units per intake.</value>
+    <value>Columns: fasting, morning, noon, evening, night – number of units per intake. Tap the circle to pause a medication you only take when needed; paused ones get no reminders.</value>
   </data>
   <data name="button_edit" xml:space="preserve">
     <value>Edit</value>
@@ -456,5 +456,8 @@ Gaps (>1.5×): {7}</value>
   </data>
   <data name="settings_section_info" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="medication_toggle_active" xml:space="preserve">
+    <value>Active</value>
   </data>
 </root>

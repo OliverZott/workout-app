@@ -94,6 +94,27 @@ public partial class MedicationPageModel(
         await reminderService.RescheduleAsync();
     }
 
+    // Works in view and edit mode and is saved right away, since it's a quick everyday action
+    [RelayCommand]
+    private async Task ToggleActive(MedicationData entry)
+    {
+        entry.IsInactive = !entry.IsInactive;
+
+        try
+        {
+            await databaseService.UpdateAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Toggling medication failed");
+            entry.IsInactive = !entry.IsInactive;
+            await Shell.Current.DisplayAlertAsync(AppResources.displayalert_save_failed, AppResources.displayalert_error_message, AppResources.button_ok);
+            return;
+        }
+
+        await reminderService.RescheduleAsync();
+    }
+
     // Also called when leaving the page, so edits in the entry fields are not lost without pressing "Done".
     public async Task SaveAsync()
     {

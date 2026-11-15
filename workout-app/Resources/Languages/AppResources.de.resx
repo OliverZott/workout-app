@@ -139,7 +139,7 @@
     <value>Höhenmeter</value>
   </data>
   <data name="app_title" xml:space="preserve">
-    <value>Velosaurus Workout App</value>
+    <value>Velosaurus App</value>
   </data>
   <data name="average" xml:space="preserve">
     <value>Mittelwert</value>
@@ -431,7 +431,7 @@ Lücken (>1.5×): {7}</value>
     <value>Nachts</value>
   </data>
   <data name="medication_hint" xml:space="preserve">
-    <value>Spalten: nüchtern, morgens, mittags, abends, nachts – Anzahl Einheiten pro Einnahme.</value>
+    <value>Spalten: nüchtern, morgens, mittags, abends, nachts – Anzahl Einheiten pro Einnahme. Tippe auf den Kreis, um ein Medikament zu pausieren, das du nur bei Bedarf nimmst; pausierte bekommen keine Erinnerungen.</value>
   </data>
   <data name="button_edit" xml:space="preserve">
     <value>Bearbeiten</value>
@@ -456,5 +456,8 @@ Lücken (>1.5×): {7}</value>
   </data>
   <data name="settings_section_info" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="medication_toggle_active" xml:space="preserve">
+    <value>Aktiv</value>
   </data>
 </root>

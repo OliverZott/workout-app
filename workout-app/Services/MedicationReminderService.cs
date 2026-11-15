@@ -45,7 +45,7 @@ public class MedicationReminderService(DatabaseService database, ILogger<Medicat
             foreach (var slot in Slots)
             {
                 var lines = plan
-                    .Where(m => slot.Dose(m) > 0)
+                    .Where(m => !m.IsInactive && slot.Dose(m) > 0)
                     .Select(m => $"{slot.Dose(m)}× {m.Name} {m.Dosage}".Trim())
                     .ToList();
 

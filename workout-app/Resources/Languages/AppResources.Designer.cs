@@ -68,7 +68,7 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("activities", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Activity.
         /// </summary>
@@ -133,7 +133,7 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Velosaurus Workout App.
+        ///   Looks up a localized string similar to Velosaurus App.
         /// </summary>
         internal static string app_title {
             get {
@@ -194,7 +194,25 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("button_delete", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string button_done {
+            get {
+                return ResourceManager.GetString("button_done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string button_edit {
+            get {
+                return ResourceManager.GetString("button_edit", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
@@ -203,7 +221,7 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("button_no", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
@@ -219,6 +237,24 @@ namespace workout_app.Resources.Languages {
         internal static string button_save {
             get {
                 return ResourceManager.GetString("button_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string button_start {
+            get {
+                return ResourceManager.GetString("button_start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        internal static string button_stop {
+            get {
+                return ResourceManager.GetString("button_stop", resourceCulture);
             }
         }
         
@@ -259,15 +295,6 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete entry?.
-        /// </summary>
-        internal static string displayalert_want_to_delete {
-            get {
-                return ResourceManager.GetString("displayalert_want_to_delete", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Deleting failed.
         /// </summary>
         internal static string displayalert_delete_failed {
@@ -275,7 +302,7 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("displayalert_delete_failed", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Please try again. If the problem persists, send the logs from the settings..
         /// </summary>
@@ -284,7 +311,7 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("displayalert_error_message", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Saving failed.
         /// </summary>
@@ -293,7 +320,16 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("displayalert_save_failed", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete entry?.
+        /// </summary>
+        internal static string displayalert_want_to_delete {
+            get {
+                return ResourceManager.GetString("displayalert_want_to_delete", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save entry?.
         /// </summary>
@@ -345,6 +381,256 @@ namespace workout_app.Resources.Languages {
         internal static string measurements {
             get {
                 return ResourceManager.GetString("measurements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medication.
+        /// </summary>
+        internal static string medication {
+            get {
+                return ResourceManager.GetString("medication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to + Medication.
+        /// </summary>
+        internal static string medication_add {
+            get {
+                return ResourceManager.GetString("medication_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to e.g. 5 mg.
+        /// </summary>
+        internal static string medication_dose_placeholder {
+            get {
+                return ResourceManager.GetString("medication_dose_placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No medications yet. Tap &quot;Edit&quot; to add one..
+        /// </summary>
+        internal static string medication_empty {
+            get {
+                return ResourceManager.GetString("medication_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DOSE.
+        /// </summary>
+        internal static string medication_header_dose {
+            get {
+                return ResourceManager.GetString("medication_header_dose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MEDICATION.
+        /// </summary>
+        internal static string medication_header_name {
+            get {
+                return ResourceManager.GetString("medication_header_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Columns: fasting, morning, noon, evening, night – number of units per intake. Tap the circle to pause a medication you only take when needed; paused ones get no reminders..
+        /// </summary>
+        internal static string medication_hint {
+            get {
+                return ResourceManager.GetString("medication_hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string medication_name_placeholder {
+            get {
+                return ResourceManager.GetString("medication_name_placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evening.
+        /// </summary>
+        internal static string medication_slot_evening {
+            get {
+                return ResourceManager.GetString("medication_slot_evening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fasting.
+        /// </summary>
+        internal static string medication_slot_fasting {
+            get {
+                return ResourceManager.GetString("medication_slot_fasting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Morning.
+        /// </summary>
+        internal static string medication_slot_morning {
+            get {
+                return ResourceManager.GetString("medication_slot_morning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Night.
+        /// </summary>
+        internal static string medication_slot_night {
+            get {
+                return ResourceManager.GetString("medication_slot_night", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Noon.
+        /// </summary>
+        internal static string medication_slot_noon {
+            get {
+                return ResourceManager.GetString("medication_slot_noon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        internal static string medication_toggle_active {
+            get {
+                return ResourceManager.GetString("medication_toggle_active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acceleration (m/s²).
+        /// </summary>
+        internal static string motion_accelerometer {
+            get {
+                return ResourceManager.GetString("motion_accelerometer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gyroscope (rad/s).
+        /// </summary>
+        internal static string motion_gyroscope {
+            get {
+                return ResourceManager.GetString("motion_gyroscope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No data yet..
+        /// </summary>
+        internal static string motion_no_data {
+            get {
+                return ResourceManager.GetString("motion_no_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Motion sensors.
+        /// </summary>
+        internal static string motion_sensors {
+            get {
+                return ResourceManager.GetString("motion_sensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Samples: {0}
+        ///Duration: {1:F3} s
+        ///Rate: {2:F2} Hz
+        ///Interval Ø: {3:F3} ms
+        ///SD: {4:F3} ms
+        ///Min: {5:F3} ms
+        ///Max: {6:F3} ms
+        ///Gaps (&gt;1.5×): {7}.
+        /// </summary>
+        internal static string motion_stats {
+            get {
+                return ResourceManager.GetString("motion_stats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only available on Android..
+        /// </summary>
+        internal static string motion_status_android_only {
+            get {
+                return ResourceManager.GetString("motion_status_android_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting in {0} s ....
+        /// </summary>
+        internal static string motion_status_countdown {
+            get {
+                return ResourceManager.GetString("motion_status_countdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording finished..
+        /// </summary>
+        internal static string motion_status_finished {
+            get {
+                return ResourceManager.GetString("motion_status_finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready ({0} Hz).
+        /// </summary>
+        internal static string motion_status_ready {
+            get {
+                return ResourceManager.GetString("motion_status_ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording ({0} Hz, {1} s) ....
+        /// </summary>
+        internal static string motion_status_running {
+            get {
+                return ResourceManager.GetString("motion_status_running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time [s].
+        /// </summary>
+        internal static string motion_time_axis {
+            get {
+                return ResourceManager.GetString("motion_time_axis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Too few samples..
+        /// </summary>
+        internal static string motion_too_few_samples {
+            get {
+                return ResourceManager.GetString("motion_too_few_samples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medication – {0}.
+        /// </summary>
+        internal static string notification_medication_title {
+            get {
+                return ResourceManager.GetString("notification_medication_title", resourceCulture);
             }
         }
         
@@ -408,6 +694,15 @@ namespace workout_app.Resources.Languages {
         internal static string settings_app_version {
             get {
                 return ResourceManager.GetString("settings_app_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily at.
+        /// </summary>
+        internal static string settings_daily_at {
+            get {
+                return ResourceManager.GetString("settings_daily_at", resourceCulture);
             }
         }
         
@@ -520,6 +815,15 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Each reminder lists the medications due at that time..
+        /// </summary>
+        internal static string settings_medication_reminders_description {
+            get {
+                return ResourceManager.GetString("settings_medication_reminders_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notifications.
         /// </summary>
         internal static string settings_notifications {
@@ -529,11 +833,38 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string settings_section_info {
+            get {
+                return ResourceManager.GetString("settings_section_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logging.
+        /// </summary>
+        internal static string settings_section_logging {
+            get {
+                return ResourceManager.GetString("settings_section_logging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send Logs.
         /// </summary>
         internal static string settings_send_logs {
             get {
                 return ResourceManager.GetString("settings_send_logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workout.
+        /// </summary>
+        internal static string settings_workout_reminder {
+            get {
+                return ResourceManager.GetString("settings_workout_reminder", resourceCulture);
             }
         }
         
@@ -552,6 +883,15 @@ namespace workout_app.Resources.Languages {
         internal static string share_export_workout_data_title {
             get {
                 return ResourceManager.GetString("share_export_workout_data_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sensor data.
+        /// </summary>
+        internal static string share_motion_title {
+            get {
+                return ResourceManager.GetString("share_motion_title", resourceCulture);
             }
         }
         
@@ -732,330 +1072,6 @@ namespace workout_app.Resources.Languages {
         internal static string weight_insert_title {
             get {
                 return ResourceManager.GetString("weight_insert_title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Motion sensors.
-        /// </summary>
-        internal static string motion_sensors {
-            get {
-                return ResourceManager.GetString("motion_sensors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acceleration (m/s²).
-        /// </summary>
-        internal static string motion_accelerometer {
-            get {
-                return ResourceManager.GetString("motion_accelerometer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gyroscope (rad/s).
-        /// </summary>
-        internal static string motion_gyroscope {
-            get {
-                return ResourceManager.GetString("motion_gyroscope", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Time [s].
-        /// </summary>
-        internal static string motion_time_axis {
-            get {
-                return ResourceManager.GetString("motion_time_axis", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No data yet..
-        /// </summary>
-        internal static string motion_no_data {
-            get {
-                return ResourceManager.GetString("motion_no_data", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Too few samples..
-        /// </summary>
-        internal static string motion_too_few_samples {
-            get {
-                return ResourceManager.GetString("motion_too_few_samples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ready ({0} Hz).
-        /// </summary>
-        internal static string motion_status_ready {
-            get {
-                return ResourceManager.GetString("motion_status_ready", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Starting in {0} s ....
-        /// </summary>
-        internal static string motion_status_countdown {
-            get {
-                return ResourceManager.GetString("motion_status_countdown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recording ({0} Hz, {1} s) ....
-        /// </summary>
-        internal static string motion_status_running {
-            get {
-                return ResourceManager.GetString("motion_status_running", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recording finished..
-        /// </summary>
-        internal static string motion_status_finished {
-            get {
-                return ResourceManager.GetString("motion_status_finished", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only available on Android..
-        /// </summary>
-        internal static string motion_status_android_only {
-            get {
-                return ResourceManager.GetString("motion_status_android_only", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Samples: {0}....
-        /// </summary>
-        internal static string motion_stats {
-            get {
-                return ResourceManager.GetString("motion_stats", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sensor data.
-        /// </summary>
-        internal static string share_motion_title {
-            get {
-                return ResourceManager.GetString("share_motion_title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Start.
-        /// </summary>
-        internal static string button_start {
-            get {
-                return ResourceManager.GetString("button_start", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop.
-        /// </summary>
-        internal static string button_stop {
-            get {
-                return ResourceManager.GetString("button_stop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Medication.
-        /// </summary>
-        internal static string medication {
-            get {
-                return ResourceManager.GetString("medication", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to + Medication.
-        /// </summary>
-        internal static string medication_add {
-            get {
-                return ResourceManager.GetString("medication_add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No medications yet. Tap "Edit" to add one..
-        /// </summary>
-        internal static string medication_empty {
-            get {
-                return ResourceManager.GetString("medication_empty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MEDICATION.
-        /// </summary>
-        internal static string medication_header_name {
-            get {
-                return ResourceManager.GetString("medication_header_name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DOSE.
-        /// </summary>
-        internal static string medication_header_dose {
-            get {
-                return ResourceManager.GetString("medication_header_dose", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name.
-        /// </summary>
-        internal static string medication_name_placeholder {
-            get {
-                return ResourceManager.GetString("medication_name_placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to e.g. 5 mg.
-        /// </summary>
-        internal static string medication_dose_placeholder {
-            get {
-                return ResourceManager.GetString("medication_dose_placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fasting.
-        /// </summary>
-        internal static string medication_slot_fasting {
-            get {
-                return ResourceManager.GetString("medication_slot_fasting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Morning.
-        /// </summary>
-        internal static string medication_slot_morning {
-            get {
-                return ResourceManager.GetString("medication_slot_morning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Noon.
-        /// </summary>
-        internal static string medication_slot_noon {
-            get {
-                return ResourceManager.GetString("medication_slot_noon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Evening.
-        /// </summary>
-        internal static string medication_slot_evening {
-            get {
-                return ResourceManager.GetString("medication_slot_evening", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Night.
-        /// </summary>
-        internal static string medication_slot_night {
-            get {
-                return ResourceManager.GetString("medication_slot_night", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Columns: fasting, morning, noon, evening, night – number of units per intake..
-        /// </summary>
-        internal static string medication_hint {
-            get {
-                return ResourceManager.GetString("medication_hint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit.
-        /// </summary>
-        internal static string button_edit {
-            get {
-                return ResourceManager.GetString("button_edit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Done.
-        /// </summary>
-        internal static string button_done {
-            get {
-                return ResourceManager.GetString("button_done", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Medication – {0}.
-        /// </summary>
-        internal static string notification_medication_title {
-            get {
-                return ResourceManager.GetString("notification_medication_title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Each reminder lists the medications due at that time..
-        /// </summary>
-        internal static string settings_medication_reminders_description {
-            get {
-                return ResourceManager.GetString("settings_medication_reminders_description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Workout.
-        /// </summary>
-        internal static string settings_workout_reminder {
-            get {
-                return ResourceManager.GetString("settings_workout_reminder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Daily at.
-        /// </summary>
-        internal static string settings_daily_at {
-            get {
-                return ResourceManager.GetString("settings_daily_at", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Logging.
-        /// </summary>
-        internal static string settings_section_logging {
-            get {
-                return ResourceManager.GetString("settings_section_logging", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Info.
-        /// </summary>
-        internal static string settings_section_info {
-            get {
-                return ResourceManager.GetString("settings_section_info", resourceCulture);
             }
         }
     }
