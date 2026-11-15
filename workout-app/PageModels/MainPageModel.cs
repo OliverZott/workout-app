@@ -28,4 +28,10 @@ public partial class MainPageModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Pages.MotionSensorPage));
     }
+
+    [RelayCommand]
+    public async Task NavigateToMedication()
+    {
+        await Shell.Current.GoToAsync(nameof(Pages.MedicationPage));
+    }
 }

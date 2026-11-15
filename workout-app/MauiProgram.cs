@@ -69,12 +69,14 @@ public static class MauiProgram
         builder.Services.AddTransientWithShellRoute<ActivityChartPage, ActivityChartPageModel>(nameof(ActivityChartPage));
         builder.Services.AddTransientWithShellRoute<ActivityInsertPage, ActivityInsertPageModel>(nameof(ActivityInsertPage));
         builder.Services.AddTransientWithShellRoute<MotionSensorPage, MotionSensorPageModel>(nameof(MotionSensorPage));
+        builder.Services.AddTransientWithShellRoute<MedicationPage, MedicationPageModel>(nameof(MedicationPage));
 
         // Components, Services, Utils etc. can be registered here as needed
         builder.Services.AddTransient<DateTimePickerModel>();
         builder.Services.AddSingleton<MockDataService>();
         builder.Services.AddSingleton<RadioButtonRangeToColorConverter>();
         builder.Services.AddSingleton<DatabaseService>();
+        builder.Services.AddSingleton<MedicationReminderService>();
 
         return builder.Build();
     }

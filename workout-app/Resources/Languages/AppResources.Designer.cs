@@ -869,5 +869,167 @@ namespace workout_app.Resources.Languages {
                 return ResourceManager.GetString("button_stop", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medication.
+        /// </summary>
+        internal static string medication {
+            get {
+                return ResourceManager.GetString("medication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to + Medication.
+        /// </summary>
+        internal static string medication_add {
+            get {
+                return ResourceManager.GetString("medication_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No medications yet. Tap "Edit" to add one..
+        /// </summary>
+        internal static string medication_empty {
+            get {
+                return ResourceManager.GetString("medication_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MEDICATION.
+        /// </summary>
+        internal static string medication_header_name {
+            get {
+                return ResourceManager.GetString("medication_header_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DOSE.
+        /// </summary>
+        internal static string medication_header_dose {
+            get {
+                return ResourceManager.GetString("medication_header_dose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string medication_name_placeholder {
+            get {
+                return ResourceManager.GetString("medication_name_placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to e.g. 5 mg.
+        /// </summary>
+        internal static string medication_dose_placeholder {
+            get {
+                return ResourceManager.GetString("medication_dose_placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fasting.
+        /// </summary>
+        internal static string medication_slot_fasting {
+            get {
+                return ResourceManager.GetString("medication_slot_fasting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Morning.
+        /// </summary>
+        internal static string medication_slot_morning {
+            get {
+                return ResourceManager.GetString("medication_slot_morning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Noon.
+        /// </summary>
+        internal static string medication_slot_noon {
+            get {
+                return ResourceManager.GetString("medication_slot_noon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evening.
+        /// </summary>
+        internal static string medication_slot_evening {
+            get {
+                return ResourceManager.GetString("medication_slot_evening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Night.
+        /// </summary>
+        internal static string medication_slot_night {
+            get {
+                return ResourceManager.GetString("medication_slot_night", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Columns: fasting, morning, noon, evening, night – number of units per intake..
+        /// </summary>
+        internal static string medication_hint {
+            get {
+                return ResourceManager.GetString("medication_hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string button_edit {
+            get {
+                return ResourceManager.GetString("button_edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        internal static string button_done {
+            get {
+                return ResourceManager.GetString("button_done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medication – {0}.
+        /// </summary>
+        internal static string notification_medication_title {
+            get {
+                return ResourceManager.GetString("notification_medication_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medication reminders.
+        /// </summary>
+        internal static string settings_medication_reminders {
+            get {
+                return ResourceManager.GetString("settings_medication_reminders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily at 08:00 (morning), 12:00 (noon), 18:00 (evening) and 20:00 (night), listing the medications due at that time..
+        /// </summary>
+        internal static string settings_medication_reminders_description {
+            get {
+                return ResourceManager.GetString("settings_medication_reminders_description", resourceCulture);
+            }
+        }
     }
 }

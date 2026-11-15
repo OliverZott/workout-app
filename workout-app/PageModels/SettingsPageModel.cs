@@ -10,17 +10,20 @@ public partial class SettingsPageModel : ObservableObject
 {
     private readonly DatabaseService _db;
     private readonly ILogger<SettingsPageModel> _logger;
+    private readonly MedicationReminderService _medicationReminders;
 
     [ObservableProperty] private string appVersion = AppInfo.Current.VersionString;
+    [ObservableProperty] private bool isMedicationReminderEnabled;
     [ObservableProperty] private bool isLoggingEnabled;
     [ObservableProperty] private string statusMessage = "";
     [ObservableProperty] private TimeSpan notificationTime;
     [ObservableProperty] private bool isNotificationEnabled;
 
-    public SettingsPageModel(DatabaseService db, ILogger<SettingsPageModel> logger)
+    public SettingsPageModel(DatabaseService db, ILogger<SettingsPageModel> logger, MedicationReminderService medicationReminders)
     {
         _db = db;
         _logger = logger;
+        _medicationReminders = medicationReminders;
         LoadSettings();
     }
 
@@ -33,6 +36,23 @@ public partial class SettingsPageModel : ObservableObject
 
         if (Preferences.ContainsKey("IsNotificationEnabled"))
             IsNotificationEnabled = Preferences.Get("IsNotificationEnabled", false);
+
+        IsMedicationReminderEnabled = _medicationReminders.IsEnabled;
+    }
+
+    async partial void OnIsMedicationReminderEnabledChanged(bool value)
+    {
+        // Ignores the initial load and the revert below
+        if (value == _medicationReminders.IsEnabled) return;
+
+        if (value && !await _medicationReminders.RequestPermissionAsync())
+        {
+            IsMedicationReminderEnabled = false;
+            return;
+        }
+
+        _medicationReminders.IsEnabled = value;
+        await _medicationReminders.RescheduleAsync();
     }
 
     partial void OnIsLoggingEnabledChanged(bool value)

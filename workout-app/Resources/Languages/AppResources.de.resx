@@ -394,4 +394,58 @@ Lücken (>1.5×): {7}</value>
   <data name="displayalert_error_message" xml:space="preserve">
     <value>Bitte erneut versuchen. Falls das Problem bleibt, die Logs in den Einstellungen senden.</value>
   </data>
+  <data name="medication" xml:space="preserve">
+    <value>Medikamente</value>
+  </data>
+  <data name="medication_add" xml:space="preserve">
+    <value>+ Medikament</value>
+  </data>
+  <data name="medication_empty" xml:space="preserve">
+    <value>Noch keine Medikamente. Tippe auf „Bearbeiten“, um eines hinzuzufügen.</value>
+  </data>
+  <data name="medication_header_name" xml:space="preserve">
+    <value>MEDIKAMENT</value>
+  </data>
+  <data name="medication_header_dose" xml:space="preserve">
+    <value>DOSIS</value>
+  </data>
+  <data name="medication_name_placeholder" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="medication_dose_placeholder" xml:space="preserve">
+    <value>z.B. 5 mg</value>
+  </data>
+  <data name="medication_slot_fasting" xml:space="preserve">
+    <value>Nüchtern</value>
+  </data>
+  <data name="medication_slot_morning" xml:space="preserve">
+    <value>Morgens</value>
+  </data>
+  <data name="medication_slot_noon" xml:space="preserve">
+    <value>Mittags</value>
+  </data>
+  <data name="medication_slot_evening" xml:space="preserve">
+    <value>Abends</value>
+  </data>
+  <data name="medication_slot_night" xml:space="preserve">
+    <value>Nachts</value>
+  </data>
+  <data name="medication_hint" xml:space="preserve">
+    <value>Spalten: nüchtern, morgens, mittags, abends, nachts – Anzahl Einheiten pro Einnahme.</value>
+  </data>
+  <data name="button_edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="button_done" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="notification_medication_title" xml:space="preserve">
+    <value>Medikamente – {0}</value>
+  </data>
+  <data name="settings_medication_reminders" xml:space="preserve">
+    <value>Medikamenten-Erinnerungen</value>
+  </data>
+  <data name="settings_medication_reminders_description" xml:space="preserve">
+    <value>Täglich um 08:00 (morgens), 12:00 (mittags), 18:00 (abends) und 20:00 (nachts) mit den jeweils fälligen Medikamenten.</value>
+  </data>
 </root>

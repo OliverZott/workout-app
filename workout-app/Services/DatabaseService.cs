@@ -64,6 +64,17 @@ public class DatabaseService
             .OrderBy(x => x.Timestamp)
             .ToListAsync();
 
+    public Task<int> AddMedicationAsync(MedicationData entry) =>
+        Db.InsertAsync(entry);
+
+    public Task<List<MedicationData>> GetMedicationsAsync() =>
+        Db.Table<MedicationData>()
+            .OrderBy(x => x.Timestamp)
+            .ToListAsync();
+
+    public Task<int> UpdateMedicationsAsync(IEnumerable<MedicationData> entries) =>
+        Db.UpdateAllAsync(entries);
+
     public Task<int> UpdateAsync<T>(T entry) where T : BaseEntity, new() =>
         Db.UpdateAsync(entry);
 
@@ -100,6 +111,8 @@ public class DatabaseService
         await Db.CreateTableAsync<WeightData>();
         await Db.CreateTableAsync<BloodPressureData>();
         await Db.CreateTableAsync<ActivityData>();
+        // Not seeded: an empty plan is a valid state and must stay empty after the user deletes everything
+        await Db.CreateTableAsync<MedicationData>();
     }
 
     // Inserts seed data only into tables that are still empty.

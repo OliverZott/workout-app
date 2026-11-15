@@ -8,7 +8,7 @@
     <ScrollView>
         <Grid
             ColumnDefinitions="*, *"
-            RowDefinitions="Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto"
             Margin="20"
             RowSpacing="30"
             ColumnSpacing="10">
@@ -36,6 +36,12 @@
                 TileText="{x:Static AppResources.motion_sensors}"
                 ImageSource="motion"
                 TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToMotionSensorsCommand}"/>
+
+            <MainTile
+                Grid.Row="2"
+                TileText="{x:Static AppResources.medication}"
+                ImageSource="medication"
+                TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToMedicationCommand}"/>
 
         </Grid>
     </ScrollView>

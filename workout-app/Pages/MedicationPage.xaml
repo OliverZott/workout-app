@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="workout_app.Pages.MedicationPage"
+             x:Name="Page"
+             x:DataType="MedicationPageModel"
+             HideSoftInputOnTapped="True"
+             Title="{x:Static AppResources.medication}">
+
+    <ContentPage.Resources>
+        <!-- View mode: disabled entries look like plain text. Edit mode: input background marks them as editable. -->
+        <Style x:Key="MedicationEntryStyle" TargetType="Entry" CanCascade="True">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinimumWidthRequest" Value="0"/>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource wa-color-input}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="{StaticResource Gray600}"/>
+                                <Setter Property="BackgroundColor" Value="Transparent"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MedicationSlotEntryStyle" TargetType="Entry" BasedOn="{StaticResource MedicationEntryStyle}">
+            <Setter Property="Keyboard" Value="Numeric"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="MedicationSlotIconStyle" TargetType="Image">
+            <Setter Property="HeightRequest" Value="18"/>
+            <Setter Property="WidthRequest" Value="18"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,10" Spacing="16">
+
+            <!-- Actions -->
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="End">
+                <BasicButton
+                    Text="{x:Static AppResources.medication_add}"
+                    HeightRequest="40"
+                    FontSize="14"
+                    Padding="16,0"
+                    IsVisible="{Binding IsEditing}"
+                    Command="{Binding AddMedicationCommand}"/>
+                <BasicButton
+                    Text="{Binding EditButtonText}"
+                    HeightRequest="40"
+                    FontSize="14"
+                    Padding="16,0"
+                    Command="{Binding ToggleEditCommand}"/>
+            </HorizontalStackLayout>
+
+            <Label
+                Text="{x:Static AppResources.medication_empty}"
+                Style="{StaticResource WaDescriptionLabelStyle}"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding ShowEmptyHint}"/>
+
+            <!-- Plan -->
+            <Border Padding="10,8" IsVisible="{Binding ShowPlan}">
+                <VerticalStackLayout Spacing="0">
+
+                    <Grid ColumnDefinitions="3*,1.4*,*,*,*,*,*,Auto" ColumnSpacing="4" HeightRequest="30">
+                        <Label Text="{x:Static AppResources.medication_header_name}" Style="{StaticResource WaSectionLabelStyle}" FontSize="10" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="{x:Static AppResources.medication_header_dose}" Style="{StaticResource WaSectionLabelStyle}" FontSize="10" VerticalTextAlignment="Center"/>
+                        <Image Grid.Column="2" Source="med_fasting" Style="{StaticResource MedicationSlotIconStyle}" SemanticProperties.Description="{x:Static AppResources.medication_slot_fasting}"/>
+                        <Image Grid.Column="3" Source="med_morning" Style="{StaticResource MedicationSlotIconStyle}" SemanticProperties.Description="{x:Static AppResources.medication_slot_morning}"/>
+                        <Image Grid.Column="4" Source="med_noon" Style="{StaticResource MedicationSlotIconStyle}" SemanticProperties.Description="{x:Static AppResources.medication_slot_noon}"/>
+                        <Image Grid.Column="5" Source="med_evening" Style="{StaticResource MedicationSlotIconStyle}" SemanticProperties.Description="{x:Static AppResources.medication_slot_evening}"/>
+                        <Image Grid.Column="6" Source="med_night" Style="{StaticResource MedicationSlotIconStyle}" SemanticProperties.Description="{x:Static AppResources.medication_slot_night}"/>
+                        <!-- Keeps the header aligned with the delete column while editing -->
+                        <ContentView Grid.Column="7" WidthRequest="28" IsVisible="{Binding IsEditing}"/>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="{StaticResource Gray100}" Margin="0,0,0,4"/>
+
+                    <!-- BindableLayout instead of CollectionView: on iOS a CollectionView inside a
+                         ScrollView keeps its old height when items are removed, leaving a blank gap -->
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding Medications}" Spacing="4">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="MedicationData">
+                                <Grid ColumnDefinitions="3*,1.4*,*,*,*,*,*,Auto" ColumnSpacing="4">
+                                    <Entry Text="{Binding Name}" FontAttributes="Bold"
+                                           Placeholder="{x:Static AppResources.medication_name_placeholder}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationEntryStyle}"/>
+                                    <Entry Grid.Column="1" Text="{Binding Dosage}"
+                                           Placeholder="{x:Static AppResources.medication_dose_placeholder}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationEntryStyle}"/>
+                                    <Entry Grid.Column="2" Text="{Binding Fasting}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationSlotEntryStyle}"/>
+                                    <Entry Grid.Column="3" Text="{Binding Morning}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationSlotEntryStyle}"/>
+                                    <Entry Grid.Column="4" Text="{Binding Noon}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationSlotEntryStyle}"/>
+                                    <Entry Grid.Column="5" Text="{Binding Evening}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationSlotEntryStyle}"/>
+                                    <Entry Grid.Column="6" Text="{Binding Night}"
+                                           IsEnabled="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                           Style="{StaticResource MedicationSlotEntryStyle}"/>
+                                    <!-- Border instead of Button: Android Buttons enforce a ~48dp minimum size and overlap the last column -->
+                                    <Border Grid.Column="7" WidthRequest="28" HeightRequest="28" Padding="6"
+                                            StrokeThickness="0" StrokeShape="RoundRectangle 14" Shadow="{x:Null}"
+                                            BackgroundColor="{StaticResource wa-color-delete}" VerticalOptions="Center"
+                                            IsVisible="{Binding ViewModel.IsEditing, Source={x:Reference Page}, x:DataType=MedicationPage}">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding ViewModel.DeleteMedicationCommand, Source={x:Reference Page}, x:DataType=MedicationPage}"
+                                                CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+                                        <Image Source="trash_w" Aspect="AspectFit" SemanticProperties.Description="{x:Static AppResources.button_delete}"/>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Text="{x:Static AppResources.medication_hint}"
+                Style="{StaticResource WaDescriptionLabelStyle}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

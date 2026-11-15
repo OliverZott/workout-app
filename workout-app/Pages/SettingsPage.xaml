@@ -25,6 +25,20 @@
                 </Grid>
             </VerticalStackLayout>
 
+            <!-- Medication Reminders -->
+            <VerticalStackLayout Spacing="8">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Label
+                        Text="{x:Static AppResources.settings_medication_reminders}"
+                        Style="{StaticResource WaTitleLabelStyle}"
+                        VerticalOptions="Center"/>
+                    <Switch
+                        Grid.Column="1"
+                        IsToggled="{Binding IsMedicationReminderEnabled, Mode=TwoWay}"/>
+                </Grid>
+                <Label Text="{x:Static AppResources.settings_medication_reminders_description}" Style="{StaticResource WaDescriptionLabelStyle}"/>
+            </VerticalStackLayout>
+
             <!-- Export Data -->
             <VerticalStackLayout Spacing="8">
                 <Label Text="{x:Static AppResources.settings_export_data}" Style="{StaticResource WaTitleLabelStyle}"/>

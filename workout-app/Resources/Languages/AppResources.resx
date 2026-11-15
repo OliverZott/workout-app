@@ -394,4 +394,58 @@ Gaps (>1.5×): {7}</value>
   <data name="displayalert_error_message" xml:space="preserve">
     <value>Please try again. If the problem persists, send the logs from the settings.</value>
   </data>
+  <data name="medication" xml:space="preserve">
+    <value>Medication</value>
+  </data>
+  <data name="medication_add" xml:space="preserve">
+    <value>+ Medication</value>
+  </data>
+  <data name="medication_empty" xml:space="preserve">
+    <value>No medications yet. Tap "Edit" to add one.</value>
+  </data>
+  <data name="medication_header_name" xml:space="preserve">
+    <value>MEDICATION</value>
+  </data>
+  <data name="medication_header_dose" xml:space="preserve">
+    <value>DOSE</value>
+  </data>
+  <data name="medication_name_placeholder" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="medication_dose_placeholder" xml:space="preserve">
+    <value>e.g. 5 mg</value>
+  </data>
+  <data name="medication_slot_fasting" xml:space="preserve">
+    <value>Fasting</value>
+  </data>
+  <data name="medication_slot_morning" xml:space="preserve">
+    <value>Morning</value>
+  </data>
+  <data name="medication_slot_noon" xml:space="preserve">
+    <value>Noon</value>
+  </data>
+  <data name="medication_slot_evening" xml:space="preserve">
+    <value>Evening</value>
+  </data>
+  <data name="medication_slot_night" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="medication_hint" xml:space="preserve">
+    <value>Columns: fasting, morning, noon, evening, night – number of units per intake.</value>
+  </data>
+  <data name="button_edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="button_done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="notification_medication_title" xml:space="preserve">
+    <value>Medication – {0}</value>
+  </data>
+  <data name="settings_medication_reminders" xml:space="preserve">
+    <value>Medication reminders</value>
+  </data>
+  <data name="settings_medication_reminders_description" xml:space="preserve">
+    <value>Daily at 08:00 (morning), 12:00 (noon), 18:00 (evening) and 20:00 (night), listing the medications due at that time.</value>
+  </data>
 </root>
