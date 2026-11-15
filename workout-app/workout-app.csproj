@@ -34,6 +34,8 @@
         <DebugSymbols>False</DebugSymbols>
         <AndroidLinkTool>r8</AndroidLinkTool>
         <!--<AndroidEnableProguard>true</AndroidEnableProguard>-->
+        <!-- Only installed directly on an arm64 phone (Galaxy A55); skips the x64 runtime that's only needed for emulators -->
+        <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
     </PropertyGroup>
 
     <ItemGroup>
