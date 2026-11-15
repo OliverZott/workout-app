@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.Controls.DateRangeSelector"
-             x:Name="RangeSelectorControl">
+             x:DataType="DateRangeSelector">
 
     <!-- TODO: remove as soon as possible in net10 and 11 -->
     <ContentView.Resources>
@@ -18,26 +18,26 @@
             <Button
                 Grid.Column="0"
                 Style="{StaticResource WaRangeButtonStyle}"
-                Text="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeText}"
-                Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
-                CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=FirstRangeValue}"
-                BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Week}" />
+                Text="{Binding FirstRangeText}"
+                Command="{Binding RangeSelectedCommand}"
+                CommandParameter="{Binding FirstRangeValue}"
+                BackgroundColor="{Binding SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Week}" />
 
             <Button
                 Grid.Column="1"
                 Style="{StaticResource WaRangeButtonStyle}"
-                Text="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeText}"
-                Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
-                CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=SecondRangeValue}"
-                BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Month}" />
+                Text="{Binding SecondRangeText}"
+                Command="{Binding RangeSelectedCommand}"
+                CommandParameter="{Binding SecondRangeValue}"
+                BackgroundColor="{Binding SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Month}" />
 
             <Button
                 Grid.Column="2"
                 Style="{StaticResource WaRangeButtonStyle}"
-                Text="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeText}"
-                Command="{Binding Source={x:Reference RangeSelectorControl}, Path=RangeSelectedCommand}"
-                CommandParameter="{Binding Source={x:Reference RangeSelectorControl}, Path=ThirdRangeValue}"
-                BackgroundColor="{Binding Source={x:Reference RangeSelectorControl}, Path=SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Max}" />
+                Text="{Binding ThirdRangeText}"
+                Command="{Binding RangeSelectedCommand}"
+                CommandParameter="{Binding ThirdRangeValue}"
+                BackgroundColor="{Binding SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Max}" />
 
         </Grid>
     </Border>

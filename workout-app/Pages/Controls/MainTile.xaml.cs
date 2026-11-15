@@ -17,7 +17,8 @@ public partial class MainTile : ContentView
     public MainTile()
     {
         InitializeComponent();
-        BindingContext = this;
+        // Scope to the inner content only; setting it on the control itself would hide the page's view model from the consumer's bindings
+        Content.BindingContext = this;
     }
 
 

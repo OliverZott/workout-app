@@ -71,12 +71,14 @@ public partial class SettingsPageModel : ObservableObject
             _ = ScheduleNotificationAsync();
     }
 
-    [RelayCommand]
-    public async Task ToggleNotification(bool isToggled)
+    async partial void OnIsNotificationEnabledChanged(bool value)
     {
-        Preferences.Set("IsNotificationEnabled", isToggled);
+        // Ignores the initial load
+        if (value == Preferences.Get("IsNotificationEnabled", false)) return;
 
-        if (isToggled)
+        Preferences.Set("IsNotificationEnabled", value);
+
+        if (value)
             await ScheduleNotificationAsync();
         else
             LocalNotificationCenter.Current.Cancel(1337);

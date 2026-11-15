@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="workout_app.Pages.MainPage"
+    x:DataType="MainPageModel"
     Title="{x:Static AppResources.app_title}">
 
     <ScrollView>
@@ -16,32 +17,32 @@
             <MainTile
                 TileText="{x:Static AppResources.bloodpressure}"
                 ImageSource="bloodpressure"
-                TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToCardioCommand}"/>
+                TapCommand="{Binding NavigateToCardioCommand}"/>
 
             <MainTile
                 Grid.Column="1"
                 TileText="{x:Static AppResources.weight}"
                 ImageSource="weight"
-                TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToWeightCommand}"/>
+                TapCommand="{Binding NavigateToWeightCommand}"/>
 
             <MainTile
                 Grid.Row="1"
                 TileText="{x:Static AppResources.activity}"
                 ImageSource="activity"
-                TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToActivityCommand}"/>
+                TapCommand="{Binding NavigateToActivityCommand}"/>
 
             <MainTile
                 Grid.Row="1"
                 Grid.Column="1"
                 TileText="{x:Static AppResources.motion_sensors}"
                 ImageSource="motion"
-                TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToMotionSensorsCommand}"/>
+                TapCommand="{Binding NavigateToMotionSensorsCommand}"/>
 
             <MainTile
                 Grid.Row="2"
                 TileText="{x:Static AppResources.medication}"
                 ImageSource="medication"
-                TapCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToMedicationCommand}"/>
+                TapCommand="{Binding NavigateToMedicationCommand}"/>
 
         </Grid>
     </ScrollView>

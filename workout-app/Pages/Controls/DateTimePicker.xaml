@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.Controls.DateTimePicker"
-             x:Name="root">
+             x:DataType="DateTimePicker">
 
     <VerticalStackLayout Spacing="8">
         
@@ -24,7 +24,7 @@
 
                     <Label 
                         Grid.Column="1"
-                        Text="{Binding SelectedDateDisplay, Source={x:Reference root}}"
+                        Text="{Binding SelectedDateDisplay}"
                         FontSize="Large"
                         FontAttributes="Bold"
                         VerticalOptions="Center"
@@ -35,14 +35,14 @@
             <!-- Invisible DatePicker covering entire tile -->
             <DatePicker 
                 x:Name="bpDatePicker"
-                Date="{Binding SelectedDate, Source={x:Reference root}}"
+                Date="{Binding SelectedDate}"
                 BackgroundColor="Transparent"
                 Opacity="0.02"/>
         </Grid>
 
 
         <!-- Time Selection Tile -->
-        <Grid IsVisible="{Binding ShowTimePicker, Source={x:Reference root}}">
+        <Grid IsVisible="{Binding ShowTimePicker}">
             <Border HeightRequest="70">
 
                 <Grid ColumnDefinitions="*, *, *">
@@ -58,7 +58,7 @@
 
                     <Label 
                         Grid.Column="1"
-                        Text="{Binding SelectedTimeDisplay, Source={x:Reference root}}"
+                        Text="{Binding SelectedTimeDisplay}"
                         FontSize="Large"
                         FontAttributes="Bold"
                         VerticalOptions="Center"
@@ -69,7 +69,7 @@
             <!-- Invisible TimePicker covering entire tile -->
             <TimePicker 
                 x:Name="bpTimePicker"
-                Time="{Binding SelectedTime, Source={x:Reference root}}"
+                Time="{Binding SelectedTime}"
                 BackgroundColor="Transparent"
                 Opacity="0.02"/>
         </Grid>

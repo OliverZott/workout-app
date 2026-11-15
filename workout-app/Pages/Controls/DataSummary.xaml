@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="workout_app.Pages.Controls.DataSummary"
-             x:Name="DataSummaryControl">
+             x:DataType="DataSummary">
 
     <Grid ColumnDefinitions="*, *"
           ColumnSpacing="20">
@@ -10,16 +10,16 @@
         <Border>
             <VerticalStackLayout VerticalOptions="Center" Margin="10">
                 <Label Text="{x:Static AppResources.average}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
-                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=AverageReading}" Style="{StaticResource WaTitleLabelStyle}" HorizontalOptions="Center"/>
-                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding AverageReading}" Style="{StaticResource WaTitleLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Unit}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </Border>
 
         <Border Grid.Column="1">
             <VerticalStackLayout VerticalOptions="Center" Margin="10">
                 <Label Text="{x:Static AppResources.last_entry}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
-                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=LastReading}" Style="{StaticResource WaTitleLabelStyle}" HorizontalOptions="Center"/>
-                <Label Text="{Binding Source={x:Reference DataSummaryControl}, Path=Unit}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding LastReading}" Style="{StaticResource WaTitleLabelStyle}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Unit}" Style="{StaticResource WaUnitLabelStyle}" HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </Border>
 

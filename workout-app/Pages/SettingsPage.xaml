@@ -32,8 +32,7 @@
                         <Label Text="{x:Static AppResources.settings_workout_reminder}" Style="{StaticResource RowTitle}"/>
                         <Switch
                             Grid.Column="1"
-                            IsToggled="{Binding IsNotificationEnabled, Mode=TwoWay}"
-                            Toggled="OnNotificationSwitchToggled"/>
+                            IsToggled="{Binding IsNotificationEnabled, Mode=TwoWay}"/>
                         <HorizontalStackLayout Grid.Row="1" Spacing="4">
                             <Label Text="{x:Static AppResources.settings_daily_at}" Style="{StaticResource RowHint}"/>
                             <TimePicker
