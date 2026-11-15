@@ -20,7 +20,9 @@ public static class MauiProgram
 
         // Set up first so errors during startup are logged too
         builder.Logging.ClearProviders();
-        builder.Services.AddSerilog(SerilogConfig.CreateLogger());
+        // Pass everything through; the levels are decided in SerilogConfig only
+        builder.Logging.SetMinimumLevel(LogLevel.Trace);
+        builder.Logging.AddSerilog(SerilogConfig.CreateLogger(), dispose: true);
         GlobalExceptionLogger.Register();
 
         builder

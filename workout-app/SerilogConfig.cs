@@ -23,7 +23,10 @@ public static class SerilogConfig
         return Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+#if DEBUG
+            // IDE output window; in Release there is no debugger, so formatting for it would be wasted work
             .WriteTo.Debug(outputTemplate: OutputTemplate)
+#endif
             .WriteTo.Logger(file => file
                 // MAUI logs a harmless "Font asset not found" warning with a ~100 line stack trace on every page;
                 // keep it in the debug output but out of the file
