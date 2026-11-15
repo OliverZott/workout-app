@@ -12,7 +12,7 @@
         <Nullable>enable</Nullable>
 
         <!-- Display name -->
-        <ApplicationTitle>workout-app</ApplicationTitle>
+        <ApplicationTitle>Velosaurus</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>org.velosaurus.workoutapp</ApplicationId>
