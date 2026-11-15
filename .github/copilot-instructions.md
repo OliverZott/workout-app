@@ -1,7 +1,7 @@
 # Copilot Instructions (workout-app)
 
 ## Project baseline
-- Stack: **.NET 11 + .NET MAUI** (Android/iOS).
+- Stack: **.NET 11 + .NET MAUI** (Android only; iOS removed, see git tag `ios-last-supported`).
 - Do not suggest Xamarin.Forms APIs; use MAUI equivalents.
 - Keep changes minimal and non-breaking.
 

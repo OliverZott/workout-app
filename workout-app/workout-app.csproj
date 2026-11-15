@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net11.0-android;net11.0-ios</TargetFrameworks>
+        <!-- Android only; iOS was removed, see git tag ios-last-supported -->
+        <TargetFramework>net11.0-android</TargetFramework>
 
 
         <OutputType>Exe</OutputType>
@@ -22,7 +23,6 @@
         <ApplicationVersion>4</ApplicationVersion>
 
 
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
     </PropertyGroup>
 

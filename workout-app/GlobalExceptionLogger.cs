@@ -15,10 +15,6 @@ public static class GlobalExceptionLogger
 #if ANDROID
         // On Android unhandled exceptions arrive here instead of AppDomain.UnhandledException
         Android.Runtime.AndroidEnvironment.UnhandledExceptionRaiser += (_, e) => LogCrash(e.Exception);
-#elif IOS
-        // Required so exceptions from native callbacks reach AppDomain.UnhandledException (xamarin-macios#15252)
-        ObjCRuntime.Runtime.MarshalManagedException += (_, e) =>
-            e.ExceptionMode = ObjCRuntime.MarshalManagedExceptionMode.UnwindNativeCode;
 #endif
     }
 
