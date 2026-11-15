@@ -121,6 +121,17 @@ public partial class SettingsPageModel : ObservableObject
             await File.WriteAllTextAsync(actPath, actCsv.ToString());
             filesToShare.Add(new ShareFile(actPath, "text/csv"));
 
+            // Medication (name/dosage are free text and may contain commas, so they are quoted)
+            static string Quote(string s) => $"\"{s.Replace("\"", "\"\"")}\"";
+            var medications = await _db.GetMedicationsAsync();
+            var medCsv = new StringBuilder();
+            medCsv.AppendLine("Id,Name,Dosage,Fasting,Morning,Noon,Evening,Night,IsInactive");
+            foreach (var m in medications)
+                medCsv.AppendLine($"{m.Id},{Quote(m.Name)},{Quote(m.Dosage)},{m.Fasting},{m.Morning},{m.Noon},{m.Evening},{m.Night},{m.IsInactive}");
+            var medPath = Path.Combine(folder, "medication.csv");
+            await File.WriteAllTextAsync(medPath, medCsv.ToString());
+            filesToShare.Add(new ShareFile(medPath, "text/csv"));
+
             await Share.Default.RequestAsync(new ShareMultipleFilesRequest
             {
                 Title = AppResources.share_export_workout_data_title,
