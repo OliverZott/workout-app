@@ -4,13 +4,7 @@
              x:Class="workout_app.Pages.Controls.DateRangeSelector"
              x:DataType="DateRangeSelector">
 
-    <!-- TODO: remove as soon as possible in net10 and 11 -->
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <RadioButtonRangeToColorConverter x:Key="RangeToColorConverter" />
-        </ResourceDictionary>
-    </ContentView.Resources>
-
+    <!-- Selected range gets the input color; C# expressions (net11) replace the former value converter -->
     <Border HeightRequest="55">
 
         <Grid ColumnDefinitions="*,*,*">
@@ -21,7 +15,7 @@
                 Text="{Binding FirstRangeText}"
                 Command="{Binding RangeSelectedCommand}"
                 CommandParameter="{Binding FirstRangeValue}"
-                BackgroundColor="{Binding SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Week}" />
+                BackgroundColor="{.SelectedRange == RangeType.Week ? Color.FromArgb('#edf3fd') : Colors.White}" />
 
             <Button
                 Grid.Column="1"
@@ -29,7 +23,7 @@
                 Text="{Binding SecondRangeText}"
                 Command="{Binding RangeSelectedCommand}"
                 CommandParameter="{Binding SecondRangeValue}"
-                BackgroundColor="{Binding SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Month}" />
+                BackgroundColor="{.SelectedRange == RangeType.Month ? Color.FromArgb('#edf3fd') : Colors.White}" />
 
             <Button
                 Grid.Column="2"
@@ -37,7 +31,7 @@
                 Text="{Binding ThirdRangeText}"
                 Command="{Binding RangeSelectedCommand}"
                 CommandParameter="{Binding ThirdRangeValue}"
-                BackgroundColor="{Binding SelectedRange, Converter={StaticResource RangeToColorConverter}, ConverterParameter=Max}" />
+                BackgroundColor="{.SelectedRange == RangeType.Max ? Color.FromArgb('#edf3fd') : Colors.White}" />
 
         </Grid>
     </Border>

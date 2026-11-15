@@ -12,9 +12,6 @@
     "workout_app.PageModels.Controls")]
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",
-    "workout_app.Converter")]
-[assembly: XmlnsDefinition(
-    "http://schemas.microsoft.com/dotnet/maui/global",
     "workout_app.Models")]
 [assembly: XmlnsDefinition(
     "http://schemas.microsoft.com/dotnet/maui/global",
