@@ -34,25 +34,34 @@
 
                 <!-- Chart Element -->
                 <Border
-                    Padding="30"
+                    Padding="16,20"
                     HeightRequest="400">
 
                     <sf:SfCartesianChart>
 
                         <!-- Legend -->
                         <sf:SfCartesianChart.Legend>
-                            <sf:ChartLegend Placement="Top"/>
+                            <sf:ChartLegend Placement="Top" LabelStyle="{StaticResource WaChartLegendLabels}"/>
                         </sf:SfCartesianChart.Legend>
 
                         <!-- Axes -->
                         <sf:SfCartesianChart.XAxes>
-                            <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                            <sf:CategoryAxis LabelPlacement="BetweenTicks"
+                                ShowMajorGridLines="{.SelectedRange != RangeType.Max}" MaximumLabels="2"
+                                MajorGridLineStyle="{StaticResource WaChartGridLine}"
+                                LabelStyle="{StaticResource WaChartAxisLabels}"
+                                AxisLineStyle="{StaticResource WaChartAxisLine}"
+                                MajorTickStyle="{StaticResource WaChartTicks}"/>
                         </sf:SfCartesianChart.XAxes>
 
                         <sf:SfCartesianChart.YAxes>
                             <sf:NumericalAxis
                                 Minimum="{Binding MinBloodPressureWithPadding}"
-                                Maximum="{Binding MaxBloodPressureWithPadding}" />
+                                Maximum="{Binding MaxBloodPressureWithPadding}"
+                                LabelStyle="{StaticResource WaChartAxisLabels}"
+                                MajorGridLineStyle="{StaticResource WaChartGridLine}"
+                                AxisLineStyle="{StaticResource WaChartAxisLine}"
+                                MajorTickStyle="{StaticResource WaChartTicks}"/>
                         </sf:SfCartesianChart.YAxes>
 
                         <sf:LineSeries 
@@ -120,7 +129,7 @@
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
-                                    TextColor="{StaticResource Gray500}" />
+                                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}" />
 
                                 <Label
                                     Grid.Row="0"
@@ -138,7 +147,7 @@
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    TextColor="{StaticResource Gray500}">
+                                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static AppResources.heartrate}" />

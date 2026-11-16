@@ -34,39 +34,48 @@
 
                 <!-- Chart Element -->
                 <Border
-                    Padding="30"
+                    Padding="16,20"
                     HeightRequest="400">
 
                     <sf:SfCartesianChart>
 
                         <!-- Legend -->
                         <sf:SfCartesianChart.Legend>
-                            <sf:ChartLegend Placement="Top"/>
+                            <sf:ChartLegend Placement="Top" LabelStyle="{StaticResource WaChartLegendLabels}"/>
                         </sf:SfCartesianChart.Legend>
 
                         <!-- Axes -->
                         <sf:SfCartesianChart.XAxes>
-                            <sf:CategoryAxis LabelPlacement="BetweenTicks" />
+                            <sf:CategoryAxis LabelPlacement="BetweenTicks"
+                                ShowMajorGridLines="{.SelectedRange != RangeType.Max}" MaximumLabels="2"
+                                MajorGridLineStyle="{StaticResource WaChartGridLine}"
+                                LabelStyle="{StaticResource WaChartAxisLabels}"
+                                AxisLineStyle="{StaticResource WaChartAxisLine}"
+                                MajorTickStyle="{StaticResource WaChartTicks}"/>
                         </sf:SfCartesianChart.XAxes>
 
                         <sf:SfCartesianChart.YAxes>
-                            <sf:NumericalAxis 
-                            Minimum="{Binding MinWeightWithPadding}"
-                            Maximum="{Binding MaxWeightWithPadding}" />
+                            <sf:NumericalAxis
+                                Minimum="{Binding MinWeightWithPadding}"
+                                Maximum="{Binding MaxWeightWithPadding}"
+                                LabelStyle="{StaticResource WaChartAxisLabels}"
+                                MajorGridLineStyle="{StaticResource WaChartGridLine}"
+                                AxisLineStyle="{StaticResource WaChartAxisLine}"
+                                MajorTickStyle="{StaticResource WaChartTicks}"/>
                         </sf:SfCartesianChart.YAxes>
 
                         <sf:LineSeries 
                             ItemsSource="{Binding Data}"
                             XBindingPath="DisplayDate"
                             YBindingPath="Weight"
-                            Fill="Grey"
+                            Fill="{AppThemeBinding Light=Grey, Dark={StaticResource wa-dark-accent}}"
                             Label="{x:Static AppResources.weight}" 
                             ShowDataLabels="False"
                             IsVisibleOnLegend="False"
                             ShowMarkers="True"/>
                         <sf:LineSeries 
                             Label="{x:Static AppResources.average}"
-                            Fill="LightGray"               
+                            Fill="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource wa-dark-placeholder}}"
                             StrokeDashArray="4,4"
                             StrokeWidth="2"
                             IsVisibleOnLegend="True"
@@ -77,7 +86,7 @@
                         <sf:SfCartesianChart.Annotations>
                             <sf:HorizontalLineAnnotation 
                                 Y1="{Binding AverageWeightReading}"                     
-                                Stroke="LightGray"
+                                Stroke="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource wa-dark-placeholder}}"
                                 StrokeWidth="2"
                                 StrokeDashArray="4,4"
                                 ShowAxisLabel="False" />
@@ -125,7 +134,7 @@
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Text="{Binding Timestamp, StringFormat='{}{0:HH:mm}'}"
-                                    TextColor="{StaticResource Gray500}" />
+                                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}" />
 
                                 <Label
                                     Grid.Row="0"

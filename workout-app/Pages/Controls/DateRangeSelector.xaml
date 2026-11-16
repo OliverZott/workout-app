@@ -4,34 +4,51 @@
              x:Class="workout_app.Pages.Controls.DateRangeSelector"
              x:DataType="DateRangeSelector">
 
-    <!-- Selected range gets the input color; C# expressions (net11) replace the former value converter -->
-    <Border HeightRequest="55">
+    <Border HeightRequest="55" Padding="4" Shadow="{x:Null}">
 
-        <Grid ColumnDefinitions="*,*,*">
+        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="4">
 
             <Button
                 Grid.Column="0"
                 Style="{StaticResource WaRangeButtonStyle}"
                 Text="{Binding FirstRangeText}"
                 Command="{Binding RangeSelectedCommand}"
-                CommandParameter="{Binding FirstRangeValue}"
-                BackgroundColor="{.SelectedRange == RangeType.Week ? Color.FromArgb('#edf3fd') : Colors.White}" />
+                CommandParameter="{Binding FirstRangeValue}">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding SelectedRange}" Value="{x:Static RangeType.Week}">
+                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource wa-color-input}, Dark={StaticResource wa-dark-accent}}"/>
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource wa-color-button}, Dark={StaticResource wa-dark-background}}"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
             <Button
                 Grid.Column="1"
                 Style="{StaticResource WaRangeButtonStyle}"
                 Text="{Binding SecondRangeText}"
                 Command="{Binding RangeSelectedCommand}"
-                CommandParameter="{Binding SecondRangeValue}"
-                BackgroundColor="{.SelectedRange == RangeType.Month ? Color.FromArgb('#edf3fd') : Colors.White}" />
+                CommandParameter="{Binding SecondRangeValue}">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding SelectedRange}" Value="{x:Static RangeType.Month}">
+                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource wa-color-input}, Dark={StaticResource wa-dark-accent}}"/>
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource wa-color-button}, Dark={StaticResource wa-dark-background}}"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
             <Button
                 Grid.Column="2"
                 Style="{StaticResource WaRangeButtonStyle}"
                 Text="{Binding ThirdRangeText}"
                 Command="{Binding RangeSelectedCommand}"
-                CommandParameter="{Binding ThirdRangeValue}"
-                BackgroundColor="{.SelectedRange == RangeType.Max ? Color.FromArgb('#edf3fd') : Colors.White}" />
+                CommandParameter="{Binding ThirdRangeValue}">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding SelectedRange}" Value="{x:Static RangeType.Max}">
+                        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource wa-color-input}, Dark={StaticResource wa-dark-accent}}"/>
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource wa-color-button}, Dark={StaticResource wa-dark-background}}"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
         </Grid>
     </Border>

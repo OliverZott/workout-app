@@ -1,7 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit">
+
+    <sf:ChartAxisLabelStyle x:Key="WaChartAxisLabels"
+        FontSize="11"
+        TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}"/>
+    <sf:ChartLegendLabelStyle x:Key="WaChartLegendLabels"
+        FontSize="12"
+        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource wa-dark-text}}"/>
+    <sf:ChartLineStyle x:Key="WaChartGridLine"
+        Stroke="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource wa-dark-divider}}"
+        StrokeWidth="0.5"/>
+    <sf:ChartLineStyle x:Key="WaChartAxisLine"
+        Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource wa-dark-divider}}"
+        StrokeWidth="1"/>
+    <sf:ChartAxisTickStyle x:Key="WaChartTicks" TickSize="0"/>
 
     <!-- Custom Border Styling -->
     <CornerRadius x:Key="DefaultCornerRadius">24</CornerRadius>
@@ -29,11 +44,11 @@
     <!-- Border Element -->
     <Style TargetType="Border">
         <Setter Property="BackgroundColor"
-                Value="White"/>
+                Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource wa-dark-surface}}"/>
         <Setter Property="Stroke"
-                Value="White"/>
+                Value="Transparent"/>
         <Setter Property="StrokeThickness"
-                Value="1"/>
+                Value="0"/>
         <Setter Property="StrokeShape">
             <Setter.Value>
                 <RoundRectangle CornerRadius="{StaticResource DefaultCornerRadius}"/>
@@ -199,18 +214,18 @@
     <Style x:Key="WaSectionLabelStyle" TargetType="Label" CanCascade="True">
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}"/>
     </Style>
 
     <Style x:Key="WaDescriptionLabelStyle" TargetType="Label" CanCascade="True">
         <Setter Property="FontSize" Value="13"/>
-        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}"/>
     </Style>
 
     <Style x:Key="WaUnitLabelStyle" TargetType="Label" CanCascade="True">
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
     </Style>
 
@@ -220,16 +235,19 @@
     </Style>
 
     <Style x:Key="WaRangeButtonStyle" TargetType="Button" CanCascade="True">
-        <Setter Property="HeightRequest" Value="50"/>
-        <Setter Property="CornerRadius" Value="24"/>
+        <Setter Property="HeightRequest" Value="45"/>
+        <Setter Property="CornerRadius" Value="22"/>
+        <Setter Property="Padding" Value="8,0"/>
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="Medium"/>
-        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource wa-dark-muted}}"/>
     </Style>
 
     <Style x:Key="WaCompactInputBorderStyle" TargetType="Border">
-        <Setter Property="BackgroundColor" Value="{StaticResource wa-color-input}"/>
-        <Setter Property="Stroke" Value="{StaticResource wa-color-input}"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource wa-color-input}, Dark={StaticResource wa-dark-input}}"/>
+        <Setter Property="Stroke" Value="Transparent"/>
+        <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="Shadow" Value="{x:Null}"/>
         <Setter Property="HeightRequest" Value="44"/>
         <Setter Property="StrokeShape">
@@ -241,10 +259,10 @@
 
     <Style x:Key="WaCompactNumericEntryStyle" TargetType="Entry">
         <Setter Property="Placeholder" Value="0"/>
-        <Setter Property="PlaceholderColor" Value="{StaticResource Gray200}"/>
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource wa-dark-placeholder}}"/>
         <Setter Property="Keyboard" Value="Numeric"/>
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}"/>
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
@@ -252,14 +270,14 @@
 
     <Style x:Key="WaCompactPickerStyle" TargetType="Picker" CanCascade="True">
         <Setter Property="FontSize" Value="16"/>
-        <Setter Property="TextColor" Value="{StaticResource Gray500}"/>
-        <Setter Property="TitleColor" Value="{StaticResource Gray200}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource wa-dark-muted}}"/>
+        <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource wa-dark-placeholder}}"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="WaCompactEditorStyle" TargetType="Editor">
         <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark={StaticResource wa-dark-text}}"/>
         <Setter Property="FontSize" Value="16"/>
     </Style>
 
@@ -563,7 +581,7 @@
                 Value="0"/>
         <!-- Overall App Background Color -->
         <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource wa-color-background}, Dark={StaticResource OffBlack}}"/>
+                Value="{AppThemeBinding Light={StaticResource wa-color-background}, Dark={StaticResource wa-dark-background}}"/>
     </Style>
 
     <Style TargetType="Shell"
@@ -571,11 +589,11 @@
 
         <!-- Nav Bar Background Color -->
         <Setter Property="Shell.BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource wa-color-background}, Dark={StaticResource OffBlack}}"/>
+                Value="{AppThemeBinding Light={StaticResource wa-color-background}, Dark={StaticResource wa-dark-background}}"/>
         <Setter Property="Shell.ForegroundColor"
-                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}"/>
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource wa-dark-text}}"/>
         <Setter Property="Shell.TitleColor"
-                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}"/>
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource wa-dark-text}}"/>
         <Setter Property="Shell.DisabledColor"
                 Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}"/>
         <Setter Property="Shell.UnselectedColor"
@@ -585,11 +603,11 @@
 
         <!-- Tab Bar Backgroundcolor -->
         <Setter Property="Shell.TabBarBackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Black}}"/>
+                Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource wa-dark-surface}}"/>
         <Setter Property="Shell.TabBarForegroundColor"
-                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource wa-dark-accent}}"/>
         <Setter Property="Shell.TabBarTitleColor"
-                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource wa-dark-accent}}"/>
         <Setter Property="Shell.TabBarUnselectedColor"
                 Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
     </Style>

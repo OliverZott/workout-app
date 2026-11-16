@@ -12,6 +12,15 @@
     <Color x:Key="wa-color-delete">#e57373</Color>
     <Color x:Key="wa-color-tile">#8eb3e8</Color>
 
+    <Color x:Key="wa-dark-background">#121923</Color>
+    <Color x:Key="wa-dark-surface">#202C3A</Color>
+    <Color x:Key="wa-dark-input">#303F51</Color>
+    <Color x:Key="wa-dark-text">#E7EDF5</Color>
+    <Color x:Key="wa-dark-muted">#BAC8D8</Color>
+    <Color x:Key="wa-dark-placeholder">#9AABBD</Color>
+    <Color x:Key="wa-dark-divider">#46586C</Color>
+    <Color x:Key="wa-dark-accent">#9BC3F6</Color>
+
     <Color x:Key="wa-color-activity1">#4CAF50</Color>
     <Color x:Key="wa-color-activity2">#2196F3</Color>
     <Color x:Key="wa-color-activity3">#FF9800</Color>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="workout_app.Pages.WeightInsertPage"
              x:DataType="WeightInsertPageModel"
              HideSoftInputOnTapped="True"
@@ -28,7 +29,11 @@
                     Source="weight"
                     HeightRequest="40" 
                     WidthRequest="40"
-                    Aspect="AspectFit"/>
+                    Aspect="AspectFit">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                    </Image.Behaviors>
+                </Image>
 
                 <Grid 
                     Grid.Row="1" 

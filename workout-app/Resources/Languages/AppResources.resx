@@ -460,4 +460,10 @@ Gaps (>1.5×): {7}</value>
   <data name="medication_toggle_active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="settings_appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="settings_dark_mode" xml:space="preserve">
+    <value>Dark mode</value>
+  </data>
 </root>

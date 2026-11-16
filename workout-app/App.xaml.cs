@@ -22,9 +22,7 @@ public partial class App : Application
         _medicationReminders = medicationReminders;
         _logger = logger;
 
-        // Force Light Mode - Prevent automatic dark mode switching
-        // TODO: implement dark mode support
-        UserAppTheme = AppTheme.Light;
+        UserAppTheme = Preferences.Get("IsDarkThemeEnabled", false) ? AppTheme.Dark : AppTheme.Light;
     }
 
     protected override Window CreateWindow(IActivationState? activationState)

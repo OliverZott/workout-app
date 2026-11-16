@@ -32,7 +32,7 @@
                 Text="{Binding TileText}"
                 FontAttributes="Bold"
                 FontSize="16"
-                TextColor="{StaticResource Gray600}"
+                TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource wa-dark-text}}"
                 HorizontalOptions="Center"
                 Margin="0,6,0,0"/>
         </Grid>

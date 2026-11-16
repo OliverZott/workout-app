@@ -24,6 +24,15 @@
     <ScrollView>
         <VerticalStackLayout Padding="16" Spacing="8">
 
+            <Label Text="{x:Static AppResources.settings_appearance}" Style="{StaticResource SectionHeader}"/>
+            <Border Padding="16,8">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Label Text="{x:Static AppResources.settings_dark_mode}" Style="{StaticResource RowTitle}"/>
+                    <Switch Grid.Column="1" IsToggled="{Binding IsDarkThemeEnabled, Mode=TwoWay}"
+                            SemanticProperties.Description="{x:Static AppResources.settings_dark_mode}"/>
+                </Grid>
+            </Border>
+
             <!-- Reminders -->
             <Label Text="{x:Static AppResources.settings_notifications}" Style="{StaticResource SectionHeader}"/>
             <Border Padding="16,8">
@@ -43,7 +52,7 @@
                         </HorizontalStackLayout>
                     </Grid>
 
-                    <BoxView HeightRequest="1" Color="{StaticResource Gray100}"/>
+                    <BoxView HeightRequest="1" Color="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource wa-dark-divider}}"/>
 
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto, Auto">
                         <Label Text="{x:Static AppResources.medication}" Style="{StaticResource RowTitle}"/>

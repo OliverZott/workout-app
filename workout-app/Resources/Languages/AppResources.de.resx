@@ -460,4 +460,10 @@ Lücken (>1.5×): {7}</value>
   <data name="medication_toggle_active" xml:space="preserve">
     <value>Aktiv</value>
   </data>
+  <data name="settings_appearance" xml:space="preserve">
+    <value>Erscheinungsbild</value>
+  </data>
+  <data name="settings_dark_mode" xml:space="preserve">
+    <value>Dunkelmodus</value>
+  </data>
 </root>

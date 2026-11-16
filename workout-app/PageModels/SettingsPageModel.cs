@@ -14,6 +14,7 @@ public partial class SettingsPageModel : ObservableObject
     [ObservableProperty] private string appVersion = AppInfo.Current.VersionString;
     [ObservableProperty] private bool isMedicationReminderEnabled;
     [ObservableProperty] private bool isLoggingEnabled;
+    [ObservableProperty] private bool isDarkThemeEnabled;
     [ObservableProperty] private string statusMessage = "";
     [ObservableProperty] private TimeSpan notificationTime;
     [ObservableProperty] private bool isNotificationEnabled;
@@ -31,6 +32,7 @@ public partial class SettingsPageModel : ObservableObject
     private void LoadSettings()
     {
         IsLoggingEnabled = Preferences.Get("IsLoggingEnabled", false);
+        IsDarkThemeEnabled = Preferences.Get("IsDarkThemeEnabled", false);
 
         NotificationTime = _workoutReminder.Time;
         IsNotificationEnabled = _workoutReminder.IsEnabled;
@@ -56,6 +58,13 @@ public partial class SettingsPageModel : ObservableObject
     {
         Preferences.Set("IsLoggingEnabled", value);
         SerilogConfig.SetDetailedFileLogging(value);
+    }
+
+    partial void OnIsDarkThemeEnabledChanged(bool value)
+    {
+        Preferences.Set("IsDarkThemeEnabled", value);
+        if (Application.Current is { } app)
+            app.UserAppTheme = value ? AppTheme.Dark : AppTheme.Light;
     }
 
     async partial void OnNotificationTimeChanged(TimeSpan value)

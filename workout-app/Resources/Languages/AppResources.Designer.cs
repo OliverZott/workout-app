@@ -698,6 +698,24 @@ namespace workout_app.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appearance.
+        /// </summary>
+        internal static string settings_appearance {
+            get {
+                return ResourceManager.GetString("settings_appearance", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Dark mode.
+        /// </summary>
+        internal static string settings_dark_mode {
+            get {
+                return ResourceManager.GetString("settings_dark_mode", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Daily at.
         /// </summary>
         internal static string settings_daily_at {
